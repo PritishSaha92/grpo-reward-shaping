@@ -1,7 +1,7 @@
 <h1 align="center">What Survives Group Normalization?</h1>
 <p align="center"><strong>A Credit-Assignment Audit of Reward Shaping in GRPO</strong></p>
 <p align="center">
-  <a href="https://pritishsaha92.github.io/predictive-is-not-actionable/assets/paper/grpo-reward-shaping.pdf">Paper</a> &middot;
+  <a href="paper/grpo-reward-shaping.pdf">Paper</a> &middot;
   <a href="https://pritishsaha92.github.io/predictive-is-not-actionable/">Blog</a> &middot;
   <a href="docs/REPRODUCING.md">Reproduce</a> &middot;
   <a href="docs/RESULTS.md">Results</a>
@@ -69,6 +69,7 @@ Permuting the learned penalties among incorrect completions preserves the report
 | [`experiments/pilot/`](experiments/pilot/) | Earlier 32-group replay, kept as a labelled subset comparison |
 | [`experiments/validation/`](experiments/validation/) | Checks of the decomposition, alignment floor and permutation identity |
 | [`experiments/historical/`](experiments/historical/) | Original task evaluation, correctness discrimination and training coverage |
+| [`paper/`](paper/) | Current manuscript PDF and its checksum |
 | [`scripts/`](scripts/) | Reproduction, integrity checks and figure generation |
 | [`figures/`](figures/) | Vector figures, editable sources and README previews |
 | [`docs/`](docs/README.md) | Methods, results and reproduction guides |

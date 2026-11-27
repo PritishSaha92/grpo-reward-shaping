@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 ROOT=Path(__file__).resolve().parents[1]
 import argparse
-parser=argparse.ArgumentParser(description="Regenerate the eight paper figures from bundled evidence.")
+parser=argparse.ArgumentParser(description="Regenerate the nine paper figures from bundled evidence.")
 parser.add_argument("--output",type=Path,default=ROOT/"regenerated-figures")
 args=parser.parse_args()
 if args.output.exists(): parser.error("Choose a new output folder.")
@@ -188,5 +188,8 @@ ax.set(xlim=(.8,2.5),ylim=(-.45,2.5),xticks=[1,1.5,2,2.5],yticks=[0,1,2],ytickla
        xlabel='Squared residual norm /\nexact expectation for that rule',title='(b) Exact reference')
 fig.subplots_adjust(left=.085,right=.972,bottom=.27,top=.87,wspace=.48)
 save(fig,'assignment_gradient_replay','All 185 mixed groups, 1480 completions, 32 fixed learned-penalty permutations; exact conditional second-moment reference for each rule. Different reference denominators in panel (b); no learning-quality estimate.')
+from render_assignment_example import main as render_assignment_example
+render_assignment_example(F)
+manifest.append({'file':'assignment_example.pdf','scope':'Exact four-completion illustration; fixed score gradients and within-incorrect penalty swap. No empirical inputs.','width_inches':6.875,'height_inches':2.35,'minimum_label_pt':9,'sha256':hashlib.sha256((F/'assignment_example.pdf').read_bytes()).hexdigest(),'text':'Outlined vector glyphs; generator in scripts/render_assignment_example.py.'})
 (F/'manifest.json').write_text(json.dumps({'figures':manifest,'input_hashes':{str(p.relative_to(RUN)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [RUN/'results/summary.json',RUN/'results/group_metrics.csv',RUN/'results/tables/full_geometry.csv']},'assignment_input_hashes':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [EXT/'summary.json',EXT/'per_group.csv']},'replay_result_sha256':hashlib.sha256(result_path.read_bytes()).hexdigest(),'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},indent=2))
 print(f'Exported {len(manifest)} vector figures.')

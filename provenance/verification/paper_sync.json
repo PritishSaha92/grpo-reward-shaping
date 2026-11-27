@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "date": "2026-11-28",
+  "paper_sha256": "311ca90dabf0c373d2f8d1f6612a8f2b2a0c65fa526b18360870681c1d1242bb",
+  "paper_pages": 16,
+  "main_content_pages": 7,
+  "figures": {
+    "assignment_example.pdf": "pixel-identical",
+    "assignment_gradient_replay.pdf": "pixel-identical",
+    "components_and_interventions.pdf": "pixel-identical",
+    "direct_residual_comparison.pdf": "pixel-identical",
+    "energy_accounting.pdf": "pixel-identical",
+    "gradient_lifecycle.pdf": "pixel-identical",
+    "group_novelty_ecdf.pdf": "pixel-identical",
+    "normalization_example.pdf": "pixel-identical",
+    "signal_route.pdf": "pixel-identical"
+  },
+  "relative_documentation_links": 79,
+  "scientific_files_unchanged": true,
+  "scope": "Paper copies and figure regeneration; no new training, decoding or GPU replay."
+}

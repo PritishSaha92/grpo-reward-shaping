@@ -44,7 +44,7 @@ hashing and copying contribute to runtime.
 ## Figures
 
 The supplied PDF figures are vector exports; SVG sources are in
-`figures/editable/`. To regenerate all eight figures in a fresh directory:
+`figures/editable/`. To regenerate all nine figures in a fresh directory:
 
 ```bash
 python -m pip install -r requirements-figures.txt

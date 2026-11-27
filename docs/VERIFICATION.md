@@ -49,3 +49,9 @@ The updated README and guides were checked in desktop and mobile previews. All 5
 The complete CPU workflow passed again in 103 seconds, with all **33 numerical outputs reproduced byte-for-byte**. The record is [documentation_refresh_cpu.json](../provenance/verification/documentation_refresh_cpu.json). Experiment inputs, saved results, analysis scripts and model-replay code are unchanged. No GPU job or manuscript edit was made.
 
 The public-facing documentation now identifies the author and links the public blog. Earlier review-export checks above retain their original scope; they are not a claim that the current public README is anonymous.
+
+## Manuscript synchronization, 28 November 2026
+
+The repository now includes the current sixteen-page manuscript in `paper/`, with its SHA256 in `paper/manifest.json`. The ninth figure illustrates the within-incorrect assignment swap. All nine figures were regenerated from the bundled code and matched the supplied PDFs pixel-for-pixel. The documentation's 79 relative links resolve locally.
+
+The experiment records and analysis inputs are unchanged from the completed CPU verification above. This update copies the manuscript and extends figure generation; it introduces no new experiment. See [paper_sync.json](../provenance/verification/paper_sync.json).

@@ -18,4 +18,4 @@
 - [Provenance](PROVENANCE.md): how the public files relate to the original experiment records.
 - [Completeness](COMPLETENESS.md): included records and deliberate exclusions.
 
-The [blog](https://pritishsaha92.github.io/predictive-is-not-actionable/) gives an illustrated explanation with interactive examples. The [paper](https://pritishsaha92.github.io/predictive-is-not-actionable/assets/paper/grpo-reward-shaping.pdf) contains the formal statements and proofs.
+The [blog](https://pritishsaha92.github.io/predictive-is-not-actionable/) gives an illustrated explanation with interactive examples. The [paper](../paper/grpo-reward-shaping.pdf) contains the formal statements and proofs.

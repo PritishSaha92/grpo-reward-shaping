@@ -1,0 +1,5049 @@
+{
+  "metadata": {
+    "input_mode": "reconstructed",
+    "normalization": {
+      "normalization": "group",
+      "epsilon": 0.0001,
+      "ddof": 0,
+      "cohort": "post-hoc re-decode; score_available denotes deployed G7 incorrect-in-mixed eligibility, not diagnostic scoring"
+    },
+    "scope": "reward/advantage audit only; no model-gradient inference"
+  },
+  "counts": {
+    "groups": 500,
+    "rollouts": 4000,
+    "group_types": {
+      "all_wrong": 47,
+      "mixed": 185,
+      "all_correct": 268
+    },
+    "defined_group_cosines": 185,
+    "undefined_group_cosines": 315
+  },
+  "coverage": {
+    "direct_reward_change_count": 650,
+    "reward_observation_count": 4000,
+    "direct_reward_change_fraction": 0.1625,
+    "score_available_count": 650,
+    "availability_observation_count": 4000,
+    "score_available_fraction": 0.1625,
+    "note": "Unlogged availability remains unknown; direct change is not score availability."
+  },
+  "global": {
+    "cosine": 0.978645951663932,
+    "energy": 0.042252101291796906,
+    "relative": 0.20666885877813915,
+    "norm": 1.0000916014992984
+  },
+  "advantage_sign_changes": 32,
+  "ordering": {
+    "incorrect_ties": 2549,
+    "incorrect_ties_broken": 1233,
+    "correct_ties": 9367,
+    "correct_ties_broken": 0,
+    "strict_cross_outcome_pairs": 2084,
+    "strict_cross_outcome_reversals": 0
+  },
+  "groups": [
+    {
+      "group_id": "test/algebra/1004.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/101.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1031.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1035.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1072.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9706235602189748,
+      "energy": 0.05788990434784225,
+      "relative": 0.24240633460948718,
+      "norm": 1.0001350276674823
+    },
+    {
+      "group_id": "test/algebra/1078.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999994,
+      "energy": 1.1102230246251565e-15,
+      "relative": 0.0001570918954924665,
+      "norm": 1.0001570918954925
+    },
+    {
+      "group_id": "test/algebra/1082.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/109.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1098.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/114.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1143.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.996077857008438,
+      "energy": 0.00782890277747772,
+      "relative": 0.08857219376469161,
+      "norm": 1.0000941651157622
+    },
+    {
+      "group_id": "test/algebra/1184.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9322340645322275,
+      "energy": 0.13093964892572274,
+      "relative": 0.3681685300350701,
+      "norm": 1.00011939124177
+    },
+    {
+      "group_id": "test/algebra/1199.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1214.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1255.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1265.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1275.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1282.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1303.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1332.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1338.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1339.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1343.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 0.0001519759087016052,
+      "norm": 1.0001519759087016
+    },
+    {
+      "group_id": "test/algebra/1349.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 7.867594322724897e-05,
+      "norm": 1.0000786759432272
+    },
+    {
+      "group_id": "test/algebra/1425.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1457.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1519.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1529.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1547.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1553.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 0.000160583628134337,
+      "norm": 1.0001605836281344
+    },
+    {
+      "group_id": "test/algebra/1578.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/170.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1787.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0001115932077986623,
+      "norm": 1.0001115932077986
+    },
+    {
+      "group_id": "test/algebra/1796.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1814.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1837.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9834182737007668,
+      "energy": 0.032888498951403666,
+      "relative": 0.18211884043637658,
+      "norm": 1.000114773049035
+    },
+    {
+      "group_id": "test/algebra/1842.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/187.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1934.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1936.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/1937.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9805582893630561,
+      "energy": 0.03850544116139709,
+      "relative": 0.19719480401962908,
+      "norm": 1.0000608422970474
+    },
+    {
+      "group_id": "test/algebra/1960.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2023.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2036.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 0.0001541215410134427,
+      "norm": 1.0001541215410135
+    },
+    {
+      "group_id": "test/algebra/2043.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2046.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2058.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2064.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2080.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2102.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2157.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2159.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2176.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9990784630244953,
+      "energy": 0.001842224720612129,
+      "relative": 0.042932159489491833,
+      "norm": 1.0000508815657203
+    },
+    {
+      "group_id": "test/algebra/2193.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2199.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2214.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2232.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9990120865796244,
+      "energy": 0.0019748508678251175,
+      "relative": 0.0444517763160828,
+      "norm": 1.0000654382921064
+    },
+    {
+      "group_id": "test/algebra/224.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2251.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2253.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2257.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2264.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 0.00012799092105214867,
+      "norm": 1.000127990921052
+    },
+    {
+      "group_id": "test/algebra/2277.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9972983885585487,
+      "energy": 0.005395924178522082,
+      "relative": 0.0735100977114873,
+      "norm": 1.000093077634339
+    },
+    {
+      "group_id": "test/algebra/2391.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/24.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2427.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9847745214305521,
+      "energy": 0.0302191419412271,
+      "relative": 0.17451033805019056,
+      "norm": 1.0000949700259645
+    },
+    {
+      "group_id": "test/algebra/2430.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/246.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2470.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2476.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2486.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/251.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2517.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9999987289828964,
+      "energy": 2.542032591645871e-06,
+      "relative": 0.0015961634869134393,
+      "norm": 1.00007426232145
+    },
+    {
+      "group_id": "test/algebra/2551.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2570.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2584.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2592.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2593.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2626.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9917683352880287,
+      "energy": 0.016395569120012388,
+      "relative": 0.12831598094474922,
+      "norm": 1.0001003125924341
+    },
+    {
+      "group_id": "test/algebra/2680.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/2700.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9861369988431132,
+      "energy": 0.027533819512697733,
+      "relative": 0.1665169012140512,
+      "norm": 1.000067500529437
+    },
+    {
+      "group_id": "test/algebra/2735.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.00010990791214291462,
+      "norm": 1.000109907912143
+    },
+    {
+      "group_id": "test/algebra/2743.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/276.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 0.0001508301101403736,
+      "norm": 1.0001508301101403
+    },
+    {
+      "group_id": "test/algebra/2779.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0001108875025893729,
+      "norm": 1.0001108875025893
+    },
+    {
+      "group_id": "test/algebra/2780.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.996541460235943,
+      "energy": 0.0069051180308143945,
+      "relative": 0.08317205280771459,
+      "norm": 1.0000730798975994
+    },
+    {
+      "group_id": "test/algebra/2789.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/291.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/297.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/305.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/346.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/351.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/425.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/435.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/478.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/509.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/518.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/524.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/529.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 4.002666357995218e-05,
+      "norm": 1.00004002666358
+    },
+    {
+      "group_id": "test/algebra/567.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/621.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/634.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/661.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9992626291618629,
+      "energy": 0.001474197960521173,
+      "relative": 0.03840352713040519,
+      "norm": 1.0000582016188915
+    },
+    {
+      "group_id": "test/algebra/668.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/686.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9916033762600305,
+      "energy": 0.016722744189708427,
+      "relative": 0.12959602989718635,
+      "norm": 1.000111418067876
+    },
+    {
+      "group_id": "test/algebra/694.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/722.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 9.392713871840187e-05,
+      "norm": 1.0000939271387184
+    },
+    {
+      "group_id": "test/algebra/733.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/769.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/776.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9914434978746585,
+      "energy": 0.01703979052206206,
+      "relative": 0.1308201331727368,
+      "norm": 1.0000526047545912
+    },
+    {
+      "group_id": "test/algebra/791.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/824.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/841.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/849.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/853.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/858.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/864.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/873.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/892.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0001889461170053298,
+      "norm": 1.000188946117005
+    },
+    {
+      "group_id": "test/algebra/893.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/907.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/972.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/975.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/algebra/988.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/10.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9800484308365243,
+      "energy": 0.039505073214866515,
+      "relative": 0.19976820401428272,
+      "norm": 1.0001049041113874
+    },
+    {
+      "group_id": "test/counting_and_probability/1003.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8614684126586633,
+      "energy": 0.2578721739913631,
+      "relative": 0.5264026096050686,
+      "norm": 1.0001317942980263
+    },
+    {
+      "group_id": "test/counting_and_probability/1009.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/1014.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/1060.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9963342788721464,
+      "energy": 0.007318004744319984,
+      "relative": 0.08562554053164874,
+      "norm": 1.0000394707723486
+    },
+    {
+      "group_id": "test/counting_and_probability/1114.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/116.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/119.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/134.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/14.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/159.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 2.9448891667594175e-05,
+      "norm": 1.0000294488916674
+    },
+    {
+      "group_id": "test/counting_and_probability/181.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/188.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8325793342135492,
+      "energy": 0.3068116522405231,
+      "relative": 0.5786952417574515,
+      "norm": 1.0001398623584328
+    },
+    {
+      "group_id": "test/counting_and_probability/190.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/199.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9672923829742783,
+      "energy": 0.06434544583994206,
+      "relative": 0.25577177784725474,
+      "norm": 1.0000606069603803
+    },
+    {
+      "group_id": "test/counting_and_probability/216.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/230.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 8.901198715090154e-05,
+      "norm": 1.0000890119871508
+    },
+    {
+      "group_id": "test/counting_and_probability/238.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9671537620776213,
+      "energy": 0.06461360049910392,
+      "relative": 0.25631602945496385,
+      "norm": 1.0000825709910062
+    },
+    {
+      "group_id": "test/counting_and_probability/23957.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/25149.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/282.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9986795359368538,
+      "energy": 0.0026391845009503534,
+      "relative": 0.05139124816655843,
+      "norm": 1.0000491662397881
+    },
+    {
+      "group_id": "test/counting_and_probability/339.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/377.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.976674408140115,
+      "energy": 0.046107100484156116,
+      "relative": 0.21600374594903315,
+      "norm": 1.0001375234460281
+    },
+    {
+      "group_id": "test/counting_and_probability/389.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/430.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/508.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/51.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9395611651390883,
+      "energy": 0.11722481696247888,
+      "relative": 0.34768965082082287,
+      "norm": 1.0000861709253472
+    },
+    {
+      "group_id": "test/counting_and_probability/525.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.964664808737982,
+      "energy": 0.06942180678251264,
+      "relative": 0.2658508635780034,
+      "norm": 1.00008902196365
+    },
+    {
+      "group_id": "test/counting_and_probability/666.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/71.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/731.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.8994304263350438,
+      "energy": 0.1910249081827614,
+      "relative": 0.44851115431821514,
+      "norm": 1.000114821179016
+    },
+    {
+      "group_id": "test/counting_and_probability/737.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/761.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/765.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9622542042583014,
+      "energy": 0.07406684638722305,
+      "relative": 0.27477002534887224,
+      "norm": 1.0000922861731751
+    },
+    {
+      "group_id": "test/counting_and_probability/803.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/870.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9992789586798072,
+      "energy": 0.0014415627398001174,
+      "relative": 0.03797643295042313,
+      "norm": 1.0000831476115815
+    },
+    {
+      "group_id": "test/counting_and_probability/894.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/counting_and_probability/913.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/106.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/1097.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9177767448560141,
+      "energy": 0.15768584660149876,
+      "relative": 0.40553904417757963,
+      "norm": 1.000093631039628
+    },
+    {
+      "group_id": "test/geometry/1108.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/1140.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/172.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/178.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/183.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9610501361161015,
+      "energy": 0.07638263587122285,
+      "relative": 0.27912343900429437,
+      "norm": 1.000130288756044
+    },
+    {
+      "group_id": "test/geometry/221.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999996,
+      "energy": 8.881784197001252e-16,
+      "relative": 9.755239593120872e-05,
+      "norm": 1.0000975523959312
+    },
+    {
+      "group_id": "test/geometry/226.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 8.210293834938982e-05,
+      "norm": 1.0000821029383493
+    },
+    {
+      "group_id": "test/geometry/229.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.8690399680518174,
+      "energy": 0.2447695339284962,
+      "relative": 0.5118125519049094,
+      "norm": 1.000122210781026
+    },
+    {
+      "group_id": "test/geometry/248.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/254.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/283.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.967201791372689,
+      "energy": 0.0645206947654613,
+      "relative": 0.25613221926017915,
+      "norm": 1.0001110450512964
+    },
+    {
+      "group_id": "test/geometry/347.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/353.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/434.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9990315081693041,
+      "energy": 0.0019360456849657481,
+      "relative": 0.04401275185876517,
+      "norm": 1.0000691213994812
+    },
+    {
+      "group_id": "test/geometry/456.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/465.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9470074506044115,
+      "energy": 0.10317688849973317,
+      "relative": 0.3255763638402781,
+      "norm": 1.0001401165616588
+    },
+    {
+      "group_id": "test/geometry/473.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/477.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/483.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/538.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/547.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9061531034011852,
+      "energy": 0.178886553196401,
+      "relative": 0.4332602257421897,
+      "norm": 1.00010984884169
+    },
+    {
+      "group_id": "test/geometry/561.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/615.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 9.304363397959434e-05,
+      "norm": 1.0000930436339794
+    },
+    {
+      "group_id": "test/geometry/627.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0001755769423935845,
+      "norm": 1.0001755769423937
+    },
+    {
+      "group_id": "test/geometry/65.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9949821997512778,
+      "energy": 0.010010422178108325,
+      "relative": 0.1001841664588516,
+      "norm": 1.0001246729837325
+    },
+    {
+      "group_id": "test/geometry/686.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9558093424116625,
+      "energy": 0.08642850095858534,
+      "relative": 0.29730476913443465,
+      "norm": 1.000099576002085
+    },
+    {
+      "group_id": "test/geometry/702.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9696106695412464,
+      "energy": 0.05985514951177584,
+      "relative": 0.24655538307882213,
+      "norm": 1.0001787478807382
+    },
+    {
+      "group_id": "test/geometry/711.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/73.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/795.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9969637210789813,
+      "energy": 0.006063338852351108,
+      "relative": 0.07792915556859122,
+      "norm": 1.0000644363645985
+    },
+    {
+      "group_id": "test/geometry/802.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/817.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/826.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8951402314148886,
+      "energy": 0.19872396610249965,
+      "relative": 0.45798445687768863,
+      "norm": 1.0001440248656577
+    },
+    {
+      "group_id": "test/geometry/843.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/846.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/880.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/947.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/965.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/geometry/967.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1000.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 0.00010969338897903116,
+      "norm": 1.000109693388979
+    },
+    {
+      "group_id": "test/intermediate_algebra/101.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 8.378531588780869e-05,
+      "norm": 1.0000837853158877
+    },
+    {
+      "group_id": "test/intermediate_algebra/1014.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/102.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9953141246509198,
+      "energy": 0.009349793270373219,
+      "relative": 0.0968094504514414,
+      "norm": 1.0000339155717772
+    },
+    {
+      "group_id": "test/intermediate_algebra/1063.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9578242442283843,
+      "energy": 0.08257271716832437,
+      "relative": 0.2904452219870793,
+      "norm": 1.0000819039695426
+    },
+    {
+      "group_id": "test/intermediate_algebra/1102.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9874621532684139,
+      "energy": 0.024918495862507384,
+      "relative": 0.15835623897716763,
+      "norm": 1.000040013201116
+    },
+    {
+      "group_id": "test/intermediate_algebra/1111.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.00011742847667306104,
+      "norm": 1.000117428476673
+    },
+    {
+      "group_id": "test/intermediate_algebra/1123.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1126.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1151.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1166.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1168.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/117.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1197.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/121.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 0.00012531395133547405,
+      "norm": 1.0001253139513353
+    },
+    {
+      "group_id": "test/intermediate_algebra/1210.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9934539295033908,
+      "energy": 0.013049289954271792,
+      "relative": 0.11442517486340915,
+      "norm": 1.0000744044297047
+    },
+    {
+      "group_id": "test/intermediate_algebra/1217.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1232.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1247.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1279.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/128.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9792296500232813,
+      "energy": 0.04110929251528195,
+      "relative": 0.20382326477312765,
+      "norm": 1.0000774496072753
+    },
+    {
+      "group_id": "test/intermediate_algebra/1300.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/134.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1350.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8860920771821886,
+      "energy": 0.2148408307549543,
+      "relative": 0.4773432524725625,
+      "norm": 1.0001786667803112
+    },
+    {
+      "group_id": "test/intermediate_algebra/1354.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9826061347111528,
+      "energy": 0.03448518402800793,
+      "relative": 0.18652441104751077,
+      "norm": 1.000103902814899
+    },
+    {
+      "group_id": "test/intermediate_algebra/1365.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1388.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9873694694945165,
+      "energy": 0.025101530710117004,
+      "relative": 0.15894434321671386,
+      "norm": 1.0000884918813067
+    },
+    {
+      "group_id": "test/intermediate_algebra/1405.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0001536381515269589,
+      "norm": 1.000153638151527
+    },
+    {
+      "group_id": "test/intermediate_algebra/1407.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 7.638779606125434e-05,
+      "norm": 1.0000763877960612
+    },
+    {
+      "group_id": "test/intermediate_algebra/1408.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9572454451614398,
+      "energy": 0.08368115771767692,
+      "relative": 0.2924299147734139,
+      "norm": 1.0000718077983664
+    },
+    {
+      "group_id": "test/intermediate_algebra/1410.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1411.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1422.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1454.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9629201216526463,
+      "energy": 0.07278483931645285,
+      "relative": 0.2723349590659783,
+      "norm": 1.0000885304565703
+    },
+    {
+      "group_id": "test/intermediate_algebra/1462.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1467.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/149.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1508.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9980229119751126,
+      "energy": 0.003950267172716626,
+      "relative": 0.06288343479237796,
+      "norm": 1.0000376572618508
+    },
+    {
+      "group_id": "test/intermediate_algebra/1510.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1544.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9707984219940891,
+      "energy": 0.057550423853786614,
+      "relative": 0.2416834137275655,
+      "norm": 1.0001318264542456
+    },
+    {
+      "group_id": "test/intermediate_algebra/1555.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9972658701512642,
+      "energy": 0.0054607842314418065,
+      "relative": 0.07395043380157178,
+      "norm": 1.0000734363568513
+    },
+    {
+      "group_id": "test/intermediate_algebra/1566.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 0.0001055181513625203,
+      "norm": 1.0001055181513625
+    },
+    {
+      "group_id": "test/intermediate_algebra/1572.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/158.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9997030908903534,
+      "energy": 0.0005937300642738785,
+      "relative": 0.02436997377761332,
+      "norm": 1.00010997864818
+    },
+    {
+      "group_id": "test/intermediate_algebra/1714.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1779.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1791.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 5.879436913007131e-05,
+      "norm": 1.0000587943691301
+    },
+    {
+      "group_id": "test/intermediate_algebra/1797.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9669046670033499,
+      "energy": 0.06509536492714108,
+      "relative": 0.25728783095250046,
+      "norm": 1.0000959765451845
+    },
+    {
+      "group_id": "test/intermediate_algebra/1806.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/183.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9887142875694246,
+      "energy": 0.02244405755608514,
+      "relative": 0.15024227114096858,
+      "norm": 1.0000581176770698
+    },
+    {
+      "group_id": "test/intermediate_algebra/1837.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9994303765404724,
+      "energy": 0.0011389224481695992,
+      "relative": 0.033754263225999816,
+      "norm": 1.0000844696229223
+    },
+    {
+      "group_id": "test/intermediate_algebra/1849.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1898.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/190.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1930.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1981.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/199.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/1992.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9928837544252678,
+      "energy": 0.014181850198384582,
+      "relative": 0.11930223252489841,
+      "norm": 1.0000372491684428
+    },
+    {
+      "group_id": "test/intermediate_algebra/1994.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/2015.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/2022.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 0.0001571644302844398,
+      "norm": 1.0001571644302845
+    },
+    {
+      "group_id": "test/intermediate_algebra/2046.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9923401245041514,
+      "energy": 0.015261077299085213,
+      "relative": 0.12377861062789586,
+      "norm": 1.0000904244910644
+    },
+    {
+      "group_id": "test/intermediate_algebra/207.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/2146.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9946309562730152,
+      "energy": 0.010709260823427269,
+      "relative": 0.103629404140128,
+      "norm": 1.0000892141462823
+    },
+    {
+      "group_id": "test/intermediate_algebra/2152.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/2196.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9529200477804565,
+      "energy": 0.09194338253809253,
+      "relative": 0.30687067274393576,
+      "norm": 1.0001029604949443
+    },
+    {
+      "group_id": "test/intermediate_algebra/232.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/279.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/337.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/345.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/362.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9918183864372276,
+      "energy": 0.016296288325054142,
+      "relative": 0.12792150215121656,
+      "norm": 1.0000416696969276
+    },
+    {
+      "group_id": "test/intermediate_algebra/428.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 8.985107019905095e-05,
+      "norm": 1.000089851070199
+    },
+    {
+      "group_id": "test/intermediate_algebra/431.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/446.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/47.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 5.276500000823233e-05,
+      "norm": 1.0000527650000082
+    },
+    {
+      "group_id": "test/intermediate_algebra/515.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/558.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/582.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9788931160571186,
+      "energy": 0.0417682673359846,
+      "relative": 0.20546612993439034,
+      "norm": 1.0000606197888147
+    },
+    {
+      "group_id": "test/intermediate_algebra/591.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/607.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9718458662379966,
+      "energy": 0.05551561227611801,
+      "relative": 0.23730927877711086,
+      "norm": 1.0001315784898528
+    },
+    {
+      "group_id": "test/intermediate_algebra/623.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/662.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/690.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/752.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/754.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9895664276554876,
+      "energy": 0.020758285257156506,
+      "relative": 0.1444619791271878,
+      "norm": 1.0001010446958827
+    },
+    {
+      "group_id": "test/intermediate_algebra/776.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/834.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/860.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9978744956584976,
+      "energy": 0.0042464909142990725,
+      "relative": 0.06520169670108705,
+      "norm": 1.0000586060955967
+    },
+    {
+      "group_id": "test/intermediate_algebra/894.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/90.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9984729793174812,
+      "energy": 0.0030517095728727073,
+      "relative": 0.05526504280349866,
+      "norm": 1.0000589752822446
+    },
+    {
+      "group_id": "test/intermediate_algebra/955.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8852274579023443,
+      "energy": 0.21637234777575332,
+      "relative": 0.47914047860095244,
+      "norm": 1.000132855765964
+    },
+    {
+      "group_id": "test/intermediate_algebra/956.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/960.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/964.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/966.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 3.282234338083184e-05,
+      "norm": 1.0000328223433808
+    },
+    {
+      "group_id": "test/intermediate_algebra/986.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/intermediate_algebra/991.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9927079034870858,
+      "energy": 0.014531018354274727,
+      "relative": 0.1207689728540516,
+      "norm": 1.0000649715136736
+    },
+    {
+      "group_id": "test/number_theory/1000.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9958758251107662,
+      "energy": 0.008231340959950595,
+      "relative": 0.09082549319450996,
+      "norm": 1.000110120102273
+    },
+    {
+      "group_id": "test/number_theory/1002.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/1032.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/1055.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9831702395618158,
+      "energy": 0.03337628003996174,
+      "relative": 0.18347504028266243,
+      "norm": 1.0001057161350628
+    },
+    {
+      "group_id": "test/number_theory/1065.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/109.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/1090.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9584099324188562,
+      "energy": 0.08145040144088356,
+      "relative": 0.28842065002723183,
+      "norm": 1.0000761048042281
+    },
+    {
+      "group_id": "test/number_theory/1128.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/1172.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 0.00010643640318417456,
+      "norm": 1.0001064364031842
+    },
+    {
+      "group_id": "test/number_theory/1185.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 6.367390250943391e-05,
+      "norm": 1.0000636739025093
+    },
+    {
+      "group_id": "test/number_theory/1201.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/1257.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/1287.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/13.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9864845087964583,
+      "energy": 0.026848313904610288,
+      "relative": 0.164415354845289,
+      "norm": 1.0000526702154386
+    },
+    {
+      "group_id": "test/number_theory/132.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/149.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 0.00014203822398323396,
+      "norm": 1.0001420382239832
+    },
+    {
+      "group_id": "test/number_theory/156.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/183.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9802307377852922,
+      "energy": 0.03914770070090168,
+      "relative": 0.1988525391562678,
+      "norm": 1.0000960751343972
+    },
+    {
+      "group_id": "test/number_theory/203.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9931974975258352,
+      "energy": 0.013558730908418637,
+      "relative": 0.1166455269501417,
+      "norm": 1.0000857519532995
+    },
+    {
+      "group_id": "test/number_theory/22.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9972876380514666,
+      "energy": 0.005417366989726946,
+      "relative": 0.0736573206469122,
+      "norm": 1.0001220507164081
+    },
+    {
+      "group_id": "test/number_theory/234.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/239.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/255.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/342.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/357.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9646507035530545,
+      "energy": 0.06944902013459697,
+      "relative": 0.26590342362511166,
+      "norm": 1.0000852990912932
+    },
+    {
+      "group_id": "test/number_theory/368.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9968615987104271,
+      "energy": 0.006266953016491383,
+      "relative": 0.07922973559522634,
+      "norm": 1.0000861895369384
+    },
+    {
+      "group_id": "test/number_theory/410.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/417.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 2.792912913598833e-05,
+      "norm": 1.0000279291291359
+    },
+    {
+      "group_id": "test/number_theory/427.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/45.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/459.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/46.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/466.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/483.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/488.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9312869867048859,
+      "energy": 0.1327045483941337,
+      "relative": 0.3707313802950327,
+      "norm": 1.0001143645521213
+    },
+    {
+      "group_id": "test/number_theory/515.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/516.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9880132373754004,
+      "energy": 0.02382984277098077,
+      "relative": 0.15483922161215996,
+      "norm": 1.000069015180212
+    },
+    {
+      "group_id": "test/number_theory/521.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/533.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9679365829342157,
+      "energy": 0.0630987714176342,
+      "relative": 0.253242432981425,
+      "norm": 1.0000762538210959
+    },
+    {
+      "group_id": "test/number_theory/572.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/598.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/612.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/627.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/631.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/634.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9904018475804166,
+      "energy": 0.01910418030929728,
+      "relative": 0.13855829632937675,
+      "norm": 1.0001086066895215
+    },
+    {
+      "group_id": "test/number_theory/679.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8516083062175045,
+      "energy": 0.27476329278135314,
+      "relative": 0.5448184745247004,
+      "norm": 1.000147450560228
+    },
+    {
+      "group_id": "test/number_theory/686.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/691.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/72.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/737.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 4.464239756448889e-05,
+      "norm": 1.0000446423975644
+    },
+    {
+      "group_id": "test/number_theory/753.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9999979949375256,
+      "energy": 4.010120928543692e-06,
+      "relative": 0.0020026951315625357,
+      "norm": 1.000023818597549
+    },
+    {
+      "group_id": "test/number_theory/769.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9844791218538892,
+      "energy": 0.030800858633795225,
+      "relative": 0.17619167413981726,
+      "norm": 1.0000562654430127
+    },
+    {
+      "group_id": "test/number_theory/820.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9730010676394307,
+      "energy": 0.053268922372528005,
+      "relative": 0.23238350363608576,
+      "norm": 1.0000781869406867
+    },
+    {
+      "group_id": "test/number_theory/838.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 9.416604620860018e-05,
+      "norm": 1.0000941660462086
+    },
+    {
+      "group_id": "test/number_theory/847.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/864.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9912354581175463,
+      "energy": 0.017452266570498032,
+      "relative": 0.132404432333674,
+      "norm": 1.0001049074298949
+    },
+    {
+      "group_id": "test/number_theory/89.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/911.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9656962580418063,
+      "energy": 0.06743073720405313,
+      "relative": 0.26194118492571744,
+      "norm": 1.0000829874040993
+    },
+    {
+      "group_id": "test/number_theory/914.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.00012071472321950172,
+      "norm": 1.0001207147232194
+    },
+    {
+      "group_id": "test/number_theory/928.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9822105112256789,
+      "energy": 0.035262511637790483,
+      "relative": 0.18863273368693742,
+      "norm": 1.0000933683916005
+    },
+    {
+      "group_id": "test/number_theory/931.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/number_theory/978.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1003.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9674172750761582,
+      "energy": 0.06410381588422098,
+      "relative": 0.25528350189560867,
+      "norm": 1.0000646402970215
+    },
+    {
+      "group_id": "test/prealgebra/1044.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/105.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1113.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1114.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1128.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1139.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9950279248769247,
+      "energy": 0.009919428715121081,
+      "relative": 0.09972451592494642,
+      "norm": 1.0000826614025524
+    },
+    {
+      "group_id": "test/prealgebra/1187.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1203.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1227.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1233.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1238.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1247.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1251.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1252.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9958608090649653,
+      "energy": 0.00826124896847269,
+      "relative": 0.09098998806211855,
+      "norm": 1.0000950692213624
+    },
+    {
+      "group_id": "test/prealgebra/1272.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1297.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1298.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1302.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1317.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1353.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1356.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1388.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1423.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1436.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.99036252242558,
+      "energy": 0.019182074174842634,
+      "relative": 0.13884139192270284,
+      "norm": 1.0001020263241762
+    },
+    {
+      "group_id": "test/prealgebra/1458.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1512.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 0.00011125020927835846,
+      "norm": 1.0001112502092782
+    },
+    {
+      "group_id": "test/prealgebra/153.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1555.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1558.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1572.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 4.541101015309737e-05,
+      "norm": 1.0000454110101529
+    },
+    {
+      "group_id": "test/prealgebra/1622.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1640.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 0.00011645759696684485,
+      "norm": 1.0001164575969668
+    },
+    {
+      "group_id": "test/prealgebra/1646.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1655.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9994553813455296,
+      "energy": 0.001088940699462082,
+      "relative": 0.033004516930562985,
+      "norm": 1.000053242832285
+    },
+    {
+      "group_id": "test/prealgebra/1686.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1730.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1733.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.8990484015471575,
+      "energy": 0.19171197167550103,
+      "relative": 0.4493600758491403,
+      "norm": 1.000105346343862
+    },
+    {
+      "group_id": "test/prealgebra/1742.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1743.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1747.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1761.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1784.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1787.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1804.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9996773387182534,
+      "energy": 0.0006452184531905436,
+      "relative": 0.025403821850873268,
+      "norm": 1.0000457290547076
+    },
+    {
+      "group_id": "test/prealgebra/1807.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1834.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1840.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0001488640355833772,
+      "norm": 1.0001488640355833
+    },
+    {
+      "group_id": "test/prealgebra/1865.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9987602761173511,
+      "energy": 0.002477910849992604,
+      "relative": 0.04979664889248663,
+      "norm": 1.0001001981035276
+    },
+    {
+      "group_id": "test/prealgebra/1907.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1908.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999997,
+      "energy": 6.661338147750939e-16,
+      "relative": 5.2331466355027374e-05,
+      "norm": 1.0000523314663552
+    },
+    {
+      "group_id": "test/prealgebra/192.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1922.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1924.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1930.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9556589093262372,
+      "energy": 0.08671604902538677,
+      "relative": 0.29780945633475325,
+      "norm": 1.0000933920734723
+    },
+    {
+      "group_id": "test/prealgebra/1961.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 5.914506624837334e-05,
+      "norm": 1.0000591450662482
+    },
+    {
+      "group_id": "test/prealgebra/1973.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1991.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/1995.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 5.784276541418248e-05,
+      "norm": 1.000057842765414
+    },
+    {
+      "group_id": "test/prealgebra/2019.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/2037.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9937078681963462,
+      "energy": 0.012544672684673186,
+      "relative": 0.11218136085623459,
+      "norm": 1.0000312406259602
+    },
+    {
+      "group_id": "test/prealgebra/2057.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/2066.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9210191233360824,
+      "energy": 0.15172377444923424,
+      "relative": 0.3974631917944751,
+      "norm": 1.0000963917652403
+    },
+    {
+      "group_id": "test/prealgebra/2086.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 9.862255931770206e-05,
+      "norm": 1.0000986225593176
+    },
+    {
+      "group_id": "test/prealgebra/260.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/307.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/378.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9992916935629654,
+      "energy": 0.0014161111760604417,
+      "relative": 0.037639295008620746,
+      "norm": 1.0000697377040917
+    },
+    {
+      "group_id": "test/prealgebra/465.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 4.873472759652945e-05,
+      "norm": 1.0000487347275964
+    },
+    {
+      "group_id": "test/prealgebra/505.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/572.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/631.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9912370453861543,
+      "energy": 0.017449119854127004,
+      "relative": 0.13238935343408503,
+      "norm": 1.0000586693051559
+    },
+    {
+      "group_id": "test/prealgebra/65.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/805.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/846.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9445597810051715,
+      "energy": 0.10780682010746256,
+      "relative": 0.33300237015598727,
+      "norm": 1.000091379415829
+    },
+    {
+      "group_id": "test/prealgebra/874.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/914.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9836887083292252,
+      "energy": 0.032356525105580625,
+      "relative": 0.1806299001771645,
+      "norm": 1.0001397184025416
+    },
+    {
+      "group_id": "test/prealgebra/930.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/951.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9812647346211589,
+      "energy": 0.037119520588866584,
+      "relative": 0.1935791278806857,
+      "norm": 1.0000625579573963
+    },
+    {
+      "group_id": "test/prealgebra/954.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/977.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/993.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/prealgebra/996.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999999,
+      "energy": 2.220446049250313e-16,
+      "relative": 0.00012041037482869999,
+      "norm": 1.0001204103748287
+    },
+    {
+      "group_id": "test/precalculus/1056.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.941751929788237,
+      "energy": 0.11310330274013158,
+      "relative": 0.3413308945273737,
+      "norm": 1.000091254593429
+    },
+    {
+      "group_id": "test/precalculus/1082.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.967700995170549,
+      "energy": 0.06355478394592917,
+      "relative": 0.2541781376870416,
+      "norm": 1.0001315630367325
+    },
+    {
+      "group_id": "test/precalculus/1105.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/1133.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.934668714039189,
+      "energy": 0.12639439499632865,
+      "relative": 0.36150143349746067,
+      "norm": 1.0001583424118616
+    },
+    {
+      "group_id": "test/precalculus/1146.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8030560940403749,
+      "energy": 0.3551009098246165,
+      "relative": 0.6276585114982621,
+      "norm": 1.000171028105751
+    },
+    {
+      "group_id": "test/precalculus/117.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9920267304809663,
+      "energy": 0.01588296601124417,
+      "relative": 0.12628420896024314,
+      "norm": 1.0000725630339455
+    },
+    {
+      "group_id": "test/precalculus/1172.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9937811880869479,
+      "energy": 0.012398950204494219,
+      "relative": 0.11152760136686177,
+      "norm": 1.0000625623116428
+    },
+    {
+      "group_id": "test/precalculus/1199.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9969548111687416,
+      "energy": 0.006081104487498767,
+      "relative": 0.07804342844315743,
+      "norm": 1.0000648329794892
+    },
+    {
+      "group_id": "test/precalculus/1201.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.8344356055375939,
+      "energy": 0.30371722021110903,
+      "relative": 0.5754794498353991,
+      "norm": 1.0001443167502067
+    },
+    {
+      "group_id": "test/precalculus/1202.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9945389452176734,
+      "energy": 0.0108922864453177,
+      "relative": 0.10451523939647234,
+      "norm": 1.000120058080211
+    },
+    {
+      "group_id": "test/precalculus/1252.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 4.9794113986006904e-05,
+      "norm": 1.0000497941139859
+    },
+    {
+      "group_id": "test/precalculus/1281.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/1289.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/1291.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9932474234299128,
+      "energy": 0.013459555849839488,
+      "relative": 0.11621461043821284,
+      "norm": 1.0000503514367536
+    },
+    {
+      "group_id": "test/precalculus/1300.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999998,
+      "energy": 4.440892098500626e-16,
+      "relative": 3.646965975067661e-05,
+      "norm": 1.0000364696597506
+    },
+    {
+      "group_id": "test/precalculus/1303.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9885996084545107,
+      "energy": 0.022670814163588182,
+      "relative": 0.15100589834571787,
+      "norm": 1.0000873049863916
+    },
+    {
+      "group_id": "test/precalculus/1313.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.992181383693704,
+      "energy": 0.015576101851646929,
+      "relative": 0.12505494111452903,
+      "norm": 1.0000957027112558
+    },
+    {
+      "group_id": "test/precalculus/145.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 0.9999999999999997,
+      "energy": 6.661338147750939e-16,
+      "relative": 9.156383204465453e-05,
+      "norm": 1.0000915638320445
+    },
+    {
+      "group_id": "test/precalculus/190.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/24313.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/263.json",
+      "n_rollouts": 8,
+      "n_correct": 1,
+      "group_type": "mixed",
+      "cosine": 0.9925771603429707,
+      "energy": 0.014790580765484562,
+      "relative": 0.1218499502107646,
+      "norm": 1.0001157013743411
+    },
+    {
+      "group_id": "test/precalculus/285.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9591259881831791,
+      "energy": 0.08007733879164025,
+      "relative": 0.28592783355210255,
+      "norm": 1.000081906048107
+    },
+    {
+      "group_id": "test/precalculus/323.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.99853430435606,
+      "energy": 0.0029292430241592005,
+      "relative": 0.054144089142327136,
+      "norm": 1.0000638026046955
+    },
+    {
+      "group_id": "test/precalculus/34.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/356.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/398.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0001027683750222894,
+      "norm": 1.000102768375022
+    },
+    {
+      "group_id": "test/precalculus/43.json",
+      "n_rollouts": 8,
+      "n_correct": 7,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 4.995291895810328e-05,
+      "norm": 1.000049952918958
+    },
+    {
+      "group_id": "test/precalculus/44.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9729993527592667,
+      "energy": 0.053272259530047994,
+      "relative": 0.2323902560052349,
+      "norm": 1.0000728001963841
+    },
+    {
+      "group_id": "test/precalculus/441.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/452.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/477.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/499.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/541.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/580.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/625.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/659.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9581758505240939,
+      "energy": 0.08189903947242916,
+      "relative": 0.2892284689526977,
+      "norm": 1.0000574429041875
+    },
+    {
+      "group_id": "test/precalculus/675.json",
+      "n_rollouts": 8,
+      "n_correct": 5,
+      "group_type": "mixed",
+      "cosine": 0.9934337130728941,
+      "energy": 0.013089457730202758,
+      "relative": 0.11460168097560626,
+      "norm": 1.0000735588717369
+    },
+    {
+      "group_id": "test/precalculus/681.json",
+      "n_rollouts": 8,
+      "n_correct": 4,
+      "group_type": "mixed",
+      "cosine": 0.9901136811655533,
+      "energy": 0.01967489836879699,
+      "relative": 0.140620282658489,
+      "norm": 1.000071870064956
+    },
+    {
+      "group_id": "test/precalculus/695.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/697.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/703.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9910498629714628,
+      "energy": 0.017820169104244776,
+      "relative": 0.13379676981090982,
+      "norm": 1.0000724184624852
+    },
+    {
+      "group_id": "test/precalculus/742.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9436885142851169,
+      "energy": 0.1094519880063487,
+      "relative": 0.33560477986111686,
+      "norm": 1.0000674133456702
+    },
+    {
+      "group_id": "test/precalculus/768.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/779.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/801.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9443166540684954,
+      "energy": 0.10826605684888158,
+      "relative": 0.33373058986753307,
+      "norm": 1.000084474219995
+    },
+    {
+      "group_id": "test/precalculus/807.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/819.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/826.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9554384124948255,
+      "energy": 0.08713743992936762,
+      "relative": 0.29854738113553037,
+      "norm": 1.0000825482073266
+    },
+    {
+      "group_id": "test/precalculus/881.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/902.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/920.json",
+      "n_rollouts": 8,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/927.json",
+      "n_rollouts": 8,
+      "n_correct": 6,
+      "group_type": "mixed",
+      "cosine": 0.9996579548730067,
+      "energy": 0.0006839732591177317,
+      "relative": 0.026156568780015817,
+      "norm": 1.000097080397546
+    },
+    {
+      "group_id": "test/precalculus/96.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/986.json",
+      "n_rollouts": 8,
+      "n_correct": 8,
+      "group_type": "all_correct",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "test/precalculus/989.json",
+      "n_rollouts": 8,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9758809391576353,
+      "energy": 0.047656392588811713,
+      "relative": 0.21964089177453452,
+      "norm": 1.0000827727803425
+    },
+    {
+      "group_id": "test/precalculus/990.json",
+      "n_rollouts": 8,
+      "n_correct": 3,
+      "group_type": "mixed",
+      "cosine": 0.9690156003251561,
+      "energy": 0.06100876632647734,
+      "relative": 0.24894581554481884,
+      "norm": 1.0000841173608561
+    }
+  ]
+}

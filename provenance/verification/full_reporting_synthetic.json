@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic 1480-gradient full reporting route; not a model result",
+  "groups": 185,
+  "single_incorrect": 53,
+  "directions": 70,
+  "permutations": 32
+}

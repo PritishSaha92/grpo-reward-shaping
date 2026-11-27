@@ -1,0 +1,268 @@
+{
+  "scope": "Post-hoc fixed-sample descriptive comparison; no retraining or model gradients",
+  "counts": {
+    "all_correct": 268,
+    "all_wrong": 47,
+    "mixed": 185
+  },
+  "opportunity": {
+    "n_groups": 132,
+    "fraction_of_all": 0.264,
+    "fraction_of_mixed": 0.7135135135135136,
+    "single_incorrect_groups": 53
+  },
+  "normalizations": {
+    "std": {
+      "global_advantage_comparison": {
+        "c": 0.9684439607944387,
+        "rho": 0.9999966237719228,
+        "D": 0.2512207502212941,
+        "E": 0.062116294800779626
+      },
+      "global_residual_comparison": {
+        "c": 0.23034335968495886,
+        "rho": 0.966353114464606,
+        "D": 1.220103395528363,
+        "E": 0.9469419366490457
+      },
+      "residual_norms": {
+        "learned": 7.791098293658271,
+        "length": 7.5289521011765475
+      },
+      "cohorts": {
+        "all_mixed": {
+          "n_groups": 185,
+          "learned_energy": {
+            "defined": 185,
+            "excluded": 0,
+            "min": 0.0,
+            "q1": 0.0,
+            "median": 0.01345955584983931,
+            "q3": 0.059855149511775445,
+            "max": 0.3551009098246164
+          },
+          "length_energy": {
+            "defined": 185,
+            "excluded": 0,
+            "min": 0.0,
+            "q1": 0.0,
+            "median": 0.005597455667149665,
+            "q3": 0.026372431880085326,
+            "max": 0.4914809033822802
+          },
+          "energy_difference": {
+            "defined": 185,
+            "excluded": 0,
+            "min": -0.4627998970251059,
+            "q1": -0.00032397409619456467,
+            "median": 0.0,
+            "q3": 0.01847259837413866,
+            "max": 0.26805830956500143
+          },
+          "advantage_cosine": {
+            "defined": 185,
+            "excluded": 0,
+            "min": 0.540689414711655,
+            "q1": 0.9624377055385614,
+            "median": 0.9890021447999642,
+            "q3": 0.9999999999999998,
+            "max": 1.0
+          },
+          "residual_cosine": {
+            "defined": 131,
+            "excluded": 54,
+            "min": -1.0,
+            "q1": -0.5847435466299643,
+            "median": -0.07047787566781939,
+            "q3": 0.6176153282440877,
+            "max": 1.0
+          },
+          "residual_exclusions": {
+            "both_zero": 53,
+            "length_zero": 1
+          }
+        },
+        "at_least_two_incorrect": {
+          "n_groups": 132,
+          "learned_energy": {
+            "defined": 132,
+            "excluded": 0,
+            "min": 2.542032591722613e-06,
+            "q1": 0.010534551162097266,
+            "median": 0.030510000287511246,
+            "q3": 0.07464579375822308,
+            "max": 0.3551009098246164
+          },
+          "length_energy": {
+            "defined": 132,
+            "excluded": 0,
+            "min": 0.0,
+            "q1": 0.0034455770793948284,
+            "median": 0.013186487189418374,
+            "q3": 0.04616804343523079,
+            "max": 0.4914809033822802
+          },
+          "energy_difference": {
+            "defined": 132,
+            "excluded": 0,
+            "min": -0.4627998970251059,
+            "q1": -0.009569824405199665,
+            "median": 0.005435226283250251,
+            "q3": 0.03773380603746598,
+            "max": 0.26805830956500143
+          },
+          "advantage_cosine": {
+            "defined": 132,
+            "excluded": 0,
+            "min": 0.540689414711655,
+            "q1": 0.9341866645366463,
+            "median": 0.98109449889844,
+            "q3": 0.9903966408919097,
+            "max": 0.9999953647673333
+          },
+          "residual_cosine": {
+            "defined": 131,
+            "excluded": 1,
+            "min": -1.0,
+            "q1": -0.5847435466299643,
+            "median": -0.07047787566781939,
+            "q3": 0.6176153282440877,
+            "max": 1.0
+          },
+          "residual_exclusions": {
+            "length_zero": 1
+          }
+        }
+      }
+    },
+    "mean": {
+      "global_advantage_comparison": {
+        "c": 0.9294354689549305,
+        "rho": 1.0408620430769555,
+        "D": 0.3854420714829929,
+        "E": 0.13614970904852852
+      },
+      "global_residual_comparison": {
+        "c": 0.29399296790399715,
+        "rho": 1.175246159654386,
+        "D": 1.3000674300947803,
+        "E": 0.9135681348229993
+      },
+      "residual_norms": {
+        "learned": 5.970303334974191,
+        "length": 7.01657606640019
+      },
+      "cohorts": {
+        "all_mixed": {
+          "n_groups": 185,
+          "learned_energy": {
+            "defined": 185,
+            "excluded": 0,
+            "min": 0.0,
+            "q1": 0.0,
+            "median": 0.013459555849839315,
+            "q3": 0.05985514951177542,
+            "max": 0.3551009098246164
+          },
+          "length_energy": {
+            "defined": 185,
+            "excluded": 0,
+            "min": 0.0,
+            "q1": 0.0,
+            "median": 0.005597455667149668,
+            "q3": 0.026372431880085315,
+            "max": 0.4914809033822803
+          },
+          "energy_difference": {
+            "defined": 185,
+            "excluded": 0,
+            "min": -0.46279989702510566,
+            "q1": -0.00032397409619456445,
+            "median": 0.0,
+            "q3": 0.018472598374138668,
+            "max": 0.2680583095650014
+          },
+          "advantage_cosine": {
+            "defined": 185,
+            "excluded": 0,
+            "min": 0.5406894147116549,
+            "q1": 0.962437705538561,
+            "median": 0.9890021447999642,
+            "q3": 0.9999999999999998,
+            "max": 1.0
+          },
+          "residual_cosine": {
+            "defined": 131,
+            "excluded": 54,
+            "min": -1.0,
+            "q1": -0.5847435466299641,
+            "median": -0.07047787566781978,
+            "q3": 0.6176153282440875,
+            "max": 1.0
+          },
+          "residual_exclusions": {
+            "both_zero": 53,
+            "length_zero": 1
+          }
+        },
+        "at_least_two_incorrect": {
+          "n_groups": 132,
+          "learned_energy": {
+            "defined": 132,
+            "excluded": 0,
+            "min": 2.542032591722712e-06,
+            "q1": 0.01053455116209727,
+            "median": 0.03051000028751124,
+            "q3": 0.07464579375822308,
+            "max": 0.3551009098246164
+          },
+          "length_energy": {
+            "defined": 132,
+            "excluded": 0,
+            "min": 0.0,
+            "q1": 0.0034455770793948267,
+            "median": 0.013186487189418375,
+            "q3": 0.04616804343523079,
+            "max": 0.4914809033822803
+          },
+          "energy_difference": {
+            "defined": 132,
+            "excluded": 0,
+            "min": -0.46279989702510566,
+            "q1": -0.009569824405199667,
+            "median": 0.005435226283250254,
+            "q3": 0.03773380603746598,
+            "max": 0.2680583095650014
+          },
+          "advantage_cosine": {
+            "defined": 132,
+            "excluded": 0,
+            "min": 0.5406894147116549,
+            "q1": 0.9341866645366462,
+            "median": 0.9810944988984398,
+            "q3": 0.9903966408919097,
+            "max": 0.9999953647673333
+          },
+          "residual_cosine": {
+            "defined": 131,
+            "excluded": 1,
+            "min": -1.0,
+            "q1": -0.5847435466299641,
+            "median": -0.07047787566781978,
+            "q3": 0.6176153282440875,
+            "max": 1.0
+          },
+          "residual_exclusions": {
+            "length_zero": 1
+          }
+        }
+      }
+    }
+  },
+  "permutation_draws": 32,
+  "gpu_sample": {
+    "n_groups": 32,
+    "n_rollouts": 256,
+    "n_permutable_groups": 24
+  }
+}

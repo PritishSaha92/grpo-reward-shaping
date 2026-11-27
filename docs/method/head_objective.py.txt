@@ -1,0 +1,82 @@
+    def _compute_cr_head_aux_loss(
+        self,
+        rewards: torch.Tensor,
+        is_correct: torch.Tensor,
+        prompt_md5s: list[str],
+        projected: torch.Tensor,
+    ) -> dict[str, Any]:
+        """Compute Amendment #2 head-learning contrastive loss on projected MRN space."""
+        device = projected.device
+        rewards = rewards.to(device=device, dtype=torch.float32)
+        is_correct = is_correct.to(device=device, dtype=torch.bool)
+        if rewards.ndim != 1 or is_correct.ndim != 1:
+            raise ValueError("rewards and is_correct must be 1-D")
+        if rewards.shape[0] != is_correct.shape[0] or rewards.shape[0] != projected.shape[0]:
+            raise ValueError("reward, correctness, and projected rows must match")
+        if len(prompt_md5s) != rewards.shape[0]:
+            raise ValueError("prompt_md5s length must match projected rows")
+
+        mrn_head = getattr(self, "cr_mrn_head")
+        groups: dict[str, list[int]] = {}
+        for idx, md5 in enumerate(prompt_md5s):
+            groups.setdefault(str(md5), []).append(idx)
+
+        prompt_count = 0
+        skipped_count = 0
+        anchor_losses: list[torch.Tensor] = []
+        for indices in groups.values():
+            prompt_count += 1
+            group_idx = torch.as_tensor(indices, device=device, dtype=torch.long)
+            group_correct = is_correct.index_select(0, group_idx)
+            frontier = select_positives_and_frontier(group_correct.detach().cpu())
+            if frontier["skip"]:
+                skipped_count += 1
+                continue
+
+            group_rewards = rewards.index_select(0, group_idx)
+            mined = mine_reward_proximity_negatives(
+                group_rewards.detach().cpu(),
+                group_correct.detach().cpu(),
+                K=self._lavida_cr_k_hard,
+            )
+            if mined["skip"] or mined["negative_indices"] is None:
+                skipped_count += 1
+                continue
+
+            positive_local = list(frontier["positive_indices"])
+            negative_local = list(mined["negative_indices"])
+            positive_global = group_idx[
+                torch.as_tensor(positive_local, device=device, dtype=torch.long)
+            ]
+            negative_global = group_idx[
+                torch.as_tensor(negative_local, device=device, dtype=torch.long)
+            ]
+            positive_proj = projected.index_select(0, positive_global)
+            negative_proj = projected.index_select(0, negative_global)
+
+            for pos_row, anchor_global in enumerate(positive_global):
+                anchor = projected[int(anchor_global.item()) : int(anchor_global.item()) + 1]
+                if positive_proj.shape[0] >= 2:
+                    other_pos = torch.cat(
+                        [positive_proj[:pos_row], positive_proj[pos_row + 1 :]],
+                        dim=0,
+                    )
+                    d_pos = mrn_head(anchor.expand(other_pos.shape[0], -1), other_pos).min()
+                else:
+                    d_pos = projected.new_zeros(())
+                d_neg = mrn_head(anchor.expand(negative_proj.shape[0], -1), negative_proj)
+                logits = torch.cat([(-d_pos).reshape(1), -d_neg.reshape(-1)], dim=0).unsqueeze(0)
+                target = torch.zeros(1, dtype=torch.long, device=device)
+                anchor_losses.append(F.cross_entropy(logits, target))
+
+        if anchor_losses:
+            loss = torch.stack(anchor_losses).mean()
+        else:
+            loss = projected.sum() * 0.0
+
+        return {
+            "loss": loss,
+            "anchor_count": len(anchor_losses),
+            "prompt_count": prompt_count,
+            "skipped_count": skipped_count,
+        }

@@ -1,0 +1,5 @@
+-r requirements.txt
+matplotlib==3.9.0
+PyMuPDF==1.26.7
+svglib==2.4.0
+reportlab==5.1.2

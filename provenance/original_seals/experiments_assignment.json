@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sealed_at_utc": "2026-11-26T01:35:09.991356+00:00",
+  "files": {
+    "config.json": "c799659eb9747b3ed388a51a6411450764fdb4bf2c8feb5b65a8fb5668481996",
+    "environment.json": "99977d7cd0707dbdc5a739b6a86ee7a9f5f5e030967712113651146f2ff8f97c",
+    "inputs/calibration.json": "3853ab865a51dd17a5205d4356895a5ab9623cb17d526ae6222c6c00880eca22",
+    "inputs/historical_pilot.json": "abe8c8c8c8829d9b81713d165f0f74a89d1e00a0fd2789e5eb6be83ba25a9c9d",
+    "inputs/ledger.jsonl": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+    "PROTOCOL.md": "d2e256035c393ab440f530b745c638786d9f7ff6df0275dcc6fc72ec233153a0",
+    "src/analyze.py": "e77be8ea95da3d45f7dc3de3611b2b1e42e0857703162d5e9f89439214916d5a",
+    "synthetic_validation.json": "390124a1b6e787f4690cd599a489bf38e51b7a1359d9cfeea5b93e955191dfee"
+  }
+}

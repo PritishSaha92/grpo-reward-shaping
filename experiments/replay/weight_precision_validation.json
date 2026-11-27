@@ -1,0 +1,238 @@
+{
+  "status": "PASS",
+  "input_seal_sha256": "f22c459f6d01a36c37158d34a86cc5881cadec2432119a27ad806d102f03f311",
+  "coefficients": 56240,
+  "divisor": 1480,
+  "directions": [
+    {
+      "direction": "binary",
+      "max_absolute_coefficient_error": 2.845373481101532e-11,
+      "relative_l2_cast_error": 2.40440712652814e-08,
+      "max_within_group_coefficient_sum_drift": 1.7462298306566287e-10
+    },
+    {
+      "direction": "aligned_learned",
+      "max_absolute_coefficient_error": 5.8123631558812394e-11,
+      "relative_l2_cast_error": 2.500441927400059e-08,
+      "max_within_group_coefficient_sum_drift": 1.7462298306566287e-10
+    },
+    {
+      "direction": "aligned_length",
+      "max_absolute_coefficient_error": 5.756556559557979e-11,
+      "relative_l2_cast_error": 2.276418417140325e-08,
+      "max_within_group_coefficient_sum_drift": 1.7462298295724266e-10
+    },
+    {
+      "direction": "constant",
+      "max_absolute_coefficient_error": 5.805667708733142e-11,
+      "relative_l2_cast_error": 2.434438261509429e-08,
+      "max_within_group_coefficient_sum_drift": 1.7462298339092353e-10
+    },
+    {
+      "direction": "residual_learned",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_length",
+      "max_absolute_coefficient_error": 4.75376630421076e-11,
+      "relative_l2_cast_error": 2.3749332003530936e-08,
+      "max_within_group_coefficient_sum_drift": 4.365574546826012e-11
+    },
+    {
+      "direction": "residual_shuffle_00",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_01",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_02",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_03",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_04",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_05",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_06",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_07",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_08",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_09",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_10",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_11",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_12",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_13",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_14",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_15",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_16",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_17",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_18",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_19",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_20",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_21",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_22",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_23",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_24",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_25",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_26",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_27",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_28",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_29",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_30",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556892e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    },
+    {
+      "direction": "residual_shuffle_31",
+      "max_absolute_coefficient_error": 2.5900965291807132e-11,
+      "relative_l2_cast_error": 2.4295994896556885e-08,
+      "max_within_group_coefficient_sum_drift": 5.820766107609773e-11
+    }
+  ],
+  "max_relative_l2_cast_error": 2.500441927400059e-08,
+  "scope": "FP64 coefficients divided by 1480 then cast to FP32 as executed. Quantifies coefficient conversion only, not cumulative floating-point accumulation error."
+}

@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "comparison_rows": 138,
+  "all_32_draws_reported": true,
+  "scope": "Independent arithmetic from the retrieved Gram matrix, not an independent model execution."
+}

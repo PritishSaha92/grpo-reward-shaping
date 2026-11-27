@@ -1,0 +1,10 @@
+{
+  "assignment_gradient_replay.pdf": true,
+  "components_and_interventions.pdf": true,
+  "direct_residual_comparison.pdf": true,
+  "energy_accounting.pdf": true,
+  "gradient_lifecycle.pdf": true,
+  "group_novelty_ecdf.pdf": true,
+  "normalization_example.pdf": true,
+  "signal_route.pdf": true
+}

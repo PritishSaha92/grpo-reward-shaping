@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "numeric_fields_checked": 146,
+  "scope": "Recorded geometry/AUROC, training coverage and fixed-seed paired statistics; no model or training rerun"
+}

@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "verified_date": "2026-11-27",
+  "method": "Fresh read-only authenticated cluster retrieval; no GPU or training jobs started",
+  "primary_result_files": {
+    "result": {
+      "remote_sha256": "14aff10587ab6289f1c405fbd8f96f5bf5c113639e46df3bb5d9f4161eca649c",
+      "export_sha256": "14aff10587ab6289f1c405fbd8f96f5bf5c113639e46df3bb5d9f4161eca649c"
+    },
+    "group_statistics": {
+      "remote_sha256": "c42ddcf79ddf6a4096a3658f318f142e60c4e28496c51fb9f5ae62191ff64b14",
+      "export_sha256": "c42ddcf79ddf6a4096a3658f318f142e60c4e28496c51fb9f5ae62191ff64b14"
+    },
+    "parameter_layout": {
+      "remote_sha256": "6677ae1e82427ac7e5c9af82e65b26823e7da0c406d45f3843bca0041ef74031",
+      "export_sha256": "6677ae1e82427ac7e5c9af82e65b26823e7da0c406d45f3843bca0041ef74031"
+    }
+  },
+  "identity_numeric_equivalence": true,
+  "original_compact_archive": {
+    "status": "PASS",
+    "stage": "primary",
+    "archive": "primary_compact.tar.gz",
+    "sha256": "5458bf30e43510aebee4de89e9af7deda6ac23caf2aff6459c199bffec41b62f",
+    "bytes": 2440263,
+    "files": 35,
+    "groups": 185
+  },
+  "omitted_gradient_recovery_banks": {
+    "count": 2,
+    "bytes_each": 24545067096,
+    "reason": "Resumable full-vector accumulators; reported results use the included aggregate Gram matrices and group scatter. Not required by the CPU reproduction workflow."
+  }
+}

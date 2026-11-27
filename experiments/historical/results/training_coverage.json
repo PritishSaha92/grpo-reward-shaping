@@ -1,0 +1,59 @@
+{
+  "coverage": {
+    "n_training_groups": 2000,
+    "group_size": 16,
+    "n_training_rollouts": 32000,
+    "groups": {
+      "mixed": 1570,
+      "zero_correct": 163,
+      "all_correct": 267
+    },
+    "group_fractions": {
+      "all_correct": 0.1335,
+      "mixed": 0.785,
+      "zero_correct": 0.0815
+    },
+    "nonzero_bonus_rollouts": 11256,
+    "nonzero_bonus_rollout_fraction": 0.35175,
+    "zero_correct_rollouts_with_nonzero_bonus": 0,
+    "frontier_skip_groups": 430
+  },
+  "aligned_gap": {
+    "mean_beta_distance_given_incorrect_mixed": 0.5116244810436004,
+    "median_beta_distance_given_incorrect_mixed": 0.45092712549062874,
+    "mean_outcome_gap_multiplier": 1.5116244810436004,
+    "median_outcome_gap_multiplier": 1.4509271254906286
+  },
+  "trainability": {
+    "first_mrn_offdiag_norm": 0.0,
+    "last_mrn_offdiag_norm": 4.200756072998047,
+    "active_group_head_loss_mean": 1.428002131384824
+  },
+  "first_100": {
+    "n_groups": 100,
+    "n_mixed": 94,
+    "mean_reward": 0.25875,
+    "mean_logged_bonus": -0.4458894370868802,
+    "mean_beta_distance_given_incorrect_mixed": 0.6325207435698345,
+    "median_beta_distance_given_incorrect_mixed": 0.557103532177585,
+    "mean_active_head_loss": 2.9221333694505565
+  },
+  "last_100": {
+    "n_groups": 100,
+    "n_mixed": 73,
+    "mean_reward": 0.63875,
+    "mean_logged_bonus": -0.17447535163257266,
+    "mean_beta_distance_given_incorrect_mixed": 0.5269791891073153,
+    "median_beta_distance_given_incorrect_mixed": 0.48287796974182107,
+    "mean_active_head_loss": 1.2842103950381785
+  },
+  "provenance": {
+    "history": "evidence/inputs/training_history.csv",
+    "history_sha256": "4cc55f1d6e9a110f6fd9e1d952e452c9e9f2fa52ddc3335678b1a382c9f000c1",
+    "beta": 0.1,
+    "reward_rule": "R - beta*(1-R)*distance on mixed groups only",
+    "conditional_penalty_identity": "-logged_bonus_mean/(1-reward_mean)",
+    "scope_warning": "Group-level W&B rows do not contain rollout-level R, d, A, or A-prime and cannot reconstruct training-time advantage novelty.",
+    "status": "recomputed_from_group_level_history"
+  }
+}

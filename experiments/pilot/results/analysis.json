@@ -1,0 +1,148 @@
+{
+  "result_sha256": "40389e6ba45c53c8d5361f3f75073cffac140a50f01fc8010ae68c4069311306",
+  "primary": {
+    "learned": {
+      "cosine": 0.979841697194159,
+      "norm_ratio": 1.0040167040786854,
+      "relative_difference": 0.20123289839769476,
+      "norm_reference": 0.021268678611521187,
+      "norm_compared": 0.02135410859964833
+    },
+    "constant": {
+      "cosine": 0.9999999995872715,
+      "norm_ratio": 1.0000862677631834,
+      "relative_difference": 9.092664888335445e-05,
+      "norm_reference": 0.021268678611521187,
+      "norm_compared": 0.02127051341285087
+    },
+    "length": {
+      "cosine": 0.9841582232424687,
+      "norm_ratio": 0.9783301517041467,
+      "relative_difference": 0.17738815643126601,
+      "norm_reference": 0.021268678611521187,
+      "norm_compared": 0.020807789572556263
+    }
+  },
+  "length_vs_learned": {
+    "cosine": 0.9641022487488685,
+    "norm_ratio": 0.9744162101385461,
+    "relative_difference": 0.2657315031322456,
+    "norm_reference": 0.02135410859964833,
+    "norm_compared": 0.020807789572556263
+  },
+  "length_residual_vs_learned_residual": {
+    "cosine": -0.06482406214777109,
+    "norm_ratio": 0.8098461379326466,
+    "relative_difference": 1.326968650675433,
+    "norm_reference": 0.004264321550371791,
+    "norm_compared": 0.003453444338471551
+  },
+  "aligned_learned_vs_binary": {
+    "cosine": 0.999446236677589,
+    "norm_ratio": 0.9808086198206978,
+    "relative_difference": 0.038138966335086885,
+    "norm_reference": 0.021268678611521187,
+    "norm_compared": 0.02086050331437609
+  },
+  "aligned_length_vs_binary": {
+    "cosine": 0.9994546987573295,
+    "norm_ratio": 0.9892759949323027,
+    "relative_difference": 0.03455301931023261,
+    "norm_reference": 0.021268678611521187,
+    "norm_compared": 0.021040593194308007
+  },
+  "shuffle_summary": {
+    "full_gradient_vs_binary": {
+      "cosine": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9632718516715851,
+        "q1": 0.9711539226097416,
+        "median": 0.9751309220488311,
+        "q3": 0.9770065155804949,
+        "max": 0.9796823237746612
+      },
+      "norm_ratio": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9954522338519795,
+        "q1": 1.0043388969138176,
+        "median": 1.0086765998576928,
+        "q3": 1.0133215392199628,
+        "max": 1.0316606738051546
+      },
+      "relative_difference": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.20119695527895423,
+        "q1": 0.21597304263956538,
+        "median": 0.22531655921778568,
+        "q3": 0.24181468120012567,
+        "max": 0.2709778076259132
+      }
+    },
+    "full_gradient_vs_learned": {
+      "cosine": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9336877105632895,
+        "q1": 0.9472267238902058,
+        "median": 0.9534102201494927,
+        "q3": 0.9600199477090039,
+        "max": 0.971522663857637
+      },
+      "norm_ratio": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9914697930901809,
+        "q1": 1.000320903859292,
+        "median": 1.0046412532381954,
+        "q3": 1.0092676098948132,
+        "max": 1.0275333763015788
+      },
+      "relative_difference": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.23780852342180533,
+        "q1": 0.28706008915018355,
+        "median": 0.30595345637775373,
+        "q3": 0.3267118417758638,
+        "max": 0.3633751788777667
+      }
+    },
+    "residual_gradient_vs_original": {
+      "cosine": {
+        "defined": 32,
+        "excluded": 0,
+        "min": -0.2799670619829564,
+        "q1": -0.10686973139452915,
+        "median": -0.019231695528743434,
+        "q3": 0.10168541802804032,
+        "max": 0.2743491669133377
+      },
+      "norm_ratio": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9767759012707862,
+        "q1": 1.0779689434758821,
+        "median": 1.122615086798938,
+        "q3": 1.1956804282295712,
+        "max": 1.3259571636840308
+      },
+      "relative_difference": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 1.190855092676698,
+        "q1": 1.437488295835316,
+        "median": 1.5320991291941162,
+        "q3": 1.6360492677820346,
+        "max": 1.8196453856759336
+      }
+    }
+  },
+  "groups": 32,
+  "completions": 256,
+  "permutation_draws": 32,
+  "scope": "fixed-sample untempered completion-mean LoRA score gradient; no KL/head loss",
+  "boundary": "Fixed-sample assignment sensitivity, not learning quality or a historical-update reconstruction."
+}

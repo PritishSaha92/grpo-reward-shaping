@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "scope": "Post-hoc presentation amendment; saved 32-group results, not new GPU evidence or significance tests.",
+  "result_sha256": "40389e6ba45c53c8d5361f3f75073cffac140a50f01fc8010ae68c4069311306",
+  "validator_sha256": "05f49f31d46d23cda9a2211e689049ac4b736283be0db910e1bf36c0a4a095ff",
+  "summaries": {
+    "residual_norm_over_binary_norm": 0.20049771912307798,
+    "residual_binary_cosine": 0.017516146170482125,
+    "difference_denominator_factor": 5.007621575297609,
+    "max_same_difference_norm_error": 9.540979117872439e-18,
+    "learned_residual_norm_smaller_than_n_shuffles": 31,
+    "learned_residual_squared_norm_over_mean_shuffle_squared_norm": 0.7648344569914564,
+    "mean_shuffle_residual_cosine_with_learned": -0.002308017512941074,
+    "length_D_smaller_than_n_shuffles": 28,
+    "length_D_vs_learned": 0.2657315031322456
+  },
+  "scatter_points": [
+    {
+      "name": "residual_learned",
+      "norm_over_binary": 0.20049771912307798,
+      "cosine_with_learned_residual": 1.0
+    },
+    {
+      "name": "residual_length",
+      "norm_over_binary": 0.16237230349612924,
+      "cosine_with_learned_residual": -0.06482406214777109
+    },
+    {
+      "name": "residual_shuffle_00",
+      "norm_over_binary": 0.2302598179606898,
+      "cosine_with_learned_residual": 0.10043974368749509
+    },
+    {
+      "name": "residual_shuffle_01",
+      "norm_over_binary": 0.20833170420255517,
+      "cosine_with_learned_residual": 0.22825243408967794
+    },
+    {
+      "name": "residual_shuffle_02",
+      "norm_over_binary": 0.22593282620945462,
+      "cosine_with_learned_residual": 0.195844001090301
+    },
+    {
+      "name": "residual_shuffle_03",
+      "norm_over_binary": 0.2391523378933619,
+      "cosine_with_learned_residual": -0.09994498176198607
+    },
+    {
+      "name": "residual_shuffle_04",
+      "norm_over_binary": 0.20619380738143692,
+      "cosine_with_learned_residual": -0.020259447408599026
+    },
+    {
+      "name": "residual_shuffle_05",
+      "norm_over_binary": 0.25392941972587096,
+      "cosine_with_learned_residual": -0.12764398029215843
+    },
+    {
+      "name": "residual_shuffle_06",
+      "norm_over_binary": 0.2228975988574228,
+      "cosine_with_learned_residual": 0.105422441049676
+    },
+    {
+      "name": "residual_shuffle_07",
+      "norm_over_binary": 0.20095485206559088,
+      "cosine_with_learned_residual": -0.05208209141885067
+    },
+    {
+      "name": "residual_shuffle_08",
+      "norm_over_binary": 0.21562821322725037,
+      "cosine_with_learned_residual": 0.02312222956685566
+    },
+    {
+      "name": "residual_shuffle_09",
+      "norm_over_binary": 0.22640349737200888,
+      "cosine_with_learned_residual": -0.21433830229245118
+    },
+    {
+      "name": "residual_shuffle_10",
+      "norm_over_binary": 0.265851386973554,
+      "cosine_with_learned_residual": 0.07553299258511896
+    },
+    {
+      "name": "residual_shuffle_11",
+      "norm_over_binary": 0.26129889832723213,
+      "cosine_with_learned_residual": -0.028927164174653856
+    },
+    {
+      "name": "residual_shuffle_12",
+      "norm_over_binary": 0.23842537175708653,
+      "cosine_with_learned_residual": 0.22146507951498484
+    },
+    {
+      "name": "residual_shuffle_13",
+      "norm_over_binary": 0.20917633014782627,
+      "cosine_with_learned_residual": -0.018203943648887843
+    },
+    {
+      "name": "residual_shuffle_14",
+      "norm_over_binary": 0.22097661975205585,
+      "cosine_with_learned_residual": -0.2799670619829564
+    },
+    {
+      "name": "residual_shuffle_15",
+      "norm_over_binary": 0.19584134029918146,
+      "cosine_with_learned_residual": 0.2743491669133377
+    },
+    {
+      "name": "residual_shuffle_16",
+      "norm_over_binary": 0.2207671864602999,
+      "cosine_with_learned_residual": 0.02490669340704439
+    },
+    {
+      "name": "residual_shuffle_17",
+      "norm_over_binary": 0.22297436908852944,
+      "cosine_with_learned_residual": -0.016671703477082443
+    },
+    {
+      "name": "residual_shuffle_18",
+      "norm_over_binary": 0.21629768152748793,
+      "cosine_with_learned_residual": -0.1909111104780439
+    },
+    {
+      "name": "residual_shuffle_19",
+      "norm_over_binary": 0.2540131282646773,
+      "cosine_with_learned_residual": -0.06871890284044557
+    },
+    {
+      "name": "residual_shuffle_20",
+      "norm_over_binary": 0.2293223709225668,
+      "cosine_with_learned_residual": 0.21904524409388634
+    },
+    {
+      "name": "residual_shuffle_21",
+      "norm_over_binary": 0.26011183335503085,
+      "cosine_with_learned_residual": -0.24205184661156348
+    },
+    {
+      "name": "residual_shuffle_22",
+      "norm_over_binary": 0.2530063145432924,
+      "cosine_with_learned_residual": 0.07006525651237709
+    },
+    {
+      "name": "residual_shuffle_23",
+      "norm_over_binary": 0.22788758655838973,
+      "cosine_with_learned_residual": -0.2684259788075203
+    },
+    {
+      "name": "residual_shuffle_24",
+      "norm_over_binary": 0.21458265077570374,
+      "cosine_with_learned_residual": 0.26090639453414527
+    },
+    {
+      "name": "residual_shuffle_25",
+      "norm_over_binary": 0.20434625976853138,
+      "cosine_with_learned_residual": 0.2724952538039531
+    },
+    {
+      "name": "residual_shuffle_26",
+      "norm_over_binary": 0.24146778096045105,
+      "cosine_with_learned_residual": -0.062339085140408174
+    },
+    {
+      "name": "residual_shuffle_27",
+      "norm_over_binary": 0.21750577270575966,
+      "cosine_with_learned_residual": -0.2518801162625175
+    },
+    {
+      "name": "residual_shuffle_28",
+      "norm_over_binary": 0.22423070250323196,
+      "cosine_with_learned_residual": -0.14811245899335615
+    },
+    {
+      "name": "residual_shuffle_29",
+      "norm_over_binary": 0.2193104578285951,
+      "cosine_with_learned_residual": -0.038227114247610015
+    },
+    {
+      "name": "residual_shuffle_30",
+      "norm_over_binary": 0.25315271940301015,
+      "cosine_with_learned_residual": 0.04245588612678587
+    },
+    {
+      "name": "residual_shuffle_31",
+      "norm_over_binary": 0.23205833704774512,
+      "cosine_with_learned_residual": -0.05945408755066266
+    }
+  ],
+  "synthetic_validation": {
+    "fixtures": 21,
+    "enumerated_permutations": 17739,
+    "max_second_moment_absolute_error": 5.551115123125783e-17,
+    "independent_groups_and_batch_factor": "PASS",
+    "identical_gradients_and_single_incorrect": "PASS"
+  },
+  "expected_cosine_counterexample": {
+    "values": [
+      6.0,
+      6.0,
+      -3.0,
+      -3.0,
+      -3.0,
+      -3.0
+    ],
+    "expected_vector": 0.0,
+    "expected_cosine": -0.3333333333333333
+  },
+  "exact_model_reference_available": false
+}

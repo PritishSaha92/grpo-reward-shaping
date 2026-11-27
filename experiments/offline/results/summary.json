@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "rules": {
+    "learned": {
+      "label": "Learned-distance shaping",
+      "scope": "primary",
+      "total_penalty": 418.6627126038074,
+      "positive_penalty_rollouts": 650,
+      "normalizations": {
+        "std": {
+          "global": {
+            "cosine": 0.978645951663932,
+            "energy": 0.042252101291796906,
+            "norm_ratio": 1.0000916014992984,
+            "relative_change": 0.20666885877813915,
+            "undefined_reason": null,
+            "within_energy": 0.041027266486036475,
+            "weight_energy": 0.0012248348057607664
+          },
+          "per_group": {
+            "cosine": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.8030560940403749,
+              "q1": 0.9696106695412464,
+              "median": 0.9932474234299127,
+              "q3": 0.9999999999999998,
+              "maximum": 1.0
+            },
+            "energy": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.0,
+              "q1": 4.440892098500626e-16,
+              "median": 0.01345955584983971,
+              "q3": 0.05985514951177584,
+              "maximum": 0.3551009098246165
+            },
+            "norm_ratio": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 1.0000238185975487,
+              "q1": 1.0000648329794892,
+              "median": 1.0000892141462823,
+              "q3": 1.0001112502092782,
+              "maximum": 1.000188946117005
+            },
+            "relative_change": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 2.792912913598833e-05,
+              "q1": 0.0001536381515269589,
+              "median": 0.11621461043821284,
+              "q3": 0.24655538307882213,
+              "maximum": 0.6276585114982621
+            }
+          },
+          "eligible_mixed_groups": 185,
+          "undefined_homogeneous_groups": 315
+        },
+        "mean": {
+          "global": {
+            "cosine": 0.9593271966919736,
+            "energy": 0.07969132968711934,
+            "norm_ratio": 1.6734068376771964,
+            "relative_change": 0.7678548452388017,
+            "undefined_reason": null,
+            "within_energy": 0.048863209328133705,
+            "weight_energy": 0.030828120358985602
+          },
+          "per_group": {
+            "cosine": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.8030560940403751,
+              "q1": 0.9696106695412464,
+              "median": 0.9932474234299129,
+              "q3": 0.9999999999999998,
+              "maximum": 1.0
+            },
+            "energy": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.0,
+              "q1": 4.440892098500626e-16,
+              "median": 0.013459555849839266,
+              "q3": 0.05985514951177584,
+              "maximum": 0.3551009098246162
+            },
+            "norm_ratio": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 1.101797568798065,
+              "q1": 1.4153380317552264,
+              "median": 1.579270267486572,
+              "q3": 1.8609028389706428,
+              "maximum": 2.666321182250977
+            },
+            "relative_change": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.10179756879806524,
+              "q1": 0.4446218013763428,
+              "median": 0.6265952110290528,
+              "q3": 0.910037195571554,
+              "maximum": 1.6663211822509771
+            }
+          },
+          "eligible_mixed_groups": 185,
+          "undefined_homogeneous_groups": 315
+        }
+      }
+    },
+    "constant": {
+      "label": "Group-constant penalty",
+      "scope": "primary",
+      "total_penalty": 418.66271260380734,
+      "positive_penalty_rollouts": 650,
+      "normalizations": {
+        "std": {
+          "global": {
+            "cosine": 0.9999999994604991,
+            "energy": 1.0790017768158577e-09,
+            "norm_ratio": 1.0000884042445406,
+            "relative_change": 9.431016810527999e-05,
+            "undefined_reason": null,
+            "within_energy": 3.6764814512885196e-32,
+            "weight_energy": 1.079001966600646e-09
+          },
+          "per_group": {
+            "cosine": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.9999999999999993,
+              "q1": 0.9999999999999999,
+              "median": 1.0,
+              "q3": 1.0,
+              "maximum": 1.0
+            },
+            "energy": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 2.220446049250313e-16,
+              "maximum": 1.3322676295501878e-15
+            },
+            "norm_ratio": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 1.0000238182312087,
+              "q1": 1.0000639293577922,
+              "median": 1.0000857338874996,
+              "q3": 1.000109693388979,
+              "maximum": 1.000188946117005
+            },
+            "relative_change": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 2.3818231208613312e-05,
+              "q1": 6.392935779230532e-05,
+              "median": 8.573388749955571e-05,
+              "q3": 0.00010969338897903116,
+              "maximum": 0.0001889461170053298
+            }
+          },
+          "eligible_mixed_groups": 185,
+          "undefined_homogeneous_groups": 315
+        },
+        "mean": {
+          "global": {
+            "cosine": 0.9836605775049554,
+            "energy": 0.03241186826261766,
+            "norm_ratio": 1.6320108045663326,
+            "relative_change": 0.672881776535193,
+            "undefined_reason": null,
+            "within_energy": 2.341545907810634e-32,
+            "weight_energy": 0.032411868262617785
+          },
+          "per_group": {
+            "cosine": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.9999999999999994,
+              "q1": 1.0,
+              "median": 1.0,
+              "q3": 1.0,
+              "maximum": 1.0
+            },
+            "energy": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.0,
+              "maximum": 1.1102230246251565e-15
+            },
+            "norm_ratio": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 1.101797568798065,
+              "q1": 1.3937913179397583,
+              "median": 1.5616001129150392,
+              "q3": 1.765050261361258,
+              "maximum": 2.666321182250977
+            },
+            "relative_change": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.10179756879806524,
+              "q1": 0.3937913179397583,
+              "median": 0.5616001129150392,
+              "q3": 0.7650502613612583,
+              "maximum": 1.6663211822509771
+            }
+          },
+          "eligible_mixed_groups": 185,
+          "undefined_homogeneous_groups": 315
+        }
+      }
+    },
+    "length_global": {
+      "label": "Token-length shaping",
+      "scope": "primary",
+      "total_penalty": 418.6627126038074,
+      "positive_penalty_rollouts": 650,
+      "normalizations": {
+        "std": {
+          "global": {
+            "cosine": 0.9794443528634805,
+            "energy": 0.04068875964383789,
+            "norm_ratio": 1.0000882249619536,
+            "relative_change": 0.20276816589163213,
+            "undefined_reason": null,
+            "within_energy": 0.03831309321240652,
+            "weight_energy": 0.002375666431431792
+          },
+          "per_group": {
+            "cosine": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.7131052493269976,
+              "q1": 0.9867256802779153,
+              "median": 0.9971973447281387,
+              "q3": 0.9999999999999997,
+              "maximum": 1.0
+            },
+            "energy": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.0,
+              "q1": 6.661338147750939e-16,
+              "median": 0.005597455667149753,
+              "q3": 0.026372431880085312,
+              "maximum": 0.49148090338228057
+            },
+            "norm_ratio": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 1.0000286942241472,
+              "q1": 1.0000565638860934,
+              "median": 1.0000768122319268,
+              "q3": 1.0001091157809996,
+              "maximum": 1.000210690929957
+            },
+            "relative_change": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 3.753434284993099e-05,
+              "q1": 0.0001441706808258396,
+              "median": 0.07487111475904651,
+              "q3": 0.16294539243944145,
+              "maximum": 0.7575620532973106
+            }
+          },
+          "eligible_mixed_groups": 185,
+          "undefined_homogeneous_groups": 315
+        },
+        "mean": {
+          "global": {
+            "cosine": 0.9325179964649436,
+            "energy": 0.13041018626900747,
+            "norm_ratio": 1.7417856599636339,
+            "relative_change": 0.8861852726454199,
+            "undefined_reason": null,
+            "within_energy": 0.06229501954626703,
+            "weight_energy": 0.06811516672274065
+          },
+          "per_group": {
+            "cosine": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.7131052493269978,
+              "q1": 0.9867256802779153,
+              "median": 0.9971973447281387,
+              "q3": 0.9999999999999999,
+              "maximum": 1.0
+            },
+            "energy": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.0,
+              "q1": 2.220446049250313e-16,
+              "median": 0.005597455667149753,
+              "q3": 0.026372431880085312,
+              "maximum": 0.49148090338228023
+            },
+            "norm_ratio": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 1.1417689324889142,
+              "q1": 1.3059057265853196,
+              "median": 1.498211829514505,
+              "q3": 1.8126465373200382,
+              "maximum": 3.2987908622933593
+            },
+            "relative_change": {
+              "defined": 185,
+              "excluded": 0,
+              "minimum": 0.1417689324889141,
+              "q1": 0.3171246017655502,
+              "median": 0.5204987977983144,
+              "q3": 0.8315912326940154,
+              "maximum": 2.2987908622933584
+            }
+          },
+          "eligible_mixed_groups": 185,
+          "undefined_homogeneous_groups": 315
+        }
+      }
+    }
+  },
+  "structure": {
+    "total_groups": 500,
+    "total_rollouts": 4000,
+    "group_counts": {
+      "all_correct": 268,
+      "all_wrong": 47,
+      "mixed": 185
+    },
+    "eligible_rollouts": 650,
+    "eligible_rollout_fraction": 0.1625,
+    "mixed_group_incorrect_histogram": {
+      "1": 53,
+      "2": 20,
+      "3": 21,
+      "4": 25,
+      "5": 22,
+      "6": 24,
+      "7": 20
+    },
+    "exactly_one_incorrect_count": 53,
+    "mixed_group_denominator": 185,
+    "exactly_one_incorrect_fraction": 0.2864864864864865,
+    "at_least_two_incorrect_fraction": 0.7135135135135136
+  },
+  "length_association": {
+    "primary": {
+      "groups": 185,
+      "correlation": {
+        "defined": 131,
+        "excluded": 54,
+        "minimum": -1.0,
+        "q1": -0.5,
+        "median": 0.0,
+        "q3": 0.5178571428571429,
+        "maximum": 1.0
+      },
+      "exclusions": {
+        "fewer_than_two": 53,
+        "length_constant": 1
+      },
+      "defined_exactly_two_incorrect": 20,
+      "positive": 60,
+      "negative": 65,
+      "zero": 6
+    },
+    "at_least_three_incorrect": {
+      "groups": 112,
+      "correlation": {
+        "defined": 111,
+        "excluded": 1,
+        "minimum": -1.0,
+        "q1": -0.47476555711812224,
+        "median": 0.0,
+        "q3": 0.5,
+        "maximum": 1.0
+      },
+      "exclusions": {
+        "length_constant": 1
+      },
+      "defined_exactly_two_incorrect": 0,
+      "positive": 52,
+      "negative": 53,
+      "zero": 6
+    }
+  },
+  "historical_reproduction": {
+    "cosine": 0.978645951663932,
+    "energy": 0.042252101291796906,
+    "norm_ratio": 1.0000916014992984,
+    "relative_change": 0.20666885877813915,
+    "undefined_reason": null
+  },
+  "interpretation": "Reconstructed fixed-sample advantage geometry; no new training, gradients or performance estimates"
+}

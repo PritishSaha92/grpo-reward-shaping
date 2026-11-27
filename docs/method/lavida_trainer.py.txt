@@ -1,0 +1,2413 @@
+"""LaViDATrainer: GRPOTrainer subclass with Latent Visitation Distribution Alignment.
+
+Composite objective: L = L_GRPO + L_ref + alpha * L_LaViDA, where
+    L_LaViDA = E[R_i * T_bar(z_i)]
+
+and T_bar is the EMA target critic. Minimising L_LaViDA pulls correct-solution
+latents (R_i=1) toward the expert distribution P captured by the frozen latent
+module (either the frozen AE or the frozen dynamics projector).
+
+Reference: docs/architecture.md §2 (hidden-state extraction), §6 (psi), §8 (critic,
+TTUR, EMA), §9 (composite loss), §15 (lavida_state.pt checkpointing).
+"""
+
+from __future__ import annotations
+
+import logging
+import math
+import os
+import random
+import inspect
+import time
+import warnings
+from contextlib import nullcontext
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from trl import GRPOConfig, GRPOTrainer
+from trl.trainer.grpo_trainer import FSDP, pad, profiling_context, unwrap_model_for_generation
+from transformers import Trainer
+
+from lavida.models.ae import FrozenAE
+from lavida.models.critic import (
+    DualChiSquareCritic,
+    critic_dual_loss,
+    update_ema,
+)
+from lavida.models.distance import build_distance_head
+from lavida.models.dyn_projector import DynProjector
+from lavida.models.mrn_head import MRNDistance as G7MRNDistance
+from lavida.models.projection_head import ProjectionHead
+from lavida.models.utils import average_last_layers, build_psi_from_hbar
+from lavida.training.hard_neg_miner import mine_reward_proximity_negatives
+from lavida.training.multi_pos_filter import select_positives_and_frontier
+
+logger = logging.getLogger(__name__)
+_WARNED_MESSAGES: set[str] = set()
+
+
+def _warning_once(message: str) -> None:
+    """Log a warning only once per process."""
+    if message in _WARNED_MESSAGES:
+        return
+    _WARNED_MESSAGES.add(message)
+    logger.warning(message)
+
+
+def _patch_peft_tp_resume_if_not_needed(model: nn.Module | None) -> None:
+    """Bypass PEFT tensor-parallel checkpoint sharding on non-TP single-GPU runs.
+
+    Recent PEFT versions call a tensor-parallel sharding helper during
+    `load_adapter()` whenever torch.distributed is initialized. Our Modal GRPO
+    runs initialize distributed even with one H100, but the model is not tensor
+    parallelized. Some compatible transformers builds do not expose the
+    `EmbeddingParallel` symbol imported by that helper, causing resume to fail
+    before it can discover that there is no TP plan to shard. A no-op is correct
+    when no module carries HF tensor-parallel metadata.
+    """
+    if model is None:
+        return
+    if not (torch.distributed.is_available() and torch.distributed.is_initialized()):
+        return
+
+    try:
+        world_size = torch.distributed.get_world_size()
+    except Exception:
+        world_size = 1
+    if world_size != 1:
+        return
+
+    try:
+        has_tp_plan = any(
+            getattr(module, "_hf_tp_plan", None) is not None
+            or getattr(module, "_hf_device_mesh", None) is not None
+            for module in model.modules()
+        )
+    except Exception:
+        has_tp_plan = False
+    if has_tp_plan:
+        return
+
+    try:
+        import peft.utils.save_and_load as peft_save_load
+    except Exception as exc:
+        logger.warning("LaViDA: could not inspect PEFT TP resume helper: %s", exc)
+        return
+
+    helper = getattr(peft_save_load, "_maybe_shard_state_dict_for_tp", None)
+    if helper is None:
+        return
+    if getattr(helper, "_lavida_single_gpu_noop", False):
+        return
+
+    def _noop_maybe_shard_state_dict_for_tp(_model, _state_dict, _adapter_name):
+        return None
+
+    _noop_maybe_shard_state_dict_for_tp._lavida_single_gpu_noop = True  # type: ignore[attr-defined]
+    peft_save_load._maybe_shard_state_dict_for_tp = _noop_maybe_shard_state_dict_for_tp
+    logger.info(
+        "LaViDA: patched PEFT tensor-parallel adapter-load helper to no-op "
+        "for single-GPU non-TP checkpoint resume"
+    )
+
+
+def _is_trusted_local_checkpoint(checkpoint: str | os.PathLike[str], output_dir: str | os.PathLike[str]) -> bool:
+    """Return true for self-generated Trainer checkpoints under this run's output_dir."""
+    try:
+        checkpoint_path = Path(checkpoint).resolve()
+        output_path = Path(output_dir).resolve()
+    except (OSError, RuntimeError):
+        return False
+
+    if not checkpoint_path.is_dir():
+        return False
+    if output_path != checkpoint_path and output_path not in checkpoint_path.parents:
+        return False
+    if not checkpoint_path.name.startswith("checkpoint-"):
+        return False
+    step = checkpoint_path.name.removeprefix("checkpoint-")
+    if not step.isdigit():
+        return False
+    return (checkpoint_path / "trainer_state.json").is_file()
+
+
+def _torch_load_trusted_local_checkpoint(path: str | os.PathLike[str], *, map_location: Any = None) -> Any:
+    """Load a checkpoint file produced by this run.
+
+    Transformers blocks optimizer/scheduler resume on torch<2.6 because those
+    files use torch.load. These Modal runs resume only from their own output
+    volume, so we keep the trust boundary local and explicit instead of
+    disabling the upstream guard globally.
+    """
+    try:
+        return torch.load(path, map_location=map_location, weights_only=True)
+    except TypeError:
+        return torch.load(path, map_location=map_location)
+    except Exception as exc:
+        logger.warning(
+            "LaViDA: weights_only torch.load failed for trusted local checkpoint %s (%s); "
+            "falling back to full torch.load",
+            path,
+            exc,
+        )
+        return torch.load(path, map_location=map_location, weights_only=False)
+
+
+@dataclass
+class LaViDAConfig(GRPOConfig):
+    """GRPOConfig with overridden defaults and LaViDA-specific fields.
+
+    Overridden GRPOConfig defaults (see docs/context.md → Hyperparameters):
+    - loss_type: "grpo" (TRL default: "dapo")
+    - num_generations: 16 (TRL default: 8)
+    - beta: 0.001 (TRL default: 0.0 — enables KL penalty)
+    - temperature: 0.7 (TRL default: 1.0)
+    - learning_rate: 5e-6 (TRL default: 1e-6)
+    """
+
+    # Override GRPOConfig defaults
+    loss_type: str = field(default="grpo")
+    num_generations: int | None = field(default=16)
+    beta: float = field(default=0.001)
+    temperature: float = field(default=0.7)
+    learning_rate: float = field(default=5e-6)
+
+    # LaViDA-specific fields
+    alpha: float = field(
+        default=0.05,
+        metadata={"help": "LaViDA loss weight in composite objective"},
+    )
+    n_critic: int = field(
+        default=5,
+        metadata={"help": "TTUR critic update steps per policy step"},
+    )
+    mu_ema: float = field(
+        default=0.01,
+        metadata={"help": "Critic EMA update rate"},
+    )
+    d_latent: int = field(
+        default=256,
+        metadata={"help": "Latent dimension for VAE / projector"},
+    )
+    num_layers_averaged: int = field(
+        default=4,
+        metadata={"help": "Number of trailing transformer layers to average for H_bar"},
+    )
+    critic_lr: float = field(
+        default=1e-4,
+        metadata={"help": "Adam learning rate for the online critic"},
+    )
+    critic_grad_clip: float = field(
+        default=1.0,
+        metadata={"help": "Max gradient norm for critic optimizer (0 = no clip)"},
+    )
+    t_clamp: float = field(
+        default=10.0,
+        metadata={"help": "Clamp T_bar(z) to [-t_clamp, t_clamp] before LaViDA loss"},
+    )
+    latent_encoder: str = field(
+        default="ae",
+        metadata={"help": "Frozen latent module used by LaViDA: 'ae' or 'dyn'"},
+    )
+    loss_mode: str = field(
+        default="chi_square",
+        metadata={
+            "help": (
+                "LaViDA auxiliary loss formulation: 'chi_square' (B/C dual critic) "
+                "'mse' (D: reward-weighted L2 to nearest expert, no critic), "
+                "or 'cr_nce' (G: single-positive InfoNCE)"
+            )
+        },
+    )
+    negatives: int = field(
+        default=64,
+        metadata={"help": "CR-LaViDA prompt-exclusive negatives per correct rollout"},
+    )
+    distance_head: str = field(
+        default="l2",
+        metadata={"help": "CR-LaViDA distance head: 'l2' or 'mrn'"},
+    )
+    cr_temperature: float | None = field(
+        default=None,
+        metadata={"help": "CR-LaViDA InfoNCE temperature tau"},
+    )
+    cr_mode: str = field(
+        default="reward_bonus",
+        metadata={"help": "G7 CR mode: 'aux_loss' or 'reward_bonus'"},
+    )
+    cr_beta: float = field(
+        default=0.1,
+        metadata={"help": "G7 reward-bonus beta"},
+    )
+    cr_lambda_head: float = field(
+        default=0.01,
+        metadata={
+            "help": (
+                "G7 Amendment #2 head-learning auxiliary weight. Small, locked "
+                "at 0.01 for Phase D/F."
+            )
+        },
+    )
+    cr_k_hard: int = field(
+        default=16,
+        metadata={"help": "G7 reward-proximity hard negatives"},
+    )
+    cr_projection_dim: int = field(
+        default=256,
+        metadata={"help": "G7 projection-head output dimension"},
+    )
+    cr_projection_hidden: int = field(
+        default=512,
+        metadata={"help": "G7 projection-head hidden dimension"},
+    )
+    cr_mrn_enabled: bool = field(
+        default=True,
+        metadata={"help": "Enable the G7 trainable MRN distance head"},
+    )
+    cr_multi_pos_enabled: bool = field(
+        default=True,
+        metadata={"help": "Enable the G7 multi-positive frontier filter"},
+    )
+    cr_hard_neg_mode: str = field(
+        default="reward_proximity",
+        metadata={
+            "help": "G7 hard-negative mode: 'reward_proximity', 'random', or 'prompt_exclusive'"
+        },
+    )
+    cr_alpha: float = field(
+        default=0.0,
+        metadata={"help": "Backward-compatible CR auxiliary alpha; ignored in reward_bonus mode"},
+    )
+    cr_tau: float = field(
+        default=28.123209953308105,
+        metadata={"help": "Backward-compatible CR auxiliary tau; unused in reward_bonus mode"},
+    )
+    expert_pool_path: str | None = field(
+        default=None,
+        metadata={"help": "Path to expert_pool_*.pt for the active latent module"},
+    )
+    frozen_ae_path: str | None = field(
+        default=None,
+        metadata={"help": "Path to frozen_vae.pth"},
+    )
+    frozen_dyn_path: str | None = field(
+        default=None,
+        metadata={"help": "Path to dyn_projector.pth"},
+    )
+    stop_strings: list[str] | None = field(
+        default=None,
+        metadata={"help": "Optional rollout stop strings for generation"},
+    )
+    vllm_max_model_length: int | None = field(
+        default=None,
+        metadata={
+            "help": (
+                "Compatibility shim for TRL versions that do not expose "
+                "vllm_max_model_length directly."
+            )
+        },
+    )
+    vllm_importance_sampling_correction: bool = field(
+        default=True,
+        metadata={
+            "help": (
+                "Compatibility shim for TRL versions that do not expose this "
+                "argument directly."
+            )
+        },
+    )
+    kill_switch_start_step: int = field(
+        default=200,
+        metadata={"help": "Global step at which to start evaluating the kill switch"},
+    )
+    kill_switch_min_abs_pearson: float = field(
+        default=0.1,
+        metadata={"help": "|Pearson r| below this halts training after kill_switch_start_step"},
+    )
+
+    def __post_init__(self) -> None:
+        parent_post_init = getattr(super(), "__post_init__", None)
+        if callable(parent_post_init):
+            parent_post_init()
+        _validate_g7_cr_config(self)
+
+
+def _validate_g7_cr_config(cfg: LaViDAConfig) -> None:
+    cr_mode = str(cfg.cr_mode).lower()
+    if cr_mode not in {"aux_loss", "reward_bonus"}:
+        raise ValueError(
+            f"cr_mode must be 'aux_loss' or 'reward_bonus', got {cfg.cr_mode!r}"
+        )
+    hard_neg_mode = str(cfg.cr_hard_neg_mode).lower()
+    if hard_neg_mode not in {"reward_proximity", "random", "prompt_exclusive"}:
+        raise ValueError(
+            "cr_hard_neg_mode must be 'reward_proximity', 'random', or "
+            f"'prompt_exclusive', got {cfg.cr_hard_neg_mode!r}"
+        )
+    if cr_mode == "reward_bonus":
+        if float(cfg.cr_beta) < 0.0:
+            raise ValueError(f"cr_beta must be non-negative in reward_bonus mode, got {cfg.cr_beta!r}")
+        if float(cfg.cr_lambda_head) < 0.0 or float(cfg.cr_lambda_head) > 0.1:
+            raise ValueError(
+                "cr_lambda_head must be in [0.0, 0.1] for reward_bonus mode, "
+                f"got {cfg.cr_lambda_head!r}"
+            )
+        if int(cfg.cr_k_hard) < 1:
+            raise ValueError(f"cr_k_hard must be at least 1 in reward_bonus mode, got {cfg.cr_k_hard!r}")
+        if int(cfg.cr_projection_dim) < 1:
+            raise ValueError(
+                "cr_projection_dim must be at least 1 in reward_bonus mode, "
+                f"got {cfg.cr_projection_dim!r}"
+            )
+        if not bool(cfg.cr_mrn_enabled):
+            raise NotImplementedError("reward_bonus mode requires cr_mrn_enabled=True")
+
+
+class LaViDATrainer(GRPOTrainer):
+    """GRPOTrainer + Latent Visitation Distribution Alignment.
+
+    Assumes:
+    - train_dataset rows include a `prompt_md5` column matching the expert pool's
+      `prompt_index` keys (md5 of raw problem text, see data_gen/build_pool.py:511).
+    - A single binary reward function is registered (Qwen math_equal).
+    - Single-process / single-GPU training (A100-80GB).
+    """
+
+    # ------------------------------------------------------------------
+    # Initialisation
+    # ------------------------------------------------------------------
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self._lavida_capture = False
+        self._lavida_cached_hidden: torch.Tensor | None = None
+        self._lavida_last_binary_rewards: torch.Tensor | None = None
+        self._lavida_current_head_aux_loss: torch.Tensor | None = None
+        self._lavida_head_aux_grad_check_pending = False
+        self._lavida_j_history: list[float] = []
+        self._lavida_reward_history: list[float] = []
+        self._lavida_kill_switch_triggered = False
+        self._lavida_cr_grad_check_done = False
+
+        cfg: LaViDAConfig = self.args  # type: ignore[assignment]
+        self._rollout_stop_strings = list(cfg.stop_strings) if cfg.stop_strings else None
+        self._lavida_alpha = float(cfg.alpha)
+        self._lavida_n_critic = int(cfg.n_critic)
+        self._lavida_mu_ema = float(cfg.mu_ema)
+        self._lavida_num_layers_averaged = int(cfg.num_layers_averaged)
+        self._lavida_d_latent = int(cfg.d_latent)
+        self._lavida_critic_grad_clip = float(cfg.critic_grad_clip)
+        self._lavida_t_clamp = float(cfg.t_clamp)
+        self._lavida_latent_encoder = str(cfg.latent_encoder).lower()
+        if self._lavida_latent_encoder not in {"ae", "dyn"}:
+            raise ValueError(
+                f"latent_encoder must be 'ae' or 'dyn', got {cfg.latent_encoder!r}"
+            )
+        _validate_g7_cr_config(cfg)
+        self._lavida_cr_mode_config = str(cfg.cr_mode).lower()
+        self._lavida_loss_mode = str(cfg.loss_mode).lower()
+        if self._lavida_loss_mode not in {"chi_square", "mse", "cr_nce"}:
+            raise ValueError(
+                f"loss_mode must be 'chi_square', 'mse', or 'cr_nce', got {cfg.loss_mode!r}"
+            )
+        self._lavida_cr_mode = (
+            "aux_loss"
+            if self._lavida_loss_mode == "cr_nce"
+            else self._lavida_cr_mode_config
+        )
+        self._lavida_cr_beta = float(cfg.cr_beta)
+        self._lavida_cr_lambda_head = float(cfg.cr_lambda_head)
+        self._lavida_cr_k_hard = int(cfg.cr_k_hard)
+        self._lavida_cr_projection_dim = int(cfg.cr_projection_dim)
+        self._lavida_cr_projection_hidden = int(cfg.cr_projection_hidden)
+        self._lavida_cr_mrn_enabled = bool(cfg.cr_mrn_enabled)
+        self._lavida_cr_multi_pos_enabled = bool(cfg.cr_multi_pos_enabled)
+        self._lavida_cr_hard_neg_mode = str(cfg.cr_hard_neg_mode).lower()
+        self._lavida_cr_alpha = float(cfg.cr_alpha)
+        self._lavida_cr_tau = float(cfg.cr_tau)
+        self._lavida_warned_reward_bonus_alpha = False
+        self._lavida_cr_diagnostics_only = (
+            self._lavida_loss_mode == "cr_nce" and self._lavida_alpha == 0.0
+        )
+        self._lavida_cr_negatives = int(cfg.negatives)
+        if self._lavida_cr_negatives < 0:
+            raise ValueError(f"negatives must be non-negative, got {cfg.negatives!r}")
+        self._lavida_rollout_variance_group_size = max(int(cfg.num_generations), 1)
+        self._lavida_rollout_variance_buffers: dict[str, list[torch.Tensor]] = {}
+        self._lavida_cr_prompt_buffers: dict[str, dict[str, list[Any]]] = {}
+        self._lavida_distance_head_name = str(cfg.distance_head).lower()
+        if self._lavida_distance_head_name not in {"l2", "mrn"}:
+            raise ValueError(
+                f"distance_head must be 'l2' or 'mrn', got {cfg.distance_head!r}"
+            )
+        self._lavida_cr_temperature = (
+            float(cfg.cr_tau)
+            if cfg.cr_temperature is None and self._lavida_loss_mode == "cr_nce"
+            else (None if cfg.cr_temperature is None else float(cfg.cr_temperature))
+        )
+        if self._lavida_loss_mode == "cr_nce":
+            if self._lavida_cr_temperature is None or self._lavida_cr_temperature <= 0:
+                raise ValueError(
+                    "cr_temperature must be positive when loss_mode='cr_nce'"
+                )
+        self.distance_head = build_distance_head(self._lavida_distance_head_name).to(
+            self.accelerator.device
+        )
+
+        if self._rollout_stop_strings:
+            if self.use_vllm:
+                if hasattr(self, "vllm_generation"):
+                    self.vllm_generation.generation_kwargs = dict(
+                        self.vllm_generation.generation_kwargs
+                    )
+                    self.vllm_generation.generation_kwargs["stop"] = list(
+                        self._rollout_stop_strings
+                    )
+                elif hasattr(self, "sampling_params"):
+                    self.sampling_params.stop = list(self._rollout_stop_strings)
+                else:
+                    generation_kwargs = getattr(self.args, "generation_kwargs", None)
+                    if not (
+                        isinstance(generation_kwargs, dict)
+                        and "stop" in generation_kwargs
+                    ):
+                        _warning_once(
+                            "LaViDA: vLLM stop strings requested, but no known TRL "
+                            "vLLM generation object was found."
+                        )
+            else:
+                self.generation_kwargs = dict(self.generation_kwargs)
+                self.generation_kwargs["stop_strings"] = list(self._rollout_stop_strings)
+                self.generation_config.stop_strings = list(self._rollout_stop_strings)
+            logger.info("LaViDA: rollout stop strings enabled: %s", self._rollout_stop_strings)
+
+        device = self.accelerator.device
+
+        self.cr_projection_head: ProjectionHead | None = None
+        self.cr_mrn_head: G7MRNDistance | None = None
+        if self._cr_reward_bonus_requested():
+            self.cr_projection_head = ProjectionHead(
+                input_dim=self._lavida_d_latent,
+                hidden_dim=self._lavida_cr_projection_hidden,
+                output_dim=self._lavida_cr_projection_dim,
+            ).to(device)
+            self.cr_mrn_head = G7MRNDistance(dim=self._lavida_cr_projection_dim).to(device)
+            logger.info(
+                "LaViDA: G7 CR heads live on trainer, not policy module, so "
+                "TRL/vLLM weight sync sees only policy weights"
+            )
+
+        self.frozen_ae: FrozenAE | None = None
+        self.frozen_dyn: DynProjector | None = None
+        if self._lavida_latent_encoder == "ae":
+            if cfg.frozen_ae_path is not None:
+                self.frozen_ae = FrozenAE.load_frozen(cfg.frozen_ae_path).to(device)
+                self.frozen_ae.eval()
+                for p in self.frozen_ae.parameters():
+                    p.requires_grad = False
+                logger.info("LaViDA: loaded frozen AE from %s", cfg.frozen_ae_path)
+            else:
+                if self._lavida_alpha > 0.0 or self._cr_reward_bonus_requested():
+                    logger.warning("LaViDA: frozen_ae_path is None — LaViDA loss disabled")
+                else:
+                    logger.info("LaViDA: frozen AE not used (alpha=0.0, plain GRPO)")
+        else:
+            if cfg.frozen_dyn_path is not None:
+                self.frozen_dyn = DynProjector.load_checkpoint(cfg.frozen_dyn_path).to(
+                    device=device, dtype=torch.float32
+                )
+                self.frozen_dyn.eval()
+                for p in self.frozen_dyn.parameters():
+                    p.requires_grad = False
+                logger.info("LaViDA: loaded frozen dyn projector from %s", cfg.frozen_dyn_path)
+            else:
+                if self._lavida_alpha > 0.0 or self._cr_reward_bonus_requested():
+                    logger.warning("LaViDA: frozen_dyn_path is None — LaViDA loss disabled")
+                else:
+                    logger.info("LaViDA: frozen dyn projector not used (alpha=0.0, plain GRPO)")
+
+        # ---- Expert pool → md5 → tensor(num_traces, d_latent) -------------------
+        self.expert_latents: dict[str, torch.Tensor] = {}
+        self.expert_pool_by_uid: dict[str, torch.Tensor] = {}
+        self.expert_prompt_index: dict[str, list[str]] = {}
+        self.all_trace_uids: list[str] = []
+        if cfg.expert_pool_path is not None and not self._lavida_cr_diagnostics_only:
+            self._load_expert_pool(cfg.expert_pool_path, device)
+            logger.info(
+                "LaViDA: loaded expert pool from %s (%d unique prompts, %d traces)",
+                cfg.expert_pool_path,
+                len(self.expert_latents),
+                sum(t.shape[0] for t in self.expert_latents.values()),
+            )
+        else:
+            if self._lavida_alpha > 0.0:
+                logger.warning("LaViDA: expert_pool_path is None — LaViDA loss disabled")
+            elif self._lavida_cr_diagnostics_only:
+                logger.info(
+                    "LaViDA: expert pool not used for alpha=0 CR-NCE diagnostics-only path"
+                )
+            elif self._cr_reward_bonus_requested():
+                logger.info("LaViDA: expert pool not used for reward_bonus mode")
+            else:
+                logger.info("LaViDA: expert pool not used (alpha=0.0, plain GRPO)")
+
+        # ---- Critic (online + EMA target) ----------------------------------------
+        latent_module_ready = (
+            self.frozen_ae is not None or self.frozen_dyn is not None
+        )
+        pool_ready = bool(self.expert_latents)
+        cr_nce_requested = self._lavida_loss_mode == "cr_nce"
+        self.critic = None
+        self.critic_ema = None
+        self.critic_optimizer = None
+        aux_ready = latent_module_ready and (pool_ready or self._lavida_cr_diagnostics_only)
+        if self._cr_reward_bonus_requested():
+            self._lavida_enabled = bool(latent_module_ready)
+            if self._lavida_enabled:
+                logger.info(
+                    "LaViDA: G7 reward-bonus enabled (beta=%.4f, lambda_head=%.4f, "
+                    "projection=%d->%d->%d, K_hard=%d, hard_neg=%s, multi_pos=%s, "
+                    "latent=%s)",
+                    self._lavida_cr_beta,
+                    self._lavida_cr_lambda_head,
+                    self._lavida_d_latent,
+                    self._lavida_cr_projection_hidden,
+                    self._lavida_cr_projection_dim,
+                    self._lavida_cr_k_hard,
+                    self._lavida_cr_hard_neg_mode,
+                    self._lavida_cr_multi_pos_enabled,
+                    self._lavida_latent_encoder,
+                )
+            else:
+                logger.warning(
+                    "LaViDA: reward_bonus requested but frozen latent module is missing; "
+                    "running without G7 reward bonus"
+                )
+        elif (self._lavida_alpha > 0.0 or cr_nce_requested) and aux_ready:
+            if self._lavida_loss_mode == "chi_square":
+                self.critic = DualChiSquareCritic(d_latent=self._lavida_d_latent).to(device)
+                self.critic_ema = DualChiSquareCritic(d_latent=self._lavida_d_latent).to(device)
+                self.critic_ema.load_state_dict(self.critic.state_dict())
+                for p in self.critic_ema.parameters():
+                    p.requires_grad = False
+                self.critic_optimizer = torch.optim.Adam(
+                    self.critic.parameters(), lr=cfg.critic_lr, betas=(0.5, 0.999)
+                )
+                self._lavida_enabled = True
+                logger.info(
+                    "LaViDA: critic enabled (alpha=%.4f, n_critic=%d, mu_ema=%.4f, "
+                    "critic_lr=%.1e, grad_clip=%.1f, t_clamp=%.1f)",
+                    self._lavida_alpha,
+                    self._lavida_n_critic,
+                    self._lavida_mu_ema,
+                    cfg.critic_lr,
+                    self._lavida_critic_grad_clip,
+                    self._lavida_t_clamp,
+                )
+            elif self._lavida_loss_mode == "mse":
+                self._lavida_enabled = True
+                logger.info(
+                    "LaViDA: MSE-to-nearest-expert enabled (lambda=alpha=%.4f, latent=%s)",
+                    self._lavida_alpha,
+                    self._lavida_latent_encoder,
+                )
+            else:  # cr_nce
+                self._lavida_enabled = True
+                if self._lavida_cr_diagnostics_only:
+                    logger.info(
+                        "LaViDA: alpha=0 CR-NCE diagnostics-only path enabled "
+                        "(no negative sampling, no InfoNCE loss; logging rollout variance)"
+                    )
+                else:
+                    logger.info(
+                        "LaViDA: CR-NCE enabled (alpha=%.4f, K=%d, distance=%s, tau=%.6g, latent=%s)",
+                        self._lavida_alpha,
+                        self._lavida_cr_negatives,
+                        self._lavida_distance_head_name,
+                        float(self._lavida_cr_temperature),
+                        self._lavida_latent_encoder,
+                    )
+        else:
+            self._lavida_enabled = False
+            logger.info("LaViDA: auxiliary loss disabled (running as plain GRPO)")
+
+    def _cr_reward_bonus_head_parameters(self) -> list[nn.Parameter]:
+        """Return trainable G7 reward-bonus head params, excluding policy params."""
+        if not self._cr_reward_bonus_requested():
+            return []
+        params: list[nn.Parameter] = []
+        for module in (self.cr_projection_head, self.cr_mrn_head):
+            if module is None:
+                continue
+            params.extend(p for p in module.parameters() if p.requires_grad)
+        return params
+
+    def _add_cr_reward_bonus_heads_to_optimizer(self) -> None:
+        """Ensure trainer-owned G7 heads are optimized although not policy children."""
+        if self.optimizer is None:
+            return
+        head_params = self._cr_reward_bonus_head_parameters()
+        if not head_params:
+            return
+        existing_param_ids = {
+            id(param)
+            for group in self.optimizer.param_groups
+            for param in group.get("params", [])
+        }
+        missing = [param for param in head_params if id(param) not in existing_param_ids]
+        if not missing:
+            return
+        self.optimizer.add_param_group({"params": missing})
+        logger.info(
+            "LaViDA: added %d G7 CR-head parameters to optimizer outside policy module",
+            sum(param.numel() for param in missing),
+        )
+
+    def create_optimizer(self):
+        optimizer = super().create_optimizer()
+        self._add_cr_reward_bonus_heads_to_optimizer()
+        return optimizer
+
+    def _record_profile_metric(self, key: str, value: float) -> None:
+        """Record a lightweight timing metric without letting profiling affect training."""
+        try:
+            mode = "train" if self.model.training else "eval"
+            self._metrics[mode][key].append(float(value))
+        except Exception:
+            pass
+
+    def _load_expert_pool(self, path: str, device: torch.device) -> None:
+        """Load `expert_pool_ae.pt` and materialise a md5 → (N, d_latent) map."""
+        payload = torch.load(path, map_location="cpu", weights_only=False)
+        pool: dict[str, dict[str, Any]] = payload["pool"]
+        prompt_index: dict[str, list[str]] = payload["prompt_index"]
+        self.expert_prompt_index = {
+            str(md5): [str(uid) for uid in trace_uids]
+            for md5, trace_uids in prompt_index.items()
+        }
+        self.expert_pool_by_uid = {}
+        for uid, entry in pool.items():
+            e = entry["e"]
+            if not isinstance(e, torch.Tensor):
+                e = torch.as_tensor(e)
+            e = e.flatten().to(device=device, dtype=torch.float32)
+            if e.numel() != self._lavida_d_latent:
+                raise ValueError(
+                    f"Expert latent dim {e.numel()} != d_latent {self._lavida_d_latent} "
+                    f"for trace {uid}"
+                )
+            self.expert_pool_by_uid[str(uid)] = e
+        self.all_trace_uids = list(self.expert_pool_by_uid.keys())
+
+        for md5, trace_uids in prompt_index.items():
+            zs = []
+            for uid in trace_uids:
+                e = self.expert_pool_by_uid.get(str(uid))
+                if e is None:
+                    continue
+                zs.append(e)
+            if not zs:
+                continue
+            stacked = torch.stack(zs, dim=0)
+            if stacked.shape[1] != self._lavida_d_latent:
+                raise ValueError(
+                    f"Expert latent dim {stacked.shape[1]} != d_latent "
+                    f"{self._lavida_d_latent} for prompt {md5}"
+                )
+            self.expert_latents[str(md5)] = stacked
+
+    # ------------------------------------------------------------------
+    # Hidden-state capture on policy forward
+    # ------------------------------------------------------------------
+
+    def _entropy_from_logits_chunked(
+        self,
+        logits: torch.Tensor,
+        chunk_tokens: int = 128,
+    ) -> torch.Tensor:
+        """Compute entropy without materializing all full-vocab token rows at once."""
+        from trl.trainer.utils import entropy_from_logits
+
+        if logits.numel() == 0:
+            return logits.new_empty(logits.shape[:-1])
+        chunks = []
+        for start in range(0, logits.shape[1], chunk_tokens):
+            chunk = logits[:, start : start + chunk_tokens, :]
+            chunks.append(entropy_from_logits(chunk))
+        return torch.cat(chunks, dim=1)
+
+    def _get_per_token_logps_and_entropies(
+        self,
+        model,
+        input_ids,
+        attention_mask,
+        logits_to_keep,
+        batch_size=None,
+        compute_entropy=False,
+        pixel_values=None,
+        image_grid_thw=None,
+        num_images=None,
+        pixel_attention_mask=None,
+        image_sizes=None,
+        token_type_ids=None,
+        mm_token_type_ids=None,
+        image_position_ids=None,
+    ) -> tuple[torch.Tensor, torch.Tensor | None]:
+        """Mirror of GRPOTrainer._get_per_token_logps_and_entropies with optional
+        hidden-state capture for LaViDA.
+
+        When ``self._lavida_capture`` is True, requests ``output_hidden_states=True``
+        from the model, averages the last L transformer layers, slices to the
+        completion span aligned with ``logits_to_keep``, and stores the result at
+        ``self._lavida_cached_hidden`` of shape ``(B, C, d_model)``.
+        """
+        if not self._lavida_capture:
+            start_time = time.perf_counter()
+            parent_method = super()._get_per_token_logps_and_entropies
+            optional_kwargs = {
+                "batch_size": batch_size,
+                "compute_entropy": compute_entropy,
+                "pixel_values": pixel_values,
+                "image_grid_thw": image_grid_thw,
+                "num_images": num_images,
+                "pixel_attention_mask": pixel_attention_mask,
+                "image_sizes": image_sizes,
+                "token_type_ids": token_type_ids,
+                "mm_token_type_ids": mm_token_type_ids,
+                "image_position_ids": image_position_ids,
+            }
+            accepted = inspect.signature(parent_method).parameters
+            filtered_kwargs = {
+                key: value
+                for key, value in optional_kwargs.items()
+                if key in accepted
+            }
+            result = parent_method(
+                model,
+                input_ids,
+                attention_mask,
+                logits_to_keep,
+                **filtered_kwargs,
+            )
+            self._record_profile_metric(
+                "profile/logps_no_hidden_seconds",
+                time.perf_counter() - start_time,
+            )
+            return result
+
+        # --- Capturing path (mirrors parent forward loop, adds output_hidden_states)
+        from trl.trainer.utils import selective_log_softmax
+
+        start_time = time.perf_counter()
+        batch_size = batch_size or input_ids.size(0)
+        if self.model.training and self._lavida_loss_mode == "cr_nce":
+            # Hidden-state capture stores the last layers for the auxiliary loss.
+            # With microbatch=2 and 3072-token completions, keeping both rows in
+            # one graph can exceed H100 memory even with vLLM asleep. Splitting
+            # only this capture forward preserves the outer TRL batch geometry.
+            batch_size = min(batch_size, 1)
+        all_logps = []
+        all_entropies = []
+        all_hidden = []
+        for start in range(0, input_ids.size(0), batch_size):
+            input_ids_batch = input_ids[start : start + batch_size]
+            attention_mask_batch = attention_mask[start : start + batch_size]
+
+            model_inputs = {
+                "input_ids": input_ids_batch,
+                "attention_mask": attention_mask_batch,
+            }
+            if pixel_values is not None:
+                model_inputs["pixel_values"] = pixel_values[start : start + batch_size]
+            if token_type_ids is not None:
+                model_inputs["token_type_ids"] = token_type_ids[start : start + batch_size]
+            if "logits_to_keep" in self.model_kwarg_keys:
+                model_inputs["logits_to_keep"] = logits_to_keep + 1
+            model_inputs["use_cache"] = False
+            model_inputs["output_hidden_states"] = True
+
+            outputs = model(**model_inputs)
+            logits = outputs.logits[:, :-1, :]
+            logits = logits[:, -logits_to_keep:, :]
+            logits.div_(self.temperature)
+            completion_ids = input_ids_batch[:, -logits_to_keep:]
+            logps = selective_log_softmax(logits, completion_ids)
+            all_logps.append(logps)
+
+            if compute_entropy:
+                with torch.no_grad():
+                    entropies = self._entropy_from_logits_chunked(logits)
+                all_entropies.append(entropies)
+
+            # Average last L hidden layers, align with the same (B, C, d) slice as logits.
+            # Do NOT detach: gradients must flow back through h_bar → model params so
+            # L_LaViDA can actually shape the policy (frozen AE has requires_grad=False
+            # on params, but forward still propagates gradients to the inputs).
+            hidden = average_last_layers(
+                outputs.hidden_states, num_layers_averaged=self._lavida_num_layers_averaged
+            )
+            hidden = hidden[:, :-1, :]
+            hidden = hidden[:, -logits_to_keep:, :]
+            if self._lavida_loss_mode == "cr_nce" and self._lavida_alpha == 0.0:
+                hidden = hidden.detach()
+            all_hidden.append(hidden)
+
+        logps = torch.cat(all_logps, dim=0)
+        entropies = torch.cat(all_entropies, dim=0) if compute_entropy else None
+        self._lavida_cached_hidden = torch.cat(all_hidden, dim=0)
+        self._maybe_apply_cr_reward_bonus_to_current_inputs()
+        self._record_profile_metric(
+            "profile/logps_hidden_seconds",
+            time.perf_counter() - start_time,
+        )
+        return logps, entropies
+
+    # ------------------------------------------------------------------
+    # Stash binary rewards (before GRPO normalises them into advantages)
+    # ------------------------------------------------------------------
+
+    def _calculate_rewards(self, inputs, prompts, completions, completion_ids_list):
+        start_time = time.perf_counter()
+        rewards_per_func = super()._calculate_rewards(
+            inputs, prompts, completions, completion_ids_list
+        )
+        self._record_profile_metric(
+            "profile/reward_seconds",
+            time.perf_counter() - start_time,
+        )
+        # Assume a single binary reward function (Qwen math_equal).
+        self._lavida_last_binary_rewards = rewards_per_func[:, 0].detach().float().clone()
+        return rewards_per_func
+
+    def _strip_completion_at_stop_string(self, completion: Any) -> Any:
+        """Remove any decoded trailing stop-string text before reward parsing."""
+        if not self._rollout_stop_strings:
+            return completion
+
+        def strip_text(text: str) -> str:
+            cutoff = len(text)
+            for stop in self._rollout_stop_strings or []:
+                idx = text.find(stop)
+                if idx != -1:
+                    cutoff = min(cutoff, idx)
+            return text[:cutoff].rstrip()
+
+        if isinstance(completion, str):
+            return strip_text(completion)
+        if (
+            isinstance(completion, list)
+            and completion
+            and isinstance(completion[0], dict)
+            and isinstance(completion[0].get("content"), str)
+        ):
+            cleaned = [dict(message) for message in completion]
+            cleaned[0]["content"] = strip_text(str(cleaned[0]["content"]))
+            return cleaned
+        return completion
+
+    def _generate(self, prompts: list):
+        output = super()._generate(prompts)
+        if not self._rollout_stop_strings:
+            return output
+
+        if len(output) == 9:
+            (
+                prompt_ids,
+                completion_ids,
+                tool_mask,
+                completions,
+                total_completion_tokens,
+                logprobs,
+                extra_fields,
+                images,
+                tool_images,
+            ) = output
+            completions = [
+                self._strip_completion_at_stop_string(completion)
+                for completion in completions
+            ]
+            return (
+                prompt_ids,
+                completion_ids,
+                tool_mask,
+                completions,
+                total_completion_tokens,
+                logprobs,
+                extra_fields,
+                images,
+                tool_images,
+            )
+
+        if len(output) == 7:
+            (
+                prompt_ids,
+                completion_ids,
+                tool_mask,
+                completions,
+                total_completion_tokens,
+                logprobs,
+                extra_fields,
+            ) = output
+            completions = [
+                self._strip_completion_at_stop_string(completion)
+                for completion in completions
+            ]
+            return (
+                prompt_ids,
+                completion_ids,
+                tool_mask,
+                completions,
+                total_completion_tokens,
+                logprobs,
+                extra_fields,
+            )
+
+        raise RuntimeError(
+            f"Unexpected TRL _generate output shape: {type(output).__name__} "
+            f"with length {len(output)}"
+        )
+
+    def _generate_single_turn(self, prompt_ids, images=None, multimodal_fields=None):
+        """Inject tokenizer-aware stop strings for the HF generation path."""
+        if self.use_vllm or self.use_transformers_paged or not self._rollout_stop_strings:
+            if images is None and multimodal_fields is None:
+                return super()._generate_single_turn(prompt_ids)
+            return super()._generate_single_turn(prompt_ids, images, multimodal_fields)
+
+        device = self.accelerator.device
+        multimodal_fields = multimodal_fields or {}
+
+        prompt_tensors = [torch.tensor(ids) for ids in prompt_ids]
+        padded_ids = pad(prompt_tensors, padding_value=self.pad_token_id, padding_side="left")
+        attention_mask = pad([torch.ones_like(t) for t in prompt_tensors], padding_value=0, padding_side="left")
+        generate_inputs = {"input_ids": padded_ids, "attention_mask": attention_mask}
+        for key, value in multimodal_fields.items():
+            if isinstance(value, torch.Tensor):
+                generate_inputs[key] = value
+            elif isinstance(value, list) and value and isinstance(value[0], list):
+                generate_inputs[key] = pad([torch.tensor(x) for x in value], padding_value=0, padding_side="left")
+            else:
+                generate_inputs[key] = torch.tensor(np.array(value))
+        generate_inputs = Trainer._prepare_inputs(self, generate_inputs)
+
+        tokenizer = getattr(self.processing_class, "tokenizer", self.processing_class)
+        with (
+            profiling_context(self, "transformers.generate"),
+            unwrap_model_for_generation(
+                self.model_wrapped,
+                self.accelerator,
+                gather_deepspeed3_params=self.args.ds3_gather_for_generation,
+                generation_kwargs=self.generation_kwargs,
+            ) as unwrapped_model,
+            torch.no_grad(),
+            FSDP.summon_full_params(self.model_wrapped, recurse=False) if self.is_fsdp_enabled else nullcontext(),
+        ):
+            prompt_completion_ids = unwrapped_model.generate(
+                **generate_inputs,
+                generation_config=self.generation_config,
+                tokenizer=tokenizer,
+            )
+
+        prompt_length = generate_inputs["input_ids"].size(1)
+        completion_ids = prompt_completion_ids[:, prompt_length:]
+
+        is_eos = completion_ids == self.eos_token_id
+        eos_idx = torch.full((is_eos.size(0),), is_eos.size(1), dtype=torch.long, device=device)
+        eos_idx[is_eos.any(dim=1)] = is_eos.int().argmax(dim=1)[is_eos.any(dim=1)]
+        sequence_indices = torch.arange(is_eos.size(1), device=device).expand(is_eos.size(0), -1)
+        completion_mask = (sequence_indices <= eos_idx.unsqueeze(1)).int()
+        completion_ids = [
+            completion[mask].tolist()
+            for completion, mask in zip(completion_ids.cpu(), completion_mask.bool().cpu(), strict=True)
+        ]
+        logprobs = None
+        return completion_ids, logprobs
+
+    # ------------------------------------------------------------------
+    # Attach (binary_rewards, prompt_md5) to the buffered generation batch
+    # ------------------------------------------------------------------
+
+    def _generate_and_score_completions(
+        self, inputs: list[dict[str, Any]]
+    ) -> dict[str, torch.Tensor | Any]:
+        prompt_md5s = [str(x["prompt_md5"]) for x in inputs] if inputs and "prompt_md5" in inputs[0] else None
+        start_time = time.perf_counter()
+        output = super()._generate_and_score_completions(inputs)
+        self._record_profile_metric(
+            "profile/generate_score_total_seconds",
+            time.perf_counter() - start_time,
+        )
+        row_count = int(output["completion_ids"].shape[0]) if "completion_ids" in output else 0
+        if prompt_md5s is not None and row_count:
+            prompt_md5s = self._expand_prompt_md5s_to_rows(prompt_md5s, row_count)
+        if prompt_md5s is not None:
+            output["prompt_md5"] = prompt_md5s
+        if self._lavida_last_binary_rewards is not None:
+            output["binary_rewards"] = self._local_binary_rewards_for_rows(row_count).to(
+                self.accelerator.device
+            )
+        if self._cr_reward_bonus_enabled() and prompt_md5s is not None:
+            self._apply_cr_reward_bonus_to_generation_output(output, prompt_md5s)
+        return output
+
+    def _expand_prompt_md5s_to_rows(self, prompt_md5s: list[str], row_count: int) -> list[str]:
+        """Expand prompt metadata to the generated-row surface when TRL has not."""
+        if len(prompt_md5s) == row_count:
+            return prompt_md5s
+        num_generations = int(getattr(self, "num_generations", 0) or 0)
+        if num_generations > 0 and len(prompt_md5s) * num_generations == row_count:
+            expanded: list[str] = []
+            for md5 in prompt_md5s:
+                expanded.extend([md5] * num_generations)
+            return expanded
+        if prompt_md5s and row_count % len(prompt_md5s) == 0:
+            repeat = row_count // len(prompt_md5s)
+            expanded = []
+            for md5 in prompt_md5s:
+                expanded.extend([md5] * repeat)
+            return expanded
+        _warning_once(
+            "LaViDA: prompt_md5 count does not match generated rows; "
+            "leaving reward-bonus disabled for this generation batch"
+        )
+        return []
+
+    def _local_binary_rewards_for_rows(self, row_count: int) -> torch.Tensor:
+        """Return binary rewards aligned to the local generated rows."""
+        if self._lavida_last_binary_rewards is None:
+            raise RuntimeError("binary rewards requested before reward computation")
+        rewards = self._lavida_last_binary_rewards.to(
+            device=self.accelerator.device,
+            dtype=torch.float32,
+        )
+        if row_count <= 0 or rewards.shape[0] == row_count:
+            return rewards
+        process_index = int(getattr(self.accelerator, "process_index", 0))
+        start = process_index * row_count
+        end = start + row_count
+        if rewards.shape[0] >= end:
+            return rewards[start:end]
+        _warning_once(
+            "LaViDA: gathered reward count does not match local rows; "
+            "reward-bonus path will use the leading local slice"
+        )
+        return rewards[:row_count]
+
+    def _compute_cr_rollout_latents_for_generation_output(
+        self,
+        output: dict[str, torch.Tensor | Any],
+    ) -> torch.Tensor | None:
+        """Encode the full generated batch into detached rollout latents.
+
+        This runs on the full pre-split generation batch, not on the mb=1 loss
+        surface. The policy forward is under no_grad; only the later
+        projection/MRN head computations are in the gradient graph.
+        """
+        prompt_ids = output.get("prompt_ids")
+        prompt_mask = output.get("prompt_mask")
+        completion_ids = output.get("completion_ids")
+        completion_mask = output.get("completion_mask")
+        if not all(
+            isinstance(x, torch.Tensor)
+            for x in (prompt_ids, prompt_mask, completion_ids, completion_mask)
+        ):
+            _warning_once(
+                "LaViDA: generation output missing token tensors; skipping CR reward-bonus"
+            )
+            return None
+
+        input_ids = torch.cat([prompt_ids, completion_ids], dim=1)
+        attention_mask = torch.cat([prompt_mask, completion_mask], dim=1)
+        logits_to_keep = int(completion_ids.size(1))
+        batch_size = max(int(getattr(self.args, "per_device_train_batch_size", 1) or 1), 1)
+        all_latents: list[torch.Tensor] = []
+
+        for start in range(0, input_ids.size(0), batch_size):
+            input_ids_batch = input_ids[start : start + batch_size]
+            attention_mask_batch = attention_mask[start : start + batch_size]
+            completion_mask_batch = completion_mask[start : start + batch_size]
+            model_inputs: dict[str, Any] = {
+                "input_ids": input_ids_batch,
+                "attention_mask": attention_mask_batch,
+                "use_cache": False,
+                "output_hidden_states": True,
+            }
+            if "logits_to_keep" in self.model_kwarg_keys:
+                model_inputs["logits_to_keep"] = logits_to_keep + 1
+
+            with torch.no_grad():
+                outputs = self.model(**model_inputs)
+                hidden = average_last_layers(
+                    outputs.hidden_states,
+                    num_layers_averaged=self._lavida_num_layers_averaged,
+                )
+                hidden = hidden[:, :-1, :]
+                hidden = hidden[:, -logits_to_keep:, :]
+                z_policy = self._encode_policy_latents(
+                    hidden.detach(),
+                    completion_mask_batch,
+                )
+            if z_policy is None:
+                return None
+            all_latents.append(z_policy.detach())
+
+        return torch.cat(all_latents, dim=0) if all_latents else None
+
+    def _backward_cr_head_aux_loss(self, head_aux_loss: torch.Tensor) -> None:
+        if self._lavida_cr_lambda_head <= 0.0 or not self.model.training:
+            return
+        weighted = self._lavida_cr_lambda_head * head_aux_loss
+        if not weighted.requires_grad:
+            return
+        if not bool(torch.isfinite(weighted.detach()).item()):
+            raise RuntimeError("LaViDA: non-finite G7 head-aux loss")
+        accelerator = getattr(self, "accelerator", None)
+        if accelerator is not None and hasattr(accelerator, "backward"):
+            accelerator.backward(weighted)
+        else:
+            weighted.backward()
+        self._lavida_head_aux_grad_check_pending = True
+
+    def _apply_cr_reward_bonus_to_generation_output(
+        self,
+        output: dict[str, torch.Tensor | Any],
+        prompt_md5s: list[str],
+    ) -> None:
+        """Apply G7 beta-mode rewards before TRL splits into mb=1 losses."""
+        if not prompt_md5s:
+            return
+        row_count = int(output["completion_ids"].shape[0])
+        if len(prompt_md5s) != row_count:
+            _warning_once(
+                "LaViDA: prompt_md5 rows do not align with generated rows; "
+                "leaving GRPO advantages unchanged"
+            )
+            return
+        if self._lavida_last_binary_rewards is None:
+            _warning_once("LaViDA: missing binary rewards; leaving GRPO advantages unchanged")
+            return
+
+        rewards = self._local_binary_rewards_for_rows(row_count)
+        rollout_latents = self._compute_cr_rollout_latents_for_generation_output(output)
+        if rollout_latents is None:
+            return
+        if rollout_latents.shape[0] != row_count:
+            _warning_once(
+                "LaViDA: rollout latent rows do not match generated rows; "
+                "leaving GRPO advantages unchanged"
+            )
+            return
+
+        indices = list(range(row_count))
+        bonus_result = self._buffer_cr_rollouts_and_flush(
+            rewards=rewards,
+            is_correct=rewards > 0,
+            prompt_md5s=prompt_md5s,
+            rollout_latents=rollout_latents,
+            rollout_global_indices=indices,
+        )
+        output["advantages"] = self._group_normalize_rewards(
+            bonus_result["rewards"].detach(),
+            prompt_md5s,
+        ).to(device=output["advantages"].device)
+        output["binary_rewards"] = rewards.detach()
+        self._record_cr_reward_bonus_metrics(bonus_result)
+        if int(bonus_result.get("head_aux_anchor_count", 0)) > 0:
+            self._backward_cr_head_aux_loss(bonus_result["head_aux_loss"])
+
+    # ------------------------------------------------------------------
+    # Expert retrieval
+    # ------------------------------------------------------------------
+
+    def _retrieve_expert_batch(
+        self, prompt_md5s: list[str], device: torch.device
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Return (expert_z, mask) where mask[i]=1 iff an expert was found for row i."""
+        d = self._lavida_d_latent
+        expert = torch.zeros(len(prompt_md5s), d, device=device, dtype=torch.float32)
+        mask = torch.zeros(len(prompt_md5s), device=device, dtype=torch.float32)
+        for i, md5 in enumerate(prompt_md5s):
+            pool = self.expert_latents.get(md5)
+            if pool is None or pool.shape[0] == 0:
+                continue
+            idx = random.randint(0, pool.shape[0] - 1)
+            expert[i] = pool[idx]
+            mask[i] = 1.0
+        return expert, mask
+
+    def _retrieve_nearest_expert_batch(
+        self,
+        prompt_md5s: list[str],
+        z_policy: torch.Tensor,
+        device: torch.device,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Return (expert_z, mask) where expert_z[i] = argmin_e ||z_policy[i] - e||^2.
+
+        `z_policy` should be pre-detached — retrieval uses no gradients.
+        """
+        d = self._lavida_d_latent
+        expert = torch.zeros(len(prompt_md5s), d, device=device, dtype=torch.float32)
+        mask = torch.zeros(len(prompt_md5s), device=device, dtype=torch.float32)
+        for i, md5 in enumerate(prompt_md5s):
+            pool = self.expert_latents.get(md5)
+            if pool is None or pool.shape[0] == 0:
+                continue
+            pool_dev = pool.to(device=device, dtype=z_policy.dtype)
+            dists = (pool_dev - z_policy[i].unsqueeze(0)).pow(2).sum(dim=1)
+            expert[i] = pool_dev[dists.argmin()]
+            mask[i] = 1.0
+        return expert, mask
+
+    def _sample_cr_nce_candidates(
+        self,
+        prompt_md5: str,
+        device: torch.device,
+        dtype: torch.dtype,
+    ) -> tuple[torch.Tensor | None, int, bool]:
+        """Sample one positive and K prompt-exclusive negatives for one rollout.
+
+        Returns ``(candidates, no_positive_skip, truncated)``. The positive is
+        always row 0 when candidates are available.
+        """
+        same_prompt_uids = list(self.expert_prompt_index.get(str(prompt_md5), []))
+        if not same_prompt_uids:
+            return None, 1, False
+
+        positive_uid = random.choice(same_prompt_uids)
+        positive = self.expert_pool_by_uid.get(positive_uid)
+        if positive is None:
+            return None, 1, False
+
+        excluded = set(same_prompt_uids)
+        num_available_negatives = len(self.all_trace_uids) - sum(
+            1 for uid in excluded if uid in self.expert_pool_by_uid
+        )
+        k_eff = min(self._lavida_cr_negatives, max(num_available_negatives, 0))
+        truncated = k_eff < self._lavida_cr_negatives
+        negative_uids: list[str] = []
+        selected_negatives: set[str] = set()
+        while len(negative_uids) < k_eff:
+            uid = random.choice(self.all_trace_uids)
+            if uid in excluded or uid in selected_negatives:
+                continue
+            selected_negatives.add(uid)
+            negative_uids.append(uid)
+
+        candidates = [positive.to(device=device, dtype=dtype)]
+        candidates.extend(
+            self.expert_pool_by_uid[uid].to(device=device, dtype=dtype)
+            for uid in negative_uids
+        )
+        return torch.stack(candidates, dim=0), 0, truncated
+
+    def _compute_rollout_latent_variance(self, z_policy: torch.Tensor) -> float:
+        """Mean per-dimension variance for a fully materialized rollout group."""
+        with torch.no_grad():
+            if z_policy.numel() == 0 or z_policy.shape[0] <= 1:
+                return 0.0
+            return float(
+                z_policy.detach().to(torch.float32).var(dim=0, unbiased=False).mean().item()
+            )
+
+    def _consume_rollout_latent_variance_groups(
+        self,
+        z_policy: torch.Tensor,
+        prompt_md5s: list[str],
+    ) -> float | None:
+        """Aggregate latent variance over completed prompt groups.
+
+        TRL may feed `_compute_loss` one rollout at a time while gradient
+        accumulation builds the 16-rollout group. Buffering by `prompt_md5`
+        keeps `diag/rollout_latent_variance` independent of microbatch shape and
+        robust to `steps_per_generation > 1`.
+        """
+        group_size = self._lavida_rollout_variance_group_size
+        completed: list[float] = []
+        with torch.no_grad():
+            for md5, z in zip(prompt_md5s, z_policy.detach(), strict=True):
+                key = str(md5)
+                buffer = self._lavida_rollout_variance_buffers.setdefault(key, [])
+                buffer.append(z.to(device="cpu", dtype=torch.float32))
+                while len(buffer) >= group_size:
+                    group = torch.stack(buffer[:group_size], dim=0)
+                    del buffer[:group_size]
+                    completed.append(self._compute_rollout_latent_variance(group))
+                if not buffer:
+                    self._lavida_rollout_variance_buffers.pop(key, None)
+
+        if not completed:
+            return None
+        return float(sum(completed) / len(completed))
+
+    def _compute_cr_nce_loss(
+        self,
+        grpo_loss: torch.Tensor,
+        z_policy: torch.Tensor,
+        prompt_md5s: list[str],
+        binary_rewards: torch.Tensor,
+    ) -> torch.Tensor:
+        """Variant G: single-positive InfoNCE on correct rollouts only."""
+        mode = "train" if self.model.training else "eval"
+        device = z_policy.device
+        binary_rewards = binary_rewards.to(device=device, dtype=torch.float32)
+        correct_indices = (binary_rewards > 0).nonzero(as_tuple=False).flatten()
+        rollout_var = self._consume_rollout_latent_variance_groups(z_policy, prompt_md5s)
+
+        if self._lavida_cr_diagnostics_only:
+            self._metrics[mode]["lavida/alpha"].append(self._lavida_alpha)
+            self._metrics[mode]["diag/aux_skip_rate"].append(
+                1.0 if correct_indices.numel() == 0 else 0.0
+            )
+            if rollout_var is not None:
+                self._metrics[mode]["diag/rollout_latent_variance"].append(rollout_var)
+            return grpo_loss
+
+        no_positive_skip_count = 0
+        negatives_truncated_count = 0
+        row_losses: list[torch.Tensor] = []
+        pos_distances: list[torch.Tensor] = []
+        neg_distance_means: list[torch.Tensor] = []
+        correct_top1 = 0
+        rows = 0
+
+        if correct_indices.numel() > 0:
+            tau = float(self._lavida_cr_temperature)
+            for idx_tensor in correct_indices:
+                idx = int(idx_tensor.item())
+                candidates, skipped, truncated = self._sample_cr_nce_candidates(
+                    str(prompt_md5s[idx]),
+                    device=device,
+                    dtype=torch.float32,
+                )
+                no_positive_skip_count += skipped
+                negatives_truncated_count += int(truncated)
+                if candidates is None:
+                    continue
+
+                z_i = z_policy[idx].unsqueeze(0).expand(candidates.shape[0], -1)
+                distances = self.distance_head(z_i.float(), candidates.float())
+                logits = (-distances / tau).unsqueeze(0)
+                target = torch.zeros(1, dtype=torch.long, device=device)
+                row_losses.append(F.cross_entropy(logits, target))
+                pos_distances.append(distances[0])
+                if distances.numel() > 1:
+                    neg_distance_means.append(distances[1:].mean())
+                correct_top1 += int(logits.argmax(dim=1).item() == 0)
+                rows += 1
+
+        if row_losses:
+            l_cr = torch.stack(row_losses).mean()
+            pos_mean = torch.stack(pos_distances).mean()
+            neg_mean = (
+                torch.stack(neg_distance_means).mean()
+                if neg_distance_means
+                else torch.zeros((), device=device, dtype=z_policy.dtype)
+            )
+            distance_gap = pos_mean - neg_mean
+            contrastive_accuracy = correct_top1 / max(rows, 1)
+        else:
+            l_cr = z_policy.sum() * 0.0
+            distance_gap = torch.zeros((), device=device, dtype=z_policy.dtype)
+            contrastive_accuracy = 0.0
+
+        is_train = self.model.training
+        normalizer = self.current_gradient_accumulation_steps if is_train else 1.0
+        total_loss = (
+            grpo_loss
+            if self._lavida_alpha == 0.0
+            else grpo_loss + self._lavida_alpha * (l_cr / normalizer)
+        )
+
+        self._metrics[mode]["loss/L_CR"].append(float(l_cr.detach().item()))
+        self._metrics[mode]["lavida/alpha"].append(self._lavida_alpha)
+        self._metrics[mode]["diag/aux_skip_rate"].append(
+            1.0 if correct_indices.numel() == 0 else 0.0
+        )
+        if rollout_var is not None:
+            self._metrics[mode]["diag/rollout_latent_variance"].append(rollout_var)
+        self._metrics[mode]["diag/in_prompt_vs_out_prompt_distance_gap"].append(
+            float(distance_gap.detach().item())
+        )
+        self._metrics[mode]["diag/contrastive_accuracy"].append(float(contrastive_accuracy))
+        self._metrics[mode]["diag/aux_no_positive_skip_count"].append(
+            float(no_positive_skip_count)
+        )
+        self._metrics[mode]["diag/aux_negatives_truncated_count"].append(
+            float(negatives_truncated_count)
+        )
+        self._metrics[mode]["lavida/num_valid"].append(float(rows))
+        self._metrics[mode]["lavida/frac_correct_valid"].append(
+            float(correct_indices.numel() / max(binary_rewards.numel(), 1))
+        )
+        return total_loss
+
+    def _build_dyn_anchor_idx(self, completion_mask: torch.Tensor) -> torch.Tensor:
+        """Convert a completion mask into per-row absolute anchor indices."""
+        if self.frozen_dyn is None:
+            raise RuntimeError("frozen_dyn is not loaded")
+        B, _ = completion_mask.shape
+        num_anchors = len(self.frozen_dyn.anchors)
+        anchor_idx = torch.zeros(
+            (B, num_anchors),
+            device=completion_mask.device,
+            dtype=torch.long,
+        )
+        for i in range(B):
+            valid_positions = completion_mask[i].nonzero(as_tuple=False).flatten()
+            if valid_positions.numel() == 0:
+                continue
+            offsets = self.frozen_dyn.anchor_indices(int(valid_positions.numel()))
+            anchor_idx[i] = valid_positions[torch.as_tensor(offsets, device=valid_positions.device)]
+        return anchor_idx
+
+    def _encode_policy_latents(
+        self,
+        h_bar: torch.Tensor,
+        completion_mask: torch.Tensor,
+    ) -> torch.Tensor | None:
+        """Encode completion hidden states into the active latent space."""
+        if self._lavida_latent_encoder == "ae":
+            if self.frozen_ae is None:
+                _warning_once("LaViDA: frozen AE missing; skipping LaViDA loss")
+                return None
+            psi = build_psi_from_hbar(h_bar, completion_mask)
+            if psi.shape[1] != self.frozen_ae.d_input:
+                logger.error(
+                    "LaViDA: psi dim %d != frozen_ae.d_input %d — skipping LaViDA loss",
+                    psi.shape[1],
+                    self.frozen_ae.d_input,
+                )
+                return None
+            return self.frozen_ae.encode(psi.to(next(self.frozen_ae.parameters()).dtype))
+
+        if self.frozen_dyn is None:
+            _warning_once("LaViDA: frozen dyn projector missing; skipping LaViDA loss")
+            return None
+        if h_bar.shape[-1] != self.frozen_dyn.d_input:
+            logger.error(
+                "LaViDA: h_bar dim %d != frozen_dyn.d_input %d — skipping LaViDA loss",
+                h_bar.shape[-1],
+                self.frozen_dyn.d_input,
+            )
+            return None
+        anchor_idx = self._build_dyn_anchor_idx(completion_mask)
+        return self.frozen_dyn.pool(
+            h_bar.to(dtype=next(self.frozen_dyn.parameters()).dtype),
+            anchor_idx=anchor_idx,
+        )
+
+    # ------------------------------------------------------------------
+    # G7 reward-bonus utilities
+    # ------------------------------------------------------------------
+
+    def _cr_reward_bonus_requested(self) -> bool:
+        return str(getattr(self, "_lavida_cr_mode", "aux_loss")).lower() == "reward_bonus"
+
+    def _cr_reward_bonus_enabled(self) -> bool:
+        return self._cr_reward_bonus_requested() and float(
+            getattr(self, "_lavida_cr_beta", 0.0)
+        ) > 0.0 and bool(getattr(self, "_lavida_enabled", True))
+
+    def _maybe_warn_reward_bonus_alpha(self) -> None:
+        if not self._cr_reward_bonus_requested():
+            return
+        if float(getattr(self, "_lavida_cr_alpha", 0.0)) == 0.0:
+            return
+        if getattr(self, "_lavida_warned_reward_bonus_alpha", False):
+            return
+        warnings.warn(
+            "alpha is non-zero but mode is reward_bonus; alpha will be ignored",
+            stacklevel=2,
+        )
+        self._lavida_warned_reward_bonus_alpha = True
+
+    def _group_normalize_rewards(
+        self,
+        rewards: torch.Tensor,
+        prompt_md5s: list[str],
+    ) -> torch.Tensor:
+        rewards = rewards.to(dtype=torch.float32)
+        if rewards.ndim != 1:
+            raise ValueError(f"rewards must be 1-D, got shape {tuple(rewards.shape)}")
+        if len(prompt_md5s) != rewards.shape[0]:
+            raise ValueError("prompt_md5s length must match rewards length")
+
+        advantages = torch.empty_like(rewards)
+        groups: dict[str, list[int]] = {}
+        for idx, md5 in enumerate(prompt_md5s):
+            groups.setdefault(str(md5), []).append(idx)
+
+        scale_rewards = str(getattr(self, "scale_rewards", "group")).lower()
+        batch_std = rewards.std(unbiased=False) if rewards.numel() > 1 else rewards.new_zeros(())
+        for indices in groups.values():
+            idx = torch.as_tensor(indices, device=rewards.device, dtype=torch.long)
+            group_rewards = rewards.index_select(0, idx)
+            centered = group_rewards - group_rewards.mean()
+            if scale_rewards == "none":
+                normalized = centered
+            elif scale_rewards == "batch":
+                normalized = centered / (batch_std + 1e-4)
+            else:
+                group_std = (
+                    group_rewards.std(unbiased=False)
+                    if group_rewards.numel() > 1
+                    else rewards.new_zeros(())
+                )
+                normalized = centered / (group_std + 1e-4)
+            advantages.index_copy_(0, idx, normalized)
+        return advantages
+
+    def _compute_cr_head_aux_loss(
+        self,
+        rewards: torch.Tensor,
+        is_correct: torch.Tensor,
+        prompt_md5s: list[str],
+        projected: torch.Tensor,
+    ) -> dict[str, Any]:
+        """Compute Amendment #2 head-learning contrastive loss on projected MRN space."""
+        device = projected.device
+        rewards = rewards.to(device=device, dtype=torch.float32)
+        is_correct = is_correct.to(device=device, dtype=torch.bool)
+        if rewards.ndim != 1 or is_correct.ndim != 1:
+            raise ValueError("rewards and is_correct must be 1-D")
+        if rewards.shape[0] != is_correct.shape[0] or rewards.shape[0] != projected.shape[0]:
+            raise ValueError("reward, correctness, and projected rows must match")
+        if len(prompt_md5s) != rewards.shape[0]:
+            raise ValueError("prompt_md5s length must match projected rows")
+
+        mrn_head = getattr(self, "cr_mrn_head")
+        groups: dict[str, list[int]] = {}
+        for idx, md5 in enumerate(prompt_md5s):
+            groups.setdefault(str(md5), []).append(idx)
+
+        prompt_count = 0
+        skipped_count = 0
+        anchor_losses: list[torch.Tensor] = []
+        for indices in groups.values():
+            prompt_count += 1
+            group_idx = torch.as_tensor(indices, device=device, dtype=torch.long)
+            group_correct = is_correct.index_select(0, group_idx)
+            frontier = select_positives_and_frontier(group_correct.detach().cpu())
+            if frontier["skip"]:
+                skipped_count += 1
+                continue
+
+            group_rewards = rewards.index_select(0, group_idx)
+            mined = mine_reward_proximity_negatives(
+                group_rewards.detach().cpu(),
+                group_correct.detach().cpu(),
+                K=self._lavida_cr_k_hard,
+            )
+            if mined["skip"] or mined["negative_indices"] is None:
+                skipped_count += 1
+                continue
+
+            positive_local = list(frontier["positive_indices"])
+            negative_local = list(mined["negative_indices"])
+            positive_global = group_idx[
+                torch.as_tensor(positive_local, device=device, dtype=torch.long)
+            ]
+            negative_global = group_idx[
+                torch.as_tensor(negative_local, device=device, dtype=torch.long)
+            ]
+            positive_proj = projected.index_select(0, positive_global)
+            negative_proj = projected.index_select(0, negative_global)
+
+            for pos_row, anchor_global in enumerate(positive_global):
+                anchor = projected[int(anchor_global.item()) : int(anchor_global.item()) + 1]
+                if positive_proj.shape[0] >= 2:
+                    other_pos = torch.cat(
+                        [positive_proj[:pos_row], positive_proj[pos_row + 1 :]],
+                        dim=0,
+                    )
+                    d_pos = mrn_head(anchor.expand(other_pos.shape[0], -1), other_pos).min()
+                else:
+                    d_pos = projected.new_zeros(())
+                d_neg = mrn_head(anchor.expand(negative_proj.shape[0], -1), negative_proj)
+                logits = torch.cat([(-d_pos).reshape(1), -d_neg.reshape(-1)], dim=0).unsqueeze(0)
+                target = torch.zeros(1, dtype=torch.long, device=device)
+                anchor_losses.append(F.cross_entropy(logits, target))
+
+        if anchor_losses:
+            loss = torch.stack(anchor_losses).mean()
+        else:
+            loss = projected.sum() * 0.0
+
+        return {
+            "loss": loss,
+            "anchor_count": len(anchor_losses),
+            "prompt_count": prompt_count,
+            "skipped_count": skipped_count,
+        }
+
+    def _buffer_cr_rollouts_and_flush(
+        self,
+        rewards: torch.Tensor,
+        is_correct: torch.Tensor,
+        prompt_md5s: list[str],
+        rollout_latents: torch.Tensor,
+        rollout_global_indices: list[int] | torch.Tensor | None = None,
+    ) -> dict[str, Any]:
+        """Buffer rollout rows by prompt and compute CR terms only on full groups.
+
+        Amendment #3 keeps all per-prompt reward-bonus and head-aux logic off
+        the mb=1 loss surface. The returned ``pending_bonus`` maps full-batch row
+        indices to bonuses so tests can simulate microbatch accumulation; when
+        called on the full generation batch those indices also align with the
+        returned dense ``bonuses`` tensor.
+        """
+        device = rewards.device
+        rewards = rewards.to(device=device, dtype=torch.float32)
+        is_correct = is_correct.to(device=device, dtype=torch.bool)
+        if rewards.ndim != 1 or is_correct.ndim != 1:
+            raise ValueError("rewards and is_correct must be 1-D")
+        if rewards.shape[0] != is_correct.shape[0] or rewards.shape[0] != rollout_latents.shape[0]:
+            raise ValueError("reward, correctness, and latent rows must match")
+        if len(prompt_md5s) != rewards.shape[0]:
+            raise ValueError("prompt_md5s length must match reward rows")
+
+        if rollout_global_indices is None:
+            global_indices = list(range(rewards.shape[0]))
+        elif isinstance(rollout_global_indices, torch.Tensor):
+            global_indices = [
+                int(x) for x in rollout_global_indices.detach().cpu().flatten().tolist()
+            ]
+        else:
+            global_indices = [int(x) for x in rollout_global_indices]
+        if len(global_indices) != rewards.shape[0]:
+            raise ValueError("rollout_global_indices length must match reward rows")
+
+        group_size = int(getattr(self, "_lavida_rollout_variance_group_size", 1))
+        group_size = max(group_size, 1)
+        bonuses = torch.zeros_like(rewards)
+        pending_bonus: dict[int, torch.Tensor] = {}
+        local_by_global = {
+            int(global_idx): local_idx for local_idx, global_idx in enumerate(global_indices)
+        }
+        distances_pos: list[torch.Tensor] = []
+        distances_neg: list[torch.Tensor] = []
+        head_aux_weighted_terms: list[torch.Tensor] = []
+        head_aux_anchor_count = 0
+        head_aux_prompt_count = 0
+        head_aux_skipped_count = 0
+        flushed_group_sizes: list[int] = []
+
+        for local_idx, md5 in enumerate(prompt_md5s):
+            key = str(md5)
+            buffer = self._lavida_cr_prompt_buffers.setdefault(
+                key,
+                {"latents": [], "rewards": [], "is_correct": [], "indices": []},
+            )
+            buffer["latents"].append(rollout_latents[local_idx].detach())
+            buffer["rewards"].append(rewards[local_idx].detach())
+            buffer["is_correct"].append(bool(is_correct[local_idx].detach().cpu().item()))
+            buffer["indices"].append(int(global_indices[local_idx]))
+
+            while len(buffer["latents"]) >= group_size:
+                group_latents = torch.stack(buffer["latents"][:group_size], dim=0).to(
+                    device=device,
+                    dtype=rollout_latents.dtype,
+                )
+                group_rewards = torch.stack(buffer["rewards"][:group_size], dim=0).to(
+                    device=device,
+                    dtype=torch.float32,
+                )
+                group_correct = torch.as_tensor(
+                    buffer["is_correct"][:group_size],
+                    device=device,
+                    dtype=torch.bool,
+                )
+                group_indices = [int(x) for x in buffer["indices"][:group_size]]
+                del buffer["latents"][:group_size]
+                del buffer["rewards"][:group_size]
+                del buffer["is_correct"][:group_size]
+                del buffer["indices"][:group_size]
+
+                flushed_group_sizes.append(group_size)
+                group_prompt_md5s = [key] * group_size
+                group_result = self._compute_cr_reward_bonus(
+                    rewards=group_rewards,
+                    is_correct=group_correct,
+                    prompt_md5s=group_prompt_md5s,
+                    rollout_latents=group_latents,
+                )
+                group_bonuses = group_result["bonuses"]
+                for row_idx, bonus in zip(group_indices, group_bonuses, strict=True):
+                    if bool((bonus.detach().abs() > 0).item()):
+                        pending_bonus[int(row_idx)] = bonus
+                    local_bonus_idx = local_by_global.get(int(row_idx))
+                    if local_bonus_idx is not None:
+                        bonuses[local_bonus_idx] = bonus
+                distances_pos.extend(group_result.get("distances_pos", []))
+                distances_neg.extend(group_result.get("distances_neg", []))
+                anchor_count = int(group_result.get("head_aux_anchor_count", 0))
+                if anchor_count > 0:
+                    head_aux_weighted_terms.append(
+                        group_result["head_aux_loss"] * float(anchor_count)
+                    )
+                    head_aux_anchor_count += anchor_count
+                head_aux_prompt_count += int(group_result.get("head_aux_prompt_count", 0))
+                head_aux_skipped_count += int(group_result.get("head_aux_skipped_count", 0))
+
+            if not buffer["latents"]:
+                self._lavida_cr_prompt_buffers.pop(key, None)
+
+        if head_aux_anchor_count > 0:
+            head_aux_loss = torch.stack(head_aux_weighted_terms).sum() / float(
+                head_aux_anchor_count
+            )
+        else:
+            head_aux_loss = rewards.sum() * 0.0
+
+        return {
+            "rewards": rewards + bonuses,
+            "bonuses": bonuses,
+            "pending_bonus": pending_bonus,
+            "distances_pos": distances_pos,
+            "distances_neg": distances_neg,
+            "head_aux_loss": head_aux_loss,
+            "head_aux_anchor_count": head_aux_anchor_count,
+            "head_aux_prompt_count": head_aux_prompt_count,
+            "head_aux_skipped_count": head_aux_skipped_count,
+            "flushed_group_sizes": flushed_group_sizes,
+        }
+
+    def _compute_cr_reward_bonus(
+        self,
+        rewards: torch.Tensor,
+        is_correct: torch.Tensor,
+        prompt_md5s: list[str],
+        rollout_latents: torch.Tensor,
+    ) -> dict[str, Any]:
+        """Apply beta-mode CR reward bonuses on detached rollout latents."""
+        device = rewards.device
+        rewards = rewards.to(device=device, dtype=torch.float32)
+        is_correct = is_correct.to(device=device, dtype=torch.bool)
+        if (
+            not self._cr_reward_bonus_requested()
+            or float(getattr(self, "_lavida_cr_beta", 0.0)) <= 0.0
+        ):
+            zero = torch.zeros_like(rewards)
+            return {
+                "rewards": rewards,
+                "bonuses": zero,
+                "distances_pos": [],
+                "distances_neg": [],
+            }
+        if rewards.ndim != 1 or is_correct.ndim != 1:
+            raise ValueError("rewards and is_correct must be 1-D")
+        if rewards.shape[0] != is_correct.shape[0] or rewards.shape[0] != rollout_latents.shape[0]:
+            raise ValueError("reward, correctness, and latent rows must match")
+        if len(prompt_md5s) != rewards.shape[0]:
+            raise ValueError("prompt_md5s length must match reward rows")
+
+        projection_head = getattr(self, "cr_projection_head")
+        mrn_head = getattr(self, "cr_mrn_head")
+        beta = float(getattr(self, "_lavida_cr_beta", 0.0))
+
+        latent_detached = rollout_latents.detach()
+        projected = projection_head(latent_detached.float())
+        head_aux = self._compute_cr_head_aux_loss(
+            rewards=rewards,
+            is_correct=is_correct,
+            prompt_md5s=prompt_md5s,
+            projected=projected,
+        )
+        bonuses = torch.zeros_like(rewards)
+        distances_pos: list[torch.Tensor] = []
+        distances_neg: list[torch.Tensor] = []
+
+        groups: dict[str, list[int]] = {}
+        for idx, md5 in enumerate(prompt_md5s):
+            groups.setdefault(str(md5), []).append(idx)
+
+        for indices in groups.values():
+            group_idx = torch.as_tensor(indices, device=device, dtype=torch.long)
+            group_correct = is_correct.index_select(0, group_idx)
+            frontier = select_positives_and_frontier(group_correct.detach().cpu())
+            if frontier["skip"]:
+                continue
+
+            positive_local = list(frontier["positive_indices"])
+            positive_global = group_idx[
+                torch.as_tensor(positive_local, device=device, dtype=torch.long)
+            ]
+            positive_set = {int(i) for i in positive_global.detach().cpu().tolist()}
+            positive_proj = projected.index_select(0, positive_global)
+
+            if positive_proj.shape[0] >= 2:
+                for pos_row in range(positive_proj.shape[0]):
+                    others = torch.cat(
+                        [positive_proj[:pos_row], positive_proj[pos_row + 1 :]],
+                        dim=0,
+                    )
+                    pos_i = positive_proj[pos_row : pos_row + 1].expand(others.shape[0], -1)
+                    distances_pos.append(mrn_head(pos_i, others).min())
+
+            for global_idx in indices:
+                if int(global_idx) in positive_set:
+                    continue
+                proj_i = projected[global_idx : global_idx + 1].expand(
+                    positive_proj.shape[0], -1
+                )
+                d_i = mrn_head(proj_i, positive_proj).min()
+                bonuses[global_idx] = -beta * d_i
+                distances_neg.append(d_i)
+
+        return {
+            "rewards": rewards + bonuses,
+            "bonuses": bonuses,
+            "distances_pos": distances_pos,
+            "distances_neg": distances_neg,
+            "head_aux_loss": head_aux["loss"],
+            "head_aux_anchor_count": head_aux["anchor_count"],
+            "head_aux_prompt_count": head_aux["prompt_count"],
+            "head_aux_skipped_count": head_aux["skipped_count"],
+        }
+
+    def _record_cr_reward_bonus_metrics(
+        self,
+        bonus_result: dict[str, Any],
+    ) -> None:
+        mode = "train" if self.model.training else "eval"
+        bonuses = bonus_result["bonuses"]
+        pos_distances = bonus_result["distances_pos"]
+        neg_distances = bonus_result["distances_neg"]
+        pos_median = (
+            torch.stack(pos_distances).detach().median().item()
+            if pos_distances
+            else math.nan
+        )
+        neg_median = (
+            torch.stack(neg_distances).detach().median().item()
+            if neg_distances
+            else math.nan
+        )
+        self._metrics[mode]["cr_reward_bonus_mean"].append(
+            float(bonuses.detach().mean().item()) if bonuses.numel() else 0.0
+        )
+        self._metrics[mode]["cr_distance_pos_median"].append(float(pos_median))
+        self._metrics[mode]["cr_distance_neg_median"].append(float(neg_median))
+        mrn_head = getattr(self, "cr_mrn_head", None)
+        if mrn_head is not None and hasattr(mrn_head, "M_offdiag_norm"):
+            self._metrics[mode]["mrn_M_offdiag_norm"].append(
+                float(mrn_head.M_offdiag_norm())
+            )
+        head_aux_loss = bonus_result.get("head_aux_loss")
+        if head_aux_loss is not None:
+            raw_loss = float(head_aux_loss.detach().item())
+            self._metrics[mode]["loss/cr_head_aux"].append(raw_loss)
+            self._metrics[mode]["loss/cr_head_aux_weighted"].append(
+                self._lavida_cr_lambda_head * raw_loss
+            )
+            prompt_count = int(bonus_result.get("head_aux_prompt_count", 0))
+            skipped_count = int(bonus_result.get("head_aux_skipped_count", 0))
+            skip_rate = skipped_count / prompt_count if prompt_count else 1.0
+            self._metrics[mode]["cr_head_aux_skip_rate"].append(float(skip_rate))
+
+    def _maybe_apply_cr_reward_bonus_to_current_inputs(self) -> None:
+        if not self._cr_reward_bonus_enabled():
+            return
+        inputs = getattr(self, "_lavida_current_loss_inputs", None)
+        if inputs is None or self._lavida_cached_hidden is None:
+            return
+        prompt_md5s = inputs.get("prompt_md5")
+        binary_rewards = inputs.get("binary_rewards")
+        completion_mask = inputs.get("completion_mask")
+        if prompt_md5s is None or binary_rewards is None or completion_mask is None:
+            _warning_once(
+                "LaViDA: reward-bonus path missing prompt_md5, binary_rewards, or completion_mask; "
+                "leaving GRPO advantages unchanged"
+            )
+            return
+
+        # In beta-mode the auxiliary-loss path is skipped, so populate reward-bonus
+        # latents directly from the hidden-state cache created by this same forward.
+        z_policy = self._encode_policy_latents(
+            self._lavida_cached_hidden.detach(),
+            completion_mask,
+        )
+        if z_policy is None:
+            return
+
+        device = z_policy.device
+        rewards = binary_rewards.to(device=device, dtype=torch.float32)
+        bonus_result = self._compute_cr_reward_bonus(
+            rewards=rewards,
+            is_correct=rewards > 0,
+            prompt_md5s=list(prompt_md5s),
+            rollout_latents=z_policy,
+        )
+        if (
+            self._lavida_cr_lambda_head > 0.0
+            and int(bonus_result.get("head_aux_anchor_count", 0)) > 0
+        ):
+            self._lavida_current_head_aux_loss = bonus_result["head_aux_loss"]
+            self._lavida_head_aux_grad_check_pending = True
+        inputs["advantages"] = self._group_normalize_rewards(
+            bonus_result["rewards"],
+            list(prompt_md5s),
+        ).to(device=inputs["advantages"].device)
+        self._record_cr_reward_bonus_metrics(bonus_result)
+
+    # ------------------------------------------------------------------
+    # Composite loss
+    # ------------------------------------------------------------------
+
+    def _assert_cr_head_gradients_live_once(self) -> None:
+        if self._lavida_cr_grad_check_done or not self._cr_reward_bonus_enabled():
+            return
+        if self._lavida_cr_lambda_head <= 0.0:
+            return
+        if not self._lavida_head_aux_grad_check_pending:
+            return
+        # Post-Amendment-#3, CR heads learn through the buffered head-aux
+        # backward. If this fails, debug whether the per-prompt buffer flushed
+        # and whether _backward_cr_head_aux_loss was called.
+        failures: list[str] = []
+        for label, module in (
+            ("cr_projection_head", self.cr_projection_head),
+            ("cr_mrn_head", self.cr_mrn_head),
+        ):
+            if module is None:
+                failures.append(f"{label} is missing")
+                continue
+            grad_sum = 0.0
+            saw_grad = False
+            for param in module.parameters():
+                if param.grad is None:
+                    continue
+                saw_grad = True
+                grad_sum += float(param.grad.detach().abs().sum().item())
+            if not saw_grad:
+                failures.append(f"{label} grad is None")
+            elif grad_sum <= 0.0:
+                failures.append(f"{label} grad abs sum is zero")
+        if failures:
+            raise RuntimeError(
+                "LaViDA: G7 CR-head gradient liveness check failed after first "
+                "reward-bonus backward: " + "; ".join(failures)
+            )
+        self._lavida_cr_grad_check_done = True
+        self._lavida_head_aux_grad_check_pending = False
+        logger.info("LaViDA: G7 CR-head gradient liveness check passed")
+
+    def training_step(self, model, inputs, num_items_in_batch=None):
+        if num_items_in_batch is None:
+            loss = super().training_step(model, inputs)
+        else:
+            loss = super().training_step(model, inputs, num_items_in_batch)
+        self._assert_cr_head_gradients_live_once()
+        return loss
+
+    def _compute_loss(self, model, inputs):
+        self._maybe_warn_reward_bonus_alpha()
+        reward_bonus_mode = self._cr_reward_bonus_requested()
+        self._lavida_capture = self._lavida_enabled and not reward_bonus_mode
+        self._lavida_current_loss_inputs = None
+        self._lavida_current_head_aux_loss = None
+        self._lavida_cached_hidden = None
+        grpo_start_time = time.perf_counter()
+        try:
+            grpo_loss = super()._compute_loss(model, inputs)
+        finally:
+            self._lavida_capture = False
+            self._lavida_current_loss_inputs = None
+        self._record_profile_metric(
+            "profile/grpo_compute_seconds",
+            time.perf_counter() - grpo_start_time,
+        )
+
+        if reward_bonus_mode:
+            self._lavida_cached_hidden = None
+            self._lavida_current_head_aux_loss = None
+            return grpo_loss
+
+        if not self._lavida_enabled or self._lavida_cached_hidden is None:
+            return grpo_loss
+        aux_start_time = time.perf_counter()
+
+        prompt_md5s = inputs.get("prompt_md5")
+        binary_rewards = inputs.get("binary_rewards")
+        if prompt_md5s is None or binary_rewards is None:
+            _warning_once(
+                "LaViDA: 'prompt_md5' / 'binary_rewards' missing from inputs; skipping LaViDA loss"
+            )
+            return grpo_loss
+
+        device = self.accelerator.device
+        completion_mask = inputs["completion_mask"]
+        h_bar = self._lavida_cached_hidden
+        self._lavida_cached_hidden = None
+
+        # ---- completion hidden states → frozen latent module → z_policy ---------
+        # Frozen latent-module params have requires_grad=False, but the forward pass
+        # still propagates gradients from z back to h_bar back to model params.
+        if self._lavida_loss_mode == "cr_nce" and self._lavida_alpha == 0.0:
+            with torch.no_grad():
+                z_policy = self._encode_policy_latents(h_bar.detach(), completion_mask)
+        else:
+            z_policy = self._encode_policy_latents(h_bar, completion_mask)
+        if z_policy is None:
+            return grpo_loss
+
+        if self._lavida_loss_mode == "cr_nce":
+            total_loss = self._compute_cr_nce_loss(
+                grpo_loss=grpo_loss,
+                z_policy=z_policy,
+                prompt_md5s=list(prompt_md5s),
+                binary_rewards=binary_rewards,
+            )
+            self._record_profile_metric(
+                "profile/lavida_aux_seconds",
+                time.perf_counter() - aux_start_time,
+            )
+            return total_loss
+
+        # ---- Expert retrieval (skip rows without an expert) --------------------
+        if self._lavida_loss_mode == "mse":
+            with torch.no_grad():
+                expert_z, expert_mask = self._retrieve_nearest_expert_batch(
+                    list(prompt_md5s), z_policy.detach(), device
+                )
+        else:
+            expert_z, expert_mask = self._retrieve_expert_batch(list(prompt_md5s), device)
+        valid = expert_mask.bool()
+        if not valid.any():
+            _warning_once("LaViDA: no expert matches for this batch; skipping LaViDA loss")
+            return grpo_loss
+        z_policy_valid = z_policy[valid]
+        expert_z_valid = expert_z[valid]
+        binary_rewards_valid = binary_rewards.to(device).to(torch.float32)[valid]
+
+        # ---- MSE mode: reward-weighted L2 to nearest expert --------------------
+        if self._lavida_loss_mode == "mse":
+            total_loss = self._compute_mse_loss(
+                grpo_loss=grpo_loss,
+                z_policy_valid=z_policy_valid,
+                expert_z_valid=expert_z_valid,
+                binary_rewards_valid=binary_rewards_valid,
+                valid=valid,
+            )
+            self._record_profile_metric(
+                "profile/lavida_aux_seconds",
+                time.perf_counter() - aux_start_time,
+            )
+            return total_loss
+
+        # ---- TTUR critic updates (detached z so critic optimiser is independent)
+        last_j = 0.0
+        last_gap = 0.0
+        last_policy_t = 0.0
+        last_expert_t = 0.0
+        for _ in range(self._lavida_n_critic):
+            self.critic_optimizer.zero_grad(set_to_none=True)
+            loss_crit, stats = critic_dual_loss(
+                self.critic, z_policy_valid.detach(), expert_z_valid.detach()
+            )
+            loss_crit.backward()
+            if self._lavida_critic_grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(
+                    self.critic.parameters(), max_norm=self._lavida_critic_grad_clip,
+                )
+            self.critic_optimizer.step()
+            update_ema(self.critic_ema, self.critic, mu=self._lavida_mu_ema)
+            last_j = float(stats["J"].item())
+            last_gap = float(stats["gap"].item())
+            last_policy_t = float(stats["policy_mean_T"].item())
+            last_expert_t = float(stats["expert_mean_T"].item())
+
+        # ---- L_LaViDA = E[R_i * T_bar(z_i)] on correct samples ------------------
+        # critic_ema has requires_grad=False on its params (so no updates to target),
+        # but forward still propagates gradient into z_policy → h_bar → policy.
+        # Minimising E[R_i * T_bar(z_i)] pulls correct-solution latents toward the
+        # expert-occupied region (T*(z) ≈ q(z)/p(z) - 1, smaller = more expert-like).
+        t_vals_raw = self.critic_ema(z_policy_valid)
+        t_vals = t_vals_raw.clamp(-self._lavida_t_clamp, self._lavida_t_clamp)
+
+        n_correct = (binary_rewards_valid > 0).sum().clamp(min=1)
+        l_lavida = (binary_rewards_valid * t_vals).sum() / n_correct
+
+        is_train = self.model.training
+        normalizer = self.current_gradient_accumulation_steps if is_train else 1.0
+        l_lavida_norm = l_lavida / normalizer
+        total_loss = grpo_loss + self._lavida_alpha * l_lavida_norm
+        l_lavida_scalar = float(l_lavida.detach().item())
+
+        # ---- Metrics ------------------------------------------------------------
+        mode = "train" if self.model.training else "eval"
+        self._metrics[mode]["lavida/loss"].append(l_lavida_scalar)
+        self._metrics[mode]["lavida/alpha"].append(self._lavida_alpha)
+        self._metrics[mode]["critic/dual_loss_J"].append(last_j)
+        self._metrics[mode]["critic/gap"].append(last_gap)
+        self._metrics[mode]["critic/policy_mean_T"].append(last_policy_t)
+        self._metrics[mode]["critic/expert_mean_T"].append(last_expert_t)
+        self._metrics[mode]["lavida/num_valid"].append(float(valid.sum().item()))
+        self._metrics[mode]["lavida/frac_correct_valid"].append(
+            float(binary_rewards_valid.mean().item()) if binary_rewards_valid.numel() else 0.0
+        )
+        with torch.no_grad():
+            frac_clamped = (
+                (t_vals_raw.abs() > self._lavida_t_clamp).float().mean().item()
+            )
+        self._metrics[mode]["critic/t_clamp_frac"].append(frac_clamped)
+        self._metrics[mode]["critic/t_raw_absmax"].append(
+            float(t_vals_raw.detach().abs().max().item())
+        )
+
+        # ---- Kill switch: halt if J (alignment) and reward decorrelate ---------
+        if mode == "train":
+            self._lavida_j_history.append(last_j)
+            self._lavida_reward_history.append(
+                float(binary_rewards.to(device).mean().item())
+            )
+            self._maybe_trigger_kill_switch()
+
+        self._record_profile_metric(
+            "profile/lavida_aux_seconds",
+            time.perf_counter() - aux_start_time,
+        )
+        return total_loss
+
+    def _compute_mse_loss(
+        self,
+        grpo_loss: torch.Tensor,
+        z_policy_valid: torch.Tensor,
+        expert_z_valid: torch.Tensor,
+        binary_rewards_valid: torch.Tensor,
+        valid: torch.Tensor,
+    ) -> torch.Tensor:
+        """Variant D: total = GRPO + alpha * E[R_i * ||z_i - z_nearest||^2]."""
+        per_row_sq = (z_policy_valid - expert_z_valid).pow(2).sum(dim=1)
+
+        correct_mask = binary_rewards_valid > 0
+        n_correct = correct_mask.sum().clamp(min=1)
+        l_mse = (binary_rewards_valid * per_row_sq).sum() / n_correct
+
+        is_train = self.model.training
+        normalizer = self.current_gradient_accumulation_steps if is_train else 1.0
+        l_mse_norm = l_mse / normalizer
+        total_loss = grpo_loss + self._lavida_alpha * l_mse_norm
+
+        mode = "train" if is_train else "eval"
+        self._metrics[mode]["lavida/loss"].append(float(l_mse.detach().item()))
+        self._metrics[mode]["lavida/alpha"].append(self._lavida_alpha)
+        self._metrics[mode]["lavida/num_valid"].append(float(valid.sum().item()))
+        self._metrics[mode]["lavida/frac_correct_valid"].append(
+            float(binary_rewards_valid.mean().item())
+            if binary_rewards_valid.numel() else 0.0
+        )
+        with torch.no_grad():
+            mean_dist = float(per_row_sq.mean().sqrt().item())
+            if correct_mask.any():
+                mean_dist_correct = float(
+                    per_row_sq[correct_mask].mean().sqrt().item()
+                )
+            else:
+                mean_dist_correct = 0.0
+        self._metrics[mode]["lavida/mean_nearest_dist"].append(mean_dist)
+        self._metrics[mode]["lavida/mean_nearest_dist_correct"].append(mean_dist_correct)
+
+        return total_loss
+
+    def _maybe_trigger_kill_switch(self) -> None:
+        cfg: LaViDAConfig = self.args  # type: ignore[assignment]
+        if self._lavida_kill_switch_triggered:
+            return
+        step = int(self.state.global_step)
+        if step < int(cfg.kill_switch_start_step):
+            return
+        if len(self._lavida_j_history) < 20:
+            return
+        r = _pearson(self._lavida_j_history, self._lavida_reward_history)
+        if r is None:
+            return
+        self._metrics["train"]["diag/alignment_accuracy_pearson_r"].append(float(r))
+        if abs(r) < float(cfg.kill_switch_min_abs_pearson):
+            self._lavida_kill_switch_triggered = True
+            self.control.should_training_stop = True
+            logger.warning(
+                "LaViDA kill switch TRIGGERED at step %d: |Pearson(J, reward)|=%.3f < %.3f",
+                step,
+                abs(r),
+                cfg.kill_switch_min_abs_pearson,
+            )
+
+    # ------------------------------------------------------------------
+    # Checkpointing: save critic + EMA + optimizer + kill-switch state
+    # ------------------------------------------------------------------
+
+    def _save_checkpoint(self, model, trial):
+        super()._save_checkpoint(model, trial)
+        if not self._lavida_enabled:
+            return
+        checkpoint_dir = os.path.join(
+            self.args.output_dir, f"checkpoint-{self.state.global_step}"
+        )
+        lavida_state = {
+            "loss_mode": self._lavida_loss_mode,
+            "alpha": self._lavida_alpha,
+            "latent_encoder": self._lavida_latent_encoder,
+            "global_step": int(self.state.global_step),
+            "negatives": self._lavida_cr_negatives,
+            "distance_head": self._lavida_distance_head_name,
+            "cr_temperature": self._lavida_cr_temperature,
+            "cr_mode": self._lavida_cr_mode,
+            "cr_beta": self._lavida_cr_beta,
+            "cr_k_hard": self._lavida_cr_k_hard,
+            "cr_projection_dim": self._lavida_cr_projection_dim,
+            "cr_projection_hidden": self._lavida_cr_projection_hidden,
+            "cr_mrn_enabled": self._lavida_cr_mrn_enabled,
+            "cr_multi_pos_enabled": self._lavida_cr_multi_pos_enabled,
+            "cr_hard_neg_mode": self._lavida_cr_hard_neg_mode,
+            "cr_alpha": self._lavida_cr_alpha,
+            "cr_tau": self._lavida_cr_tau,
+        }
+        if self._cr_reward_bonus_requested():
+            lavida_state.update({
+                "cr_projection_head": (
+                    self.cr_projection_head.state_dict()
+                    if self.cr_projection_head is not None
+                    else None
+                ),
+                "cr_mrn_head": (
+                    self.cr_mrn_head.state_dict()
+                    if self.cr_mrn_head is not None
+                    else None
+                ),
+            })
+        if self._lavida_loss_mode == "chi_square" and not self._cr_reward_bonus_requested():
+            lavida_state.update({
+                "critic": self.critic.state_dict(),
+                "critic_ema": self.critic_ema.state_dict(),
+                "critic_optimizer": self.critic_optimizer.state_dict(),
+                "n_critic": self._lavida_n_critic,
+                "mu_ema": self._lavida_mu_ema,
+                "j_history": list(self._lavida_j_history),
+                "reward_history": list(self._lavida_reward_history),
+                "kill_switch_triggered": bool(self._lavida_kill_switch_triggered),
+            })
+        path = os.path.join(checkpoint_dir, "lavida_state.pt")
+        torch.save(lavida_state, path)
+        logger.info("LaViDA: saved %s", path)
+        self._push_lavida_state_to_hub(path)
+
+    def _push_lavida_state_to_hub(self, path: str) -> None:
+        if not getattr(self.args, "push_to_hub", False):
+            return
+        repo_id = getattr(self.args, "hub_model_id", None)
+        if not repo_id:
+            return
+        try:
+            from huggingface_hub import HfApi
+
+            checkpoint_name = os.path.basename(os.path.dirname(path))
+            HfApi(token=getattr(self.args, "hub_token", None)).upload_file(
+                path_or_fileobj=path,
+                path_in_repo=f"{checkpoint_name}/lavida_state.pt",
+                repo_id=repo_id,
+                repo_type="model",
+                commit_message=f"Upload LaViDA state for {checkpoint_name}",
+            )
+            logger.info("LaViDA: pushed %s to %s", path, repo_id)
+        except Exception as exc:  # pragma: no cover - network/auth dependent
+            logger.warning("LaViDA: failed to push %s to Hub: %s", path, exc)
+
+    def _load_optimizer_and_scheduler(self, checkpoint):
+        if checkpoint is None:
+            return
+
+        optimizer_path = Path(checkpoint) / "optimizer.pt"
+        scheduler_path = Path(checkpoint) / "scheduler.pt"
+        can_use_trusted_loader = (
+            _is_trusted_local_checkpoint(checkpoint, self.args.output_dir)
+            and optimizer_path.is_file()
+            and scheduler_path.is_file()
+            and not getattr(self, "is_deepspeed_enabled", False)
+            and not getattr(self, "is_fsdp_enabled", False)
+            and not getattr(self, "is_fsdp_xla_v1_enabled", False)
+        )
+        if not can_use_trusted_loader:
+            return super()._load_optimizer_and_scheduler(checkpoint)
+
+        map_location = self.args.device if self.args.world_size > 1 else "cpu"
+        logger.warning(
+            "LaViDA: loading optimizer/scheduler from trusted local checkpoint %s "
+            "with a scoped torch<2.6 resume compatibility path",
+            checkpoint,
+        )
+        self.optimizer.load_state_dict(
+            _torch_load_trusted_local_checkpoint(optimizer_path, map_location=map_location)
+        )
+        self.lr_scheduler.load_state_dict(
+            _torch_load_trusted_local_checkpoint(scheduler_path, map_location="cpu")
+        )
+
+    def _load_from_checkpoint(self, resume_from_checkpoint, model=None):
+        _patch_peft_tp_resume_if_not_needed(model or self.model)
+        super()._load_from_checkpoint(resume_from_checkpoint, model=model)
+        if not self._lavida_enabled:
+            return
+        path = os.path.join(resume_from_checkpoint, "lavida_state.pt")
+        if not os.path.exists(path):
+            logger.warning("LaViDA: no lavida_state.pt at %s", path)
+            return
+        state = _torch_load_trusted_local_checkpoint(path, map_location="cpu")
+        if self._cr_reward_bonus_requested():
+            projection_state = state.get("cr_projection_head")
+            mrn_state = state.get("cr_mrn_head")
+            if projection_state is not None and self.cr_projection_head is not None:
+                self.cr_projection_head.load_state_dict(projection_state)
+            if mrn_state is not None and self.cr_mrn_head is not None:
+                self.cr_mrn_head.load_state_dict(mrn_state)
+            logger.info(
+                "LaViDA: loaded %s (reward_bonus mode; no critic state to restore)",
+                path,
+            )
+            return
+        if self._lavida_loss_mode != "chi_square":
+            logger.info(
+                "LaViDA: loaded %s (%s mode — no critic state to restore)",
+                path,
+                self._lavida_loss_mode,
+            )
+            return
+        try:
+            self.critic.load_state_dict(state["critic"])
+        except RuntimeError:
+            self.critic.load_state_dict(state["critic"], strict=False)
+            logger.warning("LaViDA: loaded critic with strict=False (architecture changed)")
+        try:
+            self.critic_ema.load_state_dict(state["critic_ema"])
+        except RuntimeError:
+            self.critic_ema.load_state_dict(state["critic_ema"], strict=False)
+            logger.warning("LaViDA: loaded critic_ema with strict=False (architecture changed)")
+        try:
+            self.critic_optimizer.load_state_dict(state["critic_optimizer"])
+        except (RuntimeError, ValueError):
+            logger.warning("LaViDA: could not restore critic optimizer state (architecture changed); re-initialised")
+        self._lavida_j_history = list(state.get("j_history", []))
+        self._lavida_reward_history = list(state.get("reward_history", []))
+        self._lavida_kill_switch_triggered = bool(state.get("kill_switch_triggered", False))
+        logger.info("LaViDA: loaded %s", path)
+
+
+def _pearson(xs: list[float], ys: list[float]) -> float | None:
+    n = min(len(xs), len(ys))
+    if n < 2:
+        return None
+    mx = sum(xs[:n]) / n
+    my = sum(ys[:n]) / n
+    num = sum((xs[i] - mx) * (ys[i] - my) for i in range(n))
+    dx = sum((xs[i] - mx) ** 2 for i in range(n))
+    dy = sum((ys[i] - my) ** 2 for i in range(n))
+    denom = math.sqrt(dx * dy)
+    if denom <= 1e-12:
+        return None
+    return num / denom

@@ -1,0 +1,157 @@
+{
+  "coverage": {
+    "n_groups": 500,
+    "n_rollouts": 4000,
+    "groups": {
+      "all_correct": 268,
+      "zero_correct": 47,
+      "mixed": 185
+    },
+    "group_fractions": {
+      "all_correct": 0.536,
+      "mixed": 0.37,
+      "zero_correct": 0.094
+    },
+    "rollouts": {
+      "all_correct": 2144,
+      "zero_correct": 376,
+      "mixed": 1480
+    },
+    "rollout_fractions": {
+      "all_correct": 0.536,
+      "mixed": 0.37,
+      "zero_correct": 0.094
+    },
+    "zero_correct_group_signal_coverage": 0.0,
+    "mixed_group_signal_coverage": 1.0,
+    "all_correct_group_signal_coverage": 0.0,
+    "nonzero_bonus_rollouts": 650,
+    "nonzero_bonus_rollout_fraction": 0.1625,
+    "diagnostic_distance_scorable_rollouts": 1460,
+    "diagnostic_distance_scorable_fraction": 0.365
+  },
+  "advantage": {
+    "beta": 0.1,
+    "pearson_shaped_vs_binary_all_rollouts": 0.9786459516639313,
+    "pearson_shaped_vs_binary_mixed_rollouts": 0.9786459516639322,
+    "cosine_shaped_vs_binary_all_rollouts": 0.978645951663932,
+    "cosine_shaped_vs_binary_mixed_rollouts": 0.978645951663932,
+    "norm_ratio_shaped_to_binary_all_rollouts": 1.0000916014992984,
+    "relative_delta_norm_all_rollouts": 0.20666885877813915,
+    "novel_advantage_energy_fraction_all_rollouts": 0.042252101291796906,
+    "mixed_group_relative_delta_norm_mean": 0.14494379345893357,
+    "mixed_group_relative_delta_norm_median": 0.11621461043821284,
+    "advantage_changed_rollouts": 1480,
+    "advantage_changed_rollout_fraction": 0.37,
+    "mixed_group_advantage_cosine_mean": 0.9786463852064593,
+    "mixed_group_advantage_cosine_median": 0.9932474234299128,
+    "mixed_group_novel_energy_fraction_mean": 0.04102557616963308,
+    "mixed_group_novel_energy_fraction_median": 0.013459555849839488,
+    "mixed_group_outcome_gap_multiplier_mean": 1.604070729229441,
+    "mixed_group_outcome_gap_multiplier_median": 1.561600112915039
+  },
+  "novelty": {
+    "distance_correctness_regression_intercept": 6.440964809289351,
+    "distance_correctness_regression_slope": -6.440964809289379,
+    "residual_variance_fraction_after_global_correctness_regression": 0.36630718633085235,
+    "prompt_centered_correctness_slope": -6.053446905140456,
+    "residual_variance_fraction_after_prompt_centering_and_correctness": 0.37849129333769377,
+    "within_outcome_variance_fraction_after_prompt_x_outcome_means": 0.2320741712786989
+  },
+  "advantage_sign": {
+    "strict_advantage_sign_flips": 32,
+    "strict_advantage_sign_flip_rate_all_rollouts": 0.008,
+    "mixed_incorrect_negative_to_positive": 32,
+    "mixed_incorrect_negative_to_positive_rate": 0.04923076923076923,
+    "advantage_sign_collapses": 0
+  },
+  "diagnostic_geometry": {
+    "pooled_auroc_neg_distance": 0.7107958214624881,
+    "pooled_positive_negative_pairs": 526500,
+    "within_prompt_pair_weighted_auroc_neg_distance": 0.6183127572016461,
+    "within_prompt_positive_negative_pairs": 1944,
+    "within_prompt_groups_scorable": 165,
+    "within_prompt_macro_auroc_mean": 0.6330194805194804,
+    "prompt_centered_score_correctness_pearson": 0.2408033819065533,
+    "selection_note": "Correct rollouts in lone-correct groups have undefined diagnostic distance; within-prompt AUROC excludes those groups. Deployed-distance analysis does not."
+  },
+  "ordering": {
+    "all_pairs": 14000,
+    "cross_outcome_pairs": 2084,
+    "strict_reversals": 0,
+    "cross_outcome_collapses": 0,
+    "binary_tied_pairs": 11916,
+    "incorrect_tied_pairs": 2549,
+    "mixed_incorrect_tied_pairs": 1233,
+    "correct_tied_pairs": 9367,
+    "ties_broken": 1233,
+    "incorrect_ties_broken": 1233,
+    "mixed_incorrect_ties_broken": 1233,
+    "correct_ties_broken": 0,
+    "strict_cross_outcome_reversal_rate": 0.0,
+    "binary_tie_break_rate": 0.10347432024169184,
+    "incorrect_tie_break_rate": 0.48371910553158104,
+    "mixed_incorrect_tie_break_rate": 1.0,
+    "correct_tie_break_rate": 0.0
+  },
+  "bootstrap": {
+    "resamples": 20000,
+    "seed": 0,
+    "intervals": {
+      "mixed_group_fraction": [
+        0.328,
+        0.412
+      ],
+      "nonzero_bonus_rollout_fraction": [
+        0.1395,
+        0.1865
+      ],
+      "advantage_pearson_mixed": [
+        0.9733954804032725,
+        0.9833872794992019
+      ],
+      "advantage_cosine_mixed": [
+        0.9733954804032725,
+        0.9833872794992019
+      ],
+      "advantage_norm_ratio_all": [
+        1.0000866878463195,
+        1.0000966042073989
+      ],
+      "advantage_relative_delta_norm_all": [
+        0.1822864539718651,
+        0.2306819130818497
+      ],
+      "novel_advantage_energy_fraction_all": [
+        0.03294945851912559,
+        0.052501238730408496
+      ],
+      "global_correctness_residual_fraction": [
+        0.3336539232043655,
+        0.39570505889078517
+      ],
+      "prompt_centered_correctness_residual_fraction": [
+        0.3418825013983394,
+        0.4137416789870746
+      ],
+      "within_outcome_variance_fraction": [
+        0.19044458074334517,
+        0.2760783257027458
+      ],
+      "within_prompt_diagnostic_auroc": [
+        0.5707595581217066,
+        0.6663643416830987
+      ]
+    }
+  },
+  "provenance": {
+    "records": "evidence/inputs/geometry_records.json",
+    "records_sha256": "ea070a0281d6dab2d9f3a08745c2d0df19eccc4cea5f6506ee6e14af14e4742e",
+    "estimator": "evidence/estimators/analyze_coverage_advantage_novelty.py",
+    "normalization": "per-prompt population std plus 1e-4",
+    "beta": 0.1,
+    "post_hoc": true,
+    "status": "recomputed_from_saved_records",
+    "policy_gradient": "not part of this CPU recomputation"
+  }
+}

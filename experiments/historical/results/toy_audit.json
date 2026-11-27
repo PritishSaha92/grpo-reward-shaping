@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "input_mode": "reconstructed",
+    "normalization": {
+      "normalization": "group",
+      "epsilon": 0,
+      "ddof": 0
+    },
+    "scope": "reward/advantage audit only; no model-gradient inference"
+  },
+  "counts": {
+    "groups": 3,
+    "rollouts": 12,
+    "group_types": {
+      "all_wrong": 1,
+      "mixed": 2,
+      "all_correct": 0
+    },
+    "defined_group_cosines": 2,
+    "undefined_group_cosines": 1
+  },
+  "coverage": {
+    "direct_reward_change_count": 4,
+    "reward_observation_count": 12,
+    "direct_reward_change_fraction": 0.3333333333333333,
+    "score_available_count": 0,
+    "availability_observation_count": 0,
+    "score_available_fraction": null,
+    "note": "Unlogged availability remains unknown; direct change is not score availability."
+  },
+  "global": {
+    "cosine": 0.9522670168666452,
+    "energy": 0.09318752858790058,
+    "relative": 0.30897567261308634,
+    "norm": 1.0
+  },
+  "advantage_sign_changes": 0,
+  "ordering": {
+    "incorrect_ties": 8,
+    "incorrect_ties_broken": 1,
+    "correct_ties": 2,
+    "correct_ties_broken": 0,
+    "strict_cross_outcome_pairs": 8,
+    "strict_cross_outcome_reversals": 0
+  },
+  "groups": [
+    {
+      "group_id": "all_wrong",
+      "n_rollouts": 4,
+      "n_correct": 0,
+      "group_type": "all_wrong",
+      "cosine": null,
+      "energy": null,
+      "relative": null,
+      "norm": null
+    },
+    {
+      "group_id": "equal",
+      "n_rollouts": 4,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 1.0,
+      "energy": 0.0,
+      "relative": 0.0,
+      "norm": 1.0
+    },
+    {
+      "group_id": "unequal",
+      "n_rollouts": 4,
+      "n_correct": 2,
+      "group_type": "mixed",
+      "cosine": 0.9045340337332908,
+      "energy": 0.181818181818182,
+      "relative": 0.436957586652776,
+      "norm": 1.0
+    }
+  ]
+}

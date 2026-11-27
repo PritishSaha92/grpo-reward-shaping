@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "checks": {
+    "direct_projection_energy": {
+      "comparisons": 1489,
+      "max_absolute_error": 1.3322676295501875e-15,
+      "passed": true
+    },
+    "relative_change_identity": {
+      "comparisons": 1489,
+      "max_absolute_error": 6.217248937900877e-15,
+      "passed": true
+    },
+    "historical_cosine": {
+      "comparisons": 1,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "historical_energy": {
+      "comparisons": 1,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "historical_norm_ratio": {
+      "comparisons": 1,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "historical_relative_change": {
+      "comparisons": 1,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "historical_median": {
+      "comparisons": 1,
+      "max_absolute_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    "centered_decomposition": {
+      "comparisons": 1480,
+      "max_absolute_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    "orthogonality": {
+      "comparisons": 1480,
+      "max_absolute_error": 3.885780586188048e-16,
+      "passed": true
+    },
+    "cosine_squared_formula": {
+      "comparisons": 1480,
+      "max_absolute_error": 1.3322676295501878e-15,
+      "passed": true
+    },
+    "zero_within_incorrect_component": {
+      "comparisons": 688,
+      "max_absolute_error": 1.3322676295501878e-15,
+      "passed": true
+    },
+    "constant_norm_ratio": {
+      "comparisons": 688,
+      "max_absolute_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    "homogeneous_shaped_zero": {
+      "comparisons": 2520,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "energy_partition": {
+      "comparisons": 8,
+      "max_absolute_error": 4.2327252813834093e-16,
+      "passed": true
+    },
+    "zero_block_invariance": {
+      "comparisons": 8,
+      "max_absolute_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    "normalization_angle_invariance": {
+      "comparisons": 740,
+      "max_absolute_error": 6.661338147750939e-16,
+      "passed": true
+    },
+    "per_group_penalty_mean": {
+      "comparisons": 740,
+      "max_absolute_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    "per_group_shaped_mean": {
+      "comparisons": 740,
+      "max_absolute_error": 1.1102230246251565e-16,
+      "passed": true
+    },
+    "constant_global_within_energy": {
+      "comparisons": 2,
+      "max_absolute_error": 3.6764814512885196e-32,
+      "passed": true
+    },
+    "global_penalty_matching": {
+      "comparisons": 1,
+      "max_absolute_error": 0.0,
+      "passed": true
+    }
+  },
+  "atol": 1e-10,
+  "rtol": 1e-08
+}

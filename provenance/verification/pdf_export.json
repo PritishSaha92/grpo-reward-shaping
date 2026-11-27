@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "file": "docs/reproducibility_checklist.pdf",
+      "pages": 2
+    },
+    {
+      "file": "figures/assignment_gradient_replay.pdf",
+      "pages": 1
+    },
+    {
+      "file": "figures/components_and_interventions.pdf",
+      "pages": 1
+    },
+    {
+      "file": "figures/direct_residual_comparison.pdf",
+      "pages": 1
+    },
+    {
+      "file": "figures/energy_accounting.pdf",
+      "pages": 1
+    },
+    {
+      "file": "figures/gradient_lifecycle.pdf",
+      "pages": 1
+    },
+    {
+      "file": "figures/group_novelty_ecdf.pdf",
+      "pages": 1
+    },
+    {
+      "file": "figures/normalization_example.pdf",
+      "pages": 1
+    },
+    {
+      "file": "figures/signal_route.pdf",
+      "pages": 1
+    }
+  ],
+  "identity_path_hits": []
+}

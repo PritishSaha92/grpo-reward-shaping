@@ -1,0 +1,66 @@
+{
+  "adapter/adapter_config.json": {
+    "sha256": "8c533313bd4b72c85e49eb75d4450f2a92a62b798852e5947d8d9fcc6119e497",
+    "size": 1099
+  },
+  "adapter/adapter_model.safetensors": {
+    "sha256": "4729dfc26598884d852fd5eeb095e5472022d6d43d8f3b6efe81920f29d5601a",
+    "size": 645975704
+  },
+  "adapter/README.md": {
+    "sha256": "76bae7188b34e8f647456667f8bd3732c97147dfb333c791ea8dd5d8b1268c94",
+    "size": 2261
+  },
+  "adapter/run_manifest.json": {
+    "sha256": "f7d64cc41674954b97841d6b503ceb6f8b124eda97b1ea989d37befe09566880",
+    "size": 2146
+  },
+  "adapter/tokenizer.json": {
+    "sha256": "5eee858c5123a4279c3e1f7b81247343f356ac767940b2692a928ad929543214",
+    "size": 11422063
+  },
+  "adapter/tokenizer_config.json": {
+    "sha256": "60f6e7bc948cedd377a20f01d022ef664d026fbc93d72e0a9bdac233f8632181",
+    "size": 4689
+  },
+  "adapter/special_tokens_map.json": {
+    "sha256": "6676f091c8bc4d1b50146427cfde92073402866b87b6e39223227931b70083e9",
+    "size": 616
+  },
+  "adapter/added_tokens.json": {
+    "sha256": "58b54bbe36fc752f79a24a271ef66a0a0830054b4dfad94bde757d851968060b",
+    "size": 605
+  },
+  "adapter/merges.txt": {
+    "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+    "size": 1671853
+  },
+  "adapter/vocab.json": {
+    "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "size": 2776833
+  },
+  "adapter/checkpoint-2000/lavida_state.pt": {
+    "sha256": "fdecbe67692a4a169acae92ffc0893136507cf59477f3952d530f0d89304b8a2",
+    "size": 1324093
+  },
+  "base/config.json": {
+    "sha256": "c356fb949ec11718702c9f8495f16a4f8625587dba4084229d7bc8098efc7ceb",
+    "size": 678
+  },
+  "base/generation_config.json": {
+    "sha256": "8c970692323e3ea0e9b8b0a4dca79388d31226e41f83c9fd6014804280ebf6e8",
+    "size": 138
+  },
+  "base/model.safetensors.index.json": {
+    "sha256": "624bf7c47cd12468fdc16e38a47cf4f19e0415b859a223ba3c027eed2f0e1028",
+    "size": 27752
+  },
+  "base/tokenizer.json": {
+    "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "size": 7031645
+  },
+  "base/tokenizer_config.json": {
+    "sha256": "a668be4b083078aca7c38853dd929184e81534d72525a9c1ddb84ea6fd1de6f8",
+    "size": 7318
+  }
+}

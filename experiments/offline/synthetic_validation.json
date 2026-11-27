@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "tests_run": 15,
+  "failures": [],
+  "errors": [],
+  "scope": "Synthetic fixtures only; no new empirical outcomes read"
+}

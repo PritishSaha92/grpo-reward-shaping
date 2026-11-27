@@ -1,0 +1,16 @@
+{
+  "core.py": "075e301b6cbd249937e3787342824d811bde482fa58b0a8d4e6aa16a50cbed92",
+  "data/download_manifest.json": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b",
+  "data/model_pins.json": "34c902e28023e3891bcac96bd3062254a706ec71381e9dd8bc8a89e5e1be46bc",
+  "data/prompt_source/examples.py": "91cc833769d9d14472612eaece4ae4e7ae125004decf8915a7a8348f34da7170",
+  "data/prompt_source/utils.py": "8827ca1c48d7fceb42581bc90316dba4f04dfa34e2f64273a99c9ba0315c36c2",
+  "data/PROTOCOL.md": "1e46ec2f991b4be6af46dea4482141f8cdb3d76bb78dc92c3cdf52032e8855ca",
+  "data/provenance.json": "429e1e6b1bb3b0a40db2e5ab035ffea003c9e1bc6c50dc30abe8ff5d49288565",
+  "data/replay_records.json": "cd5e1294ea38203a99ca0c5f5ed15090f89f90ecabbc2ebd62ca644addbce505",
+  "data/seal.json": "d6652a838febff2bec116b09fc9e53b960386eb210965b58b96eb8d0a012a0c6",
+  "data/weight_plan.json": "d3480097dae8ebdd3132a06236fa22b0671da9df0fa879a5e8a1c9130b870564",
+  "replay.py": "bbea81146dea6d4cea2c115ae05cd2390b2416e01471f35eabdbe0db254ef95c",
+  "test_core.py": "7452cbc97d73e71d476c079b9e3b3441d14f2d0e8c714f3ec91c71e70845a822",
+  "test_reference.py": "3a4c40ab8f22178eb50cacead2bfbe7166df5bd6809442e7c97a4fd0cf1052d5",
+  "test_device_guard.py": "c39203490a2e1ba382297c047ea529240f3a7b72b92ffed906e5eea9225d62e3"
+}

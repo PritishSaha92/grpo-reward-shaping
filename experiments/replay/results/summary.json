@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "result_status": "COMPLETE",
+  "groups": 185,
+  "completions": 1480,
+  "common_divisor": 1480,
+  "result_sha256": "14aff10587ab6289f1c405fbd8f96f5bf5c113639e46df3bb5d9f4161eca649c",
+  "exact_reference": {
+    "learned": {
+      "observed_squared_norm": 3.2637267344726977e-06,
+      "exact_expected_squared_norm": 3.0154029946128046e-06,
+      "observed_over_expected_squared_norm": 1.0823517587213178,
+      "root_expected_squared_norm": 0.001736491576314957,
+      "residual_norm_over_binary_norm": 0.17482816219956948,
+      "residual_binary_cosine": -0.07773972972054813
+    },
+    "length": {
+      "observed_squared_norm": 5.330264425823945e-06,
+      "exact_expected_squared_norm": 2.2962658910444163e-06,
+      "observed_over_expected_squared_norm": 2.3212749214332353,
+      "root_expected_squared_norm": 0.0015153434894585505,
+      "residual_norm_over_binary_norm": 0.223423512348814,
+      "residual_binary_cosine": -0.2517886790615686
+    }
+  },
+  "primary": {
+    "learned": {
+      "comparison": "learned / binary",
+      "cosine": 0.9844068009101694,
+      "norm_ratio": 0.9857364185546249,
+      "relative_difference": 0.1759119615173638,
+      "reference_norm": 0.01033345380220118,
+      "compared_norm": 0.010186061742281463
+    },
+    "constant": {
+      "comparison": "constant / binary",
+      "cosine": 0.9999999995705404,
+      "norm_ratio": 1.000092661944048,
+      "relative_difference": 9.718659686795168e-05,
+      "reference_norm": 0.01033345380220118,
+      "compared_norm": 0.010334411320119223
+    },
+    "length": {
+      "comparison": "length / binary",
+      "cosine": 0.9713389583202245,
+      "norm_ratio": 0.9568237308006682,
+      "relative_difference": 0.23814138632191947,
+      "reference_norm": 0.01033345380220118,
+      "compared_norm": 0.009887293819078484
+    }
+  },
+  "permutation_distributions": {
+    "full_cosine": {
+      "defined": 32,
+      "undefined": 0,
+      "min": 0.9656133551695898,
+      "q1": 0.9681125498517011,
+      "median": 0.9694395852203197,
+      "q3": 0.9712633200005413,
+      "max": 0.9755087231443617
+    },
+    "full_relative_difference": {
+      "defined": 32,
+      "undefined": 0,
+      "min": 0.22263435858320318,
+      "q1": 0.24282861275193762,
+      "median": 0.24831809394361012,
+      "q3": 0.2544274085057901,
+      "max": 0.26262720002137097
+    },
+    "residual_cosine": {
+      "defined": 32,
+      "undefined": 0,
+      "min": -0.1719343116118113,
+      "q1": -0.0663382160656329,
+      "median": -0.03082944524205427,
+      "q3": 0.03513460841431363,
+      "max": 0.1696908524045303
+    },
+    "residual_norm": {
+      "defined": 32,
+      "undefined": 0,
+      "min": 0.001646853568609903,
+      "q1": 0.0017017778753808312,
+      "median": 0.0017212626606256296,
+      "q3": 0.0017683135657338806,
+      "max": 0.0018621541567953978
+    },
+    "residual_norm_ratio": {
+      "defined": 32,
+      "undefined": 0,
+      "min": 0.9115869319751828,
+      "q1": 0.9419893194457558,
+      "median": 0.9527747808492817,
+      "q3": 0.9788189848099836,
+      "max": 1.0307627994459825
+    },
+    "residual_squared_norm": {
+      "defined": 32,
+      "undefined": 0,
+      "min": 2.7121266764431728e-06,
+      "q1": 2.896049068951528e-06,
+      "median": 2.9627452228272555e-06,
+      "q3": 3.126945586484848e-06,
+      "max": 3.467618103670379e-06
+    }
+  },
+  "residual_cross_rule": {
+    "comparison": "residual_length / residual_learned",
+    "cosine": -0.0025575912888680485,
+    "norm_ratio": 1.277960653122762,
+    "relative_difference": 1.624721647851669,
+    "reference_norm": 0.0018065787374129858,
+    "compared_norm": 0.002308736543181994
+  },
+  "length_vs_learned": {
+    "comparison": "length / learned",
+    "cosine": 0.9566653175882354,
+    "norm_ratio": 0.9706689463737669,
+    "relative_difference": 0.29152627967811706,
+    "reference_norm": 0.010186061742281463,
+    "compared_norm": 0.009887293819078484
+  },
+  "finite_32_draw_comparison": {
+    "mean_squared_residual_norm": 3.0057743742895265e-06,
+    "mean_over_exact_expectation": 0.9968068545595795,
+    "exact_expected_squared_difference_from_learned": 6.279129729085502e-06,
+    "empirical_mean_squared_difference_from_learned": 6.3544315195521556e-06,
+    "learned_residual_smaller_than_draws": 4,
+    "length_closer_to_learned_than_draws": 0
+  },
+  "gram_min_eigenvalue": 4.083864824131624e-14,
+  "single_incorrect": 53,
+  "scope": "Conditional random-assignment second moment and descriptive fixed-sample gradients; no usefulness or significance claim"
+}

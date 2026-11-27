@@ -1,0 +1,36 @@
+"""Trainable MRN distance head for G7 reward-bonus CR-LaViDA."""
+
+from __future__ import annotations
+
+import torch
+import torch.nn as nn
+
+
+class MRNDistance(nn.Module):
+    """Mahalanobis-like distance with PSD metric ``M = L L^T``."""
+
+    def __init__(self, dim: int):
+        super().__init__()
+        self.dim = int(dim)
+        if self.dim <= 0:
+            raise ValueError("dim must be positive")
+        self.L = nn.Parameter(torch.empty(self.dim, self.dim))
+        with torch.no_grad():
+            self.L.copy_(torch.eye(self.dim))
+
+    def forward(self, x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
+        if x.shape != y.shape:
+            x, y = torch.broadcast_tensors(x, y)
+        if x.shape[-1] != self.dim:
+            raise ValueError(f"expected final dim {self.dim}, got {x.shape[-1]}")
+        diff = x - y
+        metric = self.L @ self.L.T
+        q = (diff @ metric * diff).sum(dim=-1)
+        q = torch.clamp(q, min=0.0)
+        return torch.sqrt(q + 1e-6)
+
+    def M_offdiag_norm(self) -> float:
+        with torch.no_grad():
+            metric = self.L @ self.L.T
+            offdiag = metric - torch.diag(torch.diag(metric))
+            return float(offdiag.norm(p="fro").item())

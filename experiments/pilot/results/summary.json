@@ -1,0 +1,133 @@
+{
+  "result_sha256": "40389e6ba45c53c8d5361f3f75073cffac140a50f01fc8010ae68c4069311306",
+  "scope": "fixed-sample untempered completion-mean LoRA score gradient; no KL/head loss",
+  "groups": 32,
+  "rollouts": 256,
+  "primary": {
+    "learned": {
+      "cosine": 0.9798416971941589,
+      "norm_ratio": 1.0040167040786852,
+      "relative_difference": 0.20123289839769476,
+      "norm_a": 0.021268678611521187,
+      "norm_b": 0.02135410859964833
+    },
+    "constant": {
+      "cosine": 0.9999999995872713,
+      "norm_ratio": 1.0000862677631834,
+      "relative_difference": 9.092664888335444e-05,
+      "norm_a": 0.021268678611521187,
+      "norm_b": 0.02127051341285087
+    },
+    "length": {
+      "cosine": 0.9841582232424685,
+      "norm_ratio": 0.9783301517041467,
+      "relative_difference": 0.177388156431266,
+      "norm_a": 0.021268678611521187,
+      "norm_b": 0.020807789572556263
+    }
+  },
+  "length_vs_learned": {
+    "cosine": 0.9641022487488685,
+    "norm_ratio": 0.9744162101385462,
+    "relative_difference": 0.2657315031322456,
+    "norm_a": 0.02135410859964833,
+    "norm_b": 0.020807789572556263
+  },
+  "length_residual_vs_learned_residual": {
+    "cosine": -0.06482406214777109,
+    "norm_ratio": 0.8098461379326466,
+    "relative_difference": 1.326968650675433,
+    "norm_a": 0.004264321550371791,
+    "norm_b": 0.003453444338471551
+  },
+  "shuffle_summary": {
+    "full_gradient_vs_binary": {
+      "cosine": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9632718516715851,
+        "q1": 0.9711539226097415,
+        "median": 0.9751309220488311,
+        "q3": 0.9770065155804948,
+        "max": 0.9796823237746612
+      },
+      "norm_ratio": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9954522338519793,
+        "q1": 1.0043388969138176,
+        "median": 1.0086765998576928,
+        "q3": 1.0133215392199626,
+        "max": 1.0316606738051546
+      },
+      "relative_difference": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.2011969552789542,
+        "q1": 0.21597304263956535,
+        "median": 0.22531655921778565,
+        "q3": 0.24181468120012567,
+        "max": 0.2709778076259132
+      }
+    },
+    "full_gradient_vs_learned": {
+      "cosine": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9336877105632895,
+        "q1": 0.9472267238902058,
+        "median": 0.9534102201494927,
+        "q3": 0.9600199477090039,
+        "max": 0.9715226638576371
+      },
+      "norm_ratio": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9914697930901808,
+        "q1": 1.0003209038592922,
+        "median": 1.0046412532381954,
+        "q3": 1.0092676098948135,
+        "max": 1.0275333763015788
+      },
+      "relative_difference": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.23780852342180533,
+        "q1": 0.28706008915018355,
+        "median": 0.30595345637775373,
+        "q3": 0.3267118417758639,
+        "max": 0.36337517887776666
+      }
+    },
+    "residual_gradient_vs_original": {
+      "cosine": {
+        "defined": 32,
+        "excluded": 0,
+        "min": -0.2799670619829564,
+        "q1": -0.10686973139452917,
+        "median": -0.01923169552874343,
+        "q3": 0.10168541802804032,
+        "max": 0.2743491669133377
+      },
+      "norm_ratio": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 0.9767759012707862,
+        "q1": 1.0779689434758821,
+        "median": 1.122615086798938,
+        "q3": 1.1956804282295712,
+        "max": 1.3259571636840308
+      },
+      "relative_difference": {
+        "defined": 32,
+        "excluded": 0,
+        "min": 1.190855092676698,
+        "q1": 1.437488295835316,
+        "median": 1.532099129194116,
+        "q3": 1.6360492677820349,
+        "max": 1.8196453856759334
+      }
+    }
+  },
+  "interpretation_boundary": "Assignment-sensitive gradient changes at this checkpoint; no evidence that any assignment improves validation performance. No p-values or learning-quality ranking."
+}

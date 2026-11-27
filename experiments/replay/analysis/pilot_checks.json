@@ -1,0 +1,11 @@
+{
+  "shared_record_groups": 32,
+  "shared_completion_records_identical": true,
+  "shared_weights_and_permutations_identical": true,
+  "native_runtime_identical": true,
+  "model_revisions_identical": true,
+  "parameter_layout_identical": true,
+  "prior_divisor": 256,
+  "current_divisor": 1480,
+  "subgroup_gradient_reproduction": "Not available: prior pilot did not store per-completion scores/norms or subgroup cross-Grams; new complete-cohort bank does not retain the old-subset aggregate separately."
+}

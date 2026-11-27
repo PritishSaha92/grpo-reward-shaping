@@ -1,0 +1,67 @@
+"""Hard-negative mining utilities for G7 reward-bonus CR-LaViDA."""
+
+from __future__ import annotations
+
+import random
+from typing import Any
+
+import torch
+
+
+def mine_reward_proximity_negatives(
+    rewards: torch.Tensor,
+    is_correct: torch.Tensor,
+    K: int = 16,
+) -> dict[str, Any]:
+    """Mine incorrect rollouts nearest to the best correct reward."""
+
+    if rewards.ndim != 1:
+        raise ValueError(f"rewards must be 1-D, got shape {tuple(rewards.shape)}")
+    if is_correct.ndim != 1:
+        raise ValueError(f"is_correct must be 1-D, got shape {tuple(is_correct.shape)}")
+    if rewards.shape[0] != is_correct.shape[0]:
+        raise ValueError("rewards and is_correct must have the same length")
+    if K < 1:
+        raise ValueError(f"K must be at least 1, got {K!r}")
+
+    correct_mask = is_correct.to(dtype=torch.bool)
+    if not bool(correct_mask.any().item()):
+        return {
+            "positive_idx": None,
+            "negative_indices": None,
+            "padded": False,
+            "skip": True,
+        }
+
+    rewards_float = rewards.detach().to(dtype=torch.float32, device="cpu")
+    correct_cpu = correct_mask.detach().to(device="cpu")
+    masked_rewards = torch.where(
+        correct_cpu,
+        rewards_float,
+        torch.full_like(rewards_float, float("-inf")),
+    )
+    positive_idx = int(masked_rewards.argmax().item())
+    negative_pool = (~correct_cpu).nonzero(as_tuple=False).flatten().tolist()
+    if not negative_pool:
+        return {
+            "positive_idx": positive_idx,
+            "negative_indices": None,
+            "padded": False,
+            "skip": True,
+        }
+
+    reward_pos = float(rewards_float[positive_idx].item())
+    negative_pool.sort(key=lambda idx: (abs(float(rewards_float[idx].item()) - reward_pos), idx))
+    selected = negative_pool[: min(K, len(negative_pool))]
+    padded = len(selected) < K
+    if padded:
+        selected = list(selected)
+        while len(selected) < K:
+            selected.append(random.choice(negative_pool))
+
+    return {
+        "positive_idx": positive_idx,
+        "negative_indices": selected,
+        "padded": padded,
+        "skip": False,
+    }

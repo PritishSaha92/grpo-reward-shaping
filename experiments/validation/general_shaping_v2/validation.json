@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "identity_checks": 20836,
+  "finite_difference_checks": 2,
+  "max_identity_absolute_error": 5.218048215738236e-15,
+  "max_finite_difference_absolute_error": 2.8731883539023784e-10,
+  "failures": [],
+  "eligible_incorrect_rollouts": 650,
+  "strictly_positive_penalties": 650,
+  "seed": 20261126,
+  "identity_atol": 1e-10,
+  "identity_rtol": 1e-08,
+  "finite_difference_atol": 1e-07,
+  "finite_difference_rtol": 1e-06,
+  "source_sha256": "c137390b00b7ea578eaf9e2605746b890e038d2a260aa13b3e48f8e647d71bfe",
+  "ledger_sha256": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+  "amendment_sha256": "db3ed54c8afd7872a295d16329c0d12ef9990588d38ceb539eb3c4c0a22d91b1",
+  "scope": "Post-result mathematical validation; no model gradient or new training result."
+}

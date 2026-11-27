@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "seal_sha256": "576b87ab5f345f7483615a410cec38c37e5b01e83d46c95fc5a1d87f3d8377d6",
+  "claims": [
+    {
+      "claim": "primary_comparison",
+      "file": "summary.json",
+      "sha256": "bc56b4eeba21d29531aa85ce7068fa7269869361ebfe37e83e4fff19441fd263",
+      "key": "rules",
+      "cohort": "500 fixed prompt groups; per-group summaries on 185 mixed groups",
+      "script": "src/audit.py",
+      "script_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "status": "completed_cpu_analysis_of_saved_records"
+    },
+    {
+      "claim": "one_incorrect",
+      "file": "summary.json",
+      "sha256": "bc56b4eeba21d29531aa85ce7068fa7269869361ebfe37e83e4fff19441fd263",
+      "key": "structure.exactly_one_incorrect_count",
+      "cohort": "185 mixed groups",
+      "script": "src/audit.py",
+      "script_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "status": "completed_cpu_analysis_of_saved_records"
+    },
+    {
+      "claim": "length_association",
+      "file": "summary.json",
+      "sha256": "bc56b4eeba21d29531aa85ce7068fa7269869361ebfe37e83e4fff19441fd263",
+      "key": "length_association",
+      "cohort": "incorrect rollouts within eligible prompts; defined counts reported",
+      "script": "src/audit.py",
+      "script_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "status": "completed_cpu_analysis_of_saved_records"
+    },
+    {
+      "claim": "calibration",
+      "file": "calibration.json",
+      "sha256": "3853ab865a51dd17a5205d4356895a5ab9623cb17d526ae6222c6c00880eca22",
+      "key": "coefficient",
+      "cohort": "650 eligible incorrect rollouts",
+      "script": "src/audit.py",
+      "script_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "status": "completed_cpu_analysis_of_saved_records"
+    },
+    {
+      "claim": "censoring",
+      "file": "censoring_report.json",
+      "sha256": "21e32698e756291155f9c2b22b1593baf05443ceecfcb8dfa0746a180935d242",
+      "key": "all_rollouts",
+      "cohort": "4000 saved completion-token records",
+      "script": "src/audit.py",
+      "script_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "status": "completed_cpu_analysis_of_saved_records"
+    },
+    {
+      "claim": "sensitivity",
+      "file": "sensitivity_results.json",
+      "sha256": "307d11fdbd3697820db4f3b3bda7ec30bacdc429c4a3cfd105be2719eba3d73d",
+      "key": "length_group",
+      "cohort": "same fixed cohort",
+      "script": "src/audit.py",
+      "script_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "status": "completed_cpu_analysis_of_saved_records"
+    }
+  ]
+}

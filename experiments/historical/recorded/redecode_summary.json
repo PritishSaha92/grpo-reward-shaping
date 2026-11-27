@@ -1,0 +1,111 @@
+{
+  "math500_pass8": {
+    "benchmark": "math500",
+    "total": 500,
+    "correct": 453,
+    "accuracy": 0.906,
+    "accuracy_pct": 90.6,
+    "sample_mean_correctness": {
+      "total_samples": 4000,
+      "total_correct": 2974,
+      "mean": 0.7435,
+      "mean_pct": 74.35,
+      "problem_se": 0.0159,
+      "problem_se_pct": 1.59,
+      "binomial_se": 0.0069,
+      "binomial_se_pct": 0.69,
+      "samples_per_problem": 8
+    },
+    "by_level": {
+      "level_1": {
+        "total": 43,
+        "correct": 43,
+        "accuracy": 1.0,
+        "accuracy_pct": 100.0
+      },
+      "level_2": {
+        "total": 90,
+        "correct": 86,
+        "accuracy": 0.9556,
+        "accuracy_pct": 95.56
+      },
+      "level_3": {
+        "total": 105,
+        "correct": 103,
+        "accuracy": 0.981,
+        "accuracy_pct": 98.1
+      },
+      "level_4": {
+        "total": 128,
+        "correct": 117,
+        "accuracy": 0.9141,
+        "accuracy_pct": 91.41
+      },
+      "level_5": {
+        "total": 134,
+        "correct": 104,
+        "accuracy": 0.7761,
+        "accuracy_pct": 77.61
+      }
+    },
+    "easy_1_3": {
+      "total": 238,
+      "correct": 232,
+      "accuracy": 0.9748,
+      "accuracy_pct": 97.48
+    },
+    "hard_4_5": {
+      "total": 262,
+      "correct": 221,
+      "accuracy": 0.8435,
+      "accuracy_pct": 84.35
+    },
+    "by_subject": {
+      "Algebra": {
+        "total": 124,
+        "correct": 120,
+        "accuracy": 0.9677,
+        "accuracy_pct": 96.77
+      },
+      "Counting & Probability": {
+        "total": 38,
+        "correct": 36,
+        "accuracy": 0.9474,
+        "accuracy_pct": 94.74
+      },
+      "Geometry": {
+        "total": 41,
+        "correct": 33,
+        "accuracy": 0.8049,
+        "accuracy_pct": 80.49
+      },
+      "Intermediate Algebra": {
+        "total": 97,
+        "correct": 77,
+        "accuracy": 0.7938,
+        "accuracy_pct": 79.38
+      },
+      "Number Theory": {
+        "total": 62,
+        "correct": 60,
+        "accuracy": 0.9677,
+        "accuracy_pct": 96.77
+      },
+      "Prealgebra": {
+        "total": 82,
+        "correct": 76,
+        "accuracy": 0.9268,
+        "accuracy_pct": 92.68
+      },
+      "Precalculus": {
+        "total": 56,
+        "correct": 51,
+        "accuracy": 0.9107,
+        "accuracy_pct": 91.07
+      }
+    },
+    "pass_k": 8,
+    "temperature": 0.6,
+    "n_samples": 8
+  }
+}

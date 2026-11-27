@@ -1,0 +1,3193 @@
+{
+  "source_archive_sha256": "c4ffe0f001aaa9a255cf344dcad73ea477d6787391391943e4a311a2359d23d4",
+  "members": [
+    {
+      "archive_member": "DELIVERY_MANIFEST.json",
+      "source_sha256": "f88c4f102f854dbdfb8ba3027ab41dc41f1993443aaf0d9eabb6fa48f3c5a8eb",
+      "bytes": 42477,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Original delivery manifest; public repository uses checksums.json."
+    },
+    {
+      "archive_member": "EXECUTION_LOG.md",
+      "source_sha256": "9e70e60a8aa34150c0adce2605333339b70088da9742c3bc1b3370254f820990",
+      "bytes": 5364,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Operational chronology retained privately; scientific records and protocols retained."
+    },
+    {
+      "archive_member": "FINAL_VERIFICATION.json",
+      "source_sha256": "c41075f784b223c4c48061281df6415212186dbdf0f757df170784d66201f8de",
+      "bytes": 2524,
+      "disposition": "included",
+      "repository_files": [
+        "provenance/verification/original_cpu_validation.json"
+      ],
+      "reason": "Original record retained with any private metadata redacted; original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "MANUSCRIPT_CLAIM_MAP.json",
+      "source_sha256": "8d953d1fceb952615c6eb15d017aff9f071bb214a6c6820fa13d72d70c151ba4",
+      "bytes": 12351,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Replaced by provenance/claims.json with the public repository paths."
+    },
+    {
+      "archive_member": "ORIGINAL_CPU_README.md",
+      "source_sha256": "7821669c147b47d983adc5a6c26773d9301b27ff78505559184984beac0deb28",
+      "bytes": 6745,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Superseded by the tested root quickstart and reproduction guide."
+    },
+    {
+      "archive_member": "PAPER_EVIDENCE_README.md",
+      "source_sha256": "ea6c20198460fc88e9d73647a6367df06165c2e231ab3bf9608464caad1da1d6",
+      "bytes": 1973,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Superseded by the tested root quickstart and reproduction guide."
+    },
+    {
+      "archive_member": "README.md",
+      "source_sha256": "ea6c20198460fc88e9d73647a6367df06165c2e231ab3bf9608464caad1da1d6",
+      "bytes": 1973,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Superseded by the current repository README."
+    },
+    {
+      "archive_member": "archive_manifest.json",
+      "source_sha256": "33218afd2667125bafd1cc6a9ea7a23cfda7f78823266d7772d8d1ae8474f9d0",
+      "bytes": 8942,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Replaced by checksums.json and provenance/origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/REPRODUCE.md",
+      "source_sha256": "881fde9d75fb7f8004ec3efd31f8efc36ffbfe1eb5cb5a72758a94dfd697fafe",
+      "bytes": 1089,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "assignment_extension/extension/PROTOCOL.md",
+      "source_sha256": "d2e256035c393ab440f530b745c638786d9f7ff6df0275dcc6fc72ec233153a0",
+      "bytes": 11119,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/assignment/PROTOCOL.md"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/extension/README.md",
+      "source_sha256": "29f58be5b53ed0e541d1ff5b45764f04f3c0719dd40bc398b5727cbf7090ebc4",
+      "bytes": 392,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "assignment_extension/extension/RESULTS.md",
+      "source_sha256": "fc364384da427c9e9b9622fb4425b887a0bcf4cdfa1198a3dca6e0bda7d611d2",
+      "bytes": 6557,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "assignment_extension/extension/analyze.py",
+      "source_sha256": "e77be8ea95da3d45f7dc3de3611b2b1e42e0857703162d5e9f89439214916d5a",
+      "bytes": 14618,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/assignment/src/analyze.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/extension/determinism_check.json",
+      "source_sha256": "cdacab456031c74a39694646b252f79347973b14786743b17582a78423ca1c67",
+      "bytes": 270,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "assignment_extension/extension/model_documentation/README.md",
+      "source_sha256": "400057cfe872de69dfcf2b419fdbc0b2964d59d89fee51bb7c9c567ca07158e1",
+      "bytes": 1690,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "assignment_extension/extension/model_documentation/historical_head_objective.py.txt",
+      "source_sha256": "1555c44ee1c7c08c0eea49a8700b93228bdc4326b0371ada038c165908ad39d3",
+      "bytes": 3799,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/head_objective.py.txt"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/model_documentation/historical_mrn_head.py.txt",
+      "source_sha256": "6fb16c48c3f4c0cc0fa16f3d81402687a06de1ea36a2996b7e3d78d85ddba5c8",
+      "bytes": 1253,
+      "disposition": "newline_only_duplicate",
+      "repository_files": [
+        "docs/method/mrn_head.py.txt"
+      ],
+      "reason": "Identical source after normalizing carriage returns; method snapshot already retained."
+    },
+    {
+      "archive_member": "assignment_extension/extension/model_documentation/source_manifest.json",
+      "source_sha256": "e5d33f93e9c1f8944403d9cb19b27027aa3b81e505424e5644ffc6d7472c2136",
+      "bytes": 519,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/PROTOCOL.md",
+      "source_sha256": "d2e256035c393ab440f530b745c638786d9f7ff6df0275dcc6fc72ec233153a0",
+      "bytes": 11119,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/PROTOCOL.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/config.json",
+      "source_sha256": "c799659eb9747b3ed388a51a6411450764fdb4bf2c8feb5b65a8fb5668481996",
+      "bytes": 523,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/config.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/environment.json",
+      "source_sha256": "99977d7cd0707dbdc5a739b6a86ee7a9f5f5e030967712113651146f2ff8f97c",
+      "bytes": 139,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/environment.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/inputs/calibration.json",
+      "source_sha256": "3853ab865a51dd17a5205d4356895a5ab9623cb17d526ae6222c6c00880eca22",
+      "bytes": 406,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/inputs/calibration.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/inputs/historical_pilot.json",
+      "source_sha256": "abe8c8c8c8829d9b81713d165f0f74a89d1e00a0fd2789e5eb6be83ba25a9c9d",
+      "bytes": 3734,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/inputs/historical_pilot.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/inputs/ledger.jsonl",
+      "source_sha256": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+      "bytes": 2033835,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/inputs/ledger.jsonl"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/figures/conditional_energy.pdf",
+      "source_sha256": "bda8c5535a042cabe8ba9e8e713008a3933488f7aab00f54139c30da73f0fd04",
+      "bytes": 18886,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/figures/conditional_energy.png",
+      "source_sha256": "155f0d7d8fc9ef2a3add42d3c8b6cc1ee8b790feec30ed153b39a038e642ab7c",
+      "bytes": 64139,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/figures/conditional_energy.svg",
+      "source_sha256": "b213b0ea1079ca4e6ab1da1076707e0308c129319cc3c4f6f2284732dd00d337",
+      "bytes": 44178,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/figures/direct_residual_comparison.pdf",
+      "source_sha256": "6c320d186c1f999c72ebad7e9bc645bc714a44a37f210a7bad1ab067d153f18d",
+      "bytes": 17233,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/figures/direct_residual_comparison.png",
+      "source_sha256": "33ff0b346f6caa5f4f3987c33108242257a8f35c23cffd43bb118e9b60579d38",
+      "bytes": 101367,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/figures/direct_residual_comparison.svg",
+      "source_sha256": "f059d34f11f9a0d354a67c5d78c7b8e2d41346161121ecc508dd1a8cf8432b2c",
+      "bytes": 51781,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/geometry.csv",
+      "source_sha256": "7f48414289ca9fe77601ae18a7ad237e5e2df55936b46dd744ab120126ebc5a1",
+      "bytes": 811,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/geometry.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/gpu_weight_plan.json",
+      "source_sha256": "1493148fd4a6960ffd11eedbe06c834528a909fc8993773756c9f4545c8debee",
+      "bytes": 201517,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/gpu_weight_plan.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/independent_validation.json",
+      "source_sha256": "163a0f505d9014f2b09600b49fcfc56b50a77b15cc0237df53867893f8357ba8",
+      "bytes": 2410,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/independent_validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/per_group.csv",
+      "source_sha256": "297f70a4b430cd0c8e2d337a7e4abe961c34682570e756333923c14ba590a22a",
+      "bytes": 65107,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/per_group.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/permutation_checks.csv",
+      "source_sha256": "0926df9b1f1bd20473c19ec48eb8063ab836d2934847ab8ca0abad90b72a2aac",
+      "bytes": 8469,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/permutation_checks.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/permutations.json",
+      "source_sha256": "4686e85851404803677a49b0010c3a0d305aa5ca670c3a1478ec1fb925dd5c13",
+      "bytes": 683464,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/permutations.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/summary.json",
+      "source_sha256": "82af385496f4aac171a0cf778cf4abab8fb41e2341ffde9676158fda423fd518",
+      "bytes": 8051,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/summary.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/results/validation.json",
+      "source_sha256": "f24590d2414040d4bf56fce7cac1af281dd8c34aac7069e142baedcdbbfb5d1c",
+      "bytes": 1141,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/results/validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/seal.json",
+      "source_sha256": "30a65bfac893c92b39d1315bf667d21c6db6e9088112003f6b10c0683bb546fd",
+      "bytes": 867,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/seal.json",
+        "provenance/original_seals/experiments_assignment.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/src/analyze.py",
+      "source_sha256": "e77be8ea95da3d45f7dc3de3611b2b1e42e0857703162d5e9f89439214916d5a",
+      "bytes": 14618,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/src/analyze.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/run/synthetic_validation.json",
+      "source_sha256": "390124a1b6e787f4690cd599a489bf38e51b7a1359d9cfeea5b93e955191dfee",
+      "bytes": 997,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/synthetic_validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/extension/verify_and_plot.py",
+      "source_sha256": "16cf80e8d173979f88500f9581cf06dbfdf132c29f1675654203bb4a1cf6c298",
+      "bytes": 5542,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/assignment/verify_and_plot.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/config.json",
+      "source_sha256": "851dc1cd864303ea927f3e240e1b036f4a0413c2be4efa383887e4bede1fc5d9",
+      "bytes": 1383,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/config.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/environment.json",
+      "source_sha256": "37405515e6e4d8f5713430a807d26ccf06ac4688aa6c7f3448b86417e7c6044a",
+      "bytes": 1126,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/environment.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/input_manifest.json",
+      "source_sha256": "66c79b683bacdc9977be3f86b8b12f8184d9c80cc822418b479edde84730f915",
+      "bytes": 3906,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/input_manifest.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/joined_rollouts.jsonl",
+      "source_sha256": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+      "bytes": 2033835,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/joined_rollouts.jsonl",
+        "experiments/assignment/inputs/ledger.jsonl"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/protocol.md",
+      "source_sha256": "d0ba4ebbb7cb87fe4477ce345bbf059f7677416eca982cd942519693fc13e243",
+      "bytes": 43693,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/protocol.md"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/reference/current_export_provenance.py",
+      "source_sha256": "c27837a02c5cf9ae2efe5d6b4e7bb4a5cdb4165f05c011f12b39e3c68f7b0820",
+      "bytes": 18424,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/reference/current_export_provenance.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/reference/decoder_config.json",
+      "source_sha256": "da2377b9e8d4b3bdd0d2a52405dc676aff5454be9c01a07fff572eb9436dc966",
+      "bytes": 734,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/reference/decoder_config.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/reference/geometry_extractor.py",
+      "source_sha256": "8c18a0f9d79cca38efef3d70ebe6cc1efb518b2a047d29f12d72d666722a19e1",
+      "bytes": 36541,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/reference/geometry_extractor.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/reference/gradient_estimator.py",
+      "source_sha256": "8275e4a506a35d5a399f1756a8641f25de0d04b0e346c5030345357449d0ffcb",
+      "bytes": 30267,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/reference/gradient_estimator.py",
+        "experiments/historical/reference_code/estimate_g7_policy_gradient_alignment.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/reference/historical_metrics.json",
+      "source_sha256": "4f8eff5219efe7d36bf7f7168bd1623e3a3b5d0b7cb36b70a02ec5dc32be27e0",
+      "bytes": 5734,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/reference/historical_metrics.json",
+        "experiments/historical/results/coverage_advantage.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/reference/redecode_audit.json",
+      "source_sha256": "01e7f889d83bcbe1530e5afa17b9c4303c6b9c8c656ee34eb2f9bf2769c0a435",
+      "bytes": 352,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/reference/redecode_audit.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/results/calibration.json",
+      "source_sha256": "3853ab865a51dd17a5205d4356895a5ab9623cb17d526ae6222c6c00880eca22",
+      "bytes": 406,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/calibration.json",
+        "experiments/assignment/inputs/calibration.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/results/tables/full_geometry.csv",
+      "source_sha256": "9bb381f025b73736c83d9d917a788454d5d51eb5b4db99952ed5f3431e92fad7",
+      "bytes": 1675,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/tables/full_geometry.csv"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/seal.json",
+      "source_sha256": "576b87ab5f345f7483615a410cec38c37e5b01e83d46c95fc5a1d87f3d8377d6",
+      "bytes": 2079,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/seal.json",
+        "provenance/original_seals/experiments_offline.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/src/audit.py",
+      "source_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "bytes": 29481,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/audit.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/src/render_report.py",
+      "source_sha256": "cd7f642142a1cd4930ca97229413348f6f58d0040a39c2276f7edd5fcf6031b7",
+      "bytes": 14176,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/render_report.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/src/test_synthetic_cases.py",
+      "source_sha256": "b6139746fa7d5887f5c1fecfd7f5262d9c8ede10ead17b0c3c45214c256fa029",
+      "bytes": 7141,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/test_synthetic_cases.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/src/validate_results.py",
+      "source_sha256": "8c84e7346502d320bf3b9d0a1ad78acf9fe9bbfea18c34b6250482086aa4af29",
+      "bytes": 7820,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/validate_results.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/synthetic_validation.json",
+      "source_sha256": "7a2c0f9e172d7f308ec29ef637f1e40c6a701e7af85cc50d09e4a8c6dcc37f57",
+      "bytes": 175,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/synthetic_validation.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "assignment_extension/original_cpu_v1/token_records.jsonl",
+      "source_sha256": "5650a1c64d9b21928b49b86b9a32ebb3743820b53e4cbc0375c1a92b896acfc2",
+      "bytes": 12164489,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/token_records.jsonl"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "config.json",
+      "source_sha256": "851dc1cd864303ea927f3e240e1b036f4a0413c2be4efa383887e4bede1fc5d9",
+      "bytes": 1383,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/config.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/EXECUTION_LOG.md",
+      "source_sha256": "11c425dec6596f2bb265693172d102991bf7aa1472a1f0c7f9122ed1799c8509",
+      "bytes": 8395,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/EXECUTION_STATUS.json",
+      "source_sha256": "2cb9d1ce7cf1e45bc045534919da47cfbefba825c74333773bd26d04255a513a",
+      "bytes": 978,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/PROTOCOL.md",
+      "source_sha256": "1e46ec2f991b4be6af46dea4482141f8cdb3d76bb78dc92c3cdf52032e8855ca",
+      "bytes": 8781,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/PROTOCOL.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/PUBLIC_PACKAGE_README.md",
+      "source_sha256": "4b979b9e7ad988e3e07b2b74757fa0e40b477dd9cd56088462dd23ea67b8f4fc",
+      "bytes": 3036,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/README.md",
+      "source_sha256": "b611531984f1efdd26104674dd3415394ea75a6368585ae59124266dad90d54c",
+      "bytes": 3503,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/RELEASE_MANIFEST.json",
+      "source_sha256": "eadf32edb71c3e2e890d86ea8e804f28d571a12fbf7399f8cc16530dbe001bc0",
+      "bytes": 16808,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/RESULTS.md",
+      "source_sha256": "cc689fde96c3e11be94027dc92f6f14d0ee6d2c82436cf85d8eaf4582120ded4",
+      "bytes": 8303,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/analyze_result.py",
+      "source_sha256": "7a175da4b9f223e521a7d2cedbc175f674d43257d8cd4a1f1c6537eff0d6dbde",
+      "bytes": 7525,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analyze_result.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/check_local_recomputation.py",
+      "source_sha256": "7c5674c00dcc84790fcee3767f6fb466af25ec720695d03ed5a8ad7d284cd490",
+      "bytes": 3316,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Cross-platform transfer validator; same scientific checks run through analyze_result.py and the standalone byte-comparison workflow."
+    },
+    {
+      "archive_member": "full_mixed_replay/check_weight_precision.py",
+      "source_sha256": "ad8f93459562ef901fa2dafb6d91686c74668fc29cb2cf819e6f837cae9a106a",
+      "bytes": 1308,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/check_weight_precision.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/core.py",
+      "source_sha256": "708d75899eb7a8914ecbeff012dc9e348a9c4176eaa664abc5ac611e41eca0f6",
+      "bytes": 10531,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/core.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/PROTOCOL.md",
+      "source_sha256": "1e46ec2f991b4be6af46dea4482141f8cdb3d76bb78dc92c3cdf52032e8855ca",
+      "bytes": 8781,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/PROTOCOL.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/download_manifest.json",
+      "source_sha256": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b",
+      "bytes": 2284,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/download_manifest.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/model_pins.json",
+      "source_sha256": "4e368b6f0c7109e235d9e956e419125efb5b8feda4eb0138a40d3e89a7644fb6",
+      "bytes": 4506,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/model_pins.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/prompt_source/examples.py",
+      "source_sha256": "91cc833769d9d14472612eaece4ae4e7ae125004decf8915a7a8348f34da7170",
+      "bytes": 51779,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/prompt_source/examples.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/prompt_source/utils.py",
+      "source_sha256": "8827ca1c48d7fceb42581bc90316dba4f04dfa34e2f64273a99c9ba0315c36c2",
+      "bytes": 8840,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/prompt_source/utils.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/provenance.json",
+      "source_sha256": "429e1e6b1bb3b0a40db2e5ab035ffea003c9e1bc6c50dc30abe8ff5d49288565",
+      "bytes": 4183,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/provenance.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/replay_records.json",
+      "source_sha256": "cd5e1294ea38203a99ca0c5f5ed15090f89f90ecabbc2ebd62ca644addbce505",
+      "bytes": 23901147,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/replay_records.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/seal.json",
+      "source_sha256": "f22c459f6d01a36c37158d34a86cc5881cadec2432119a27ad806d102f03f311",
+      "bytes": 841,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/seal.json",
+        "provenance/original_seals/experiments_replay_code_data.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/data/weight_plan.json",
+      "source_sha256": "d3480097dae8ebdd3132a06236fa22b0671da9df0fa879a5e8a1c9130b870564",
+      "bytes": 1163554,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/data/weight_plan.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/replay.py",
+      "source_sha256": "8b0ae717bae9fe9c3e9fee49e1771ed2baa52ced1c79368b7d229b850933ebed",
+      "bytes": 12179,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/replay.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/source_manifest.json",
+      "source_sha256": "7e75330cc8157b9213746de9e252db558ddb1de4504c495fb7202bdc9e59265d",
+      "bytes": 1303,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/source_manifest.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/test_core.py",
+      "source_sha256": "7452cbc97d73e71d476c079b9e3b3441d14f2d0e8c714f3ec91c71e70845a822",
+      "bytes": 5236,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/test_core.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/test_device_guard.py",
+      "source_sha256": "8aead48c86d008483d778fc1b574f0c8730ab922aa3a20ab65680eaeeb6d548c",
+      "bytes": 832,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/test_device_guard.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/code/test_reference.py",
+      "source_sha256": "3a4c40ab8f22178eb50cacead2bfbe7166df5bd6809442e7c97a4fd0cf1052d5",
+      "bytes": 4282,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/code/test_reference.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/ANALYSIS_SCOPE.md",
+      "source_sha256": "2534407d82b9e2162225f34b7657c325bdf48270b8f7ac11823d1481ff0cce7c",
+      "bytes": 2288,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/DETAILED_ANALYSIS.md",
+      "source_sha256": "c0a010b93f73cad90ff6218ae265b99c0adeb77109240242a9fc7fd8b27bd402",
+      "bytes": 14168,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/all_reference_comparisons.csv",
+      "source_sha256": "da2f85851992c32138f0d1f371e3a7a64ace532858ffc141c666406742a4373a",
+      "bytes": 26629,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/all_reference_comparisons.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/analyze_detail.py",
+      "source_sha256": "92e14c0a564be6c81d2de222f04592577b392baeffbe39a50f3d80382887d37c",
+      "bytes": 14777,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/analyze_detail.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/completion_watcher.log",
+      "source_sha256": "15c7e062c09672b31c9b07439d5d030422140beb71f1dc73b792b28d304ff5c3",
+      "bytes": 628,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/concentration.json",
+      "source_sha256": "d67506229f6fd643c70310083422d1b56edda270dae4603d91bdccd688f431b0",
+      "bytes": 3212,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/concentration.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/detailed_checks.json",
+      "source_sha256": "0b7cbdd47912263ce6d89c237ed1bca89eb3c839812b30432dc691c85aa4a11c",
+      "bytes": 5967,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/detailed_checks.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/gradient_decomposition.csv",
+      "source_sha256": "e71c9e4ad8a06e62ce913bcc800d889a03e1f2ba99e7d0d3806e0f42e379e179",
+      "bytes": 621,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/gradient_decomposition.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/gradient_decomposition.json",
+      "source_sha256": "3ab4e71dcfe126bb5b6ff4cdbef48fe994265d3fed038493fcb43165355c8d66",
+      "bytes": 971,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/gradient_decomposition.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/incorrect_count_breakdown.csv",
+      "source_sha256": "6ba34ce0ae8f1bcf9a0f2e1177dc3762c83976c9207d3378b4a7c7643be6de5e",
+      "bytes": 925,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/incorrect_count_breakdown.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/make_report.py",
+      "source_sha256": "866e7eedca43304c8bf8fd5f8e0cf96f3158dc0fa096afa454bf34e0fb8a34f9",
+      "bytes": 16641,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Older descriptive report/plot formatter; numerical analyses retained, current paper figures have a portable generator."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/package_review.py",
+      "source_sha256": "cce72d79d15c9df3176915504715f8fa2a91cce37b543ae6a4b3647055c11d9f",
+      "bytes": 6050,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Private evidence archive packager; not needed to regenerate scientific results."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/per_completion_audit.csv",
+      "source_sha256": "b69ce9419d4ebfcc3c7eda00b9aa99840c6bb753ee3f20096db45d5aef5be0d0",
+      "bytes": 134471,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/per_completion_audit.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/per_group_audit.csv",
+      "source_sha256": "b6ed11e610561212fef09b078444f460fc6409b73aeffec9351c19e68864c269",
+      "bytes": 21085,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/per_group_audit.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/permutation_quantiles.csv",
+      "source_sha256": "f94c1f93a331b0dd40c0c812a9aab5634644e9b23dfbc035a35891a26372efaa",
+      "bytes": 3330,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/permutation_quantiles.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/pilot_checks.json",
+      "source_sha256": "3b58868b6c178848c381c0fbe7e3f2cfecf75b167f5bbee148e4f9ea3b4879ff",
+      "bytes": 517,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_checks.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/pilot_reference/SHA256_MANIFEST.json",
+      "source_sha256": "d6caea7764c4bdf66d958a7312a240c78ff1ff31de4664b8a91e5c7b1ccdd5fc",
+      "bytes": 452,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_reference/SHA256_MANIFEST.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/pilot_reference/code/data/replay_records.json",
+      "source_sha256": "57599b3a98fd95748bc2a12a542d477a803a1d8ded7dc79d459e7ae53b4c29cb",
+      "bytes": 3938827,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_reference/code/data/replay_records.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/pilot_reference/code/data/weight_plan.json",
+      "source_sha256": "1493148fd4a6960ffd11eedbe06c834528a909fc8993773756c9f4545c8debee",
+      "bytes": 201517,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_reference/code/data/weight_plan.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/pilot_reference/received/primary/runs/primary/parameter_layout.json",
+      "source_sha256": "6677ae1e82427ac7e5c9af82e65b26823e7da0c406d45f3843bca0041ef74031",
+      "bytes": 73391,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_reference/received/primary/runs/primary/parameter_layout.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/pilot_reference/received/primary/runs/primary/result.json",
+      "source_sha256": "40389e6ba45c53c8d5361f3f75073cffac140a50f01fc8010ae68c4069311306",
+      "bytes": 231469,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_reference/received/primary/runs/primary/result.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/pilot_vs_full.csv",
+      "source_sha256": "e780182fd6f31c553f57cbdd70ebdc792d17fe809a8fde9cd02cb6845bb8bad1",
+      "bytes": 613,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_vs_full.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/primary.log",
+      "source_sha256": "141120b1c92f5d730caa6e95966b91130e5369d4fae2ffc7cd5af303f9fba1a0",
+      "bytes": 187741,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/reference_by_incorrect_count.pdf",
+      "source_sha256": "5633a7015d37de49fabd6e63d4584fdab1f6ab690c21c92eb9cd5e27761f6da4",
+      "bytes": 14271,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/reference_by_incorrect_count.png",
+      "source_sha256": "08c88a3304d30a996cb31a6f3da30b318b2b9e505bd888670f2b7f6d5e40c5f0",
+      "bytes": 84522,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/reference_by_incorrect_count.svg",
+      "source_sha256": "7fd8b1a8042e2d2eeca478a7f7113bde33d80d8957cca291c20015b7fdfd8de7",
+      "bytes": 40184,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/deep_review_v1/review_validation.json",
+      "source_sha256": "65986b95fefe8ffa154a8775e0dbe6ad82716e65e94131da46efac1b12f8816f",
+      "bytes": 512,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/figures/exact_permutation_reference.pdf",
+      "source_sha256": "5c659756239daf8a965e989243b95057591b813cfed71c8b465fcc88102b7b85",
+      "bytes": 13294,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/figures/exact_permutation_reference.png",
+      "source_sha256": "d9578296a4ef216ef8a1c96d1e7a223cd1bd3ad70d6be0caff144dc3e12d081b",
+      "bytes": 75580,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/figures/exact_permutation_reference.svg",
+      "source_sha256": "2a8713428140d849cdec1c0bc0ac75476daf36ccefe4c4fab42622ce2883bf11",
+      "bytes": 17348,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/figures/figure_hashes.json",
+      "source_sha256": "fedcb241ef3184fc107df892aa31aeb78679d01e9a2d0d1999ed9a8cb422cfe2",
+      "bytes": 680,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/figures/residual_scale_alignment.pdf",
+      "source_sha256": "852d645760dbdbef82350aa36e0bc84a3940dba931cfe65d5f4654a838dd222c",
+      "bytes": 15807,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/figures/residual_scale_alignment.png",
+      "source_sha256": "aca1f8759bf980362ffa3819728f83c93ae778bf82ee20f0100987c260aa3490",
+      "bytes": 96901,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/figures/residual_scale_alignment.svg",
+      "source_sha256": "e1b1035525571f8fdf3f63b77c477f779455de2377f05786a490e31a19cabba9",
+      "bytes": 19611,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/preparation_report.json",
+      "source_sha256": "b18a505c9a8603a9897332c6fb2b6c717763d79efddbd43e4813f0ffcf8566dc",
+      "bytes": 1479,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/AUTO_COMPLETION.json",
+      "source_sha256": "20029259b162dfcf5530002c98ac03ab3b194243d929a50b2db1b267f22609d1",
+      "bytes": 351,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/completion_review.json",
+      "source_sha256": "1dccc18a8433b1cd108c02bf78f8c2de05cf72601307e22e0bec942334c6f56c",
+      "bytes": 954,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/local_analysis/all_comparisons.csv",
+      "source_sha256": "2ccdf37325d42756cd891fcac9b777bed3c4467e2815a37be998884becc82d4a",
+      "bytes": 17433,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/results/all_comparisons.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/local_analysis/group_reference.csv",
+      "source_sha256": "0b008ed3edbcc9ee73f9cd198579f6bcf244f9ec5c1e624563fbc159761527f3",
+      "bytes": 15076,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/results/group_reference.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/local_analysis/permutation_draws.csv",
+      "source_sha256": "3c70a0e253888013cb56c361b8efd1b945937b6649040a18e34a29002b012978",
+      "bytes": 4148,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/results/permutation_draws.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/local_analysis/summary.json",
+      "source_sha256": "2df62bcc16b4d08684ff506cebdb0af29dd16ec1e4579ce1b4cb30a733b46d07",
+      "bytes": 4680,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/results/summary.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/local_validation.json",
+      "source_sha256": "54e19e05c206171930be762b3cf3997edda0ac8897bd9d7beeb46979c9c33be6",
+      "bytes": 753,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/primary_transfer.json",
+      "source_sha256": "63135ee6356ad150dc4e04a7dc0a453799e3b30c03f2f0eabf8aaf24551d99b0",
+      "bytes": 216,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/transfer_verification.json",
+      "source_sha256": "e861e364c299cae62546b02f47680775f3e9c9f011d5ab5a622801802643ba1c",
+      "bytes": 181,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/SHA256_MANIFEST.json",
+      "source_sha256": "263c6f7aeb513e1d81243bc304e0faac76d39c72d7a45fb762a00c45391b34e2",
+      "bytes": 5050,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/analysis/all_comparisons.csv",
+      "source_sha256": "2ccdf37325d42756cd891fcac9b777bed3c4467e2815a37be998884becc82d4a",
+      "bytes": 17433,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/results/all_comparisons.csv"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/analysis/group_reference.csv",
+      "source_sha256": "0ccf6a58001c117a5fcc54c83b41a4966782f9ab1b1622183c120e43909904ee",
+      "bytes": 15076,
+      "disposition": "cross_platform_duplicate",
+      "repository_files": [],
+      "reason": "Remote arithmetic outputs; validated against local recomputation. The local numerical version is retained under experiments/replay/results/."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/analysis/permutation_draws.csv",
+      "source_sha256": "06b21cd6d20db86de2d5b1ca27b3ac25d15669d870a90d3aace7481b5c7670e7",
+      "bytes": 4147,
+      "disposition": "cross_platform_duplicate",
+      "repository_files": [],
+      "reason": "Remote arithmetic outputs; validated against local recomputation. The local numerical version is retained under experiments/replay/results/."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/analysis/summary.json",
+      "source_sha256": "1369f6b46c858dfa1fe15720ee28174d6c6215a48be315f23a3b0cb163a934d9",
+      "bytes": 4546,
+      "disposition": "cross_platform_duplicate",
+      "repository_files": [],
+      "reason": "Remote arithmetic outputs; validated against local recomputation. The local numerical version is retained under experiments/replay/results/."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/logs/primary.log",
+      "source_sha256": "141120b1c92f5d730caa6e95966b91130e5369d4fae2ffc7cd5af303f9fba1a0",
+      "bytes": 187741,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/run/group_statistics.json",
+      "source_sha256": "c42ddcf79ddf6a4096a3658f318f142e60c4e28496c51fb9f5ae62191ff64b14",
+      "bytes": 235109,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/run/group_statistics.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/run/identity.json",
+      "source_sha256": "c0db190c30724f771548d91f069532de52164e84ea07ee1ef63c54df17ee2f29",
+      "bytes": 5130,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/run/identity.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/run/parameter_layout.json",
+      "source_sha256": "6677ae1e82427ac7e5c9af82e65b26823e7da0c406d45f3843bca0041ef74031",
+      "bytes": 73391,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/run/parameter_layout.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/run/progress.json",
+      "source_sha256": "4c78765743455241761231a72f02b5a9c6721d9ce8ed31859a8f657293a743c5",
+      "bytes": 374,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/run/result.json",
+      "source_sha256": "14aff10587ab6289f1c405fbd8f96f5bf5c113639e46df3bb5d9f4161eca649c",
+      "bytes": 234998,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/run/result.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/PROTOCOL.md",
+      "source_sha256": "1e46ec2f991b4be6af46dea4482141f8cdb3d76bb78dc92c3cdf52032e8855ca",
+      "bytes": 8781,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/PROTOCOL.md",
+        "experiments/replay/PROTOCOL.md"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/amendments/device_guard_20261127/code_source_manifest.original.json",
+      "source_sha256": "49bf17073470f20c7ea9e91d4f22d84ee1db71ad475b75bea61f7bdfc72023a3",
+      "bytes": 1224,
+      "disposition": "superseded_device_guard_record",
+      "repository_files": [],
+      "reason": "Original device-guard amendment is preserved in the private archive; public guard requires an explicit device UUID and has a CPU regression test."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/amendments/device_guard_20261127/receipt.json",
+      "source_sha256": "d4c00e59d525d3f86fea6df4a4f04cef37131f8e41e671ef1a7f10de04dae40e",
+      "bytes": 699,
+      "disposition": "superseded_device_guard_record",
+      "repository_files": [],
+      "reason": "Original device-guard amendment is preserved in the private archive; public guard requires an explicit device UUID and has a CPU regression test."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/amendments/device_guard_20261127/source_manifest.original.json",
+      "source_sha256": "d67de4fa5232f867871d9c1c73fe61d10c2bf0547f8fef122e0d129dd9ea0fb2",
+      "bytes": 1841,
+      "disposition": "superseded_device_guard_record",
+      "repository_files": [],
+      "reason": "Original device-guard amendment is preserved in the private archive; public guard requires an explicit device UUID and has a CPU regression test."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/analyze_result.py",
+      "source_sha256": "7a175da4b9f223e521a7d2cedbc175f674d43257d8cd4a1f1c6537eff0d6dbde",
+      "bytes": 7525,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/analyze_result.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/core.py",
+      "source_sha256": "708d75899eb7a8914ecbeff012dc9e348a9c4176eaa664abc5ac611e41eca0f6",
+      "bytes": 10531,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/core.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/PROTOCOL.md",
+      "source_sha256": "1e46ec2f991b4be6af46dea4482141f8cdb3d76bb78dc92c3cdf52032e8855ca",
+      "bytes": 8781,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/PROTOCOL.md",
+        "experiments/replay/PROTOCOL.md"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/download_manifest.json",
+      "source_sha256": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b",
+      "bytes": 2284,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/download_manifest.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/model_pins.json",
+      "source_sha256": "4e368b6f0c7109e235d9e956e419125efb5b8feda4eb0138a40d3e89a7644fb6",
+      "bytes": 4506,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/model_pins.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/prompt_source/examples.py",
+      "source_sha256": "91cc833769d9d14472612eaece4ae4e7ae125004decf8915a7a8348f34da7170",
+      "bytes": 51779,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/prompt_source/examples.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/prompt_source/utils.py",
+      "source_sha256": "8827ca1c48d7fceb42581bc90316dba4f04dfa34e2f64273a99c9ba0315c36c2",
+      "bytes": 8840,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/prompt_source/utils.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/provenance.json",
+      "source_sha256": "429e1e6b1bb3b0a40db2e5ab035ffea003c9e1bc6c50dc30abe8ff5d49288565",
+      "bytes": 4183,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/provenance.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/replay_records.json",
+      "source_sha256": "cd5e1294ea38203a99ca0c5f5ed15090f89f90ecabbc2ebd62ca644addbce505",
+      "bytes": 23901147,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/replay_records.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/seal.json",
+      "source_sha256": "f22c459f6d01a36c37158d34a86cc5881cadec2432119a27ad806d102f03f311",
+      "bytes": 841,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/seal.json",
+        "provenance/original_seals/experiments_replay_code_data.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/data/weight_plan.json",
+      "source_sha256": "d3480097dae8ebdd3132a06236fa22b0671da9df0fa879a5e8a1c9130b870564",
+      "bytes": 1163554,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/weight_plan.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/replay.py",
+      "source_sha256": "8b0ae717bae9fe9c3e9fee49e1771ed2baa52ced1c79368b7d229b850933ebed",
+      "bytes": 12179,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/replay.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/source_manifest.json",
+      "source_sha256": "7e75330cc8157b9213746de9e252db558ddb1de4504c495fb7202bdc9e59265d",
+      "bytes": 1303,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/source_manifest.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/test_core.py",
+      "source_sha256": "7452cbc97d73e71d476c079b9e3b3441d14f2d0e8c714f3ec91c71e70845a822",
+      "bytes": 5236,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/test_core.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/test_device_guard.py",
+      "source_sha256": "8aead48c86d008483d778fc1b574f0c8730ab922aa3a20ab65680eaeeb6d548c",
+      "bytes": 832,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/test_device_guard.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/code/test_reference.py",
+      "source_sha256": "3a4c40ab8f22178eb50cacead2bfbe7166df5bd6809442e7c97a4fd0cf1052d5",
+      "bytes": 4282,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/test_reference.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/preparation_report.json",
+      "source_sha256": "b18a505c9a8603a9897332c6fb2b6c717763d79efddbd43e4813f0ffcf8566dc",
+      "bytes": 1479,
+      "disposition": "source_or_input_duplicate",
+      "repository_files": [],
+      "reason": "Execution source/input snapshot; public equivalents and original hashes retained under experiments/replay/ and provenance/origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/source_manifest.json",
+      "source_sha256": "9b50a7cfb97055aae36a34b999f070dec425dd0b285510b66510de246fe09a5d",
+      "bytes": 1919,
+      "disposition": "source_or_input_duplicate",
+      "repository_files": [],
+      "reason": "Execution source/input snapshot; public equivalents and original hashes retained under experiments/replay/ and provenance/origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/received/primary/unpacked/source/test_reporting.py",
+      "source_sha256": "c685cbaa84d8034f2a2c4db4ca67d0d52dab1db3de41a921f73673604c5b9ed6",
+      "bytes": 2825,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/test_reporting.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "full_mixed_replay/report_completed.py",
+      "source_sha256": "f292dd1d76f6ec7b53fa65ce742698ec5966fd04af0b7c8830797edb945cae85",
+      "bytes": 13359,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Older descriptive report/plot formatter; numerical analyses retained, current paper figures have a portable generator."
+    },
+    {
+      "archive_member": "full_mixed_replay/source_manifest.json",
+      "source_sha256": "9b50a7cfb97055aae36a34b999f070dec425dd0b285510b66510de246fe09a5d",
+      "bytes": 1919,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "full_mixed_replay/test_reporting.py",
+      "source_sha256": "c685cbaa84d8034f2a2c4db4ca67d0d52dab1db3de41a921f73673604c5b9ed6",
+      "bytes": 2825,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/test_reporting.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "full_mixed_replay/verify_transfer.py",
+      "source_sha256": "6ed39e858b9a7f828866ef602694bebd051bd658b475b3cb9b73e01c86bcf793",
+      "bytes": 1776,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Original transfer unpacker; compact transfer and file identity checked before export."
+    },
+    {
+      "archive_member": "full_mixed_replay/weight_precision_validation.json",
+      "source_sha256": "55fe885cb10fb41c002636a52e475d6e97aed6a657496d3939644100fbb3a2ec",
+      "bytes": 9906,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/weight_precision_validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/README.md",
+      "source_sha256": "520c1e219b6cae858d168be749a3ab678ce457883eb9131e27001a4fcab82778",
+      "bytes": 4294,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "gradient_replay/analyze_completed.py",
+      "source_sha256": "e73bf265b6b028bec4b72c748a644f101a537c14b05114e3791827f194ad7ad7",
+      "bytes": 4526,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/analyze_completed.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/code/Dockerfile",
+      "source_sha256": "bb0a4540f473e9c7562ad843db7ed7bbe9aee2d4ebd77c8ceb63d895cc984938",
+      "bytes": 785,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code/cpu_test_report.json",
+      "source_sha256": "693d1030a9167291e8d25345cfca0b19f0ef85ea26fbd0a61b4be0aedbbcf08b",
+      "bytes": 2350,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/download_manifest.json",
+      "source_sha256": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b",
+      "bytes": 2284,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/download_manifest.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/model_pins.json",
+      "source_sha256": "4e368b6f0c7109e235d9e956e419125efb5b8feda4eb0138a40d3e89a7644fb6",
+      "bytes": 4506,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/model_pins.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/prompt_source/examples.py",
+      "source_sha256": "91cc833769d9d14472612eaece4ae4e7ae125004decf8915a7a8348f34da7170",
+      "bytes": 51779,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/prompt_source/examples.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/prompt_source/utils.py",
+      "source_sha256": "8827ca1c48d7fceb42581bc90316dba4f04dfa34e2f64273a99c9ba0315c36c2",
+      "bytes": 8840,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/prompt_source/utils.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/provenance.json",
+      "source_sha256": "3e9a996bed57658bd353926e2e5d7121cc47f09e62b2c2b6ca6adbbea53f746d",
+      "bytes": 1275,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/replay_records.json",
+      "source_sha256": "57599b3a98fd95748bc2a12a542d477a803a1d8ded7dc79d459e7ae53b4c29cb",
+      "bytes": 3938827,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/analysis/pilot_reference/code/data/replay_records.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/seal.json",
+      "source_sha256": "77a4810afa749fb214ccfc7d09c5c4a4d4a38a257fd27eb440d444cff8419359",
+      "bytes": 697,
+      "disposition": "included",
+      "repository_files": [
+        "provenance/original_seals/pilot_inputs.json"
+      ],
+      "reason": "Original record retained with any private metadata redacted; original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/code/data/weight_plan.json",
+      "source_sha256": "1493148fd4a6960ffd11eedbe06c834528a909fc8993773756c9f4545c8debee",
+      "bytes": 201517,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/assignment/results/gpu_weight_plan.json",
+        "experiments/replay/analysis/pilot_reference/code/data/weight_plan.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "gradient_replay/code/preflight.json",
+      "source_sha256": "95c9ccd3d70f2a081408cec90eb46421b8346b338268478b99d3b36625cd4ed0",
+      "bytes": 781,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code/replay.py",
+      "source_sha256": "b540271052572c36564f2a9d3d3422e5313193db9d146f66221aeba161cd0084",
+      "bytes": 19446,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code/requirements.txt",
+      "source_sha256": "81c8eb69fa1863e6c4c286b19fa7dccda3dbdee38fe8fa9a8b1d7fabf02738ef",
+      "bytes": 203,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code/summarize_replay.py",
+      "source_sha256": "7df34620ccfcc78cb7dfff651a428682a3e196c60489f71d46cac58a5a4df31b",
+      "bytes": 2038,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code/test_replay.py",
+      "source_sha256": "acf5fadd23f24a67c76c8d9b448997ca54375bda1e37895b45c94b02f7db432a",
+      "bytes": 5150,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/code_manifest.json",
+      "source_sha256": "4b6b916504f7a06ab20078c59d7519cb8484a4fae8d683ff3025c46e54284e55",
+      "bytes": 1413,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/results/all_comparisons.csv",
+      "source_sha256": "432453c3fbf9b1e645c73018f0a233c73b9e527ea1e6b7f4a5960099cb2e40ee",
+      "bytes": 17723,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/results/all_comparisons.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/results/analysis.json",
+      "source_sha256": "b3d4c2f788ce5a9461cd4809b0c36df6aa2790df9ebd0bb25014cd4646bf8217",
+      "bytes": 4663,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/results/analysis.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/results/identity.json",
+      "source_sha256": "bdcd57fa5b810693536ee798950e322c456aa4b9352bf906ec34e2b03ea9c7cb",
+      "bytes": 3512,
+      "disposition": "superseded_pilot_execution",
+      "repository_files": [],
+      "reason": "Earlier 32-group execution. Its saved outputs/analyzer remain under experiments/pilot/; current full-cohort model runner and exact pinned inputs are under experiments/replay/."
+    },
+    {
+      "archive_member": "gradient_replay/results/local_validation.json",
+      "source_sha256": "b31ffd396bb5deb6a34fad24d73fb4f78029e38d15612f256679038ecf6a0e19",
+      "bytes": 419,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/results/local_validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/results/parameter_layout.json",
+      "source_sha256": "6677ae1e82427ac7e5c9af82e65b26823e7da0c406d45f3843bca0041ef74031",
+      "bytes": 73391,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/run/parameter_layout.json",
+        "experiments/replay/analysis/pilot_reference/received/primary/runs/primary/parameter_layout.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "gradient_replay/results/progress.json",
+      "source_sha256": "97c7923bb666506ba6494ed7810c40eb15280408d3ea9aa4a1e2d2c9e495d1f8",
+      "bytes": 312,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "gradient_replay/results/result.json",
+      "source_sha256": "40389e6ba45c53c8d5361f3f75073cffac140a50f01fc8010ae68c4069311306",
+      "bytes": 231469,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/results/result.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/results/summary.json",
+      "source_sha256": "fd4631e99e6689330dd3538aa315aac76d8addd2c32f7b2739eeb05847012d85",
+      "bytes": 4005,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/results/summary.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/results/summary_validation.json",
+      "source_sha256": "9ce3723d52b306936f4348b00d6e0b935d802948ae95ab052c4c274e5f779081",
+      "bytes": 193,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/results/summary_validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/runtime/full_preflight.json",
+      "source_sha256": "42c4e03933eae50c27faf5e17f97551bc0fa7f85e975ae5e1da6c4f970f310d6",
+      "bytes": 572,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "gradient_replay/runtime/gpu0_inventory.csv",
+      "source_sha256": "2e8daf21c26817d4a72dd46a1ca78377f269c65cce11209d8f6614e7274562ba",
+      "bytes": 163,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "gradient_replay/runtime/native_cpu_tests.json",
+      "source_sha256": "74c2d6186ed790745bc32fbb6cadff1291610aaf94f3df7f42347a668e32fcbe",
+      "bytes": 2487,
+      "disposition": "operational_record",
+      "repository_files": [],
+      "reason": "Machine-specific progress, runtime or transport record; scientific model/runtime identity and recorded package versions retained."
+    },
+    {
+      "archive_member": "gradient_replay/runtime/native_runtime.json",
+      "source_sha256": "1f8b2bb4f0d2e7b467d35dc13d3e6c7811ed0b5a0c2797faf3941202c8eb71ad",
+      "bytes": 1633,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/pilot/runtime.json"
+      ],
+      "reason": "Original record retained with any private metadata redacted; original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/runtime/runtime_packages.txt",
+      "source_sha256": "b9c3e966af74937b35b3c8d870bb80c52e83e41aa0cf6c332bea5c91794d1152",
+      "bytes": 919,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/replay/recorded_packages.txt"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "gradient_replay/validate_result.py",
+      "source_sha256": "7ce330183f8479dd633b390cd205419928a4f3f5ebafbe4df63fc6a10ebde380",
+      "bytes": 3418,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Earlier pilot validator; current saved-pilot analyzer and full replay validators retained."
+    },
+    {
+      "archive_member": "historical_evidence/claim_map.json",
+      "source_sha256": "c35f22fe39322f7bb720430ca467b2a6b173e22c7ac540be8cda7f86e2e4442c",
+      "bytes": 12665,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Claims consolidated in provenance/claims.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/companion_input.json",
+      "source_sha256": "9fd96cbaef81291d6763b00a72716448f3ddd61afb491bde99f4c2630b95e810",
+      "bytes": 670085,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/companion_input.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/companion_results.json",
+      "source_sha256": "0dc094f508d94dc971137371aa6d8b4c4e7676106ffa4b36201eb3b3fee1aa24",
+      "bytes": 129921,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/companion_results.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/coverage_advantage.json",
+      "source_sha256": "4f8eff5219efe7d36bf7f7168bd1623e3a3b5d0b7cb36b70a02ec5dc32be27e0",
+      "bytes": 5734,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/coverage_advantage.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/decode_discrepancy.json",
+      "source_sha256": "78b7aa93f7727392461cb29669d8d99f730d683d466aecccf9062071fef049c1",
+      "bytes": 1169,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/decode_discrepancy.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/groups.json",
+      "source_sha256": "2da7a7cc52b743fe9d9bb61403455c6c466c7f300de9c36220a7aa8eb35102ab",
+      "bytes": 1044078,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/groups.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/paired_results.json",
+      "source_sha256": "e6cf1696dde2318af4bd649e5e9fe98fbe35f6d1f222c1083e30177000b19ed5",
+      "bytes": 1836,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/paired_results.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/toy_audit.json",
+      "source_sha256": "7bade9bedf3719998cffbc734ee966491024c719a44da2809d432190e77bd6da",
+      "bytes": 1921,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/toy_audit.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/derived/training_coverage.json",
+      "source_sha256": "51962c03d9a4ead87cb2230e0976f70cb13cf9480712728086c9654a3c1a38ea",
+      "bytes": 2152,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/results/training_coverage.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/estimators/analyze_coverage_advantage_novelty.py",
+      "source_sha256": "0fd28f87cc14b3919a585769940cea15834e1e9a14d3dc71cfd209f4381c80b5",
+      "bytes": 35383,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/reference_code/analyze_coverage_advantage_novelty.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/estimators/analyze_g7_training_coverage.py",
+      "source_sha256": "64e4678ed28c1f46e5ce8b318f3b6acf139c1409e2ff8cc38c7f9ab6b7c1561e",
+      "bytes": 5928,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/reference_code/analyze_g7_training_coverage.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/estimators/analyze_math500_n8.py",
+      "source_sha256": "7fe1df5ed3031f7aeb95d53dc2bd0a7bdcc5520799b6908e3207c0a1c584fe5b",
+      "bytes": 14334,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/reference_code/analyze_math500_n8.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/estimators/estimate_g7_policy_gradient_alignment.py",
+      "source_sha256": "8275e4a506a35d5a399f1756a8641f25de0d04b0e346c5030345357449d0ffcb",
+      "bytes": 30267,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/reference_code/estimate_g7_policy_gradient_alignment.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/input_hashes.json",
+      "source_sha256": "6c33d736d5a731c8fbb49a4036b53386f394f13440efc0dc70834db1e330c105",
+      "bytes": 7959,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Input hashes retained in per-experiment seals and repository manifest."
+    },
+    {
+      "archive_member": "historical_evidence/inputs/A_2000.json",
+      "source_sha256": "387baaebff834ded317e65d524aa18f941b6e874be993b2fea432ecd4e4e5359",
+      "bytes": 439552,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/inputs/A_2000.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/inputs/D_OracleAug.json",
+      "source_sha256": "86d3a50a243b2bb7ec555d200e7ee48e837e1d54fcc6e706704190b7c0f6de5e",
+      "bytes": 439354,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/inputs/D_OracleAug.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/inputs/G7.json",
+      "source_sha256": "7c1316008f6588667a060f95448c8df3f0c7f7764cb737701cad09ab59d4bcfd",
+      "bytes": 438743,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/inputs/G7.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/inputs/G7_redecode.json",
+      "source_sha256": "946744a1d0b78be8eee1f987eba9470340ab76f1422e5791140c5190ca6c4f05",
+      "bytes": 441523,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/inputs/G7_redecode.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/inputs/geometry_records.json",
+      "source_sha256": "ea070a0281d6dab2d9f3a08745c2d0df19eccc4cea5f6506ee6e14af14e4742e",
+      "bytes": 1455745,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/inputs/geometry_records.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/inputs/training_history.csv",
+      "source_sha256": "4cc55f1d6e9a110f6fd9e1d952e452c9e9f2fa52ddc3335678b1a382c9f000c1",
+      "bytes": 215147,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/inputs/training_history.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/recorded/gradient_replay.json",
+      "source_sha256": "abe8c8c8c8829d9b81713d165f0f74a89d1e00a0fd2789e5eb6be83ba25a9c9d",
+      "bytes": 3734,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/recorded/gradient_replay.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/recorded/original_advantage_analysis.json",
+      "source_sha256": "877a5944047c4b8b5b89a8e68666c6b8bcaf9906a9eff1934ed97f95668d37bf",
+      "bytes": 7893,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/recorded/original_advantage_analysis.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/recorded/original_decode_discrepancy.json",
+      "source_sha256": "97c13122d29412159b9689eea015d7f9e7bfcaa9c2cf5fc611ae166c02902462",
+      "bytes": 4404,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/recorded/original_decode_discrepancy.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/recorded/original_paired_analysis.txt",
+      "source_sha256": "e2d3d660cf67b9dfd6d1eed6000fda9f3a6cd9a6bd7d4fc6151afa5c825412ed",
+      "bytes": 6958,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/recorded/original_paired_analysis.txt"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/recorded/original_training_analysis.json",
+      "source_sha256": "8a652c6ac358be7e6fedcf11ada35aa10c746c7687224241f9c3231321d34e4f",
+      "bytes": 2099,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/recorded/original_training_analysis.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/recorded/redecode_summary.json",
+      "source_sha256": "23eb52ebd1c2c6c8bb7b9c2eaff2ac52bf81cf6b42b009c03c3ff4420998348c",
+      "bytes": 2394,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/historical/recorded/redecode_summary.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "historical_evidence/replay_scope_note.md",
+      "source_sha256": "131d9fb12b08592d637773632a3e9cd363465bb35c55eb981954066892bd18eb",
+      "bytes": 1853,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Legacy unverified gradient diagnostic, superseded by the pinned full replay; scope retained in docs/SCOPE.md."
+    },
+    {
+      "archive_member": "historical_evidence/verification_report.md",
+      "source_sha256": "709799d92db244924e32127c55da8ff211673bbe3f47efb387e9ab16aac46666",
+      "bytes": 2519,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Superseded by current reproducible checks and verification report."
+    },
+    {
+      "archive_member": "historical_lifecycle_note.md",
+      "source_sha256": "72c441587b24a93ce74d57fc810163bd2c253f90f64ee36e480ca541cd8dfd1e",
+      "bytes": 1480,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Method and lifecycle disclosure consolidated in docs/method/ and docs/SCOPE.md."
+    },
+    {
+      "archive_member": "method_documentation/README.md",
+      "source_sha256": "4e9784d8495db13e6eceb9c810951b8083a0c175d19723ac40aba651fd28ded3",
+      "bytes": 1014,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/README.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "method_documentation/archived_run_manifest.json",
+      "source_sha256": "f7d64cc41674954b97841d6b503ceb6f8b124eda97b1ea989d37befe09566880",
+      "bytes": 2146,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/archived_run_manifest.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "method_documentation/download_manifest.json",
+      "source_sha256": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b",
+      "bytes": 2284,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/download_manifest.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "method_documentation/hard_neg_miner.py.txt",
+      "source_sha256": "7ebc9463ccb4c10774f00edbe9789fb770b96ca0736691b24aa2a595a0d91610",
+      "bytes": 2164,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/hard_neg_miner.py.txt"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "method_documentation/lavida_trainer.py.txt",
+      "source_sha256": "8a0e0f8a8e5571be49274a7b354fd88ed1e6160cd7081144d9ca0b436b3ece5a",
+      "bytes": 105160,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/lavida_trainer.py.txt"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "method_documentation/manifest.json",
+      "source_sha256": "f7efa36a12f8435fa7761eb521d12f8e9c64e4a367e8699e6d661f898331f4b6",
+      "bytes": 1501,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/source_manifest.original.json"
+      ],
+      "reason": "Original record retained with any private metadata redacted; original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "method_documentation/mrn_head.py.txt",
+      "source_sha256": "b9dc1fc10c616d78f6fe31872b7aad964a5e5a049ff4e2827c5bb2de58795945",
+      "bytes": 1217,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/mrn_head.py.txt"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "method_documentation/multi_pos_filter.py.txt",
+      "source_sha256": "b728a7d4f202ca4dc7478215d36f1118bb3f3f9cc38c42fcc3491d31f0690cf1",
+      "bytes": 756,
+      "disposition": "included",
+      "repository_files": [
+        "docs/method/multi_pos_filter.py.txt"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "method_documentation/pins.json",
+      "source_sha256": "4e368b6f0c7109e235d9e956e419125efb5b8feda4eb0138a40d3e89a7644fb6",
+      "bytes": 4506,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/replay/code/data/model_pins.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "presentation-source/manifest.json",
+      "source_sha256": "fc92125b7fd37dfacd7753aa3fbbfe5cf35089d5b059c9e780302871770afed3",
+      "bytes": 4089,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "presentation-source/prepare_paper_assets.py",
+      "source_sha256": "2c70c9091fb3ed1b3c5c9c6728e1a5d2667911ef597520a4aa2f34f287a16f7b",
+      "bytes": 14436,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Ported to scripts/render_figures.py with repository-relative paths."
+    },
+    {
+      "archive_member": "presentation-source/svg/assignment_gradient_replay.svg",
+      "source_sha256": "5f5c4d939dfb16c3f24bdefe8ea2de8e79e94a1157b3ff07bf998284231c70c9",
+      "bytes": 51516,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/assignment_gradient_replay.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation-source/svg/components_and_interventions.svg",
+      "source_sha256": "8c911fbd754707b1802aa081a4249e66819f85edc9755e4dca5b5026a22610a7",
+      "bytes": 42001,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/components_and_interventions.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation-source/svg/direct_residual_comparison.svg",
+      "source_sha256": "a650719469d672782849e5e5b66acc28250aa02b197b855a5475b8bda9a5e3b4",
+      "bytes": 64847,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/direct_residual_comparison.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation-source/svg/energy_accounting.svg",
+      "source_sha256": "bd8c66012d8265e3dad09c9705f72db6d02981794c14cda146b5addd16c9da1e",
+      "bytes": 41972,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/energy_accounting.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation-source/svg/gradient_lifecycle.svg",
+      "source_sha256": "5c721162096891a6ee7df108e19ee05c06a59e0b241d292d486d813fd6f94316",
+      "bytes": 39804,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/gradient_lifecycle.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation-source/svg/group_novelty_ecdf.svg",
+      "source_sha256": "e89c8b9f90149d52aef281c0e7b799c76b3bdb6d8b5c321a8cfcf027f3144d58",
+      "bytes": 58766,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/group_novelty_ecdf.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation-source/svg/normalization_example.svg",
+      "source_sha256": "56c18df4e6d55af3734dc95164e3e42a9da2cd92faac764a6e316d33b65f2bff",
+      "bytes": 29884,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/normalization_example.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation-source/svg/signal_route.svg",
+      "source_sha256": "8386e024de5f40b1541b083011ee4081a2585bcf22728a1315c59445a049e116",
+      "bytes": 47931,
+      "disposition": "included",
+      "repository_files": [
+        "figures/editable/signal_route.svg"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "presentation/render_figures.py",
+      "source_sha256": "f79bfbef03df034ce323a919be7d81794944b375b8e67433244ce5b91e5db255",
+      "bytes": 5017,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Older figure renderer superseded by scripts/render_figures.py."
+    },
+    {
+      "archive_member": "requirements.txt",
+      "source_sha256": "597578e27c9be2f827775eada83489e8e46af4e02294bf4561c083cb9c6d3c91",
+      "bytes": 81,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Superseded by the tested pinned CPU and figure requirements."
+    },
+    {
+      "archive_member": "runs/cpu_v1/SHA256SUMS.txt",
+      "source_sha256": "ddab070629dfef512697168bd7583e94c2f452b9d5568f34f57012005ee7148a",
+      "bytes": 6629,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "runs/cpu_v1/config.json",
+      "source_sha256": "851dc1cd864303ea927f3e240e1b036f4a0413c2be4efa383887e4bede1fc5d9",
+      "bytes": 1383,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/config.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/environment.json",
+      "source_sha256": "37405515e6e4d8f5713430a807d26ccf06ac4688aa6c7f3448b86417e7c6044a",
+      "bytes": 1126,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/environment.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/input_manifest.json",
+      "source_sha256": "66c79b683bacdc9977be3f86b8b12f8184d9c80cc822418b479edde84730f915",
+      "bytes": 3906,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/input_manifest.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/joined_rollouts.jsonl",
+      "source_sha256": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+      "bytes": 2033835,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/joined_rollouts.jsonl"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/protocol.md",
+      "source_sha256": "d0ba4ebbb7cb87fe4477ce345bbf059f7677416eca982cd942519693fc13e243",
+      "bytes": 43693,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/protocol.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/reference/current_export_provenance.py",
+      "source_sha256": "c27837a02c5cf9ae2efe5d6b4e7bb4a5cdb4165f05c011f12b39e3c68f7b0820",
+      "bytes": 18424,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/reference/current_export_provenance.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/reference/decoder_config.json",
+      "source_sha256": "da2377b9e8d4b3bdd0d2a52405dc676aff5454be9c01a07fff572eb9436dc966",
+      "bytes": 734,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/reference/decoder_config.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/reference/geometry_extractor.py",
+      "source_sha256": "8c18a0f9d79cca38efef3d70ebe6cc1efb518b2a047d29f12d72d666722a19e1",
+      "bytes": 36541,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/reference/geometry_extractor.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/reference/gradient_estimator.py",
+      "source_sha256": "8275e4a506a35d5a399f1756a8641f25de0d04b0e346c5030345357449d0ffcb",
+      "bytes": 30267,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/reference/gradient_estimator.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/reference/historical_metrics.json",
+      "source_sha256": "4f8eff5219efe7d36bf7f7168bd1623e3a3b5d0b7cb36b70a02ec5dc32be27e0",
+      "bytes": 5734,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/reference/historical_metrics.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/reference/redecode_audit.json",
+      "source_sha256": "01e7f889d83bcbe1530e5afa17b9c4303c6b9c8c656ee34eb2f9bf2769c0a435",
+      "bytes": 352,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/reference/redecode_audit.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/calculation_checks.json",
+      "source_sha256": "0fc6b12ee48f65a9904233669ce1884c965bf20323d65bf7a1b9773f2fda616c",
+      "bytes": 2804,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/calculation_checks.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/calibration.json",
+      "source_sha256": "3853ab865a51dd17a5205d4356895a5ab9623cb17d526ae6222c6c00880eca22",
+      "bytes": 406,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/calibration.json",
+        "experiments/assignment/inputs/calibration.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/censoring_report.json",
+      "source_sha256": "21e32698e756291155f9c2b22b1593baf05443ceecfcb8dfa0746a180935d242",
+      "bytes": 847,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/censoring_report.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/group_metrics.csv",
+      "source_sha256": "d1e30f6fab258cd823f965df732e5c59ac788e0f340918e7385d2e8960098e64",
+      "bytes": 402225,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/group_metrics.csv"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/length_association.csv",
+      "source_sha256": "62b79f656df56d354811bd9a9b2f5329f1c4f3b53c68c06cce33b5054d6a5e6f",
+      "bytes": 10936,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/length_association.csv"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/rollout_results.jsonl",
+      "source_sha256": "c80e8e83787d56b4f83189f800ae8459a2fbf960ee3b3dbe0f0bc8c02b4aec9b",
+      "bytes": 7696575,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/rollout_results.jsonl"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/sensitivity_results.json",
+      "source_sha256": "307d11fdbd3697820db4f3b3bda7ec30bacdc429c4a3cfd105be2719eba3d73d",
+      "bytes": 4003,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/sensitivity_results.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/repeat/summary.json",
+      "source_sha256": "bc56b4eeba21d29531aa85ce7068fa7269869361ebfe37e83e4fff19441fd263",
+      "bytes": 13230,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/results/summary.json"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/analysis_report.md",
+      "source_sha256": "48bc0746e1e6b18caab32fc67713f211c6f17f1e25aa3101562717ea864ef5c9",
+      "bytes": 5078,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/calculation_checks.json",
+      "source_sha256": "0fc6b12ee48f65a9904233669ce1884c965bf20323d65bf7a1b9773f2fda616c",
+      "bytes": 2804,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/calculation_checks.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/calibration.json",
+      "source_sha256": "3853ab865a51dd17a5205d4356895a5ab9623cb17d526ae6222c6c00880eca22",
+      "bytes": 406,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/calibration.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/censoring_report.json",
+      "source_sha256": "21e32698e756291155f9c2b22b1593baf05443ceecfcb8dfa0746a180935d242",
+      "bytes": 847,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/censoring_report.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/claim_map.json",
+      "source_sha256": "68f4dd7fac0885b8a62cf1ab4436b8f93ae12e52f05b0d1d702101eefa413f31",
+      "bytes": 2809,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/claim_map.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/global_energy_accounting.pdf",
+      "source_sha256": "54d64e83e195c1dff9a22084a5f512a4e00482e0bd24bc83447cdd590b6bd966",
+      "bytes": 14430,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/global_energy_accounting.png",
+      "source_sha256": "21ff03c149d9b7e07dfff74c508ba5611ea78e26db75772e33b2ac9aae394281",
+      "bytes": 61659,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/global_energy_accounting.svg",
+      "source_sha256": "89c387a88bd9c2a7249f13cc367348adc31cbcd20ca59928236cf6cae636b58e",
+      "bytes": 20097,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/group_novelty_ecdf.pdf",
+      "source_sha256": "e39b97e53e13bcce4da84bba9a3d9b6023eaac52d4d1aea143f9f33ea75dcb9d",
+      "bytes": 17521,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/group_novelty_ecdf.png",
+      "source_sha256": "4f88202f7cec85e555c1142d2810fb6ba327e0e4aa80013f5b3dbbd3cdf43138",
+      "bytes": 82326,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/group_novelty_ecdf.svg",
+      "source_sha256": "3770f1a8a25cc8cfbc807e488b40fa01bbc4895f2c8852f03523dcb803d6b017",
+      "bytes": 28901,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/length_association.pdf",
+      "source_sha256": "79f8dbbad49609734ce82acda02cc61e1942764bed93e8a63d6d5269634cc8b7",
+      "bytes": 13269,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/length_association.png",
+      "source_sha256": "37109df965b1cbb512be5727b2d8d0aa5d77a22aac13890b93f4e8b7385ccac7",
+      "bytes": 49547,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures/length_association.svg",
+      "source_sha256": "02a83eaf6c0cd77130a09b3125d301f64214cf8017ea9d66fe7d8f93bf4c7caa",
+      "bytes": 24734,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/global_energy_accounting.pdf",
+      "source_sha256": "9d588172251c821828846dc3e8251914ef26a0695321f59206d81d1e86be23ad",
+      "bytes": 14495,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/global_energy_accounting.png",
+      "source_sha256": "aca83bc02387252e7d666895b41297560179624ede0b42e7f0bde56047048ea7",
+      "bytes": 75901,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/global_energy_accounting.svg",
+      "source_sha256": "f81c77b647f963a5e9aac34f8f7310c7f084f5a47b47ca0a2145a19eef652ea2",
+      "bytes": 19003,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/group_novelty_ecdf.pdf",
+      "source_sha256": "c6e6dcd0dde7943c5bf01b9863ee68a6dd20e3c358ed09da20baf7b64f78d51b",
+      "bytes": 17701,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/group_novelty_ecdf.png",
+      "source_sha256": "2e91a85a8158c670e31060e4ca070f840b51b9e3000549a238115164dfa33db0",
+      "bytes": 89024,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/group_novelty_ecdf.svg",
+      "source_sha256": "be8304a3bf742a57e9389c6068d7dd4dee534234bceb13af6457c6f785bd19dd",
+      "bytes": 29066,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/length_association.pdf",
+      "source_sha256": "9f8a9595b1fef59afe46706378c0acf1ef4dc0575d36ee9ae5e64e18488582fc",
+      "bytes": 13668,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/length_association.png",
+      "source_sha256": "0ac8fc779c090c530e5d997f112d93052a9b1d8ae6f4d410299b625eef55f7d0",
+      "bytes": 53862,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/length_association.svg",
+      "source_sha256": "18359d9a8c04d7c9be05eb3eb55f645eeea8e27a946045e3c47b8e408cd8bd33",
+      "bytes": 21866,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/figures_final/presentation_manifest.json",
+      "source_sha256": "81b031f3e4cf07f1cfd9883661139efb4354a649301370f6b5dca362e5262b98",
+      "bytes": 807,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/group_metrics.csv",
+      "source_sha256": "d1e30f6fab258cd823f965df732e5c59ac788e0f340918e7385d2e8960098e64",
+      "bytes": 402225,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/group_metrics.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/length_association.csv",
+      "source_sha256": "62b79f656df56d354811bd9a9b2f5329f1c4f3b53c68c06cce33b5054d6a5e6f",
+      "bytes": 10936,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/length_association.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/rollout_results.jsonl",
+      "source_sha256": "c80e8e83787d56b4f83189f800ae8459a2fbf960ee3b3dbe0f0bc8c02b4aec9b",
+      "bytes": 7696575,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/rollout_results.jsonl"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/sensitivity_results.json",
+      "source_sha256": "307d11fdbd3697820db4f3b3bda7ec30bacdc429c4a3cfd105be2719eba3d73d",
+      "bytes": 4003,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/sensitivity_results.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/summary.json",
+      "source_sha256": "bc56b4eeba21d29531aa85ce7068fa7269869361ebfe37e83e4fff19441fd263",
+      "bytes": 13230,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/summary.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/tables/experiment_results.tex",
+      "source_sha256": "740af81e0fb10176848c254ac074ae3e9537a887f85aa39e986f0998d45acba5",
+      "bytes": 1374,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/tables/experiment_results.tex"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/tables/full_geometry.csv",
+      "source_sha256": "9bb381f025b73736c83d9d917a788454d5d51eb5b4db99952ed5f3431e92fad7",
+      "bytes": 1675,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/tables/full_geometry.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/tables/primary_comparison.md",
+      "source_sha256": "600bc006ab4a7117254ba55ed2fa352402fe1641ce5b987c5d1b52f621b1871f",
+      "bytes": 660,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/tables/primary_comparison.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/tables/primary_comparison.tex",
+      "source_sha256": "9bba1955053bec383068745e707202fefafd13fd1fc73f143fda7d2a5affc153",
+      "bytes": 416,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/tables/primary_comparison.tex"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/validation.json",
+      "source_sha256": "ed5926f4efd9daaf7b94ede48b5c6f4a621c9b24758fc3572b017ed46296d73c",
+      "bytes": 3521,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/results/validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/visual_qa/final/global_energy_accounting.png",
+      "source_sha256": "4eec9b46817e82d0334f7dd3b727fe03e5a24439d8dffdd2e7afde681bbc414e",
+      "bytes": 42332,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/visual_qa/final/group_novelty_ecdf.png",
+      "source_sha256": "ef9fa4b337404426b756efc3ba8ff3359882963bc57ea2a3cfdef11153df7604",
+      "bytes": 51362,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/visual_qa/final/length_association.png",
+      "source_sha256": "03a5c474122ae60d3f3790388c4a71ed53f103844c4e5f3d3294e1f24889cd02",
+      "bytes": 35181,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/visual_qa/global_energy_accounting.png",
+      "source_sha256": "dce16f2b2236bfdc10015391f43bf5a38c12bd641ebeeacb4aa2eedf6695b8a8",
+      "bytes": 40903,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/visual_qa/group_novelty_ecdf.png",
+      "source_sha256": "f8b462dfded5126bd11b2b453b3deb64c8b6188564ed1b41566a1a7a4634d4a5",
+      "bytes": 51847,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/results/visual_qa/length_association.png",
+      "source_sha256": "e9aaac3538f8b32303917c9d268c8ae8da4d07fde47a04a4d70918dfe7c7f3c5",
+      "bytes": 42047,
+      "disposition": "earlier_visual_export",
+      "repository_files": [],
+      "reason": "Current paper figures and editable SVGs retained under figures/; numerical inputs and portable generator retained."
+    },
+    {
+      "archive_member": "runs/cpu_v1/seal.json",
+      "source_sha256": "576b87ab5f345f7483615a410cec38c37e5b01e83d46c95fc5a1d87f3d8377d6",
+      "bytes": 2079,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/seal.json",
+        "provenance/original_seals/experiments_offline.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/src/audit.py",
+      "source_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "bytes": 29481,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/src/audit.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/src/render_report.py",
+      "source_sha256": "cd7f642142a1cd4930ca97229413348f6f58d0040a39c2276f7edd5fcf6031b7",
+      "bytes": 14176,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/src/render_report.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/src/test_synthetic_cases.py",
+      "source_sha256": "b6139746fa7d5887f5c1fecfd7f5262d9c8ede10ead17b0c3c45214c256fa029",
+      "bytes": 7141,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/src/test_synthetic_cases.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/src/validate_results.py",
+      "source_sha256": "8c84e7346502d320bf3b9d0a1ad78acf9fe9bbfea18c34b6250482086aa4af29",
+      "bytes": 7820,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/src/validate_results.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/synthetic_validation.json",
+      "source_sha256": "7a2c0f9e172d7f308ec29ef637f1e40c6a701e7af85cc50d09e4a8c6dcc37f57",
+      "bytes": 175,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/synthetic_validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "runs/cpu_v1/token_records.jsonl",
+      "source_sha256": "5650a1c64d9b21928b49b86b9a32ebb3743820b53e4cbc0375c1a92b896acfc2",
+      "bytes": 12164489,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/offline/token_records.jsonl"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "src/audit.py",
+      "source_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+      "bytes": 29481,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/audit.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "src/render_report.py",
+      "source_sha256": "cd7f642142a1cd4930ca97229413348f6f58d0040a39c2276f7edd5fcf6031b7",
+      "bytes": 14176,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/render_report.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "src/test_synthetic_cases.py",
+      "source_sha256": "b6139746fa7d5887f5c1fecfd7f5262d9c8ede10ead17b0c3c45214c256fa029",
+      "bytes": 7141,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/test_synthetic_cases.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "src/validate_results.py",
+      "source_sha256": "8c84e7346502d320bf3b9d0a1ad78acf9fe9bbfea18c34b6250482086aa4af29",
+      "bytes": 7820,
+      "disposition": "duplicate",
+      "repository_files": [
+        "experiments/offline/src/validate_results.py"
+      ],
+      "reason": "Byte-identical original content already represented by the listed exported file(s)."
+    },
+    {
+      "archive_member": "validation/actionability_v3/AMENDMENT.md",
+      "source_sha256": "e81dccd1130a3ec5f30dfbadd9f4ed0d497e9c75202043726b3ce6818c6bd9fd",
+      "bytes": 3995,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/actionability_v3/AMENDMENT.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/actionability_v3/alignment_floors.csv",
+      "source_sha256": "04000dc25553064de7c47812404b3c6cc32929da664148853f8efdbaed72b8cb",
+      "bytes": 40373,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/actionability_v3/alignment_floors.csv"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/actionability_v3/validate_actionability.py",
+      "source_sha256": "51f7c015ecb08e561541faeb4836bc7da9396259e8901ec440c5e5884a8ac6aa",
+      "bytes": 8822,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/actionability_v3/validate_actionability.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/actionability_v3/validation.json",
+      "source_sha256": "44cb6af00d7e7fb86bafc47a68e6d149b74220697c535c77d11bf01c5fc6a80f",
+      "bytes": 2053,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/actionability_v3/validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/general_shaping_v2/AMENDMENT.md",
+      "source_sha256": "db3ed54c8afd7872a295d16329c0d12ef9990588d38ceb539eb3c4c0a22d91b1",
+      "bytes": 1480,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/general_shaping_v2/AMENDMENT.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/general_shaping_v2/SHA256SUMS.txt",
+      "source_sha256": "dae626b904036de2b69e83a825674afcd6541ec4c426129875619311e30efdc7",
+      "bytes": 250,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "validation/general_shaping_v2/validate_general.py",
+      "source_sha256": "c137390b00b7ea578eaf9e2605746b890e038d2a260aa13b3e48f8e647d71bfe",
+      "bytes": 5468,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/general_shaping_v2/validate_general.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/general_shaping_v2/validation.json",
+      "source_sha256": "dc51be3ac6bc8a03b58825f51cf2d9861004bad174f41c35af7441d16fcf343a",
+      "bytes": 818,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/general_shaping_v2/validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/permutation_reference_v4/README.md",
+      "source_sha256": "a5834d5d42feb6caadfaedb5318d21a464bc9be0c15f54467db8b038302f88df",
+      "bytes": 1686,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/permutation_reference_v4/README.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/permutation_reference_v4/report.json",
+      "source_sha256": "6f0803bd0f8f91fcf4bb05b1b2ed51cabb0317a5013d0bd1d12dc21288ffc25f",
+      "bytes": 6869,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/permutation_reference_v4/report.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/permutation_reference_v4/validate_reference.py",
+      "source_sha256": "05f49f31d46d23cda9a2211e689049ac4b736283be0db910e1bf36c0a4a095ff",
+      "bytes": 5727,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/permutation_reference_v4/validate_reference.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/tau_identity_v1/AMENDMENT.md",
+      "source_sha256": "2300cfa518bdd9463b0639e17e475442297a32353dce6fce650f90d3873a0dbf",
+      "bytes": 827,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/tau_identity_v1/AMENDMENT.md"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/tau_identity_v1/SHA256SUMS.txt",
+      "source_sha256": "979efdab354210f4c4fe7366c5000a550692bcde462d4de51efe40ae22864cb8",
+      "bytes": 499,
+      "disposition": "superseded_documentation_or_receipt",
+      "repository_files": [],
+      "reason": "Original documentation/integrity/operational record; current guides, source inventory, original seals, and verification records provide the public-package version."
+    },
+    {
+      "archive_member": "validation/tau_identity_v1/validate_tau.py",
+      "source_sha256": "86eba967cc60e9b353009d9140fdb963ba9e5284bf6146f25beee40c5a12bb60",
+      "bytes": 4602,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/tau_identity_v1/validate_tau.py"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "validation/tau_identity_v1/validation.json",
+      "source_sha256": "c73fde53e586517b8b486daf7c219a5d2f40289424833302248c74bd795966a4",
+      "bytes": 864,
+      "disposition": "included",
+      "repository_files": [
+        "experiments/validation/tau_identity_v1/validation.json"
+      ],
+      "reason": "Copied or adapted with original/export hashes in origins.json."
+    },
+    {
+      "archive_member": "verify_and_package.py",
+      "source_sha256": "fe48d953f733b838d0aaefd12c67a274e5334ea8b655f58e40d5138c035c32dd",
+      "bytes": 7277,
+      "disposition": "superseded_or_excluded",
+      "repository_files": [],
+      "reason": "Original manuscript archive packager; public repository has its own verifier and inventory."
+    }
+  ]
+}

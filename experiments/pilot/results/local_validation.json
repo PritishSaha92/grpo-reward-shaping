@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "groups": 32,
+  "canary": false,
+  "metric_checks": 408,
+  "maximum_metric_error": 0.0,
+  "minimum_gram_eigenvalue": -7.946790872245358e-19,
+  "maximum_gram_eigenvalue": 0.015761960701297748,
+  "result_sha256": "40389e6ba45c53c8d5361f3f75073cffac140a50f01fc8010ae68c4069311306",
+  "scope": "Metadata/Gram arithmetic validation; does not rerun the model or assess learning utility."
+}

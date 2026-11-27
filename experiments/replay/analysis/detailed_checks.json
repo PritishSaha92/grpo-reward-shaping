@@ -1,0 +1,184 @@
+{
+  "status": "PASS",
+  "input_result_sha256": "14aff10587ab6289f1c405fbd8f96f5bf5c113639e46df3bb5d9f4161eca649c",
+  "comparisons": 210,
+  "quantile_rows": 24,
+  "undefined_comparisons": 0,
+  "max_independent_pair_error": 4.386863723844503e-11,
+  "max_advantage_permutation_norm_squared_error": 2.6645352591003757e-15,
+  "max_same_difference_squared_error": 6.403569081242511e-19,
+  "max_advantage_permutation_binary_dot_error": 1.7763568394002505e-15,
+  "group_count": 185,
+  "completion_count": 1480,
+  "log_events_ordered_and_complete": true,
+  "tokens": {
+    "saved_completion_tokens": 1081240,
+    "trimmed_records": 28,
+    "trimmed_groups": 17,
+    "total_prompt_tokens_removed": 28,
+    "max_prompt_tokens_removed": 1,
+    "completion_length": {
+      "defined": 1480,
+      "undefined": 0,
+      "min": 64.0,
+      "q1": 406.75,
+      "median": 590.5,
+      "q3": 893.25,
+      "max": 3027.0
+    },
+    "maximum_context": 4096
+  },
+  "completion_mean_log_probability": {
+    "defined": 1480,
+    "undefined": 0,
+    "min": -0.5375388264656067,
+    "q1": -0.13544071465730667,
+    "median": -0.10169363021850586,
+    "q3": -0.07466834597289562,
+    "max": -0.014942867681384087
+  },
+  "completion_gradient_norm": {
+    "defined": 1480,
+    "undefined": 0,
+    "min": 0.040799822855010076,
+    "q1": 0.21566315466298802,
+    "median": 0.2883991868907505,
+    "q3": 0.3738479047259743,
+    "max": 1.2042983830074852
+  },
+  "concentration": {
+    "learned": {
+      "zero_reference_groups": 53,
+      "top_1_share": 0.11942836149456156,
+      "top_5_share": 0.28966829320890686,
+      "top_10_share": 0.4434428437730257,
+      "top_10": [
+        {
+          "group_id": "test/number_theory/679.json",
+          "n_wrong": 7,
+          "reference": 3.601246388924015e-07
+        },
+        {
+          "group_id": "test/intermediate_algebra/955.json",
+          "n_wrong": 7,
+          "reference": 1.522354065041629e-07
+        },
+        {
+          "group_id": "test/algebra/1184.json",
+          "n_wrong": 6,
+          "reference": 1.2903787420555823e-07
+        },
+        {
+          "group_id": "test/precalculus/1201.json",
+          "n_wrong": 7,
+          "reference": 1.2755839882309593e-07
+        },
+        {
+          "group_id": "test/prealgebra/2066.json",
+          "n_wrong": 6,
+          "reference": 1.0451032036129911e-07
+        },
+        {
+          "group_id": "test/geometry/1097.json",
+          "n_wrong": 5,
+          "reference": 9.640375464291308e-08
+        },
+        {
+          "group_id": "test/counting_and_probability/1003.json",
+          "n_wrong": 7,
+          "reference": 9.518491953397998e-08
+        },
+        {
+          "group_id": "test/counting_and_probability/188.json",
+          "n_wrong": 7,
+          "reference": 9.11414762578537e-08
+        },
+        {
+          "group_id": "test/geometry/826.json",
+          "n_wrong": 7,
+          "reference": 9.102364309596295e-08
+        },
+        {
+          "group_id": "test/precalculus/1146.json",
+          "n_wrong": 7,
+          "reference": 8.993844673557234e-08
+        }
+      ]
+    },
+    "length": {
+      "zero_reference_groups": 54,
+      "top_1_share": 0.09901857220423678,
+      "top_5_share": 0.3777720330012489,
+      "top_10_share": 0.5641673107039139,
+      "top_10": [
+        {
+          "group_id": "test/intermediate_algebra/607.json",
+          "n_wrong": 7,
+          "reference": 2.2737296993250762e-07
+        },
+        {
+          "group_id": "test/number_theory/22.json",
+          "n_wrong": 6,
+          "reference": 2.1744552830386935e-07
+        },
+        {
+          "group_id": "test/geometry/702.json",
+          "n_wrong": 7,
+          "reference": 1.6178789130242284e-07
+        },
+        {
+          "group_id": "test/geometry/183.json",
+          "n_wrong": 7,
+          "reference": 1.4054706397979926e-07
+        },
+        {
+          "group_id": "test/precalculus/1133.json",
+          "n_wrong": 7,
+          "reference": 1.2031158045267438e-07
+        },
+        {
+          "group_id": "test/precalculus/1146.json",
+          "n_wrong": 7,
+          "reference": 1.1848729353307259e-07
+        },
+        {
+          "group_id": "test/counting_and_probability/1003.json",
+          "n_wrong": 7,
+          "reference": 1.0001848370736524e-07
+        },
+        {
+          "group_id": "test/counting_and_probability/731.json",
+          "n_wrong": 6,
+          "reference": 9.766834099972248e-08
+        },
+        {
+          "group_id": "test/intermediate_algebra/955.json",
+          "n_wrong": 7,
+          "reference": 6.31150573785725e-08
+        },
+        {
+          "group_id": "test/number_theory/1055.json",
+          "n_wrong": 3,
+          "reference": 4.872394282164875e-08
+        }
+      ]
+    }
+  },
+  "pilot_checks": {
+    "shared_record_groups": 32,
+    "shared_completion_records_identical": true,
+    "shared_weights_and_permutations_identical": true,
+    "native_runtime_identical": true,
+    "model_revisions_identical": true,
+    "parameter_layout_identical": true,
+    "prior_divisor": 256,
+    "current_divisor": 1480,
+    "subgroup_gradient_reproduction": "Not available: prior pilot did not store per-completion scores/norms or subgroup cross-Grams; new complete-cohort bank does not retain the old-subset aggregate separately."
+  },
+  "additional_zero_length_groups": [
+    "test/precalculus/1202.json"
+  ],
+  "coefficient_cast_max_relative_l2_error": 2.500441927400059e-08,
+  "precision_limit": "Coefficient conversion only; no higher-precision full accumulation rerun and no bound on all BF16/FP32 numerical error.",
+  "scientific_limit": "No policy updates, independent validation outcomes, utility ranking or significance test; exact reference is conditional on fixed computed gradients."
+}

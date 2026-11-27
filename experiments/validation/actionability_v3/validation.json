@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "scope": "Post-result algebra validation and new descriptive finite-sample floor summary; no training.",
+  "checks": 71683,
+  "checks_by_kind": {
+    "pearson": 9657,
+    "unexplained_variance": 9657,
+    "per_group_permutation_cosine": 9657,
+    "class_residual_sum": 19314,
+    "residual_gradient_contrast": 9657,
+    "full_gradient_difference": 9657,
+    "floor_formula": 1850,
+    "floor_inequality": 1850,
+    "infinite_coefficient_limit": 370,
+    "pooled_permutation_six_statistics": 12,
+    "example_geometry": 1,
+    "example_opposite_residual_gradients": 1
+  },
+  "max_absolute_error": 3.7969627442180354e-14,
+  "failures": [],
+  "degenerate_cosines_excluded": 1491,
+  "atol": 1e-10,
+  "rtol": 1e-08,
+  "random_seed": 20261126,
+  "mixed_groups": 185,
+  "homogeneous_groups_excluded": 315,
+  "floor_summary": {
+    "learned_distance": {
+      "min": 0.4703269014136222,
+      "q1": 0.8276956164266024,
+      "median": 0.9519382699338798,
+      "q3": 1.0,
+      "max": 1.0,
+      "groups": 185,
+      "zero_mean": 0,
+      "single_incorrect": 53
+    },
+    "token_length": {
+      "min": 0.3758684341706653,
+      "q1": 0.8982441255226653,
+      "median": 0.9730815998436597,
+      "q3": 1.0,
+      "max": 1.0,
+      "groups": 185,
+      "zero_mean": 0,
+      "single_incorrect": 53
+    }
+  },
+  "permutation_example": {
+    "original_residual_gradient": [
+      0.6030226891555271,
+      -0.6030226891555273
+    ],
+    "permuted_residual_gradient": [
+      -0.6030226891555271,
+      0.6030226891555273
+    ]
+  },
+  "hashes": {
+    "ledger": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+    "original_seal": "576b87ab5f345f7483615a410cec38c37e5b01e83d46c95fc5a1d87f3d8377d6",
+    "amendment": "e81dccd1130a3ec5f30dfbadd9f4ed0d497e9c75202043726b3ce6818c6bd9fd",
+    "code": "51f7c015ecb08e561541faeb4836bc7da9396259e8901ec440c5e5884a8ac6aa",
+    "floor_csv": "04000dc25553064de7c47812404b3c6cc32929da664148853f8efdbaed72b8cb"
+  }
+}

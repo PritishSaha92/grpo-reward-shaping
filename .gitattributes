@@ -1,0 +1,4 @@
+# Preserve evidence bytes on Windows and Unix: hashes cover exact file contents.
+* -text
+*.pdf binary
+*.png binary

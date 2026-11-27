@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "checks": {
+    "toy_cosine_squared": {
+      "count": 1,
+      "max_absolute_error": 0.0
+    },
+    "constant_direction": {
+      "count": 1,
+      "max_absolute_error": 1.1102230246251565e-16
+    },
+    "class_centering_equals_projection": {
+      "count": 121,
+      "max_absolute_error": 4.440892098500626e-16
+    },
+    "residual_orthogonality": {
+      "count": 121,
+      "max_absolute_error": 9.992007221626409e-16
+    },
+    "toy_permutation_geometry": {
+      "count": 1,
+      "max_absolute_error": 0.0
+    },
+    "within_class_gradient_contrast": {
+      "count": 1,
+      "max_absolute_error": 1.1102230246251565e-16
+    },
+    "homogeneous_advantage": {
+      "count": 1,
+      "max_absolute_error": 0.0
+    },
+    "single_wrong_zero_residual": {
+      "count": 1,
+      "max_absolute_error": 0.0
+    },
+    "gradient_decomposition": {
+      "count": 120,
+      "max_absolute_error": 3.552713678800501e-15
+    }
+  }
+}

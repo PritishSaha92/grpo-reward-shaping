@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "length_group": {
+    "label": "Per-group matched length",
+    "scope": "sensitivity",
+    "total_penalty": 418.6627126038074,
+    "positive_penalty_rollouts": 650,
+    "normalizations": {
+      "std": {
+        "global": {
+          "cosine": 0.9787060160003574,
+          "energy": 0.04213453424470803,
+          "norm_ratio": 1.0000913668909253,
+          "relative_change": 0.20637797236483543,
+          "undefined_reason": null,
+          "within_energy": 0.039462356266489904,
+          "weight_energy": 0.002672177978218149
+        },
+        "per_group": {
+          "cosine": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 0.6097277501866878,
+            "q1": 0.9814941326900001,
+            "median": 0.9972963955022999,
+            "q3": 0.9999999999999998,
+            "maximum": 1.0
+          },
+          "energy": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 0.0,
+            "q1": 4.440892098500626e-16,
+            "median": 0.005399899518120255,
+            "q3": 0.036669267495104574,
+            "maximum": 0.62823207065228
+          },
+          "norm_ratio": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 1.000023832526933,
+            "q1": 1.000064372419478,
+            "median": 1.0000864525458544,
+            "q3": 1.0001112502092782,
+            "maximum": 1.0002000002283558
+          },
+          "relative_change": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 2.792912913598833e-05,
+            "q1": 0.0001519759087016052,
+            "median": 0.0735366416017657,
+            "q3": 0.19239127636451855,
+            "maximum": 0.8835569138037452
+          }
+        },
+        "eligible_mixed_groups": 185,
+        "undefined_homogeneous_groups": 315
+      },
+      "mean": {
+        "global": {
+          "cosine": 0.9496527233758821,
+          "energy": 0.09815970498477034,
+          "norm_ratio": 1.690454469300389,
+          "relative_change": 0.8043301136657565,
+          "undefined_reason": null,
+          "within_energy": 0.06795023064627446,
+          "weight_energy": 0.03020947433849626
+        },
+        "per_group": {
+          "cosine": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 0.6097277501866879,
+            "q1": 0.98149413269,
+            "median": 0.9972963955023001,
+            "q3": 0.9999999999999998,
+            "maximum": 1.0
+          },
+          "energy": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 0.0,
+            "q1": 4.440892098500626e-16,
+            "median": 0.005399899518119811,
+            "q3": 0.036669267495104796,
+            "maximum": 0.6282320706522799
+          },
+          "norm_ratio": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 1.101797568798065,
+            "q1": 1.400514422579636,
+            "median": 1.5712306499481201,
+            "q3": 1.8454896883142604,
+            "maximum": 3.4693752120562245
+          },
+          "relative_change": {
+            "defined": 185,
+            "excluded": 0,
+            "minimum": 0.10179756879806524,
+            "q1": 0.4115995746131104,
+            "median": 0.5822679519653321,
+            "q3": 0.9002935834069424,
+            "maximum": 2.9674594650692643
+          }
+        },
+        "eligible_mixed_groups": 185,
+        "undefined_homogeneous_groups": 315
+      }
+    }
+  },
+  "cap_exclusion": {
+    "removed_group_ids": [],
+    "removed_groups": 0,
+    "retained_groups": 500,
+    "coefficient": 0.0007621985617683552,
+    "refitted": false,
+    "remaining_unknown_termination": 4000,
+    "status": "not_triggered",
+    "reason": "No observed nominal/verified-effective cap hits or confirmed length termination; all stopping causes remain unknown"
+  }
+}

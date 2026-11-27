@@ -1,0 +1,34 @@
+{
+  "commit": "56d5622dc7e16150dca414865159440c298852fc",
+  "scope": "Documented source and recovery hashes. Executed runtime and historical extraction identity are not certified.",
+  "files": {
+    "lavida_trainer.py.txt": {
+      "source": "lavida/training/lavida_trainer.py",
+      "sha256": "8a0e0f8a8e5571be49274a7b354fd88ed1e6160cd7081144d9ca0b436b3ece5a"
+    },
+    "hard_neg_miner.py.txt": {
+      "source": "lavida/training/hard_neg_miner.py",
+      "sha256": "7ebc9463ccb4c10774f00edbe9789fb770b96ca0736691b24aa2a595a0d91610"
+    },
+    "multi_pos_filter.py.txt": {
+      "source": "lavida/training/multi_pos_filter.py",
+      "sha256": "b728a7d4f202ca4dc7478215d36f1118bb3f3f9cc38c42fcc3491d31f0690cf1"
+    },
+    "mrn_head.py.txt": {
+      "source": "lavida/models/mrn_head.py",
+      "sha256": "b9dc1fc10c616d78f6fe31872b7aad964a5e5a049ff4e2827c5bb2de58795945"
+    },
+    "pins.json": {
+      "source": "Recovered artifact metadata; not historical execution attestation",
+      "sha256": "4e368b6f0c7109e235d9e956e419125efb5b8feda4eb0138a40d3e89a7644fb6"
+    },
+    "download_manifest.json": {
+      "source": "Recovered artifact metadata; not historical execution attestation",
+      "sha256": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b"
+    },
+    "archived_run_manifest.json": {
+      "source": "HF adapter repository run manifest",
+      "sha256": "f7d64cc41674954b97841d6b503ceb6f8b124eda97b1ea989d37befe09566880"
+    }
+  }
+}

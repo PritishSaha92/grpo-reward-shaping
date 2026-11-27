@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "checks": {
+    "independent_global_advantage_comparison_c": {
+      "count": 2,
+      "max_absolute_error": 0.0
+    },
+    "independent_global_advantage_comparison_rho": {
+      "count": 2,
+      "max_absolute_error": 0.0
+    },
+    "independent_global_advantage_comparison_D": {
+      "count": 2,
+      "max_absolute_error": 0.0
+    },
+    "independent_global_advantage_comparison_E": {
+      "count": 2,
+      "max_absolute_error": 0.0
+    },
+    "independent_global_residual_comparison_c": {
+      "count": 2,
+      "max_absolute_error": 5.551115123125783e-17
+    },
+    "independent_global_residual_comparison_rho": {
+      "count": 2,
+      "max_absolute_error": 1.1102230246251565e-16
+    },
+    "independent_global_residual_comparison_D": {
+      "count": 2,
+      "max_absolute_error": 2.220446049250313e-16
+    },
+    "independent_global_residual_comparison_E": {
+      "count": 2,
+      "max_absolute_error": 0.0
+    },
+    "original_result_c": {
+      "count": 6,
+      "max_absolute_error": 4.440892098500626e-16
+    },
+    "original_result_rho": {
+      "count": 6,
+      "max_absolute_error": 2.220446049250313e-16
+    },
+    "original_result_D": {
+      "count": 6,
+      "max_absolute_error": 1.1102230246251565e-16
+    },
+    "original_result_E": {
+      "count": 6,
+      "max_absolute_error": 8.881784197001252e-16
+    },
+    "original_result_E_within": {
+      "count": 6,
+      "max_absolute_error": 2.7755575615628914e-17
+    },
+    "original_result_E_weight": {
+      "count": 6,
+      "max_absolute_error": 4.163336342344337e-17
+    },
+    "normalization_invariant_per_group_learned_energy": {
+      "count": 185,
+      "max_absolute_error": 8.326672684688674e-17
+    },
+    "normalization_invariant_per_group_length_energy": {
+      "count": 185,
+      "max_absolute_error": 2.220446049250313e-16
+    },
+    "normalization_invariant_per_group_advantage_cosine": {
+      "count": 185,
+      "max_absolute_error": 5.551115123125783e-16
+    },
+    "normalization_invariant_per_group_residual_cosine": {
+      "count": 131,
+      "max_absolute_error": 3.941291737419306e-15
+    }
+  },
+  "comparison_source_sha256": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+  "note": "Independent original normalizer and explicit projection; not an independent data sample"
+}

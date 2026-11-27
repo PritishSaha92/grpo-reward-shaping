@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "prepared_at": {
+    "utc": "2026-11-25T21:07:03.845814+00:00",
+    "Asia_Kolkata": "2026-11-26T02:37:03.845814+05:30"
+  },
+  "files": [
+    {
+      "path": "LaViDA/eval_results/oracle_phase3_seed0_n8/g7_principled_cr_seed0_math500_n8_redecode/config.json",
+      "sha256": "da2377b9e8d4b3bdd0d2a52405dc676aff5454be9c01a07fff572eb9436dc966"
+    },
+    {
+      "path": "LaViDA/eval_results/oracle_phase3_seed0_n8/g7_principled_cr_seed0_math500_n8_redecode/math500_pass8_results.json",
+      "sha256": "d5a29873bede905e4501a365677793c65325e032aec6f426762053a003cc27bd"
+    },
+    {
+      "path": "LaViDA/eval_results/oracle_phase3_seed0_n8/g7_principled_cr_seed0_math500_n8_redecode/redecode_audit.json",
+      "sha256": "01e7f889d83bcbe1530e5afa17b9c4303c6b9c8c656ee34eb2f9bf2769c0a435"
+    },
+    {
+      "path": "LaViDA/lavida/eval/provenance.py",
+      "sha256": "c27837a02c5cf9ae2efe5d6b4e7bb4a5cdb4165f05c011f12b39e3c68f7b0820"
+    },
+    {
+      "path": "LaViDA/outputs/base_arm/oracle_matrix/oracleaug-probe-b/lavida-variant-B-seed0-alpha0p05/lavida-variant-B-seed0-alpha0p05/tokenizer.json",
+      "sha256": "5eee858c5123a4279c3e1f7b81247343f356ac767940b2692a928ad929543214"
+    },
+    {
+      "path": "LaViDA/scripts/extract_g7_coverage_advantage_records.py",
+      "sha256": "8c18a0f9d79cca38efef3d70ebe6cc1efb518b2a047d29f12d72d666722a19e1"
+    },
+    {
+      "path": "grpo-mechanism-audit/evidence/derived/coverage_advantage.json",
+      "sha256": "4f8eff5219efe7d36bf7f7168bd1623e3a3b5d0b7cb36b70a02ec5dc32be27e0"
+    },
+    {
+      "path": "grpo-mechanism-audit/evidence/estimators/estimate_g7_policy_gradient_alignment.py",
+      "sha256": "8275e4a506a35d5a399f1756a8641f25de0d04b0e346c5030345357449d0ffcb"
+    },
+    {
+      "path": "grpo-mechanism-audit/evidence/inputs/G7_redecode.json",
+      "sha256": "946744a1d0b78be8eee1f987eba9470340ab76f1422e5791140c5190ca6c4f05"
+    },
+    {
+      "path": "grpo-mechanism-audit/evidence/inputs/geometry_records.json",
+      "sha256": "ea070a0281d6dab2d9f3a08745c2d0df19eccc4cea5f6506ee6e14af14e4742e"
+    }
+  ],
+  "groups": 500,
+  "samples": 4000,
+  "group_counts": {
+    "all_correct": 268,
+    "all_wrong": 47,
+    "mixed": 185
+  },
+  "token_semantics": {
+    "basis": "Historical extraction and replay consumers treat token_ids as completion-only IDs; recorded redecode audit says IDs saved for latent extraction. All stored IDs crosschecked against saved completion text with archived local tokenizer.",
+    "exact_original_exporter": "Not retained; current exporter snapshot is supporting documentation, not the historical execution source",
+    "local_tokenizer_scope": "Local archived vocabulary used to verify stored-token semantics; not claimed to pin the historical model/tokenizer revision",
+    "decode_counts": {
+      "exact": 3952,
+      "saved_text_plus_stop_suffix": 48
+    },
+    "retained_suffixes": {
+      "\n\n\nQuestion:": 48
+    },
+    "terminal_special_counts": {
+      "<|endoftext|>": 3882
+    },
+    "all_special_counts": {
+      "<|endoftext|>": 3882
+    },
+    "length_definition": "len(stored completion token_ids), including all stored special/stop tokens",
+    "effective_cap": null,
+    "termination_status": "unknown for all samples; special tokens not treated as stop-reason evidence"
+  },
+  "extraction_limits": {
+    "checkpoint_hash_status": "checkpoint is absent from the local snapshot; hash must be supplied before end-to-end release",
+    "frozen_ae_hash_status": "frozen VAE is absent from the local snapshot; hash must be supplied before end-to-end release",
+    "base_model_revision": null,
+    "teacher_forcing_context_truncation": {
+      "n_rollouts": 38,
+      "max_dropped_prompt_tokens": 1,
+      "rule": "left-truncated prompt context only; full completion preserved"
+    }
+  }
+}

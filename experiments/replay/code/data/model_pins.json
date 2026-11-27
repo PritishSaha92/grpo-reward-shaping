@@ -1,0 +1,154 @@
+{
+  "adapter": {
+    "repo_id": "REPLAY_ADAPTER",
+    "revision": "9a7fa0c034c1884f141563611bb52c795e1e466f",
+    "remote_files": {
+      ".gitattributes": {
+        "size": 1570,
+        "sha256": null
+      },
+      "README.md": {
+        "size": 2261,
+        "sha256": null
+      },
+      "adapter_config.json": {
+        "size": 1099,
+        "sha256": null
+      },
+      "adapter_model.safetensors": {
+        "size": 645975704,
+        "sha256": "4729dfc26598884d852fd5eeb095e5472022d6d43d8f3b6efe81920f29d5601a"
+      },
+      "added_tokens.json": {
+        "size": 605,
+        "sha256": null
+      },
+      "chat_template.jinja": {
+        "size": 2513,
+        "sha256": null
+      },
+      "checkpoint-1000/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "53c5b22e71b89303f673eea94353843db3d51b1522e399f27c38c9b2f9b93cbe"
+      },
+      "checkpoint-1250/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "421a63272db10a0c567f5ac8afb00117943c4a56891cc29b2f53c7dcba376bbc"
+      },
+      "checkpoint-1500/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "d1ed83b5d75b4c7291b5d0f4ce5a9074ad132c49bef7a7f85d3b5e91a90276d2"
+      },
+      "checkpoint-1750/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "7c3333dacd46a49534543b02819b4cad2890fea1a5f581faf1c0899977b1dbf3"
+      },
+      "checkpoint-2000/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "fdecbe67692a4a169acae92ffc0893136507cf59477f3952d530f0d89304b8a2"
+      },
+      "checkpoint-250/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "903fab1fd2120ed5c9ee4ad71826c36865e8334641e41d70d055927b5aa1144c"
+      },
+      "checkpoint-500/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "37592394ee4d2ff92e3dcd2e1b63d6c8bf42beb21d4de94c79a96f50661905ef"
+      },
+      "checkpoint-750/lavida_state.pt": {
+        "size": 1324093,
+        "sha256": "5db9885b7e5ad6e79b69a2855b06dd6b9038553a489699c56752b5c4a218edc6"
+      },
+      "merges.txt": {
+        "size": 1671853,
+        "sha256": null
+      },
+      "run_manifest.json": {
+        "size": 2146,
+        "sha256": null
+      },
+      "special_tokens_map.json": {
+        "size": 616,
+        "sha256": null
+      },
+      "tokenizer.json": {
+        "size": 11422063,
+        "sha256": "5eee858c5123a4279c3e1f7b81247343f356ac767940b2692a928ad929543214"
+      },
+      "tokenizer_config.json": {
+        "size": 4689,
+        "sha256": null
+      },
+      "training_args.bin": {
+        "size": 8056,
+        "sha256": "1fc494339387a8ded3182ab739f85ef49040e6f3a1f927f43e2bdfe52b16346d"
+      },
+      "vocab.json": {
+        "size": 2776833,
+        "sha256": null
+      }
+    }
+  },
+  "base": {
+    "repo_id": "Qwen/Qwen2.5-Math-7B",
+    "revision": "b101308fe89651ea5ce025f25317fea6fc07e96e",
+    "remote_files": {
+      ".gitattributes": {
+        "size": 1519,
+        "sha256": null
+      },
+      "LICENSE": {
+        "size": 11343,
+        "sha256": null
+      },
+      "README.md": {
+        "size": 3421,
+        "sha256": null
+      },
+      "config.json": {
+        "size": 678,
+        "sha256": null
+      },
+      "generation_config.json": {
+        "size": 138,
+        "sha256": null
+      },
+      "merges.txt": {
+        "size": 1671839,
+        "sha256": null
+      },
+      "model-00001-of-00004.safetensors": {
+        "size": 3945441440,
+        "sha256": "568edbe0da275cc5d49d676d87363edc0148217b94b89cf4c49697b4355f44a3"
+      },
+      "model-00002-of-00004.safetensors": {
+        "size": 3864726352,
+        "sha256": "0372acd5aae4090c693bfdeaa6858c09231c96d2e51614a9da73d90e0c153bf2"
+      },
+      "model-00003-of-00004.safetensors": {
+        "size": 3864726424,
+        "sha256": "38e7eafd2d123e03b9797d42ebbacb8e4981eb6a410e2ce0d6c508130f78af90"
+      },
+      "model-00004-of-00004.safetensors": {
+        "size": 3556377672,
+        "sha256": "3aa0cc3aab8aeb338e238e3569f5f7228f16afca3dd8609be6c859d953ac4f88"
+      },
+      "model.safetensors.index.json": {
+        "size": 27752,
+        "sha256": null
+      },
+      "tokenizer.json": {
+        "size": 7031645,
+        "sha256": null
+      },
+      "tokenizer_config.json": {
+        "size": 7318,
+        "sha256": null
+      },
+      "vocab.json": {
+        "size": 2776833,
+        "sha256": null
+      }
+    }
+  }
+}

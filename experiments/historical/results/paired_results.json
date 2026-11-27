@@ -1,0 +1,72 @@
+{
+  "status": "recomputed_from_slimmed_saved_evaluations",
+  "bootstrap": {
+    "resamples": 20000,
+    "seed": 0,
+    "unit": "prompt",
+    "generator": "Python random.Random; historical estimator retained",
+    "warning": "not training-seed uncertainty"
+  },
+  "runs": {
+    "A_2000": {
+      "n_problems": 500,
+      "samples_per_problem": 8,
+      "mean_correctness": 0.74875,
+      "problem_se": 0.01931788643907366,
+      "pass_at_8": 0.758
+    },
+    "D_OracleAug": {
+      "n_problems": 500,
+      "samples_per_problem": 8,
+      "mean_correctness": 0.79575,
+      "problem_se": 0.017962368116055113,
+      "pass_at_8": 0.802
+    },
+    "G7": {
+      "n_problems": 500,
+      "samples_per_problem": 8,
+      "mean_correctness": 0.7385,
+      "problem_se": 0.019544807468941616,
+      "pass_at_8": 0.746
+    },
+    "G7_redecode": {
+      "n_problems": 500,
+      "samples_per_problem": 8,
+      "mean_correctness": 0.7435,
+      "problem_se": 0.015864073804522934,
+      "pass_at_8": 0.906
+    }
+  },
+  "comparisons": {
+    "G7_minus_A_2000": {
+      "mean_correctness": {
+        "delta": -0.01025,
+        "ci_low": -0.0435,
+        "ci_high": 0.023,
+        "p_two_sided": 0.5513
+      },
+      "pass_at_8": {
+        "delta": -0.01200000000000001,
+        "left_only": 38,
+        "right_only": 32,
+        "discordant": 70,
+        "p_value": 0.5504125118224712
+      }
+    },
+    "D_OracleAug_minus_A_2000": {
+      "mean_correctness": {
+        "delta": 0.047,
+        "ci_low": 0.0125,
+        "ci_high": 0.08125,
+        "p_two_sided": 0.0069
+      },
+      "pass_at_8": {
+        "delta": 0.04400000000000004,
+        "left_only": 28,
+        "right_only": 50,
+        "discordant": 78,
+        "p_value": 0.016853089894602595
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "mixed_groups": 185,
+  "rules": 4,
+  "normalizations": 2,
+  "checks": 4510,
+  "max_absolute_error": 9.052696418009043e-12,
+  "tolerance": {
+    "atol": 1e-10,
+    "rtol": 1e-08
+  },
+  "hashes": {
+    "joined_rollouts.jsonl": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+    "results\\group_metrics.csv": "d1e30f6fab258cd823f965df732e5c59ac788e0f340918e7385d2e8960098e64",
+    "results\\tables\\full_geometry.csv": "9bb381f025b73736c83d9d917a788454d5d51eb5b4db99952ed5f3431e92fad7",
+    "validation\\tau_identity_v1\\validate_tau.py": "86eba967cc60e9b353009d9140fdb963ba9e5284bf6146f25beee40c5a12bb60",
+    "validation\\tau_identity_v1\\AMENDMENT.md": "2300cfa518bdd9463b0639e17e475442297a32353dce6fce650f90d3873a0dbf"
+  },
+  "scope": "Post-result identity validation; no new empirical outcomes"
+}

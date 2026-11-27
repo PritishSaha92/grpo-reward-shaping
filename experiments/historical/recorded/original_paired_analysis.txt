@@ -1,0 +1,108 @@
+G7_Principled_CR_seed0 Paired Analysis
+Bootstrap seed=0, resamples=20000. Regression test against locked A_2000 vs D_OracleAug: PASS with measured row: delta +4.70pp CI [+1.25, +8.12]pp, p=0.0069, pass@8 delta +4.40pp, McNemar p=0.0169 [left_only=28, right_only=50].
+McNemar variant: exact binomial McNemar, matching paired_analysis.txt; no chi-square continuity correction is used by the locked script.
+G7 n=8 per-problem JSON: eval_results/oracle_phase3_seed0_n8/g7_principled_cr_seed0_math500_n8/math500_pass8_results.json
+Generated with scripts/analyze_math500_n8.py paired_bootstrap / exact_mcnemar implementation plus greedy pass@1 paired bootstrap using the same seed/resamples.
+
+N=8 Overall Comparisons (right-left)
+
+Run Summary
+run                                 mean_corr   prob_SE   binom_SE   pass@8
+A_2000                                 74.88%     1.93pp      0.69pp   75.80%
+D_OracleAug                            79.57%     1.80pp      0.64pp   80.20%
+G_OracleAug_seed0                      73.55%     1.96pp      0.70pp   74.60%
+G7_Principled_CR_seed0                 73.85%     1.95pp      0.69pp   74.60%
+
+Level-Stratified Summary
+
+L1
+run                                    n  mean_corr   prob_SE   binom_SE   pass@8
+A_2000                                43     96.51%     2.58pp      0.99pp   97.67%
+D_OracleAug                           43     97.67%     2.33pp      0.81pp   97.67%
+G_OracleAug_seed0                     43     97.67%     2.33pp      0.81pp   97.67%
+G7_Principled_CR_seed0                43    100.00%     0.00pp      0.00pp  100.00%
+
+L2
+run                                    n  mean_corr   prob_SE   binom_SE   pass@8
+A_2000                                90     85.56%     3.73pp      1.31pp   85.56%
+D_OracleAug                           90     92.22%     2.84pp      1.00pp   92.22%
+G_OracleAug_seed0                     90     89.72%     3.18pp      1.13pp   90.00%
+G7_Principled_CR_seed0                90     91.11%     3.02pp      1.06pp   91.11%
+
+L3
+run                                    n  mean_corr   prob_SE   binom_SE   pass@8
+A_2000                               105     87.74%     3.20pp      1.13pp   88.57%
+D_OracleAug                          105     89.52%     3.00pp      1.06pp   89.52%
+G_OracleAug_seed0                    105     84.17%     3.52pp      1.26pp   85.71%
+G7_Principled_CR_seed0               105     81.07%     3.83pp      1.35pp   81.90%
+
+L4
+run                                    n  mean_corr   prob_SE   binom_SE   pass@8
+A_2000                               128     74.61%     3.83pp      1.36pp   75.78%
+D_OracleAug                          128     77.73%     3.67pp      1.30pp   78.12%
+G_OracleAug_seed0                    128     71.19%     3.98pp      1.42pp   72.66%
+G7_Principled_CR_seed0               128     72.27%     3.94pp      1.40pp   72.66%
+
+L5
+run                                    n  mean_corr   prob_SE   binom_SE   pass@8
+A_2000                               134     50.93%     4.32pp      1.53pp   52.24%
+D_OracleAug                          134     59.24%     4.23pp      1.50pp   61.19%
+G_OracleAug_seed0                    134     48.88%     4.31pp      1.53pp   50.00%
+G7_Principled_CR_seed0               134     49.72%     4.29pp      1.53pp   51.49%
+
+L1_3
+run                                    n  mean_corr   prob_SE   binom_SE   pass@8
+A_2000                               238     88.50%     2.06pp      0.73pp   89.08%
+D_OracleAug                          238     92.02%     1.76pp      0.62pp   92.02%
+G_OracleAug_seed0                    238     88.71%     2.03pp      0.73pp   89.50%
+G7_Principled_CR_seed0               238     88.29%     2.08pp      0.74pp   88.66%
+
+L4_5
+run                                    n  mean_corr   prob_SE   binom_SE   pass@8
+A_2000                               262     62.50%     2.98pp      1.06pp   63.74%
+D_OracleAug                          262     68.27%     2.86pp      1.02pp   69.47%
+G_OracleAug_seed0                    262     59.78%     3.02pp      1.07pp   61.07%
+G7_Principled_CR_seed0               262     60.73%     3.00pp      1.07pp   61.83%
+
+Regression Test: A_2000 -> D_OracleAug
+  Delta mean correctness (right-left): +4.70pp
+  95% paired-bootstrap CI: [+1.25, +8.12]pp
+  Paired-bootstrap two-sided p: 0.0069
+  Delta pass@8 (right-left): +4.40pp
+  Exact McNemar p: 0.0169  [left_only=28, right_only=50]
+  Regression status: PASS
+
+Required Phase H Comparison Summary
+comparison                                        n8 mean diff [95% CI]       greedy diff [95% CI]        L1-3 diff [95% CI]        L4-5 diff [95% CI]        L5 diff [95% CI]  pass@8 McNemar p
+A_2000 -> G7_Principled_CR_seed0                 -1.03pp [-4.35, +2.30]     -1.00pp [-4.20, +2.20]    -0.21pp [-4.15, +3.73]    -1.77pp [-6.87, +3.39]  -1.21pp [-8.49, +6.06]            0.5504
+D_OracleAug -> G7_Principled_CR_seed0            -5.73pp [-9.07, -2.40]     -1.00pp [-4.20, +2.20]    -3.73pp [-7.51, +0.00]   -7.54pp [-12.88, -2.15] -9.51pp [-17.54, -1.77]            0.0018
+G_OracleAug_seed0 -> G7_Principled_CR_seed0       +0.30pp [-3.05, +3.65]     -1.20pp [-4.40, +1.80]    -0.42pp [-4.20, +3.36]    +0.95pp [-4.34, +6.25]  +0.84pp [-6.44, +7.93]            1.0000
+
+Detailed Comparison Sections
+
+A_2000 -> G7_Principled_CR_seed0
+  N=8 overall mean correctness: -1.03pp [-4.35, +2.30]pp; paired-bootstrap p=0.5513
+  Greedy pass@1 accuracy: -1.00pp [-4.20, +2.20]pp; paired-bootstrap p=0.5643
+  N=8 L1_3 mean correctness: -0.21pp [-4.15, +3.73]pp; paired-bootstrap p=0.9305
+  N=8 L4_5 mean correctness: -1.77pp [-6.87, +3.39]pp; paired-bootstrap p=0.5041
+  N=8 L5 mean correctness: -1.21pp [-8.49, +6.06]pp; paired-bootstrap p=0.7470
+  Delta pass@8 (right-left): -1.20pp
+  Exact McNemar p: 0.5504  [left_only=38, right_only=32]
+
+D_OracleAug -> G7_Principled_CR_seed0
+  N=8 overall mean correctness: -5.73pp [-9.07, -2.40]pp; paired-bootstrap p=0.0008
+  Greedy pass@1 accuracy: -1.00pp [-4.20, +2.20]pp; paired-bootstrap p=0.5894
+  N=8 L1_3 mean correctness: -3.73pp [-7.51, +0.00]pp; paired-bootstrap p=0.0586
+  N=8 L4_5 mean correctness: -7.54pp [-12.88, -2.15]pp; paired-bootstrap p=0.0050
+  N=8 L5 mean correctness: -9.51pp [-17.54, -1.77]pp; paired-bootstrap p=0.0164
+  Delta pass@8 (right-left): -5.60pp
+  Exact McNemar p: 0.0018  [left_only=52, right_only=24]
+
+G_OracleAug_seed0 -> G7_Principled_CR_seed0
+  N=8 overall mean correctness: +0.30pp [-3.05, +3.65]pp; paired-bootstrap p=0.8665
+  Greedy pass@1 accuracy: -1.20pp [-4.40, +1.80]pp; paired-bootstrap p=0.4851
+  N=8 L1_3 mean correctness: -0.42pp [-4.20, +3.36]pp; paired-bootstrap p=0.8356
+  N=8 L4_5 mean correctness: +0.95pp [-4.34, +6.25]pp; paired-bootstrap p=0.7341
+  N=8 L5 mean correctness: +0.84pp [-6.44, +7.93]pp; paired-bootstrap p=0.8369
+  Delta pass@8 (right-left): +0.00pp
+  Exact McNemar p: 1.0000  [left_only=37, right_only=37]

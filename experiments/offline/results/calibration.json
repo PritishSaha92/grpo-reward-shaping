@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "coefficient": 0.0007621985617683552,
+  "numerator_total_learned_penalty": 418.66271260380745,
+  "denominator_total_eligible_tokens": 549283,
+  "eligible_rollouts": 650,
+  "mean_learned_penalty": 0.6440964809289346,
+  "unit": "penalty per stored generated token",
+  "calibrated_on": "full fixed post-hoc sample; reused across both normalizations and cap sensitivity"
+}

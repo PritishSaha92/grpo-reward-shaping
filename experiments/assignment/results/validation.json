@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "checks": {
+    "stored_learned_penalty": {
+      "count": 185,
+      "max_absolute_error": 0.0
+    },
+    "class_centering_equals_projection": {
+      "count": 12950,
+      "max_absolute_error": 1.7763568394002505e-15
+    },
+    "residual_orthogonality": {
+      "count": 12950,
+      "max_absolute_error": 8.881784197001252e-16
+    },
+    "pooled_energy_partition": {
+      "count": 6,
+      "max_absolute_error": 1.0779637909589985e-15
+    },
+    "permuted_advantages": {
+      "count": 11840,
+      "max_absolute_error": 8.881784197001252e-16
+    },
+    "permuted_residuals": {
+      "count": 11840,
+      "max_absolute_error": 4.440892098500626e-16
+    },
+    "permuted_alpha": {
+      "count": 11840,
+      "max_absolute_error": 6.661338147750939e-16
+    },
+    "local_permutation_geometry": {
+      "count": 11840,
+      "max_absolute_error": 1.1102230246251565e-15
+    },
+    "pooled_permutation_geometry": {
+      "count": 64,
+      "max_absolute_error": 4.440892098500626e-16
+    }
+  },
+  "original_seal_verified_files": 17,
+  "extension_seal_verified_files": 8
+}

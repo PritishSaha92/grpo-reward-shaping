@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "created_at": {
+    "utc": "2026-11-25T21:07:04.374814+00:00",
+    "Asia_Kolkata": "2026-11-26T02:37:04.374814+05:30"
+  },
+  "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+  "executable": "<user-home>\\anaconda3\\python.exe",
+  "platform": "Windows-11-10.0.26340-SP0",
+  "dependencies": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.2",
+    "matplotlib": "3.9.0",
+    "tokenizers": "0.22.1",
+    "PyMuPDF": "1.26.7"
+  },
+  "git_revisions": {
+    ".": "9fa0daef1cd2599be6b64621ac39c5cf7a6d271e",
+    "LaViDA": "8c6d047744803a9af28d8c78e68c2ac18cea1d63"
+  },
+  "code_identity": "Exact source snapshots and hashes in seal.json; Git revisions do not include these uncommitted files",
+  "command": [
+    "grpo-mechanism-audit/analysis/math4ai_2027/src/audit.py",
+    "prepare",
+    "--workspace",
+    "<workspace>",
+    "--run",
+    "<workspace>\\grpo-mechanism-audit\\analysis\\math4ai_2027\\runs\\cpu_v1",
+    "--config",
+    "grpo-mechanism-audit/analysis/math4ai_2027/config.json"
+  ]
+}

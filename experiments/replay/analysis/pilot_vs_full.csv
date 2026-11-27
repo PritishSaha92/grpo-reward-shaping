@@ -1,0 +1,10 @@
+metric,pilot_32,full_185
+learned_binary_cosine,0.9798416971941589,0.9844068009101694
+learned_binary_relative_difference,0.20123289839769476,0.1759119615173638
+learned_residual_norm_over_binary,0.20049771912307798,0.17482816219956948
+learned_residual_binary_cosine,0.017516146170482125,-0.07773972972054813
+learned_length_residual_cosine,-0.06482406214777109,-0.0025575912888680485
+length_learned_relative_difference,0.2657315031322456,0.29152627967811706
+median_shuffled_learned_relative_difference,0.30595345637775373,0.24831809394361012
+shuffles_larger_residual,31,4
+shuffles_farther_than_length,28,0

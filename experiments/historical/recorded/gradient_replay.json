@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "records": "eval_results/oracle_phase3_seed0_n8/g7_coverage_advantage_records.json",
+    "records_sha256": "ea070a0281d6dab2d9f3a08745c2d0df19eccc4cea5f6506ee6e14af14e4742e",
+    "results": "eval_results/oracle_phase3_seed0_n8/g7_principled_cr_seed0_math500_n8_redecode/math500_pass8_results.json",
+    "results_sha256": "d5a29873bede905e4501a365677793c65325e032aec6f426762053a003cc27bd",
+    "checkpoint": "outputs/base_arm/g7_principled_cr_seed0/checkpoint-2000",
+    "checkpoint_tree_sha256": null,
+    "checkpoint_hash_status": "checkpoint is absent from the local snapshot; hash must be supplied before end-to-end release",
+    "base_model": "Qwen/Qwen2.5-Math-7B",
+    "base_model_revision": null,
+    "beta": 0.1,
+    "sample_seed": 0,
+    "n_groups": 32,
+    "n_rollouts": 256,
+    "selected_group_ids": [
+      "test/prealgebra/996.json",
+      "test/number_theory/533.json",
+      "test/counting_and_probability/1003.json",
+      "test/algebra/2427.json",
+      "test/algebra/2036.json",
+      "test/number_theory/1172.json",
+      "test/geometry/226.json",
+      "test/counting_and_probability/1060.json",
+      "test/number_theory/13.json",
+      "test/prealgebra/1640.json",
+      "test/algebra/1184.json",
+      "test/precalculus/990.json",
+      "test/algebra/2277.json",
+      "test/algebra/1937.json",
+      "test/intermediate_algebra/1210.json",
+      "test/algebra/661.json",
+      "test/algebra/776.json",
+      "test/algebra/1349.json",
+      "test/precalculus/1133.json",
+      "test/precalculus/1291.json",
+      "test/counting_and_probability/199.json",
+      "test/algebra/2176.json",
+      "test/prealgebra/1865.json",
+      "test/number_theory/1185.json",
+      "test/intermediate_algebra/754.json",
+      "test/geometry/547.json",
+      "test/number_theory/516.json",
+      "test/algebra/892.json",
+      "test/precalculus/826.json",
+      "test/intermediate_algebra/955.json",
+      "test/geometry/686.json",
+      "test/prealgebra/1436.json"
+    ],
+    "selected_n_correct_distribution": {
+      "7": 8,
+      "5": 6,
+      "1": 3,
+      "3": 5,
+      "4": 2,
+      "2": 6,
+      "6": 2
+    },
+    "trainable_parameter_count": 161480704,
+    "completion_tokens_mean": 688.53515625,
+    "completion_tokens_total": 176265,
+    "teacher_forcing_context_truncation": {
+      "n_rollouts": 6,
+      "max_dropped_prompt_tokens": 1
+    },
+    "hardware": "NVIDIA H100 80GB HBM3",
+    "wall_clock_seconds": 162.27723717689514,
+    "post_hoc": true
+  },
+  "policy_gradient": {
+    "estimator": "on-policy unclipped completion-mean score-function gradient on LoRA parameters at the final checkpoint; shared KL and head auxiliary excluded",
+    "prefix_group_estimates": {
+      "8": {
+        "cosine": 0.9858714565398912,
+        "norm_ratio_shaped_to_binary": 1.0004316771172348,
+        "binary_norm": 2.486397827454366,
+        "shaped_norm": 2.4874711485008207
+      },
+      "16": {
+        "cosine": 0.9849167539419642,
+        "norm_ratio_shaped_to_binary": 1.0098488248975563,
+        "binary_norm": 3.599656630012718,
+        "shaped_norm": 3.635109017853041
+      },
+      "32": {
+        "cosine": 0.9812526647869768,
+        "norm_ratio_shaped_to_binary": 1.0038359096424834,
+        "binary_norm": 5.070974277861423,
+        "shaped_norm": 5.090426076990657
+      }
+    },
+    "final": {
+      "cosine": 0.9812526647869768,
+      "norm_ratio_shaped_to_binary": 1.0038359096424834,
+      "binary_norm": 5.070974277861423,
+      "shaped_norm": 5.090426076990657
+    },
+    "selected_subset_advantage_cosine": 0.975746372457451,
+    "scope_warning": "Final-checkpoint post-hoc replay on a fixed sampled subset, not a reconstruction of the 2,000 historical training updates."
+  }
+}

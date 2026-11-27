@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "independent_saved_output_checks": {
+    "independent_calibration": {
+      "comparisons": 1,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "saved_penalty": {
+      "comparisons": 32000,
+      "max_absolute_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    "saved_R": {
+      "comparisons": 32000,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "saved_reward": {
+      "comparisons": 32000,
+      "max_absolute_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    "saved_binary_advantage": {
+      "comparisons": 4000,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    "saved_shaped_advantage": {
+      "comparisons": 4000,
+      "max_absolute_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    "independent_global_cosine": {
+      "comparisons": 8,
+      "max_absolute_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    "independent_global_energy": {
+      "comparisons": 8,
+      "max_absolute_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    "independent_global_norm_ratio": {
+      "comparisons": 8,
+      "max_absolute_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    "independent_global_relative_change": {
+      "comparisons": 8,
+      "max_absolute_error": 1.1102230246251565e-16,
+      "passed": true
+    },
+    "independent_per_group_cosine": {
+      "comparisons": 8,
+      "max_absolute_error": 5.551115123125783e-16,
+      "passed": true
+    },
+    "independent_per_group_energy": {
+      "comparisons": 8,
+      "max_absolute_error": 1.1102230246251565e-15,
+      "passed": true
+    },
+    "independent_per_group_norm_ratio": {
+      "comparisons": 8,
+      "max_absolute_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    "independent_per_group_relative_change": {
+      "comparisons": 8,
+      "max_absolute_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    "saved_energy_partition": {
+      "comparisons": 8,
+      "max_absolute_error": 4.2327252813834093e-16,
+      "passed": true
+    },
+    "saved_group_csv_cosine": {
+      "comparisons": 1480,
+      "max_absolute_error": 5.551115123125783e-16,
+      "passed": true
+    },
+    "saved_group_csv_energy": {
+      "comparisons": 1480,
+      "max_absolute_error": 1.1102230246251565e-15,
+      "passed": true
+    },
+    "saved_group_csv_norm_ratio": {
+      "comparisons": 1480,
+      "max_absolute_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    "saved_group_csv_relative_change": {
+      "comparisons": 1480,
+      "max_absolute_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    "independent_scipy_spearman": {
+      "comparisons": 131,
+      "max_absolute_error": 1.1102230246251565e-16,
+      "passed": true
+    }
+  },
+  "sealed_source_and_input_hashes_verified": true,
+  "token_records_checked": 4000,
+  "rollout_results_checked": 32000,
+  "group_metric_rows_checked": 4000,
+  "association_rows_checked": 185,
+  "deterministic_repeat": {
+    "performed": true,
+    "byte_identical": true,
+    "files": {
+      "calculation_checks.json": true,
+      "calibration.json": true,
+      "censoring_report.json": true,
+      "group_metrics.csv": true,
+      "length_association.csv": true,
+      "rollout_results.jsonl": true,
+      "sensitivity_results.json": true,
+      "summary.json": true
+    }
+  }
+}

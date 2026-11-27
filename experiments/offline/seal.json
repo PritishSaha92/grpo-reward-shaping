@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "kind": "public-export-integrity",
+  "export_date": "2026-11-27",
+  "original_seal_sha256": "576b87ab5f345f7483615a410cec38c37e5b01e83d46c95fc5a1d87f3d8377d6",
+  "note": "Metadata was redacted for public export after results were known. This is not preregistration. Numerical inputs are unchanged; see provenance/origins.json.",
+  "files": {
+    "config.json": "851dc1cd864303ea927f3e240e1b036f4a0413c2be4efa383887e4bede1fc5d9",
+    "environment.json": "8c2c88dc9ff9fde2040657ccf03b67ede078c91b8a0246e027102284d1327778",
+    "input_manifest.json": "66c79b683bacdc9977be3f86b8b12f8184d9c80cc822418b479edde84730f915",
+    "joined_rollouts.jsonl": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+    "protocol.md": "135c85a1350239d5589e974f40b7abc44555eec21e7aec1aaff957bb1bb5a826",
+    "reference/current_export_provenance.py": "c27837a02c5cf9ae2efe5d6b4e7bb4a5cdb4165f05c011f12b39e3c68f7b0820",
+    "reference/decoder_config.json": "da2377b9e8d4b3bdd0d2a52405dc676aff5454be9c01a07fff572eb9436dc966",
+    "reference/geometry_extractor.py": "8c18a0f9d79cca38efef3d70ebe6cc1efb518b2a047d29f12d72d666722a19e1",
+    "reference/gradient_estimator.py": "8275e4a506a35d5a399f1756a8641f25de0d04b0e346c5030345357449d0ffcb",
+    "reference/historical_metrics.json": "4f8eff5219efe7d36bf7f7168bd1623e3a3b5d0b7cb36b70a02ec5dc32be27e0",
+    "reference/redecode_audit.json": "01e7f889d83bcbe1530e5afa17b9c4303c6b9c8c656ee34eb2f9bf2769c0a435",
+    "src/audit.py": "f0a7e4901be769eb86053b57499a389998b4f3db56a3a7eeddadec77d5da8f84",
+    "src/render_report.py": "cd7f642142a1cd4930ca97229413348f6f58d0040a39c2276f7edd5fcf6031b7",
+    "src/test_synthetic_cases.py": "b6139746fa7d5887f5c1fecfd7f5262d9c8ede10ead17b0c3c45214c256fa029",
+    "src/validate_results.py": "8c84e7346502d320bf3b9d0a1ad78acf9fe9bbfea18c34b6250482086aa4af29",
+    "synthetic_validation.json": "7a2c0f9e172d7f308ec29ef637f1e40c6a701e7af85cc50d09e4a8c6dcc37f57",
+    "token_records.jsonl": "5650a1c64d9b21928b49b86b9a32ebb3743820b53e4cbc0375c1a92b896acfc2"
+  }
+}

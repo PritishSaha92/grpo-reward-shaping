@@ -1,0 +1,29 @@
+{
+  "checkpoint": "outputs/base_arm/g7_principled_cr_seed0/checkpoint-2000",
+  "base_model": "Qwen/Qwen2.5-Math-7B",
+  "benchmarks": [
+    "math500"
+  ],
+  "prompt_template": "cot-4shot",
+  "pass_k": [
+    8
+  ],
+  "temperature_pass1": 0.0,
+  "temperature_pass4": 0.6,
+  "seed": 0,
+  "max_tokens": 3072,
+  "max_model_len": 4096,
+  "gpu_memory_utilization": 0.5,
+  "tensor_parallel_size": 1,
+  "output_dir": "eval_results/oracle_phase3_seed0_n8",
+  "run_name": "g7_principled_cr_seed0_math500_n8_redecode",
+  "merge_dir": null,
+  "save_completions": true,
+  "save_token_ids": true,
+  "grading_timeout": 3,
+  "grading_workers": 4,
+  "limit": null,
+  "subset_ids_file": null,
+  "vllm_version": "0.7.3",
+  "torch_version": "2.5.1+cu124"
+}

@@ -1,0 +1,27 @@
+{
+  "all_rollouts": {
+    "denominator": 4000,
+    "termination_status": {
+      "unknown": 4000
+    },
+    "nominal_cap_reached": 0,
+    "effective_cap_reached": 0,
+    "effective_cap_unknown": 4000
+  },
+  "eligible_incorrect_rollouts": {
+    "denominator": 650,
+    "termination_status": {
+      "unknown": 650
+    },
+    "nominal_cap_reached": 0,
+    "effective_cap_reached": 0,
+    "effective_cap_unknown": 650
+  },
+  "mixed_groups_with_confirmed_or_cap_reaching_sample": 0,
+  "mixed_group_denominator": 185,
+  "mixed_groups_with_unknown_termination": 185,
+  "length_tied_pairs": 25,
+  "possible_incorrect_pairs": 1233,
+  "tied_pair_fraction": 0.0202757502027575,
+  "source_scope": "Nominal cap 3072 verified from config; per-request effective cap and termination reasons unavailable. Unknown is not untruncated."
+}

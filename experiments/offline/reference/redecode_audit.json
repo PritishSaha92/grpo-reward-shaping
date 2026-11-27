@@ -1,0 +1,8 @@
+{
+  "wall_clock_seconds": 699.534388819,
+  "hardware": "NVIDIA H100 80GB HBM3",
+  "vllm_version": "0.7.3",
+  "torch_version": "2.5.1+cu124",
+  "checkpoint": "outputs/base_arm/g7_principled_cr_seed0/checkpoint-2000",
+  "notes": "Re-decode mirrors lavida/eval/evaluate_math.py generation and grading helpers; token_ids are saved for latent extraction."
+}

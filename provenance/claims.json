@@ -1,0 +1,207 @@
+{
+  "primary_table_and_energy": {
+    "record": "experiments/offline/results/tables/full_geometry.csv",
+    "sha256": "9bb381f025b73736c83d9d917a788454d5d51eb5b4db99952ed5f3431e92fad7",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "group_quantiles_and_rank": {
+    "record": "experiments/offline/results/summary.json",
+    "sha256": "bc56b4eeba21d29531aa85ce7068fa7269869361ebfe37e83e4fff19441fd263",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "global_length_calibration": {
+    "record": "experiments/assignment/inputs/calibration.json",
+    "sha256": "3853ab865a51dd17a5205d4356895a5ab9623cb17d526ae6222c6c00880eca22",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "censoring": {
+    "record": "experiments/offline/results/censoring_report.json",
+    "sha256": "21e32698e756291155f9c2b22b1593baf05443ceecfcb8dfa0746a180935d242",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "historical_performance": {
+    "record": "experiments/historical/results/paired_results.json",
+    "sha256": "e6cf1696dde2318af4bd649e5e9fe98fbe35f6d1f222c1083e30177000b19ed5",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "historical_training_coverage": {
+    "record": "experiments/historical/results/training_coverage.json",
+    "sha256": "51962c03d9a4ead87cb2230e0976f70cb13cf9480712728086c9654a3c1a38ea",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "decode_discrepancy": {
+    "record": "experiments/historical/results/decode_discrepancy.json",
+    "sha256": "78b7aa93f7727392461cb29669d8d99f730d683d466aecccf9062071fef049c1",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "historical_AUROC": {
+    "record": "experiments/historical/results/coverage_advantage.json",
+    "sha256": "4f8eff5219efe7d36bf7f7168bd1623e3a3b5d0b7cb36b70a02ec5dc32be27e0",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "rollout_and_head_provenance": {
+    "record": "experiments/historical/inputs/geometry_records.json",
+    "sha256": "ea070a0281d6dab2d9f3a08745c2d0df19eccc4cea5f6506ee6e14af14e4742e",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "decoder_checkpoint": {
+    "record": "experiments/offline/reference/decoder_config.json",
+    "sha256": "da2377b9e8d4b3bdd0d2a52405dc676aff5454be9c01a07fff572eb9436dc966",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "tau_amendment": {
+    "record": "experiments/validation/tau_identity_v1/validation.json",
+    "sha256": "c73fde53e586517b8b486daf7c219a5d2f40289424833302248c74bd795966a4",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "general_shaping_amendment": {
+    "record": "experiments/validation/general_shaping_v2/validation.json",
+    "sha256": "dc51be3ac6bc8a03b58825f51cf2d9861004bad174f41c35af7441d16fcf343a",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "assignment_invariance_and_posthoc_floors": {
+    "record": "experiments/validation/actionability_v3/validation.json",
+    "sha256": "44cb6af00d7e7fb86bafc47a68e6d149b74220697c535c77d11bf01c5fc6a80f",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "posthoc_per_group_floors": {
+    "record": "experiments/validation/actionability_v3/alignment_floors.csv",
+    "sha256": "04000dc25553064de7c47812404b3c6cc32929da664148853f8efdbaed72b8cb",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "assignment_direct_and_conditional": {
+    "record": "experiments/assignment/results/summary.json",
+    "sha256": "82af385496f4aac171a0cf778cf4abab8fb41e2341ffde9676158fda423fd518",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "assignment_group_records": {
+    "record": "experiments/assignment/results/per_group.csv",
+    "sha256": "297f70a4b430cd0c8e2d337a7e4abe961c34682570e756333923c14ba590a22a",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "assignment_permutation_controls": {
+    "record": "experiments/assignment/results/permutation_checks.csv",
+    "sha256": "0926df9b1f1bd20473c19ec48eb8063ab836d2934847ab8ca0abad90b72a2aac",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "assignment_prespecification": {
+    "record": "experiments/assignment/PROTOCOL.md",
+    "sha256": "d557149b722de39d434db69feebcc5805f8b96c959d2c39aae9df343ff2872d2",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "assignment_seal": {
+    "record": "provenance/original_seals/experiments_assignment.json",
+    "sha256": "30a65bfac893c92b39d1315bf667d21c6db6e9088112003f6b10c0683bb546fd",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "assignment_independent_validation": {
+    "record": "experiments/assignment/results/independent_validation.json",
+    "sha256": "163a0f505d9014f2b09600b49fcfc56b50a77b15cc0237df53867893f8357ba8",
+    "scope": "Saved evidence; see docs/SCOPE.md for the population and interpretation."
+  },
+  "fixed_model_gradient_replay": {
+    "record": "experiments/pilot/results/result.json",
+    "sha256": "40389e6ba45c53c8d5361f3f75073cffac140a50f01fc8010ae68c4069311306",
+    "scope": "Earlier 32-group pilot; used only for the labelled subset comparison."
+  },
+  "gradient_permutation_summaries": {
+    "record": "experiments/pilot/results/analysis.json",
+    "sha256": "b3d4c2f788ce5a9461cd4809b0c36df6aa2790df9ebd0bb25014cd4646bf8217",
+    "scope": "Earlier 32-group pilot; used only for the labelled subset comparison."
+  },
+  "gradient_all_comparisons": {
+    "record": "experiments/pilot/results/all_comparisons.csv",
+    "sha256": "432453c3fbf9b1e645c73018f0a233c73b9e527ea1e6b7f4a5960099cb2e40ee",
+    "scope": "Earlier 32-group pilot; used only for the labelled subset comparison."
+  },
+  "gradient_validation": {
+    "record": "experiments/pilot/results/local_validation.json",
+    "sha256": "b31ffd396bb5deb6a34fad24d73fb4f78029e38d15612f256679038ecf6a0e19",
+    "scope": "Earlier 32-group pilot; used only for the labelled subset comparison."
+  },
+  "permutation_presentation_amendment": {
+    "record": "experiments/validation/permutation_reference_v4/report.json",
+    "sha256": "6f0803bd0f8f91fcf4bb05b1b2ed51cabb0317a5013d0bd1d12dc21288ffc25f",
+    "scope": "Historical 32-group post-hoc summaries and synthetic identity checks; the complete replay separately evaluates the exact model reference."
+  },
+  "full_replay_result": {
+    "record": "experiments/replay/run/result.json",
+    "sha256": "14aff10587ab6289f1c405fbd8f96f5bf5c113639e46df3bb5d9f4161eca649c",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_group_scatter": {
+    "record": "experiments/replay/run/group_statistics.json",
+    "sha256": "c42ddcf79ddf6a4096a3658f318f142e60c4e28496c51fb9f5ae62191ff64b14",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_summary": {
+    "record": "experiments/replay/results/summary.json",
+    "sha256": "2df62bcc16b4d08684ff506cebdb0af29dd16ec1e4579ce1b4cb30a733b46d07",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_all_comparisons": {
+    "record": "experiments/replay/analysis/all_reference_comparisons.csv",
+    "sha256": "da2f85851992c32138f0d1f371e3a7a64ace532858ffc141c666406742a4373a",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_permutation_quantiles": {
+    "record": "experiments/replay/analysis/permutation_quantiles.csv",
+    "sha256": "f94c1f93a331b0dd40c0c812a9aab5634644e9b23dfbc035a35891a26372efaa",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_deep_checks": {
+    "record": "experiments/replay/analysis/detailed_checks.json",
+    "sha256": "0b7cbdd47912263ce6d89c237ed1bca89eb3c839812b30432dc691c85aa4a11c",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_group_contributions": {
+    "record": "experiments/replay/analysis/per_group_audit.csv",
+    "sha256": "b6ed11e610561212fef09b078444f460fc6409b73aeffec9351c19e68864c269",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_token_checks": {
+    "record": "experiments/replay/analysis/per_completion_audit.csv",
+    "sha256": "b69ce9419d4ebfcc3c7eda00b9aa99840c6bb753ee3f20096db45d5aef5be0d0",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_pilot_comparison": {
+    "record": "experiments/replay/analysis/pilot_vs_full.csv",
+    "sha256": "e780182fd6f31c553f57cbdd70ebdc792d17fe809a8fde9cd02cb6845bb8bad1",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_input_seal": {
+    "record": "provenance/original_seals/experiments_replay_code_data.json",
+    "sha256": "f22c459f6d01a36c37158d34a86cc5881cadec2432119a27ad806d102f03f311",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_source_seal": {
+    "record": "experiments/replay/code/source_manifest.json",
+    "sha256": "2d23570845b46f5419a6db155874052cc8ef763fe58c03f2cc2c77288b68cad0",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "full_replay_precision_check": {
+    "record": "experiments/replay/weight_precision_validation.json",
+    "sha256": "55fe885cb10fb41c002636a52e475d6e97aed6a657496d3939644100fbb3a2ec",
+    "scope": "Completed 185-group fixed-sample replay; no independent learning-quality evaluation."
+  },
+  "documented_head_objective_and_recovery": {
+    "record": "docs/method/source_manifest.original.json",
+    "sha256": "f7efa36a12f8435fa7761eb521d12f8e9c64e4a367e8699e6d661f898331f4b6",
+    "scope": "Original recovered-source manifest; use origins.json for public-export hashes."
+  },
+  "gradient_frozen_inputs": {
+    "record": "provenance/original_seals/pilot_inputs.json",
+    "sha256": "77a4810afa749fb214ccfc7d09c5c4a4d4a38a257fd27eb440d444cff8419359",
+    "scope": "Original earlier 32-group pilot input seal; not the full-cohort input seal."
+  },
+  "gradient_runtime": {
+    "record": "experiments/pilot/runtime.json",
+    "sha256": "1f8b2bb4f0d2e7b467d35dc13d3e6c7811ed0b5a0c2797faf3941202c8eb71ad",
+    "scope": "Recorded earlier 32-group pilot runtime; no new execution implied."
+  },
+  "original_CPU_validation": {
+    "record": "provenance/verification/original_cpu_validation.json",
+    "sha256": "715d688c4f51b224e012128a5afb2e99474995041dd103a317146b0cb73d3539",
+    "scope": "Original CPU validation report; current standalone verification is recorded separately."
+  }
+}

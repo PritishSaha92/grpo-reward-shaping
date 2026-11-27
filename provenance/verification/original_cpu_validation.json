@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "completed_at_utc": "2026-11-25T21:17:05.754992+00:00",
+  "passed": true,
+  "seal_sha256": "576b87ab5f345f7483615a410cec38c37e5b01e83d46c95fc5a1d87f3d8377d6",
+  "synthetic_tests_passed": 15,
+  "source_ledger_samples": 4000,
+  "saved_rollout_result_rows": 32000,
+  "group_metric_rows": 4000,
+  "association_rows": 185,
+  "largest_absolute_numerical_check_discrepancy": 6.217248937900877e-15,
+  "numerical_tolerances": {
+    "atol": 1e-10,
+    "rtol": 1e-08
+  },
+  "same_environment_deterministic_repeat": "8/8 files byte-identical",
+  "portable_zip_reexecution": {
+    "passed": true,
+    "files": {
+      "calibration.json": true,
+      "summary.json": true,
+      "sensitivity_results.json": true,
+      "censoring_report.json": true,
+      "group_metrics.csv": true,
+      "length_association.csv": true,
+      "rollout_results.jsonl": true,
+      "calculation_checks.json": true
+    },
+    "command": [
+      "<user-home>\\anaconda3\\python.exe",
+      "-B",
+      "<workspace>\\grpo-mechanism-audit\\analysis\\math4ai_2027\\portability_check\\runs\\cpu_v1\\src\\audit.py",
+      "run",
+      "--run",
+      "<workspace>\\grpo-mechanism-audit\\analysis\\math4ai_2027\\portability_check\\runs\\cpu_v1",
+      "--output",
+      "<workspace>\\grpo-mechanism-audit\\analysis\\math4ai_2027\\portability_check\\independent_reexecution"
+    ],
+    "stdout": "Historical geometry reproduced against full-precision reference.\nCompleted primary 3x2 comparison, group-length sensitivity, structure, association and cap checks.\n"
+  },
+  "additional_integrity_checks": [
+    "Sealed snapshots",
+    "Token archive and source ledger (independent validator)",
+    "Association summary quantiles/counts",
+    "Tie pair numerators and denominators",
+    "Claim-map hashes",
+    "Presentation source/input hashes",
+    "ZIP CRC and all archived bytes"
+  ],
+  "pdf_visual_qa": {
+    "renderer": "PyMuPDF 1.26.7",
+    "inspected_final_figures": [
+      "global_energy_accounting",
+      "group_novelty_ecdf",
+      "length_association"
+    ],
+    "result": "Final PDF renders inspected; no overlapping legends or clipped labels"
+  },
+  "cap_sensitivity": "Not triggered; no observed qualifying cap events. All 4000 stopping causes remain unknown.",
+  "gpu_jobs_started": 0,
+  "remote_uploads": 0,
+  "full_paper_status": "Results excerpt and tables ready; full four-page manuscript not drafted in this experiment task"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "rule": "learned",
+    "aligned_vs_binary_cosine": 0.9995363168283334,
+    "aligned_norm_over_binary": 0.9844131842344371,
+    "aligned_difference_over_binary": 0.033997948183708514,
+    "delta_squared": 3.3043173211601328e-06,
+    "aligned_delta_squared": 1.234230913015077e-07,
+    "residual_squared": 3.2637267344726977e-06,
+    "cross_term": -8.283250461408283e-08,
+    "caution": "Cross term can be negative; these are not nonnegative attribution shares."
+  },
+  {
+    "rule": "length",
+    "aligned_vs_binary_cosine": 0.9994594117475272,
+    "aligned_norm_over_binary": 0.986188799097108,
+    "aligned_difference_over_binary": 0.03545410313918846,
+    "delta_squared": 6.0556499059844795e-06,
+    "aligned_delta_squared": 1.3422209461518247e-07,
+    "residual_squared": 5.330264425823945e-06,
+    "cross_term": 5.911633855453376e-07,
+    "caution": "Cross term can be negative; these are not nonnegative attribution shares."
+  }
+]

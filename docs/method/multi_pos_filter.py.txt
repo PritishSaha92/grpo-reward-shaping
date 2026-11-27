@@ -1,0 +1,21 @@
+"""Multi-positive frontier filter for G7 reward-bonus CR-LaViDA."""
+
+from __future__ import annotations
+
+from typing import Any
+
+import torch
+
+
+def select_positives_and_frontier(is_correct: torch.Tensor) -> dict[str, Any]:
+    """Return correct rollout indices only when the prompt has a mixed frontier."""
+
+    if is_correct.ndim != 1:
+        raise ValueError(f"is_correct must be 1-D, got shape {tuple(is_correct.shape)}")
+
+    correct = is_correct.to(dtype=torch.bool)
+    if bool(correct.all().item()) or not bool(correct.any().item()):
+        return {"skip": True, "positive_indices": None}
+
+    positive_indices = correct.nonzero(as_tuple=False).flatten().tolist()
+    return {"skip": False, "positive_indices": [int(i) for i in positive_indices]}

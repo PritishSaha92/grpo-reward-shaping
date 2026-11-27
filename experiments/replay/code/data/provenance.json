@@ -1,0 +1,166 @@
+{
+  "raw_results_sha256": "d5a29873bede905e4501a365677793c65325e032aec6f426762053a003cc27bd",
+  "ledger_sha256": "c74f8705d3df940ea7f697d36747d2525ee187152ed709a5ca3e54a6a223a4a0",
+  "original_data_seal_sha256": "77a4810afa749fb214ccfc7d09c5c4a4d4a38a257fd27eb440d444cff8419359",
+  "original_cpu_seal_sha256": "30a65bfac893c92b39d1315bf667d21c6db6e9088112003f6b10c0683bb546fd",
+  "permutation_source_sha256": "4686e85851404803677a49b0010c3a0d305aa5ca670c3a1478ec1fb925dd5c13",
+  "original_32_input_records_and_weights_identical": true,
+  "tokenizer_json_sha256": "5eee858c5123a4279c3e1f7b81247343f356ac767940b2692a928ad929543214",
+  "groups": 185,
+  "completions": 1480,
+  "eligible_incorrect": 650,
+  "single_incorrect_groups": 53,
+  "opportunity_groups": 132,
+  "common_divisor": 1480,
+  "canary_group_indices": [
+    0,
+    1
+  ],
+  "completion_tokens": 1081240,
+  "trims": [
+    {
+      "group_id": "test/algebra/2277.json",
+      "sample_idx": 1,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/algebra/2277.json",
+      "sample_idx": 5,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/algebra/2277.json",
+      "sample_idx": 7,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/algebra/686.json",
+      "sample_idx": 4,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/algebra/892.json",
+      "sample_idx": 2,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/counting_and_probability/10.json",
+      "sample_idx": 2,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/counting_and_probability/10.json",
+      "sample_idx": 7,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/geometry/229.json",
+      "sample_idx": 2,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/geometry/229.json",
+      "sample_idx": 6,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/geometry/627.json",
+      "sample_idx": 0,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/intermediate_algebra/1063.json",
+      "sample_idx": 5,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/intermediate_algebra/1350.json",
+      "sample_idx": 3,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/intermediate_algebra/1350.json",
+      "sample_idx": 5,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/intermediate_algebra/1354.json",
+      "sample_idx": 5,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/intermediate_algebra/1405.json",
+      "sample_idx": 1,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/intermediate_algebra/1797.json",
+      "sample_idx": 0,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/intermediate_algebra/2022.json",
+      "sample_idx": 7,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/number_theory/22.json",
+      "sample_idx": 3,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/number_theory/22.json",
+      "sample_idx": 6,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1082.json",
+      "sample_idx": 0,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1082.json",
+      "sample_idx": 1,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1082.json",
+      "sample_idx": 6,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1082.json",
+      "sample_idx": 7,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1133.json",
+      "sample_idx": 7,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1146.json",
+      "sample_idx": 5,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1202.json",
+      "sample_idx": 0,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1202.json",
+      "sample_idx": 2,
+      "dropped": 1
+    },
+    {
+      "group_id": "test/precalculus/1202.json",
+      "sample_idx": 6,
+      "dropped": 1
+    }
+  ],
+  "sampler_temperature": 0.6,
+  "replay_logit_temperature": 1.0,
+  "on_policy": false,
+  "scope": "All mixed groups in the same fixed saved sample; no independent training or decoding replication"
+}

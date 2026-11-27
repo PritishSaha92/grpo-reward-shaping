@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "kind": "public-export-integrity",
+  "export_date": "2026-11-27",
+  "original_seal_sha256": "f22c459f6d01a36c37158d34a86cc5881cadec2432119a27ad806d102f03f311",
+  "note": "Metadata was redacted for public export after results were known. This is not preregistration. Numerical inputs are unchanged; see provenance/origins.json.",
+  "files": {
+    "download_manifest.json": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b",
+    "model_pins.json": "34c902e28023e3891bcac96bd3062254a706ec71381e9dd8bc8a89e5e1be46bc",
+    "prompt_source/examples.py": "91cc833769d9d14472612eaece4ae4e7ae125004decf8915a7a8348f34da7170",
+    "prompt_source/utils.py": "8827ca1c48d7fceb42581bc90316dba4f04dfa34e2f64273a99c9ba0315c36c2",
+    "PROTOCOL.md": "1e46ec2f991b4be6af46dea4482141f8cdb3d76bb78dc92c3cdf52032e8855ca",
+    "provenance.json": "429e1e6b1bb3b0a40db2e5ab035ffea003c9e1bc6c50dc30abe8ff5d49288565",
+    "replay_records.json": "cd5e1294ea38203a99ca0c5f5ed15090f89f90ecabbc2ebd62ca644addbce505",
+    "weight_plan.json": "d3480097dae8ebdd3132a06236fa22b0671da9df0fa879a5e8a1c9130b870564"
+  }
+}

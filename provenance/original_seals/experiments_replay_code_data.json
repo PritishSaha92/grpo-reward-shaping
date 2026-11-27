@@ -1,0 +1,13 @@
+{
+  "sealed_at_utc": "2026-11-26T13:05:10.527902+00:00",
+  "files": {
+    "download_manifest.json": "25c7e56536cd270748bb93a6ec97aaf89177fe48b476b16deccaabc0d6b2d71b",
+    "model_pins.json": "4e368b6f0c7109e235d9e956e419125efb5b8feda4eb0138a40d3e89a7644fb6",
+    "prompt_source/examples.py": "91cc833769d9d14472612eaece4ae4e7ae125004decf8915a7a8348f34da7170",
+    "prompt_source/utils.py": "8827ca1c48d7fceb42581bc90316dba4f04dfa34e2f64273a99c9ba0315c36c2",
+    "PROTOCOL.md": "1e46ec2f991b4be6af46dea4482141f8cdb3d76bb78dc92c3cdf52032e8855ca",
+    "provenance.json": "429e1e6b1bb3b0a40db2e5ab035ffea003c9e1bc6c50dc30abe8ff5d49288565",
+    "replay_records.json": "cd5e1294ea38203a99ca0c5f5ed15090f89f90ecabbc2ebd62ca644addbce505",
+    "weight_plan.json": "d3480097dae8ebdd3132a06236fa22b0671da9df0fa879a5e8a1c9130b870564"
+  }
+}

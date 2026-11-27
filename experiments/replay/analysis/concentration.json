@@ -1,0 +1,118 @@
+{
+  "learned": {
+    "zero_reference_groups": 53,
+    "top_1_share": 0.11942836149456156,
+    "top_5_share": 0.28966829320890686,
+    "top_10_share": 0.4434428437730257,
+    "top_10": [
+      {
+        "group_id": "test/number_theory/679.json",
+        "n_wrong": 7,
+        "reference": 3.601246388924015e-07
+      },
+      {
+        "group_id": "test/intermediate_algebra/955.json",
+        "n_wrong": 7,
+        "reference": 1.522354065041629e-07
+      },
+      {
+        "group_id": "test/algebra/1184.json",
+        "n_wrong": 6,
+        "reference": 1.2903787420555823e-07
+      },
+      {
+        "group_id": "test/precalculus/1201.json",
+        "n_wrong": 7,
+        "reference": 1.2755839882309593e-07
+      },
+      {
+        "group_id": "test/prealgebra/2066.json",
+        "n_wrong": 6,
+        "reference": 1.0451032036129911e-07
+      },
+      {
+        "group_id": "test/geometry/1097.json",
+        "n_wrong": 5,
+        "reference": 9.640375464291308e-08
+      },
+      {
+        "group_id": "test/counting_and_probability/1003.json",
+        "n_wrong": 7,
+        "reference": 9.518491953397998e-08
+      },
+      {
+        "group_id": "test/counting_and_probability/188.json",
+        "n_wrong": 7,
+        "reference": 9.11414762578537e-08
+      },
+      {
+        "group_id": "test/geometry/826.json",
+        "n_wrong": 7,
+        "reference": 9.102364309596295e-08
+      },
+      {
+        "group_id": "test/precalculus/1146.json",
+        "n_wrong": 7,
+        "reference": 8.993844673557234e-08
+      }
+    ]
+  },
+  "length": {
+    "zero_reference_groups": 54,
+    "top_1_share": 0.09901857220423678,
+    "top_5_share": 0.3777720330012489,
+    "top_10_share": 0.5641673107039139,
+    "top_10": [
+      {
+        "group_id": "test/intermediate_algebra/607.json",
+        "n_wrong": 7,
+        "reference": 2.2737296993250762e-07
+      },
+      {
+        "group_id": "test/number_theory/22.json",
+        "n_wrong": 6,
+        "reference": 2.1744552830386935e-07
+      },
+      {
+        "group_id": "test/geometry/702.json",
+        "n_wrong": 7,
+        "reference": 1.6178789130242284e-07
+      },
+      {
+        "group_id": "test/geometry/183.json",
+        "n_wrong": 7,
+        "reference": 1.4054706397979926e-07
+      },
+      {
+        "group_id": "test/precalculus/1133.json",
+        "n_wrong": 7,
+        "reference": 1.2031158045267438e-07
+      },
+      {
+        "group_id": "test/precalculus/1146.json",
+        "n_wrong": 7,
+        "reference": 1.1848729353307259e-07
+      },
+      {
+        "group_id": "test/counting_and_probability/1003.json",
+        "n_wrong": 7,
+        "reference": 1.0001848370736524e-07
+      },
+      {
+        "group_id": "test/counting_and_probability/731.json",
+        "n_wrong": 6,
+        "reference": 9.766834099972248e-08
+      },
+      {
+        "group_id": "test/intermediate_algebra/955.json",
+        "n_wrong": 7,
+        "reference": 6.31150573785725e-08
+      },
+      {
+        "group_id": "test/number_theory/1055.json",
+        "n_wrong": 3,
+        "reference": 4.872394282164875e-08
+      }
+    ]
+  }
+}

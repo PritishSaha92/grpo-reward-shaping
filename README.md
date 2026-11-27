@@ -1,104 +1,103 @@
-# What Survives Group Normalization?
+<h1 align="center">What Survives Group Normalization?</h1>
+<p align="center"><strong>A Credit-Assignment Audit of Reward Shaping in GRPO</strong></p>
+<p align="center">
+  <a href="https://pritishsaha92.github.io/predictive-is-not-actionable/assets/paper/grpo-reward-shaping.pdf">Paper</a> &middot;
+  <a href="https://pritishsaha92.github.io/predictive-is-not-actionable/">Blog</a> &middot;
+  <a href="docs/REPRODUCING.md">Reproduce</a> &middot;
+  <a href="docs/RESULTS.md">Results</a>
+</p>
 
-**A Credit-Assignment Audit of Reward Shaping in GRPO**
+A reward can predict correctness without adding much new direction after GRPO normalizes it. And when shaping does change the advantages, their geometry still cannot tell us whether the right completions received credit.
 
-A shaping score can separate correct and incorrect answers without adding much
-new direction after group normalization. Even when it changes the advantages,
-their geometry does not tell us whether the right completions received credit.
-This repository contains the code and saved evidence behind that distinction.
+This repository accompanies our study of that distinction in GRPO training of Qwen2.5-Math-7B. It contains the offline analyses, saved model-gradient results and code needed to reproduce the reported calculations.
 
-![Residual-gradient scale and the exact permutation reference](figures/preview.png)
+<p align="center">
+  <img src="figures/normalization-preview.png" width="680" alt="Four solutions with correctness [1,1,0,0]. Equal penalties give rewards [1,1,-2,-2] and unchanged standardized advantages [1,1,-1,-1]. Unequal penalties give rewards [1,1,-1,-3] and advantages [3,3,-1,-5] divided by the square root of 11.">
+</p>
 
-The figure covers all 185 mixed-outcome groups in one saved MATH-500 sample.
-Gray points reassign the learned penalties among incorrect completions while
-preserving their advantage geometry. These are gradient measurements, not
-measurements of improved learning.
+*Four solutions, the same outcomes. Equal penalties leave the normalized advantages unchanged; unequal penalties introduce a preference between the two failures. This example uses population standard deviation with no numerical stabilizer.*
 
-## Start here
+## Reproduce the results
 
-Python **3.12** is the tested version. The default workflow is CPU-only and
-uses bundled files. It needs no model weights, credentials, GPU, or network
-connection after dependencies are installed.
+**Python 3.12** is the tested version. The default workflow runs on CPU using bundled records. After installing dependencies, it needs no network connection, credentials or model weights.
 
 ```bash
+git clone https://github.com/PritishSaha92/grpo-reward-shaping.git
+cd grpo-reward-shaping
 python -m venv .venv
-# Windows PowerShell: .\.venv\Scripts\Activate.ps1
-# Linux/macOS: source .venv/bin/activate
+```
+
+Activate the environment with `source .venv/bin/activate` on Linux/macOS, or `.\.venv\Scripts\Activate.ps1` in Windows PowerShell. Then run:
+
+```bash
 python -m pip install -r requirements.txt
 python scripts/verify_repository.py
 python scripts/reproduce.py
 ```
 
-Results and logs go into `reproduced/`; committed evidence is never overwritten.
-Choose a new destination for a repeat, for example
-`python scripts/reproduce.py --output reproduced-again`.
-The [reproduction guide](docs/REPRODUCING.md) explains what each stage checks.
+The workflow writes its reports to `reproduced/`, leaving the supplied evidence intact. Its final `verification.json` lists every check and byte-for-byte comparison. For a repeat, choose a fresh destination:
 
-## What the evidence shows
+```bash
+python scripts/reproduce.py --output reproduced-again
+```
 
-| Measurement | Result | Population |
-|---|---:|---|
-| Learned–binary advantage cosine | 0.9786 | 500 prompts, 8 completions each |
-| Learned–length advantage cosine | 0.9684 | Same saved sample |
-| Learned–length within-group residual cosine | 0.2303 | Same saved sample |
-| Prompts permitting within-incorrect differentiation | 132 / 500 | 185 mixed groups, including 53 with one incorrect completion |
-| Learned–binary model-gradient cosine | 0.9844 | All 185 mixed groups, 1,480 completions |
-| Learned residual norm / binary-gradient norm | 17.48% | Same complete replay |
-| Learned–length residual-gradient cosine | −0.0026 | Same complete replay |
-| Learned squared residual norm / exact permutation expectation | 1.0824× | Conditional on fixed computed gradients |
-| Length squared residual norm / its own exact expectation | 2.3213× | Conditional on the same computed gradients |
+This recomputes the analyses from saved rewards and gradient summaries. Running model backpropagation again is a separate workflow described in [Model replay](docs/MODEL_REPLAY.md). The [reproduction guide](docs/REPRODUCING.md) explains each CPU stage and figure regeneration.
 
-The learned ratio lies within the range of its 32 sampled reassignments
-(0.8994–1.1500); four draws exceed the observed norm. No length-penalty shuffles
-were collected. Its 2.3213× ratio is descriptive, with no significance or
-learning-quality claim. Length also enters sequence-mean gradient weighting;
-the replay does not isolate that interaction.
+## Main findings
 
-## Repository map
+The offline analysis uses **4,000 completions from 500 MATH-500 test prompts**. The model replay covers **all 185 mixed groups and their 1,480 completions**.
 
-| Directory | Contents |
+| Measurement | Result |
+|---|---:|
+| Learned vs. binary advantage cosine | 0.9786 |
+| Prompts that permit within-incorrect differentiation | 132 / 500 (26.4%) |
+| Learned vs. binary model-gradient cosine | 0.9844 |
+| Learned residual norm / binary-gradient norm | 17.48% |
+| Learned vs. length residual-gradient cosine | -0.0026 |
+
+Permuting the learned penalties among incorrect completions preserves the reported advantage geometry, yet can change the measured gradient. The replay measures this assignment sensitivity; it does not show which assignment improves task performance.
+
+[Detailed results and plots](docs/RESULTS.md) include all 32 learned-penalty permutations and the exact reference for both learned and length penalties. [The evidence map](docs/EVIDENCE_MAP.md) links each result to its source.
+
+## Repository guide
+
+| Path | Contents |
 |---|---|
-| [`experiments/offline/`](experiments/offline/) | Three reward rules under two normalization conventions, saved tokens, sensitivities and results |
-| [`experiments/assignment/`](experiments/assignment/) | Direct residual comparisons, conditional distributions and 32 permutation checks |
-| [`experiments/replay/`](experiments/replay/) | Complete 185-group model-gradient results, exact reference, execution code and pinned inputs |
-| [`experiments/pilot/`](experiments/pilot/) | Earlier 32-group replay, retained only as a labelled subset comparison |
-| [`experiments/validation/`](experiments/validation/) | Synthetic and saved-data checks of the decomposition, alignment floor and permutation identity |
-| [`experiments/historical/`](experiments/historical/) | Motivating task evaluation, AUROC and training-coverage records |
-| [`docs/method/`](docs/method/) | Recovered historical objective and trainer snapshots |
-| [`figures/`](figures/) | Paper figures, editable SVGs and a portable generator |
-| [`provenance/`](provenance/) | Original seal records and the public-export change map |
+| [`experiments/offline/`](experiments/offline/) | Learned, constant and length rules under two normalization conventions |
+| [`experiments/assignment/`](experiments/assignment/) | Residual comparisons, conditional distributions and permutation checks |
+| [`experiments/replay/`](experiments/replay/) | Complete 185-group replay, execution code, pinned inputs and saved gradient summaries |
+| [`experiments/pilot/`](experiments/pilot/) | Earlier 32-group replay, kept as a labelled subset comparison |
+| [`experiments/validation/`](experiments/validation/) | Checks of the decomposition, alignment floor and permutation identity |
+| [`experiments/historical/`](experiments/historical/) | Original task evaluation, correctness discrimination and training coverage |
+| [`scripts/`](scripts/) | Reproduction, integrity checks and figure generation |
+| [`figures/`](figures/) | Vector figures, editable sources and README previews |
+| [`docs/`](docs/README.md) | Methods, results and reproduction guides |
+| [`provenance/`](provenance/) | Source records, integrity manifests and verification reports |
 
-For individual claims, use the [evidence map](docs/EVIDENCE_MAP.md). For a new
-model execution, read [Model replay](docs/MODEL_REPLAY.md) first. The CPU command
-above recomputes saved-gradient arithmetic; it does not rerun backpropagation.
+The experiment directories retain the paths used by the reproduction scripts. Start with the [documentation index](docs/README.md) rather than opening every saved record.
 
 ## Scope
 
-This is a fixed-sample audit of Qwen2.5-Math-7B with LoRA. It includes the
-completed model replay, but not corrected multi-seed training or new decoding.
-Historical prompt token IDs were not saved, so replay prompts were reconstructed.
-The original learned head had a gradient-clearing/clipping defect. Neither the
-original task comparison nor this offline analysis isolates normalization as
-the cause of the training outcome.
+This is a fixed-sample study of one model and benchmark. Replay prompts were reconstructed because the original prompt token IDs were not saved. The original learned head also had a gradient-clearing/clipping defect. The recorded task comparison and later analysis do not isolate normalization as the cause of its training outcome.
 
-The original evaluation, fresh generation sample, AUROC cohort and training
-coverage have different denominators. They remain separate throughout the
-[scope notes](docs/SCOPE.md).
+Corrected multi-seed training and new decoding are not included. The original evaluation, later generation sample and training history have different populations; [scope notes](docs/SCOPE.md) keep them separate. The [verification report](docs/VERIFICATION.md) states what can be reproduced from this release.
 
-Public-export seals check file integrity after packaging. They are **not new
-preregistrations**. Original numerical records are retained, while personal
-paths and account identifiers are redacted and duplicate transport files are
-excluded. See [provenance](docs/PROVENANCE.md) and the
-[verification report](docs/VERIFICATION.md). The [completeness review](docs/COMPLETENESS.md)
-accounts for the local archive, fresh cluster checks, and deliberate exclusions.
+## Citation
 
-This is the code-and-evidence companion, not the manuscript source project.
-Third-party attribution is retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+If you use the analysis or code, please cite the accompanying manuscript:
 
-## License
+```bibtex
+@unpublished{saha2026normalization,
+  author = {Saha, Pritish},
+  title = {What Survives Group Normalization? A Credit-Assignment Audit of Reward Shaping in {GRPO}},
+  year = {2026},
+  note = {Research manuscript},
+  url = {https://pritishsaha92.github.io/predictive-is-not-actionable/assets/paper/grpo-reward-shaping.pdf}
+}
+```
 
-Original code and code examples are available under the [MIT License](LICENSE).
-Original explanatory text and figures are available under
-[CC BY 4.0](LICENSE-CONTENT.md), with attribution required when shared.
-Third-party code, dataset material and model-related files retain their own
-terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+## Acknowledgements and license
+
+This work began in my bachelor's thesis at IIT Kharagpur. I thank Prof. Pawan Goyal for supervising the thesis and for his guidance.
+
+Original code is [MIT licensed](LICENSE); original text and figures use [CC BY 4.0](LICENSE-CONTENT.md). Third-party material retains its own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

@@ -36,3 +36,7 @@ The adapter's private account locator is replaced by the explicit alias
 `REPLAY_ADAPTER`; its revision and file hashes remain available. This alias is
 not a downloadable model name. CPU verification does not require it. See
 [MODEL_REPLAY.md](MODEL_REPLAY.md).
+
+## Public repository documentation
+
+The November 28 documentation refresh adds the public Paper and Blog links, a citation, a documentation index and a PNG rendering of the existing normalization figure. These public-facing files identify the author. The experiment records retain the earlier export's neutral aliases and original integrity records; the documentation refresh does not alter their scientific contents or provide a new preregistration.

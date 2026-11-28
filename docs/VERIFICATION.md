@@ -1,5 +1,27 @@
 # Release verification
 
+## Current portability and manuscript update, 28 November 2026
+
+The full CPU workflow passed in 99 seconds on Windows (Python 3.12.7), with all
+33 regenerated outputs still byte-identical. The new comparison layer also
+passed on Unix-LF versions of all 33 outputs. Its regression tests reject
+changed counts, identifiers, structure, non-finite numerical values and material
+floating-point differences. Input SHA-256 checks remain exact. Records:
+[CPU run](../provenance/verification/portability_cpu.json) and
+[line-ending checks](../provenance/verification/portability_newlines.json).
+
+The three-platform GitHub Actions workflow is prepared for the next push.
+Linux and macOS execution has **not** been verified in this local session;
+line-ending tests are not a substitute for those runs. Earlier byte-identity
+reports below describe their original Windows runs.
+
+The manuscript PDF now includes the focused introduction and practical-takeaway
+revision. Its title, abstract, empirical results and nine figures are unchanged.
+The exact current PDF hash is in `paper/manifest.json`. The model replay guide
+identifies the original checkpoint and its current access limitation.
+
+## Earlier verification records
+
 Verified on 27 November 2026. No model training, new decoding or paid GPU work
 was performed while preparing this repository.
 
@@ -37,8 +59,8 @@ quality. The optional model code was tested with a tiny randomly initialized
 model; the scientific 7B results remain the supplied completed replay.
 
 The repository contains no model checkpoint, recovery bank, credential, private
-server launch script, or unrelated project. Model-access limitations and the
-redacted adapter locator are explicit in [MODEL_REPLAY.md](MODEL_REPLAY.md).
+server launch script, or unrelated project. The original adapter locator and
+current access limitations are explicit in [MODEL_REPLAY.md](MODEL_REPLAY.md).
 
 The expanded completeness review and rerun are documented in [COMPLETENESS.md](COMPLETENESS.md) and `../provenance/verification/completeness_cpu.json`.
 

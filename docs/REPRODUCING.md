@@ -31,11 +31,29 @@ each stage. A failure stops the workflow immediately.
 9. Verify the motivating AUROC/geometry, training coverage, task means and
    fixed-seed paired-bootstrap/McNemar comparisons.
 
-The final `verification.json` reports byte-identical numerical outputs and
+The final `verification.json` reports structured output comparisons and
 explicitly states the scope. Original training and model backpropagation are
 not part of this CPU command. The paired comparison repeats the saved
 estimator's 20,000 resamples and seed zero; it does not introduce a new
 significance test or training-seed evidence.
+
+## Comparison policy
+
+Input integrity uses exact SHA-256 hashes. Regenerated JSON, JSONL and CSV are
+parsed before comparison, accepting Windows or Unix line endings. Keys, array
+order, row counts, integer counts, identifiers, strings, booleans and nulls must
+match exactly. Finite floating-point outputs use relative tolerance `1e-9` and
+absolute tolerance `1e-12`; the latter permits numerical roundoff near zero.
+This tolerance checks computational agreement, not statistical uncertainty.
+Each file's report includes maximum absolute/relative error and a separate
+byte-identity flag. No committed input, result or historical seal is normalized
+or rehashed to make a failed calculation pass.
+
+Run `python scripts/test_compare_outputs.py` to check that line-ending changes
+and small numerical roundoff pass, while changed identifiers, counts, structure
+and material numerical differences fail. The GitHub Actions workflow runs the
+complete CPU path on Windows, Ubuntu and macOS after the repository is pushed;
+adding that workflow is not evidence that all three runs have already passed.
 
 The tested execution time and output count are recorded in
 [VERIFICATION.md](VERIFICATION.md). Allow extra time on slower disks: input

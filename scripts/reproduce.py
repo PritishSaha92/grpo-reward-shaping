@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import time
+from compare_outputs import compare_files, compare_values, RTOL, ATOL
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,9 +38,7 @@ def main():
         print(name,flush=True);run(argv,logs/(name+'.txt'),cwd);stages.append(name)
     def compare(label,expected,actual,names):
         for n in names:
-            ok=(expected/n).read_bytes()==(actual/n).read_bytes()
-            checks[label+'/'+n]=ok
-            if not ok: raise AssertionError('Recomputed output differs: '+label+'/'+n)
+            checks[label+'/'+n]=compare_files(expected/n,actual/n)
 
     offline=work/'offline'; assignment=work/'assignment'; replay=work/'replay'
     stage('01_synthetic', [offline/'src/test_synthetic_cases.py','--output',out/'synthetic.json'])
@@ -58,10 +57,10 @@ def main():
     precision=json.loads((replay/'weight_precision_validation.json').read_text())
     recorded_precision=json.loads((ROOT/'experiments/replay/weight_precision_validation.json').read_text())
     # The input seal identifies the public export; every numerical field must
-    # still match the recorded coefficient-cast diagnostic exactly.
+    # still match the recorded coefficient-cast diagnostic under the same policy.
     for field in recorded_precision:
         if field!='input_seal_sha256':
-            assert precision[field]==recorded_precision[field],('coefficient_precision',field)
+            compare_values(recorded_precision[field],precision[field],'coefficient_precision.'+field)
     stage('06_reporting_synthetic',[replay/'test_reporting.py'])
     reporting=json.loads((replay/'reporting_test.json').read_text())
     assert reporting['status']=='PASS' and reporting['groups']==185
@@ -83,7 +82,10 @@ def main():
     # by the validators rather than confusing an export hash with a new result.
     stage('11_historical',[ROOT/'scripts/reproduce_history.py','--root',work/'historical','--output',out/'historical'])
     report={'status':'PASS','scope':'CPU arithmetic from saved inputs and gradients; no decoding, model backpropagation or training',
-        'stages':stages,'exact_output_comparisons':checks,'verified_outputs':len(checks),
+        'stages':stages,'output_comparisons':checks,'verified_outputs':len(checks),
+        'byte_identical_outputs':sum(c['byte_identical'] for c in checks.values()),
+        'comparison_policy':{'relative_tolerance':RTOL,'absolute_tolerance':ATOL,
+            'exact':'input SHA-256, structure, integer counts, identifiers, strings, booleans and nulls'},
         'runtime_seconds':round(time.monotonic()-began,3),
         'python':sys.version.split()[0], 'main_replay_groups':185,'main_replay_completions':1480,
         'coefficient_precision_numerical_match':True,'synthetic_full_reporting':'PASS',

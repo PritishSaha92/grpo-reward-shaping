@@ -46,10 +46,10 @@ The checks are recorded in
 | Transport logs, private launch scripts and machine paths | They are not inputs to the numerical analyses. Source/model identity and scientific records remain available. |
 | Two large gradient recovery banks | These resumable vector accumulators remain on the cluster. The included aggregate Gram matrices and group scatter suffice for the reported statistics; arbitrary new gradient measurements may require another replay. |
 | Adapter/head weights and base-model shards | Keep large model files outside Git. Re-executing the 7B model requires access to the exact pinned files; see [MODEL_REPLAY.md](MODEL_REPLAY.md). The neutral adapter alias is not a download URL. |
-| Manuscript source and named-author PDF | This is the code-and-evidence repository; manuscript authorship and its artifact URL are handled separately. |
+| Manuscript source | The current named-author PDF is in `paper/`; editable LaTeX is supplied separately as the author's Overleaf bundle. |
 | Missing historical prompt IDs or execution state | These were not recovered. Their absence is disclosed; repository completeness cannot recreate unavailable original records. |
 
 The CPU reproduction is self-contained after dependency installation. It checks
 saved results and does not re-create the original training trajectory. Publishing
-an anonymous code snapshot alone also does not provide anonymous access to model
-weights: that is a separate artifact-access step if new model execution is desired.
+code does not provide access to restricted model weights; access is a separate
+requirement if new model execution is desired.

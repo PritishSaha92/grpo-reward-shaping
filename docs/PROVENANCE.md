@@ -32,10 +32,10 @@ matrix consistency and the conditional reference. The original extraction audit
 also checked transport logs; the repository does not claim those omitted files
 are reproducible from this export.
 
-The adapter's private account locator is replaced by the explicit alias
-`REPLAY_ADAPTER`; its revision and file hashes remain available. This alias is
-not a downloadable model name. CPU verification does not require it. See
-[MODEL_REPLAY.md](MODEL_REPLAY.md).
+The frozen export uses the alias `REPLAY_ADAPTER`; its revision and file hashes
+remain unchanged. The public documentation now maps this alias to the original
+checkpoint repository and explains access requirements in
+[MODEL_REPLAY.md](MODEL_REPLAY.md). CPU verification does not require weights.
 
 ## Public repository documentation
 

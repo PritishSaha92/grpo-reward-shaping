@@ -9,11 +9,22 @@ policy or redraw completions.
 
 `experiments/replay/code/data/model_pins.json` and `download_manifest.json`
 record the base/adapter revisions and individual file hashes. The base is
-`Qwen/Qwen2.5-Math-7B` at the recorded immutable revision. The adapter account
-locator is withheld in this review export; `REPLAY_ADAPTER` is an alias, not a
-Hugging Face repository. Obtain authorized access to the exact hashed adapter
-files before attempting model execution. This repository does not imply that
-private weights are publicly downloadable.
+`Qwen/Qwen2.5-Math-7B` at revision
+`b101308fe89651ea5ce025f25317fea6fc07e96e`. The recorded adapter alias
+`REPLAY_ADAPTER` maps to
+[`Pritish92/lavida-g7principledcrseed0`](https://huggingface.co/Pritish92/lavida-g7principledcrseed0)
+at revision `9a7fa0c034c1884f141563611bb52c795e1e466f`.
+The alias remains in the frozen evidence to preserve its integrity records.
+
+An unauthenticated metadata request for that adapter revision returned HTTP 401
+on 28 November 2026. Public download access is therefore **not verified**;
+obtain authorized access from the model owner before attempting model execution.
+The public code release does not grant access to restricted model weights.
+Download only the files listed in the manifest at these immutable revisions,
+including `checkpoint-2000/lavida_state.pt`, and verify their hashes in preflight.
+The adapter weight SHA-256 is
+`4729dfc26598884d852fd5eeb095e5472022d6d43d8f3b6efe81920f29d5601a`.
+All saved-data CPU analyses run without these model files or a Hugging Face login.
 
 Stage the listed files in this layout, outside version control:
 

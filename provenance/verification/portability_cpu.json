@@ -1,0 +1,335 @@
+{
+  "status": "PASS",
+  "scope": "CPU arithmetic from saved inputs and gradients; no decoding, model backpropagation or training",
+  "stages": [
+    "01_synthetic",
+    "02_offline",
+    "03_independent_offline_checks",
+    "04_assignment_synthetic",
+    "05_assignment",
+    "06_replay",
+    "06_coefficient_precision",
+    "06_reporting_synthetic",
+    "07_detailed_replay",
+    "08_pilot",
+    "09_tau_identity_v1",
+    "09_general_shaping_v2",
+    "09_actionability_v3",
+    "10_permutation_identity",
+    "11_historical"
+  ],
+  "output_comparisons": {
+    "offline/calibration.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 3,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "offline/summary.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 176,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "offline/sensitivity_results.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 54,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "offline/censoring_report.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 1,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "offline/group_metrics.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 7400,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "offline/length_association.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 131,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "offline/rollout_results.jsonl": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 160000,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "offline/calculation_checks.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 22,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "assignment/summary.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 122,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "assignment/geometry.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 36,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "assignment/per_group.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 3222,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "assignment/permutations.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 0,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "assignment/permutation_checks.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 384,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "assignment/gpu_weight_plan.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 1889,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "assignment/validation.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 9,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay/summary.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 72,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay/all_comparisons.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 680,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay/permutation_draws.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 192,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay/group_reference.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 555,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/all_reference_comparisons.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 1050,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/concentration.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 26,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/gradient_decomposition.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 14,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/gradient_decomposition.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 14,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/incorrect_count_breakdown.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 35,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/permutation_quantiles.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 120,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/per_completion_audit.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 2960,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/per_group_audit.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 925,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/pilot_checks.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 0,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "replay_detail/pilot_vs_full.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 14,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "pilot/analysis.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 80,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "pilot/all_comparisons.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 690,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "pilot/summary_validation.json": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 0,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "alignment_floors/alignment_floors.csv": {
+      "match": true,
+      "byte_identical": true,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-12,
+      "float_values": 1850,
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    }
+  },
+  "verified_outputs": 33,
+  "byte_identical_outputs": 33,
+  "comparison_policy": {
+    "relative_tolerance": 1e-09,
+    "absolute_tolerance": 1e-12,
+    "exact": "input SHA-256, structure, integer counts, identifiers, strings, booleans and nulls"
+  },
+  "runtime_seconds": 98.782,
+  "python": "3.12.7",
+  "main_replay_groups": 185,
+  "main_replay_completions": 1480,
+  "coefficient_precision_numerical_match": true,
+  "synthetic_full_reporting": "PASS",
+  "length_shuffle_draws": 0,
+  "learned_shuffle_draws": 32
+}

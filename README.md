@@ -35,7 +35,7 @@ python scripts/verify_repository.py
 python scripts/reproduce.py
 ```
 
-The workflow writes its reports to `reproduced/`, leaving the supplied evidence intact. Its final `verification.json` lists every check and byte-for-byte comparison. For a repeat, choose a fresh destination:
+The workflow writes its reports to `reproduced/`, leaving the supplied evidence intact. Its final `verification.json` lists each comparison, numerical errors and whether the files also match byte-for-byte. Input hashes remain strict; regenerated JSON and CSV are compared as data, so line endings do not cause a failure. For a repeat, choose a fresh destination:
 
 ```bash
 python scripts/reproduce.py --output reproduced-again

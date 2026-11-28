@@ -10,10 +10,14 @@ floating-point differences. Input SHA-256 checks remain exact. Records:
 [CPU run](../provenance/verification/portability_cpu.json) and
 [line-ending checks](../provenance/verification/portability_newlines.json).
 
-The three-platform GitHub Actions workflow is prepared for the next push.
-Linux and macOS execution has **not** been verified in this local session;
-line-ending tests are not a substitute for those runs. Earlier byte-identity
-reports below describe their original Windows runs.
+The author-provided GitHub Actions screenshots for commit `5e7024a` show
+successful Ubuntu and Windows jobs. The macOS job was cancelled before executing
+the tests with the annotation `macos-14-arm64-us-default is not supported`.
+The workflow now selects `macos-15`, listed in GitHub's
+[supported runner images](https://github.com/actions/runner-images#available-images).
+This corrected configuration must be pushed and run before macOS execution can
+be reported as verified. Earlier byte-identity reports below describe their
+original local Windows runs.
 
 The manuscript PDF now includes the focused introduction and practical-takeaway
 revision. Its title, abstract, empirical results and nine figures are unchanged.

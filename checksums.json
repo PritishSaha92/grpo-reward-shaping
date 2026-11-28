@@ -13,7 +13,7 @@
   "docs/REPRODUCING.md": "4d96241b6f830bfa0e9d8fd35898b19234446886e378cc3aa67ae64f7bf0d24d",
   "docs/RESULTS.md": "f3c262105561bc0bca9b4cebef85ddf10d972489d28bba1ec0bec74152fc17fb",
   "docs/SCOPE.md": "7e3b0ba35c4c01eb2391a99468d63a6d66e96f72d95e858ee58fd2186bc09127",
-  "docs/VERIFICATION.md": "400802fc2383a0193d35d22fd5a39795479c0423f8d5dabaaf580dfead168a4b",
+  "docs/VERIFICATION.md": "f00c484697d2a78df23e0b0d2c616eb0f3cde081dc00ad95a42f0c2c68635719",
   "docs/method/README.md": "fedaa005671f5de2bf87624f4fbdf7028c0ca4ff201c028a3329a23d645bbc54",
   "docs/method/archived_run_manifest.json": "5eb42340bbed433a0a763eb345bfd60e9d621306c8d95b00fee2975f4157cab2",
   "docs/method/hard_neg_miner.py.txt": "7ebc9463ccb4c10774f00edbe9789fb770b96ca0736691b24aa2a595a0d91610",
@@ -222,7 +222,7 @@
   "scripts/verify_repository.py": "ad7b3dfe745600a252e44dd61a4883506f095c5027ca76c064b2dead4eaf1747",
   "scripts/compare_outputs.py": "9048cfb0fabad700c848d23c738053a3f826d683ac680cf2d6673d3aca57cad1",
   "scripts/test_compare_outputs.py": "399a3e64ca2b0d5b17a92c189c2d1856b1d0ba4e9824183c3f8fd812f684d877",
-  ".github/workflows/reproduce.yml": "b72dd99e30e690a5803acb63ee6992483192f87b342bbce629206edad33abc73",
+  ".github/workflows/reproduce.yml": "43f5ad8b5664f13a1c9a4a537b756bcb62da8762c337310a69d37a4175db09da",
   "provenance/verification/portability_cpu.json": "cb149394463c2231afac5404291da12811f401af308ee5eefee58fa65bdafb6e",
   "provenance/verification/portability_newlines.json": "d698e21ee2f167f26fad769d0be1112dc810b1b1f501b9e6aae19bfa5b62bc1a"
 }
